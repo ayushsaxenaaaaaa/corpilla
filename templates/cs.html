@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Career Path</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7fafc;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #4E73DF, #1D4ED8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .career-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: -50px;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .career-card {
+            background: #fff;
+            border-radius: 15px;
+            width: 300px;
+            padding: 30px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: scale(1);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #f0f4ff, #d9e2fb);
+        }
+
+        .career-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .career-card .icon-wrapper {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4E73DF;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .career-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .career-card ul {
+            list-style-type: none;
+            color: #666;
+        }
+
+        .career-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .career-card ul li:hover {
+            color: #1D4ED8;
+        }
+
+        .illustration {
+            max-width: 100%;
+            margin-top: 50px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .next-steps {
+            padding: 50px;
+            background-color: #f1f5f9;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .next-steps ul {
+            text-align: left;
+            display: inline-block;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .next-steps ul li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .next-steps ul li:before {
+            content: "➡";
+            margin-right: 10px;
+            color: #4E73DF;
+        }
+
+        .career-path-btn {
+            background-color: #4E73DF;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 50px;
+        }
+
+        .career-path-btn:hover {
+            background-color: #1D4ED8;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #181818;
+            color: #e4e4e4;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #2b2f4f, #1a1d3a);
+        }
+
+        body.dark-mode .career-card {
+            background: linear-gradient(145deg, #3c3f52, #2c2f41);
+            color: #f0f4f7;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1D4ED8;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Explore Your Career in Computer Science</h1>
+        <p>Unlock Your Potential, One Step at a Time</p>
+    </div>
+
+    <!-- Career Path Section -->
+    <div class="career-cards">
+        <!-- Software Engineer -->
+        <div class="career-card">
+            <div class="icon-wrapper">SE</div>
+            <h3>Software Engineer</h3>
+            <ul>
+                <li>Learn programming languages (Java, C++)</li>
+                <li>Work on software development life cycle</li>
+                <li>Develop large-scale software systems</li>
+            </ul>
+        </div>
+
+        <!-- Full-stack Developer -->
+        <div class="career-card">
+            <div class="icon-wrapper">FS</div>
+            <h3>Full-stack Developer</h3>
+            <ul>
+                <li>Learn front-end (HTML, CSS, JS) & back-end (Node.js, Python)</li>
+                <li>Design and build responsive web applications</li>
+                <li>Understand databases and APIs</li>
+            </ul>
+        </div>
+
+        <!-- UI/UX Designer -->
+        <div class="career-card">
+            <div class="icon-wrapper">UX</div>
+            <h3>UI/UX Designer</h3>
+            <ul>
+                <li>Learn design principles and tools (Sketch, Figma)</li>
+                <li>Focus on user-centered design</li>
+                <li>Create wireframes, prototypes, and high-fidelity designs</li>
+            </ul>
+        </div>
+
+        <!-- DevOps Engineer -->
+        <div class="career-card">
+            <div class="icon-wrapper">DE</div>
+            <h3>DevOps Engineer</h3>
+            <ul>
+                <li>Learn continuous integration and continuous deployment (CI/CD)</li>
+                <li>Automate infrastructure and deployment processes</li>
+                <li>Work with cloud platforms (AWS, GCP)</li>
+            </ul>
+        </div>
+
+        <!-- Mobile App Developer -->
+        <div class="career-card">
+            <div class="icon-wrapper">MA</div>
+            <h3>Mobile App Developer</h3>
+            <ul>
+                <li>Learn Swift, Kotlin, or React Native</li>
+                <li>Design and develop mobile applications</li>
+                <li>Work on cross-platform development</li>
+            </ul>
+        </div>
+
+        <!-- Quality Assurance Engineer -->
+        <div class="career-card">
+            <div class="icon-wrapper">QA</div>
+            <h3>Quality Assurance Engineer</h3>
+            <ul>
+                <li>Write automated test cases</li>
+                <li>Test software to ensure it meets requirements</li>
+                <li>Identify bugs and improve the product's quality</li>
+            </ul>
+        </div>
+
+        <!-- Game Developer -->
+        <div class="career-card">
+            <div class="icon-wrapper">GD</div>
+            <h3>Game Developer</h3>
+            <ul>
+                <li>Learn game engines like Unity or Unreal</li>
+                <li>Create immersive gaming experiences</li>
+                <li>Work on 3D graphics, physics, and gameplay mechanics</li>
+            </ul>
+        </div>
+
+        <!-- Cloud Engineer -->
+        <div class="career-card">
+            <div class="icon-wrapper">CE</div>
+            <h3>Cloud Engineer</h3>
+            <ul>
+                <li>Learn cloud platforms (AWS, Azure, Google Cloud)</li>
+                <li>Work with cloud storage and compute services</li>
+                <li>Design and implement scalable cloud architectures</li>
+            </ul>
+        </div>
+
+        <!-- Cybersecurity Analyst -->
+        <div class="career-card">
+            <div class="icon-wrapper">SA</div>
+            <h3>Cybersecurity Analyst</h3>
+            <ul>
+                <li>Learn security protocols and risk management</li>
+                <li>Identify vulnerabilities in systems</li>
+                <li>Implement security measures and monitor networks</li>
+            </ul>
+        </div>
+
+        <!-- AI/ML Engineer -->
+        <div class="career-card">
+            <div class="icon-wrapper">AI</div>
+            <h3>AI/ML Engineer</h3>
+            <ul>
+                <li>Learn machine learning algorithms and frameworks</li>
+                <li>Work with data preprocessing and training models</li>
+                <li>Develop AI systems for real-world applications</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Try Your Career Path Button -->
+    <div class="text-center">
+        <button class="career-path-btn" onclick="window.location.href='challenges.html'">Try Your Career Path</button>
+    </div>
+
+    <!-- Illustration Section (Student Thinking) -->
+    <div class="text-center">
+        <img class="illustration" src="https://via.placeholder.com/800x400/4A90E2/fff?text=Thinking+Career+Path" alt="Student Thinking">
+        <p class="text-xl text-indigo-500 mt-4">Confused? Take Your First Step Toward Success</p>
+    </div>
+
+    <!-- Next Steps Section -->
+    <div class="next-steps">
+        <h2 class="text-3xl font-bold text-indigo-600">Next Steps</h2>
+        <ul>
+            <li>Start building projects to create a portfolio</li>
+            <li>Join online communities and connect with industry experts</li>
+            <li>Keep learning through bootcamps, courses, and workshops</li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+
+</body>
+</html>
+

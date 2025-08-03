@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corpilla | Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a1a;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.2rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .highlight-box {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .highlight-box h2 {
+      color: #3742fa;
+    }
+
+    .button {
+      background: #3742fa;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-5px);
+    }
+
+    .progress-container {
+      margin: 2rem 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background: #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 20px;
+      background: #3742fa;
+      width: 42%;
+      transition: width 0.4s ease;
+    }
+
+    .tips-box {
+      background: #fff6e5;
+      padding: 1.5rem;
+      border-radius: 10px;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .career-path-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+  </style>
+  <script>
+    const tips = [
+      "You're not failing, you're iterating.",
+      "Real growth starts after your first flop.",
+      "Perfection is procrastination in disguise.",
+      "Every failed challenge is data. Learn from it.",
+      "Your courage to try already puts you ahead."
+    ];
+
+    function changeTip() {
+      const tipEl = document.getElementById("ai-tip");
+      const randomIndex = Math.floor(Math.random() * tips.length);
+      tipEl.innerText = tips[randomIndex];
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Corpilla</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('review') }}">Reviews</a>
+      <a href="{{ url_for('upload') }}">Upload</a>
+      <a href="{{ url_for('challenge') }}">Challenge</a>
+      <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+      <a href="{{ url_for('success') }}">Success</a>
+      <a href="{{ url_for('contact') }}">Contact</a>
+    </nav>
+  </header>
+
+  <section class="highlight-box">
+    <h2>🚀 Submit Your Challenge</h2>
+    <p>Done with a challenge? Submit it here to get AI feedback + earn points!</p>
+    <a href="{{ url_for('upload') }}">
+      <button class="button">Submit Challenge</button>
+    </a>
+  </section>
+
+  <section class="highlight-box">
+    <h2>🎯 Practice-to-Earn</h2>
+    <p>Complete AI challenges. Earn points. Use them to unlock real-world briefs and mentoring sessions.</p>
+  </section>
+
+  <section class="highlight-box">
+    <h2>🎓 Choose Your Career Path</h2>
+    <p>Select a path to get weekly challenges tailored to your goal.</p>
+    <div class="career-path-buttons">
+      <a href="{{ url_for('cs') }}">
+        <button class="button">Computer Science</button>
+      </a>
+      <a href="{{ url_for('management') }}">
+        <button class="button">Management</button>

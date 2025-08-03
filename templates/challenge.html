@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corpilla | Weekly Challenges</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      color: #1a1a1a;
+    }
+
+    header {
+      background-color: #1a1a2e;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .challenges-section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .challenge-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      padding: 2rem;
+      border-top: 6px solid #3742fa;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .challenge-card h3 {
+      margin-top: 0;
+      color: #3742fa;
+    }
+
+    .challenge-card p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .start-btn {
+      background: #3742fa;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .start-btn:hover {
+      background: #2f36c1;
+    }
+
+    footer {
+      background-color: #1a1a2e;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Corpilla</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/review">Reviews</a>
+      <a href="/upload">Upload</a>
+      <a href="/challenge">Challenge</a>
+      <a href="/leaderboard">Leaderboard</a>
+      <a href="/success">Success</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="challenges-section">
+    <h2 style="text-align:center; margin-bottom:2rem;">🔥 This Week's Challenges</h2>
+    <div class="challenge-grid">
+
+      <a href="/upload_challenge" style="text-decoration: none; color: inherit;">
+        <div class="challenge-card">
+          <h3>Week 1: User Persona + Problem Discovery</h3>
+          <p>
+            Goal: Research and define a user segment and the problem they're facing.
+            <br><br>
+            🔹 Pick an industry (e.g., Edtech, Health, Fitness, Finance, etc.)<br>
+            🔹 Conduct 3–5 user interviews<br>
+            🔹 Create:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;- User Personas<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;- Empathy Map<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;- Problem Statement (validated)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;- Basic User Journey Map
+          </p>
+          <button class="start-btn">Start Challenge</button>
+        </div>
+      </a>
+
+      <a href="/upload_challenge" style="text-decoration: none; color: inherit;">
+        <div class="challenge-card">
+          <h3>Personal Portfolio Website (Frontend Focus)</h3>
+          <p>
+            Goal: Build and deploy a fully responsive personal portfolio website.<br><br>
+            🔹 Use HTML/CSS/JavaScript or TailwindCSS/Bootstrap<br>
+            🔹 Sections: About, Projects, Skills, Contact Form<br>
+            🔹 Optional: Dark mode toggle<br>
+            🔹 Host on GitHub Pages or Netlify<br>
+            🔹 Bonus: Add simple animations using GSAP or Framer Motion
+          </p>
+          <button class="start-btn">Start Challenge</button>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Corpilla. Try > Fail > Learn > Earn.</p>
+  </footer>
+</body>
+</html>

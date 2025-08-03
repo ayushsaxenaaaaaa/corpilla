@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Corpilla Upload</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.upload-container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.upload-container h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.upload-container label {
+    color: #ddd;
+    font-weight: 500;
+    margin-top: 1rem;
+    display: block;
+}
+.upload-container input,
+.upload-container select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+.upload-container input::file-selector-button {
+    background-color: #2d2dff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.submit-btn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.submit-btn:hover {
+    background: linear-gradient(to right, #396afc, #2948ff);
+}
+/* Modal styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+.modal {
+    background: #1c1c2b;
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: left;
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #aaa;
+}
+.modal-close:hover {
+    color: #fff;
+}
+.feedback-text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #00adb5;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loading-message {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+</style>
+</head>
+<body>
+<div class="upload-container">
+    <h2>📤 Upload Your Challenge</h2>
+    <form id="uploadForm" enctype="multipart/form-data" method="POST">
+        <label>Your Name:</label>
+        <input type="text" name="username" required />
+
+        <label>Select Your Track:</label>
+        <select name="track" required>
+            <option disabled selected>Choose a track</option>
+            <option>Computer Science</option>
+            <option>Management</option>
+        </select>
+
+        <label>Challenge Title:</label>
+        <select name="title" required>
+            <option disabled selected>Choose a challenge</option>
+            <option>User Persona + Problem Discovery</option>
+            <option>Personal Portfolio Website (Frontend Base)</option>
+        </select>
+
+        <label>Select Category:</label>
+        <select name="category" required>
+            <option disabled selected>Choose a category</option>
+            <option>Case Study</option>
+            <option>Assignment</option>
+            <option>Research</option>
+        </select>
+
+        <label>Upload your work (PDF or TXT):</label>
+        <input type="file" name="file" accept=".pdf,.txt" required />
+
+        <button type="submit" class="submit-btn">Submit for AI Feedback</button>
+    </form>
+</div>
+<!-- Feedback Modal -->
+<div id="feedbackModal" class="modal-overlay">
+    <div class="modal">
+        <button class="modal-close">&times;</button>
+        <h3>🤖 Coach Rhea's Feedback</h3>
+        <div id="feedbackText" class="feedback-text">
+            <div class="loading-message" id="loadingMessage">
+                <span class="spinner"></span>
+                <span>Our AI is reviewing your challenge. Please hold on…</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+const uploadForm = document.getElementById('uploadForm');
+const modal = document.getElementById('feedbackModal');
+const feedbackText = document.getElementById('feedbackText');
+const loadingMessage = document.getElementById('loadingMessage');
+const closeModalBtn = document.querySelector('.modal-close');
+
+function typeFeedback(text) {
+    feedbackText.innerHTML = '';
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            feedbackText.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 25);
+        }
+    }
+    type();
+}
+function showModal() {
+    modal.style.display = 'flex';
+    feedbackText.innerHTML = `
+    <div class="loading-message">
+        <span class="spinner"></span>
+        <span>Our AI is reviewing your challenge. Please hold on…</span>
+    </div>
+    `;
+}
+function hideModal() {
+    modal.style.display = 'none';
+    feedbackText.textContent = '';
+}
+closeModalBtn.addEventListener('click', hideModal);
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) hideModal();
+});
+uploadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(uploadForm);
+    showModal();
+    try {
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+            headers: {'X-Requested-With': 'XMLHttpRequest'}
+        });
+        const data = await response.json();
+        if (data.feedback) {
+            typeFeedback(data.feedback);
+        } else if (data.error) {
+            feedbackText.textContent = "⚠ Error: " + data.error;
+        } else {
+            feedbackText.textContent = "⚠ Unexpected error, no feedback received.";
+        }
+    } catch (error) {
+        feedbackText.textContent = "⚠ Network error: " + error.message;
+    }
+});
+</script>
+</body>
+</html>

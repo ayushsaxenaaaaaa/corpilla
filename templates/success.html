@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corpilla | Success Stories</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f9f9f9; }
+    header { background: #1a1a2e; color: white; padding: 1.5rem 2rem; display: flex; justify-content: space-between; }
+    nav a { color: white; margin-left: 1.2rem; text-decoration: none; }
+    .success { padding: 3rem 2rem; }
+    .story { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .story h3 { color: #2f3542; margin-bottom: 0.5rem; }
+    .story p { color: #444; }
+    footer { background: #1a1a2e; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Corpilla</h1>
+    <nav>
+  <a href="{{ url_for('home') }}">Home</a>
+  <a href="{{ url_for('review') }}">Reviews</a>
+  <a href="{{ url_for('upload') }}">Upload</a>
+  <a href="{{ url_for('challenge') }}">Challenge</a>
+  <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+  <a href="{{ url_for('success') }}">Success</a>
+  <a href="{{ url_for('contact') }}">Contact</a>
+</nav>
+
+  </header>
+  <div class="success">
+    <div class="story">
+      <h3>Shreya cracked an internship at Swiggy</h3>
+      <p>"Corpilla helped me focus on real tasks, not fake certificates. I earned points, unlocked real projects, and one led me to a PM internship!"</p>
+    </div>
+    <div class="story">
+      <h3>Mohit became a freelance UI dev</h3>
+      <p>"I kept failing, but learning. The AI told me what to fix, and after 8 weeks, I built my own site and landed freelance gigs."</p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Corpilla. Your failures are your fuel.</p>
+  </footer>
+</body>
+</html>

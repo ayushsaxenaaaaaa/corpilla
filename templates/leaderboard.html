@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corpilla | Leaderboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    header {
+      background: linear-gradient(to right, #4f46e5, #6366f1);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .leaderboard-container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .leaderboard-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .leaderboard-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #d1d5db;
+      margin-right: 1rem;
+    }
+
+    .user-details h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .user-details p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .points {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #4f46e5;
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔥 Corpilla Leaderboard</h1>
+    <p>Celebrating consistency, effort, and real growth.</p>
+  </header>
+
+  <div class="leaderboard-container">
+    <div class="leaderboard-card">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user-details">
+          <h3>Ananya Sharma</h3>
+          <p>Frontend Ninja</p>
+        </div>
+      </div>
+      <div class="points">980 pts</div>
+    </div>
+
+    <div class="leaderboard-card">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user-details">
+          <h3>Ravi Mehta</h3>
+          <p>Product Visionary</p>
+        </div>
+      </div>
+      <div class="points">920 pts</div>
+    </div>
+
+    <div class="leaderboard-card">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user-details">
+          <h3>Simran Kaur</h3>
+          <p>Marketing Hustler</p>
+        </div>
+      </div>
+      <div class="points">890 pts</div>
+    </div>
+
+    <div class="leaderboard-card">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user-details">
+          <h3>Aryan Joshi</h3>
+          <p>Growth Hacker</p>
+        </div>
+      </div>
+      <div class="points">860 pts</div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Corpilla. All rights reserved.
+  </footer>
+
+</body>
+</html>

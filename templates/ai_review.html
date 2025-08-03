@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Feedback | Corpilla</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 4rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #3742fa;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      white-space: pre-line;
+    }
+    a {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      background: #3742fa;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📊 AI Feedback on Your Work</h2>
+    <p>{{ feedback }}</p>
+    <a href="{{ url_for('upload') }}">🔁 Try Another Challenge</a>
+  </div>
+</body>
+</html>

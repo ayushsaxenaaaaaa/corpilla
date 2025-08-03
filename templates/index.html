@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corpilla | Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f8f9ff, #e2e6ff);
+      color: #1a1a1a;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-box h3 {
+      color: #3742fa;
+    }
+
+    .cta {
+      background: #3742fa;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .cta button {
+      padding: 0.8rem 1.6rem;
+      background: white;
+      color: #3742fa;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cta button:hover {
+      background: #ffcc00;
+      color: #1a1a2e;
+    }
+
+    footer {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .popup {
+      background: white;
+      padding: 2rem 2.5rem;
+      max-width: 480px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      font-size: 1.1rem;
+      color: #1a1a2e;
+      animation: floatUp 0.8s ease-out;
+    }
+
+    .popup h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.9rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #555;
+      cursor: pointer;
+    }
+
+    .popup-close:hover {
+      color: red;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Corpilla</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/review">Reviews</a>
+      <a href="/challenge">Challenges</a>
+      <a href="/upload">Upload</a>
+      <a href="/leaderboard">Leaderboard</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Fail. Learn. Rise.</h1>
+    <p>Corpilla is your AI-powered platform to turn mistakes into mastery. Upskill through challenges designed to help you grow smarter, faster.</p>
+  </div>
+
+  <section class="features">
+    <div class="feature-box">
+      <h3>💡 Weekly AI Challenges</h3>
+      <p>Get smart, role-specific challenges tailored to your goals every week.</p>
+    </div>
+    <div class="feature-box">
+      <h3>📊 Track Growth</h3>
+      <p>Monitor your progress visually and build your resume with every task completed.</p>
+    </div>
+    <div class="feature-box">
+      <h3>🎯 Practice-to-Earn</h3>
+      <p>Earn points and unlock premium, real-world tasks submitted by top startups.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to turn failure into fuel?</h2>
+    <button onclick="location.href='/dashboard'">Get Started</button>
+  </section>
+
+  <footer>
+    © 2025 Corpilla. Designed for students who grow through grit.
+  </footer>
+
+  <!-- Popup Modal -->
+  <div class="popup-overlay" id="popupBanner">
+    <div class="popup">
+      <button class="popup-close" onclick="closePopup()">✖</button>
+      <h3>🚧 This is Just a Prototype</h3>
+      <p>Hey there! This is an early preview of <strong>Corpilla</strong>. The platform hasn’t launched yet, and you’re looking at a work-in-progress demo.</p>
+    </div>
+  </div>
+
+  <script>
+    function closePopup() {
+      document.getElementById('popupBanner').style.display = 'none';
+    }
+
+    // Optionally: auto-close after 15 seconds
+    // setTimeout(closePopup, 15000);
+  </script>
+</body>
+</html>

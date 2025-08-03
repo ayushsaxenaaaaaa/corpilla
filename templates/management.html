@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Career Path</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* KEEP ALL THE SAME STYLES FROM YOUR ORIGINAL PAGE */
+        /* (You can copy the entire <style> section directly from your original) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7fafc;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #4E73DF, #1D4ED8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .career-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: -50px;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .career-card {
+            background: #fff;
+            border-radius: 15px;
+            width: 300px;
+            padding: 30px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: scale(1);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #f0f4ff, #d9e2fb);
+        }
+
+        .career-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .career-card .icon-wrapper {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4E73DF;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .career-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .career-card ul {
+            list-style-type: none;
+            color: #666;
+        }
+
+        .career-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .career-card ul li:hover {
+            color: #1D4ED8;
+        }
+
+        .illustration {
+            max-width: 100%;
+            margin-top: 50px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .next-steps {
+            padding: 50px;
+            background-color: #f1f5f9;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .next-steps ul {
+            text-align: left;
+            display: inline-block;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .next-steps ul li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .next-steps ul li:before {
+            content: "➡";
+            margin-right: 10px;
+            color: #4E73DF;
+        }
+
+        .career-path-btn {
+            background-color: #4E73DF;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 50px;
+        }
+
+        .career-path-btn:hover {
+            background-color: #1D4ED8;
+        }
+
+        body.dark-mode {
+            background: #181818;
+            color: #e4e4e4;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #2b2f4f, #1a1d3a);
+        }
+
+        body.dark-mode .career-card {
+            background: linear-gradient(145deg, #3c3f52, #2c2f41);
+            color: #f0f4f7;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1D4ED8;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Explore Your Career in Management</h1>
+        <p>Unlock Your Potential, One Step at a Time</p>
+    </div>
+
+    <!-- Career Path Section -->
+    <div class="career-cards">
+        <div class="career-card"><div class="icon-wrapper">PM</div><h3>Product Manager</h3><ul><li>Define product vision & strategy</li><li>Coordinate between teams</li><li>Conduct user research</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">BM</div><h3>Brand Manager</h3><ul><li>Build and manage brand identity</li><li>Oversee marketing campaigns</li><li>Analyze market trends</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">HR</div><h3>HR Manager</h3><ul><li>Recruit and manage talent</li><li>Build company culture</li><li>Handle employee relations</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">OM</div><h3>Operations Manager</h3><ul><li>Optimize business processes</li><li>Manage supply chains</li><li>Increase efficiency</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">FM</div><h3>Finance Manager</h3><ul><li>Create financial reports</li><li>Plan budgets and forecasts</li><li>Manage cash flow</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">SM</div><h3>Sales Manager</h3><ul><li>Lead sales teams</li><li>Develop sales strategies</li><li>Meet revenue targets</li></ul></div>
+        <div class="career-card"><div class="icon-wrapper">CM</div><h3>Community Manager</h3><ul><li>Engage with community members</li><li>Build brand trust</li><li>Manage online presence</li></ul></div>
+    </div>
+
+    <!-- Try Your Career Path Button -->
+    <div class="text-center">
+        <button class="career-path-btn" onclick="window.location.href='challenges.html'">Try Your Career Path</button>
+    </div>
+
+    <!-- Illustration Section (Student Thinking) -->
+    <div class="text-center">
+        <img class="illustration" src="https://via.placeholder.com/800x400/4A90E2/fff?text=Thinking+Career+Path" alt="Student Thinking">
+        <p class="text-xl text-indigo-500 mt-4">Confused? Take Your First Step...</p>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>
+
