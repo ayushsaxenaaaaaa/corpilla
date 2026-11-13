@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Find a Doctor – Sunnah Hospital</title>
+<meta name="description" content="Find a cancer specialist at Sunnah Hospital – Cancer Research Center. Surgical, medical and radiation oncologists and researchers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="doctors">
+<main>
+  <section class="phero">
+    <div class="ph" data-img="photo-1666214280557-f1b5022eb634" data-w="1800" data-eager="1"></div>
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<span>Find a Doctor</span></nav>
+      <h1>Find a cancer specialist</h1>
+      <p class="lead">Experienced oncologists, surgeons and scientists. Search by name, speciality or cancer type.</p>
+    </div>
+  </section>
+  <section class="sec"><div class="wrap">
+    <div class="filter"><label for="q" style="position:absolute;left:-9999px">Search doctors</label><input id="q" type="search" placeholder="Search by name, speciality or cancer, e.g. breast"></div>
+    <div class="chips" id="chips"></div>
+    <p id="count" style="color:var(--muted);margin:-12px 0 24px;font-size:.9rem"></p>
+    <div class="docs" id="list"></div>
+  </div></section>
+</main>
+<script src="assets/site.js"></script>
+<script src="assets/doctors.js"></script>
+<script>
+const chips=document.getElementById('chips'),q=document.getElementById('q'),list=document.getElementById('list'),cnt=document.getElementById('count');let sp='All';
+function draw(){const t=q.value.toLowerCase();const r=SHD.list.filter(d=>(sp==='All'||d.s===sp)&&(!t||Object.values(d).join(' ').toLowerCase().includes(t)));SHD.render(list,r);cnt.textContent=r.length+' specialist'+(r.length===1?'':'s');[...chips.children].forEach(b=>b.setAttribute('aria-pressed',String(b.textContent===sp)));}
+['All',...new Set(SHD.list.map(d=>d.s))].forEach(s=>{const b=document.createElement('button');b.type='button';b.textContent=s;b.onclick=()=>{sp=s;draw();};chips.appendChild(b);});
+q.oninput=draw;draw();
+</script>
+</body>
+</html>

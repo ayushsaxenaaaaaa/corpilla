@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cancer Research Center – Sunnah Hospital</title>
+<meta name="description" content="Sunnah Cancer Research Center: clinical trials, precision oncology and genomics, cancer registry and community screening.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="research">
+<main>
+  <section class="phero">
+    <div class="ph" data-img="photo-1532187863486-abf9dbad1b69" data-w="1800" data-eager="1"></div>
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<span>Research</span></nav>
+      <h1>Sunnah Cancer Research Center</h1>
+      <p class="lead">Turning laboratory discoveries into better treatment, and bringing them to our patients first.</p>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap statement">
+    <div class="stack rv"><span class="over">Our Mission</span><h2 class="h-l">Research with patients at its heart</h2></div>
+    <p class="big rv">Our scientists and clinicians share one building and one goal: <b>better survival and quality of life</b> for people with cancer. Everything we study begins with a <span>question raised by a patient</span>.</p>
+  </div></section>
+
+  <section class="sec mist" style="padding-top:clamp(56px,8vw,90px)"><div class="wrap">
+    <div class="stack rv" style="margin-bottom:44px"><span class="over">Research Programs</span><h2 class="h-l">Where we focus</h2></div>
+    <div class="prog">
+      <div class="pcard rv" id="trials"><div class="ph" data-img="photo-1576086213369-97a306d36557"></div><span class="over">Clinical Trials</span><h3>Access to new therapies</h3><p>Investigator-led and sponsored trials of new drugs and treatment combinations, under ethics committee oversight.</p></div>
+      <div class="pcard rv"><div class="ph" data-img="photo-1579154204601-01588f351e67"></div><span class="over">Precision Oncology</span><h3>Genomics &amp; biomarkers</h3><p>Next-generation sequencing that matches patients to targeted therapy and immunotherapy.</p></div>
+      <div class="pcard rv"><div class="ph" data-img="photo-1631217868264-e5b90bb7e133"></div><span class="over">Population Health</span><h3>Registry &amp; screening</h3><p>A hospital-based cancer registry and community programs for early detection of oral, breast and cervical cancer.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap two-col">
+    <div class="prose">
+      <span class="over">Clinical Trials</span>
+      <h2 class="h-l" style="margin:0">Currently enrolling</h2>
+      <p>The trials below are examples for this concept. Ask your oncologist whether a trial suits you.</p>
+      <div id="trialList" style="display:grid;gap:0;border-top:1px solid var(--line)"></div>
+    </div>
+    <aside class="aside">
+      <div class="box navy"><h4>Is a trial right for me?</h4><p>Send your reports and our research team will check whether you are eligible.</p><a class="btn btn-p" href="contact.html">Check Eligibility</a></div>
+      <div class="box"><h4 style="font-size:1rem">Research at a glance</h4><ul><li>Active studies<span>12+</span></li><li>Publications<span>40+</span></li><li>Research staff<span>20+</span></li></ul><p style="font-size:.72rem;color:var(--muted)">Placeholder figures</p></div>
+    </aside>
+  </div></section>
+
+  <section class="bleed">
+    <div class="ph" data-img="photo-1582719471384-894fbb16e074" data-w="1800"></div>
+    <div class="wrap"><span class="over" style="color:var(--turq)">Partner With Us</span><blockquote>Collaborate with our scientists on research that changes cancer care in our region.</blockquote><a class="btn btn-p" href="contact.html">Contact the Research Office</a></div>
+  </section>
+</main>
+<script src="assets/site.js"></script>
+<script>
+const trials=[['Phase III','Breast Cancer','Neoadjuvant immunotherapy combined with chemotherapy in triple-negative breast cancer'],['Phase II','Head & Neck','De-escalated radiation for HPV-positive oropharyngeal cancer'],['Observational','Lung Cancer','Liquid biopsy for early detection of EGFR resistance mutations'],['Phase II','Lymphoma','Targeted therapy maintenance after first-line treatment'],['Screening','Oral Cancer','Community screening with AI-assisted lesion photography']];
+document.getElementById('trialList').innerHTML=trials.map(([p,c,t])=>`<a href="contact.html" style="display:grid;gap:6px;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;gap:10px;flex-wrap:wrap"><span class="meta">${p}</span><span class="meta" style="color:var(--muted)">${c}</span></span><b style="color:var(--navy);font-weight:500;font-size:1.05rem">${t}</b><span class="arrow" style="font-size:.85rem">Check eligibility</span></a>`).join('');
+</script>
+</body>
+</html>
