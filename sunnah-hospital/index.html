@@ -5,476 +5,383 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sunnah Cancer Research Center</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Sunnah Hospital – Cancer Research Center: surgical oncology, medical oncology, radiation oncology and cancer research. Book an appointment or WhatsApp our care team.">
+<meta name="description" content="Sunnah Hospital – Cancer Research Center. Surgical & Medical Cancer Center. Book an appointment or WhatsApp our cancer care team. Hope • Healing • Humanity.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 <style>
-/* Layout: editorial cancer institute — deep teal bands framing white reading sections; a serif display voice; one turquoise "light" motif (concentric rings) as the identity */
+/* Layout: clinical, Mayo-style — white canvas, navy type, generous whitespace, wide image panels, turquoise as the single accent */
 :root{
-  --teal-950:#042a2d; --teal-900:#063a3e; --teal-700:#0b5c61; --teal-500:#138a8a; --turq:#1fb5ad; --turq-300:#7fdcd5;
-  --bg:#ffffff; --surface:#f2f8f7; --card:#ffffff; --fg:#0d2224; --muted:#4d6869; --line:#d9e7e6; --tint:#e3f5f3;
-  --on-dark:#eefaf9; --on-dark-muted:#a9d1ce; --wa:#1fa855;
-  --display:"Fraunces",Georgia,"Times New Roman",serif; --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --r:10px;
+  --navy:#00354e; --navy-2:#0a4a68; --navy-3:#002536; --turq:#16becf; --turq-d:#0d9aa9; --sky:#e8f8fa;
+  --bg:#ffffff; --soft:#f4f8fa; --fg:#0f2733; --muted:#55707d; --line:#dde7ec; --wa:#1fa855;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#06191a; --surface:#0a2324; --card:#0d2a2b; --fg:#e3f1f0; --muted:#98b7b5; --line:#1b3c3d; --tint:#0f3536; color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#06191a; --surface:#0a2324; --card:#0d2a2b; --fg:#e3f1f0; --muted:#98b7b5; --line:#1b3c3d; --tint:#0f3536; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--teal-950)}
-.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.12;text-wrap:balance;margin:0;letter-spacing:-.01em}
-h2{font-size:clamp(1.8rem,4.6vw,2.9rem)}
-h3{font-size:1.35rem}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.7 var(--font);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-weight:600;line-height:1.2;margin:0;color:var(--navy);text-wrap:balance}
+h2{font-size:clamp(1.6rem,3.6vw,2.4rem)}
+h3{font-size:1.2rem}
 p{margin:0}
-a{color:inherit}
-img{display:block}
-.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--teal-500)}
-.dark .eyebrow{color:var(--turq)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:999px;font:700 .95rem/1 var(--body);text-decoration:none;border:0;cursor:pointer;white-space:nowrap}
-.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
-.btn-primary{background:var(--turq);color:#022a2c}
-.btn-primary:hover{background:var(--turq-300)}
-.btn-ghost{box-shadow:inset 0 0 0 1.5px rgba(238,250,249,.45);color:var(--on-dark)}
-.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--turq)}
-.btn-wa{background:var(--wa);color:#fff}
+a{color:var(--navy)}
+.kicker{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--turq-d)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:4px;font:500 .95rem/1.2 var(--font);text-decoration:none;border:0;cursor:pointer}
 .btn svg{width:18px;height:18px;fill:currentColor;flex:none}
-section{padding-block:clamp(56px,9vw,104px)}
-.head{display:grid;gap:12px;margin-bottom:clamp(28px,5vw,48px);max-width:660px}
-.head p{color:var(--muted);font-size:1.05rem}
-.dark{background:var(--teal-900);color:var(--on-dark)}
-.dark .head p{color:var(--on-dark-muted)}
-.alt{background:var(--surface)}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-2)}
+.btn-turq{background:var(--turq);color:var(--navy-3)}.btn-turq:hover{background:#3fd0de}
+.btn-line{box-shadow:inset 0 0 0 1.5px var(--navy);color:var(--navy);background:transparent}.btn-line:hover{background:var(--navy);color:#fff}
+.btn-wa{background:var(--wa);color:#fff}
+.link{font-weight:500;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--turq);padding-bottom:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+section{padding-block:clamp(56px,8vw,96px)}
+.soft{background:var(--soft)}
+.sec-head{display:grid;gap:10px;max-width:720px;margin-bottom:clamp(28px,4vw,44px)}
+.sec-head p{color:var(--muted);font-size:1.02rem}
 
-/* ---------- top strip + header ---------- */
-.strip{background:var(--teal-950);color:var(--on-dark-muted);font-size:.78rem}
-.strip .wrap{display:flex;justify-content:space-between;gap:12px;padding-block:7px;flex-wrap:wrap}
-.strip b{color:var(--turq);font-weight:700}
-.strip .hide-sm{display:none}
-@media(min-width:760px){.strip .hide-sm{display:inline}}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:rgba(6,58,62,.96);backdrop-filter:blur(10px);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
-.brand svg{width:40px;height:40px;flex:none}
-.brand b{display:block;font-family:var(--display);font-size:1.08rem;letter-spacing:.06em;line-height:1.1}
-.brand small{display:block;font-size:.6rem;letter-spacing:.2em;color:var(--on-dark-muted);text-transform:uppercase;font-weight:700}
-.links{display:none;gap:26px;font-size:.9rem;font-weight:600}
-.links a{text-decoration:none;color:var(--on-dark-muted)}
-.links a:hover{color:#fff}
-.nav-cta{display:flex;gap:8px;align-items:center}
-.nav-cta .btn{padding:10px 16px;font-size:.85rem}
-.nav-cta .btn-ghost{display:none}
-.menu-btn{background:none;border:0;color:#fff;padding:8px;cursor:pointer;display:grid}
-.menu-btn svg{width:26px;height:26px}
-@media(min-width:1000px){.links{display:flex}.menu-btn{display:none}.nav-cta .btn-ghost{display:inline-flex}}
-.drawer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,.08)}
-.drawer .wrap{display:grid;padding-block:8px 18px}
-.drawer a{padding:13px 0;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}
+/* utility bar */
+.util{background:var(--navy);color:#cfe3ec;font-size:.8rem}
+.util .wrap{display:flex;justify-content:space-between;gap:12px;padding-block:8px}
+.util a{color:#fff;text-decoration:none;font-weight:500}
+.util .r{display:none;gap:22px}
+@media(min-width:860px){.util .r{display:flex}}
 
-/* ---------- hero ---------- */
-.hero{background:radial-gradient(120% 90% at 85% 10%,#0f7b7c 0%,var(--teal-900) 45%,var(--teal-950) 100%);color:var(--on-dark);position:relative;overflow:hidden;padding:0}
-.hero .wrap{position:relative;z-index:1;display:grid;gap:40px;padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px)}
-@media(min-width:960px){.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center}}
-.hero h1{font-size:clamp(2.4rem,7.2vw,4.6rem);font-weight:400}
-.hero h1 em{font-style:italic;color:var(--turq)}
-.hero .lead{font-size:clamp(1.02rem,2.2vw,1.18rem);max-width:54ch;color:var(--on-dark-muted);margin-top:20px}
-.hero .cta-row{margin-top:28px}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px}
-.values{display:flex;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;flex-wrap:wrap}
-.values div{flex:1 1 0;min-width:96px;padding-right:12px}
-.values b{display:block;font-family:var(--display);font-size:1.15rem;letter-spacing:.12em;color:#fff}
-.values span{font-size:.8rem;color:var(--on-dark-muted)}
-.rings{position:absolute;inset:auto -200px -260px auto;width:760px;height:760px;pointer-events:none;opacity:.9}
-/* hero visual card */
-.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;display:grid;gap:16px;backdrop-filter:blur(6px)}
-.hero-card h4{font-size:1.2rem}
-.hero-card .row{display:flex;gap:12px;align-items:flex-start;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
-.hero-card .row i{font-style:normal;width:30px;height:30px;border-radius:50%;background:rgba(31,181,173,.18);color:var(--turq);display:grid;place-items:center;font-weight:800;font-size:.8rem;flex:none}
-.hero-card .row b{display:block;font-size:.95rem}
-.hero-card .row span{font-size:.84rem;color:var(--on-dark-muted)}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo img{height:50px;width:auto;display:block}
+@media(min-width:860px){.logo img{height:60px}}
+.menu{display:none;gap:30px;font-size:.92rem;font-weight:500}
+.menu a{text-decoration:none;color:var(--navy);padding-block:6px;border-bottom:2px solid transparent}
+.menu a:hover{border-color:var(--turq)}
+.nav-r{display:flex;align-items:center;gap:10px}
+.nav-r .btn{padding:11px 18px;font-size:.88rem}
+.nav-r .btn-navy{display:none}
+.burger{background:none;border:0;padding:8px;cursor:pointer;color:var(--navy);display:grid}
+.burger svg{width:28px;height:28px}
+@media(min-width:1060px){.menu{display:flex}.burger{display:none}.nav-r .btn-navy{display:inline-flex}}
+.drawer{border-top:1px solid var(--line);background:#fff}
+.drawer .wrap{display:grid;padding-block:6px 18px}
+.drawer a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+.drawer .btn{margin-top:14px}
 
-/* ---------- quick actions ---------- */
-.quick{background:var(--bg);border-bottom:1px solid var(--line)}
-.quick .wrap{display:grid;grid-template-columns:1fr 1fr;padding-block:0}
-.quick a{padding:20px 14px 20px 0;text-decoration:none;display:grid;gap:3px;border-bottom:1px solid var(--line)}
-.quick a:nth-child(odd){border-right:1px solid var(--line)}
-.quick a:nth-child(even){padding-left:14px}
-.quick a b{font-size:.96rem;display:flex;justify-content:space-between;gap:6px}
-.quick a b::after{content:"→";color:var(--turq)}
-.quick a span{font-size:.8rem;color:var(--muted)}
-@media(min-width:860px){.quick .wrap{grid-template-columns:repeat(4,1fr)}.quick a{border-bottom:0;padding:24px 20px!important;border-right:1px solid var(--line)}.quick a:last-child{border-right:0}}
+/* hero (Mayo style: large image with text panel) */
+.hero{padding:0;background:var(--soft)}
+.hero-grid{display:grid}
+@media(min-width:960px){.hero-grid{grid-template-columns:1fr 1fr;min-height:520px}}
+.hero-text{padding-block:clamp(40px,7vw,80px);display:grid;gap:22px;align-content:center;padding-right:0}
+@media(min-width:960px){.hero-text{padding-right:56px}}
+.hero h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:600;letter-spacing:-.01em}
+.hero h1 span{color:var(--turq-d)}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:50ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.values{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;font-weight:600;letter-spacing:.28em;color:var(--navy)}
+.values i{color:var(--turq);font-style:normal;letter-spacing:0}
+.hero-media{position:relative;min-height:300px;overflow:hidden;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+@media(min-width:960px){.hero-media{margin:0 calc(-1 * max(16px,env(safe-area-inset-right,0px))) 0 0}}
 
-/* ---------- finder ---------- */
-.finder{display:grid;gap:20px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1.5px solid var(--line);background:var(--card);color:var(--fg);padding:9px 15px;border-radius:999px;font:600 .88rem var(--body);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--teal-900);border-color:var(--teal-900);color:#fff}
-.finder-out{display:grid;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,32px)}
-@media(min-width:860px){.finder-out{grid-template-columns:1.2fr 1fr}}
-.finder-out h3{font-size:1.7rem}
-.finder-out p{color:var(--muted);margin-top:8px}
-.finder-out dl{margin:0;display:grid;gap:12px}
-.finder-out dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--teal-500)}
-.finder-out dd{margin:2px 0 0;font-size:.95rem}
+/* photo placeholder panels */
+.photo{position:relative;background:linear-gradient(135deg,#0b5876 0%,#00354e 55%,#002536 100%);overflow:hidden;color:#fff;max-width:100%}
+.photo::before{content:"";position:absolute;width:140%;aspect-ratio:1;border-radius:50%;right:-70%;top:-40%;border:2px solid rgba(22,190,207,.35);box-shadow:0 0 0 40px rgba(22,190,207,.06),0 0 0 90px rgba(22,190,207,.04)}
+.photo::after{content:"";position:absolute;inset:auto -10% 18% -10%;height:3px;background:linear-gradient(90deg,transparent,rgba(22,190,207,.7),transparent);transform:rotate(-12deg)}
+.photo .ph-label{position:absolute;left:16px;bottom:14px;z-index:1;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,.75);display:flex;gap:8px;align-items:center}
+.photo .ph-label svg{width:16px;height:16px;fill:currentColor}
+.hero-media.photo{height:100%}
+.hero-badge{position:absolute;z-index:2;left:24px;right:24px;top:50%;transform:translateY(-50%);max-width:340px;background:#fff;color:var(--fg);border-radius:6px;padding:22px;box-shadow:0 20px 40px rgba(0,37,54,.25);display:grid;gap:8px}
+.hero-badge b{color:var(--navy);font-size:1.05rem;font-weight:600}
+.hero-badge span{font-size:.88rem;color:var(--muted)}
+.hero-badge a{margin-top:6px;justify-self:start}
 
-/* ---------- programs ---------- */
-.programs{display:grid;gap:22px}
-@media(min-width:860px){.programs{grid-template-columns:repeat(3,1fr)}}
-.prog{display:grid;gap:14px;align-content:start}
-.vis{aspect-ratio:4/3;max-width:100%;border-radius:var(--r);position:relative;overflow:hidden;color:#fff}
-.vis svg{position:absolute;inset:0;width:100%;height:100%}
-.vis figcaption{position:absolute;left:14px;bottom:12px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.8}
-.prog .tag{font-size:.72rem;font-weight:800;letter-spacing:.14em;color:var(--teal-500);text-transform:uppercase}
-.prog h3{font-size:1.55rem}
-.prog p{color:var(--muted)}
-.prog ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:.92rem}
-.prog li{display:flex;gap:10px}
-.prog li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--turq);margin-top:.6em;flex:none}
-.more{font-weight:800;color:var(--teal-500);text-decoration:none;font-size:.9rem}
-.more:hover{text-decoration:underline}
+/* action tiles */
+.actions{background:#fff;border-bottom:1px solid var(--line)}
+.actions .wrap{display:grid;grid-template-columns:1fr 1fr;padding-block:0}
+.act{display:grid;gap:8px;padding:24px 16px 24px 0;text-decoration:none;border-bottom:1px solid var(--line)}
+.act:nth-child(odd){border-right:1px solid var(--line)}
+.act:nth-child(even){padding-left:16px}
+.act svg{width:30px;height:30px;stroke:var(--turq-d);fill:none;stroke-width:1.6}
+.act b{font-weight:600;font-size:.98rem;color:var(--navy)}
+.act span{font-size:.82rem;color:var(--muted)}
+@media(min-width:860px){.actions .wrap{grid-template-columns:repeat(4,1fr)}.act{border-bottom:0;padding:32px 24px!important;border-right:1px solid var(--line)}.act:first-child{padding-left:0!important}.act:last-child{border-right:0}}
+.act:hover b{text-decoration:underline;text-decoration-color:var(--turq);text-underline-offset:4px}
 
-/* ---------- journey ---------- */
-.steps{display:grid;gap:0;counter-reset:s}
-@media(min-width:900px){.steps{grid-template-columns:repeat(5,1fr)}}
-.step{padding:22px 0;border-top:1px solid rgba(255,255,255,.14);display:grid;gap:6px;align-content:start}
-@media(min-width:900px){.step{padding:24px 20px 0 0}}
-.step .n{font-family:var(--display);font-size:2.2rem;color:var(--turq);line-height:1}
-.step b{font-size:1.02rem}
-.step span{font-size:.88rem;color:var(--on-dark-muted)}
+/* why */
+.why{display:grid;gap:40px}
+@media(min-width:960px){.why{grid-template-columns:1fr 1fr;align-items:center;gap:72px}}
+.why .photo{aspect-ratio:5/4;border-radius:6px}
+.points{display:grid;gap:22px;margin-top:8px}
+.point{display:grid;grid-template-columns:44px 1fr;gap:4px 16px}
+.point i{grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--sky);color:var(--turq-d);display:grid;place-items:center;font-style:normal;font-weight:600}
+.point b{font-weight:600;color:var(--navy)}
+.point span{color:var(--muted);font-size:.93rem}
 
-/* ---------- stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 16px}
+/* specialty cards */
+.cards{display:grid;gap:24px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.card .photo{aspect-ratio:16/10}
+.card .body{padding:22px;display:grid;gap:10px;flex:1;align-content:start}
+.card p{color:var(--muted);font-size:.93rem}
+.card ul{margin:0;padding-left:18px;color:var(--fg);font-size:.9rem}
+.card .go{margin-top:6px;font-weight:500;color:var(--navy);font-size:.92rem}
+.card:hover{box-shadow:0 12px 30px rgba(0,53,78,.12)}
+.card:hover .go{color:var(--turq-d)}
+
+/* stats band */
+.band{background:var(--navy);color:#fff}
+.band h2{color:#fff}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:32px 20px}
 @media(min-width:860px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stats b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,6vw,3.6rem);color:var(--teal-700);font-variant-numeric:tabular-nums;line-height:1}
-.stats span{font-size:.88rem;color:var(--muted);display:block;margin-top:8px;max-width:22ch}
-.note{font-size:.74rem;color:var(--muted);margin-top:28px}
+.stats b{display:block;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:300;color:var(--turq);line-height:1.1;font-variant-numeric:tabular-nums}
+.stats span{font-size:.88rem;color:#cfe3ec}
+.band .note{font-size:.72rem;color:#8fb3c3;margin-top:28px}
 
-/* ---------- departments ---------- */
-.depts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-@media(min-width:860px){.depts{grid-template-columns:repeat(4,1fr)}}
-.dept{background:var(--card);padding:18px 16px;text-decoration:none;display:grid;gap:4px}
-.dept b{font-size:.96rem}
-.dept span{font-size:.8rem;color:var(--muted)}
-.dept:hover{background:var(--tint)}
+/* cancer types A-Z */
+.az{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+@media(min-width:760px){.az{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.az{grid-template-columns:repeat(4,1fr)}}
+.az a{display:flex;justify-content:space-between;gap:8px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:.95rem;font-weight:500}
+.az a::after{content:"›";color:var(--turq-d);font-size:1.2rem;line-height:1}
+.az a:hover{color:var(--turq-d)}
 
-/* ---------- doctors ---------- */
-.doc-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.docs{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-.doc{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.doc .ph{aspect-ratio:5/4;max-width:100%;background:linear-gradient(160deg,var(--tint),var(--line));display:grid;place-items:center}
-.doc .ph svg{width:46%;height:auto;fill:var(--teal-500);opacity:.45}
-.doc .t{padding:16px 18px 18px;display:grid;gap:4px;flex:1}
-.doc .role{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-500)}
-.doc b{font-family:var(--display);font-size:1.15rem;font-weight:600}
+/* doctors */
+.docs{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.doc{display:grid;gap:4px}
+.doc .photo{aspect-ratio:4/5;border-radius:6px;margin-bottom:12px;background:linear-gradient(180deg,#e8f1f5,#cfdfe7)}
+.doc .photo::before,.doc .photo::after{display:none}
+.doc .photo svg.sil{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:70%;fill:#a8c1cd}
+.doc .photo .ph-label{color:var(--muted)}
+.doc b{font-weight:600;color:var(--navy);font-size:1.05rem}
 .doc span{font-size:.86rem;color:var(--muted)}
-.doc a{margin-top:10px}
+.doc .sp{color:var(--turq-d);font-weight:500;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
 
-/* ---------- infrastructure ---------- */
-.infra{display:grid;gap:28px}
-@media(min-width:960px){.infra{grid-template-columns:1.1fr 1fr;align-items:center;gap:56px}}
-.infra .vis{aspect-ratio:16/12}
-.facil{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.facil li{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
-.facil li i{font-style:normal;grid-row:span 2;font-family:var(--display);color:var(--turq);font-size:1.1rem;width:28px}
-.facil b{font-size:1rem}
-.facil span{color:var(--muted);font-size:.9rem}
+/* infrastructure */
+.infra{display:grid;gap:16px}
+@media(min-width:760px){.infra{grid-template-columns:repeat(3,1fr)}}
+.tile{position:relative;border-radius:6px;overflow:hidden;min-height:220px;display:flex;align-items:flex-end}
+.tile .photo{position:absolute;inset:0}
+.tile .cap{position:relative;z-index:1;padding:20px;color:#fff;background:linear-gradient(0deg,rgba(0,37,54,.9),transparent);width:100%}
+.tile .cap b{display:block;font-weight:600}
+.tile .cap span{font-size:.85rem;color:#cfe3ec}
+@media(min-width:760px){.tile.big{grid-column:span 2;grid-row:span 2;min-height:460px}}
 
-/* ---------- research ---------- */
-.research{display:grid;gap:22px}
-@media(min-width:860px){.research{grid-template-columns:repeat(3,1fr)}}
-.paper{border-top:2px solid var(--turq);padding-top:18px;display:grid;gap:8px;align-content:start}
-.paper .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--turq)}
-.paper h4{font-size:1.25rem}
-.paper p{color:var(--on-dark-muted);font-size:.92rem}
-.quote{margin-top:clamp(40px,6vw,64px);font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.35;font-weight:400;max-width:30ch}
-.quote cite{display:block;font:600 .85rem var(--body);color:var(--on-dark-muted);margin-top:14px;font-style:normal}
+/* research / news */
+.news{display:grid;gap:28px}
+@media(min-width:860px){.news{grid-template-columns:1.3fr 1fr}}
+.feature .photo{aspect-ratio:16/9;border-radius:6px;margin-bottom:18px}
+.feature h3{font-size:1.5rem}
+.feature p{color:var(--muted);margin-top:10px}
+.list{display:grid;gap:0}
+.list a{display:grid;gap:6px;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.list a:first-child{padding-top:0}
+.list b{font-weight:600;color:var(--navy)}
+.list span{font-size:.88rem;color:var(--muted)}
 
-/* ---------- stories ---------- */
-.stories{display:grid;gap:18px}
-@media(min-width:860px){.stories{grid-template-columns:repeat(3,1fr)}}
-.story{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:14px;align-content:space-between}
-.story p{font-family:var(--display);font-size:1.12rem;line-height:1.45}
-.story span{font-size:.84rem;color:var(--muted)}
+/* appointment */
+.appt .wrap{display:grid;gap:36px}
+@media(min-width:960px){.appt .wrap{grid-template-columns:1fr 1.1fr;gap:72px}}
+.contact{display:grid;gap:18px;margin-top:24px}
+.contact div{display:grid;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.contact small{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--turq-d)}
+.contact b{font-size:1.25rem;font-weight:500;color:var(--navy);user-select:all}
+form{display:grid;gap:16px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--turq);border-radius:6px;padding:clamp(20px,4vw,34px);box-shadow:0 16px 40px rgba(0,53,78,.08)}
+.two{display:grid;gap:16px}
+@media(min-width:560px){.two{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-size:.84rem;font-weight:500;color:var(--navy)}
+input,select,textarea{font:inherit;font-size:.95rem;padding:12px 14px;border:1px solid #c5d4db;border-radius:4px;background:#fff;color:var(--fg);width:100%;min-width:0}
+.factions{display:flex;flex-wrap:wrap;gap:10px}
+#msg{background:var(--sky);color:var(--navy);padding:12px 14px;border-radius:4px;font-size:.9rem}
 
-/* ---------- faq ---------- */
-.faq{display:grid;gap:0;max-width:820px}
-details{border-bottom:1px solid var(--line);padding:18px 0}
-summary{cursor:pointer;font-weight:700;font-size:1.02rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--turq);font-size:1.4rem;line-height:1}
-details[open] summary::after{content:"–"}
-details p{color:var(--muted);margin-top:10px;max-width:65ch}
-
-/* ---------- appointment ---------- */
-.appt{background:linear-gradient(160deg,var(--teal-700),var(--teal-950));color:var(--on-dark)}
-.appt .wrap{display:grid;gap:32px}
-@media(min-width:960px){.appt .wrap{grid-template-columns:1fr 1fr;gap:64px}}
-.contact-list{display:grid;gap:16px;margin-top:24px}
-.contact-list div{display:grid;gap:2px}
-.contact-list small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--turq)}
-.contact-list b{font-family:var(--display);font-size:1.4rem;font-weight:400;user-select:all}
-form{display:grid;gap:14px;background:rgba(255,255,255,.06);padding:clamp(20px,4vw,30px);border-radius:14px;border:1px solid rgba(255,255,255,.12)}
-.f2{display:grid;gap:14px}
-@media(min-width:560px){.f2{grid-template-columns:1fr 1fr}}
-label{font-size:.8rem;font-weight:700;display:grid;gap:6px;color:var(--on-dark-muted)}
-input,select,textarea{font:inherit;font-size:.98rem;padding:13px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.18);color:var(--on-dark);width:100%;min-width:0}
-input::placeholder,textarea::placeholder{color:rgba(238,250,249,.45)}
-select option{color:#0d2224;background:#fff}
-.form-actions{display:flex;flex-wrap:wrap;gap:10px}
-#msg{font-size:.9rem;color:var(--turq-300);background:rgba(31,181,173,.12);padding:12px 14px;border-radius:8px}
-
-/* ---------- footer ---------- */
-footer{background:var(--teal-950);color:var(--on-dark-muted);font-size:.88rem}
-footer .wrap{padding-block:48px 110px;display:grid;gap:28px}
-@media(min-width:860px){footer .wrap{grid-template-columns:1.6fr 1fr 1fr 1fr;padding-bottom:48px}}
-footer h5{margin:0 0 10px;color:#fff;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-footer a{text-decoration:none}
+/* footer */
+footer{background:var(--navy-3);color:#b9d0da;font-size:.88rem}
+footer .wrap{padding-block:56px 120px;display:grid;gap:32px}
+@media(min-width:860px){footer .wrap{grid-template-columns:1.5fr 1fr 1fr 1fr;padding-bottom:56px}}
+footer img{height:56px;width:auto}
+footer h5{margin:0 0 12px;color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{color:#b9d0da;text-decoration:none}
 footer a:hover{color:#fff}
-.legal{border-top:1px solid rgba(255,255,255,.08);grid-column:1/-1;padding-top:20px;font-size:.78rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.fvals{margin-top:16px;font-size:.72rem;letter-spacing:.3em;color:var(--turq)}
+.legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.78rem}
 
-/* ---------- mobile action bar + fab ---------- */
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(4,42,45,.97);backdrop-filter:blur(8px);padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));border-top:1px solid rgba(255,255,255,.08)}
-.mbar .btn{padding:13px 10px}
-.fab{display:none;position:fixed;right:calc(22px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:var(--wa);place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.28)}
+/* mobile bottom bar + fab */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,37,54,.08);padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.mbar .btn{padding:13px 8px}
+.fab{display:none;position:fixed;right:calc(24px + env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:55;width:58px;height:58px;border-radius:50%;background:var(--wa);place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.22)}
 .fab svg{width:30px;height:30px;fill:#fff}
 @media(min-width:860px){.mbar{display:none}.fab{display:grid}}
-@media(prefers-reduced-motion:no-preference){.btn,.chip,.dept,.links a{transition:background .2s,color .2s,box-shadow .2s,border-color .2s}
-  .rings circle{animation:breathe 9s ease-in-out infinite;transform-origin:center}
-  .rings circle:nth-child(2){animation-delay:-3s}.rings circle:nth-child(3){animation-delay:-6s}
-  @keyframes breathe{50%{opacity:.35}}}
+@media(prefers-reduced-motion:no-preference){.btn,.card,.menu a{transition:all .2s}}
 </style>
 </head>
 <body>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></symbol>
-  <symbol id="cal" viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3zm12 8H5v9h14zM5 8h14V6H5z"/></symbol>
-  <symbol id="person" viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></symbol>
+  <symbol id="cam" viewBox="0 0 24 24"><path d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></symbol>
+  <symbol id="sil" viewBox="0 0 100 100"><circle cx="50" cy="34" r="18"/><path d="M14 100c0-22 16-36 36-36s36 14 36 36z"/></symbol>
 </svg>
 
-<div class="strip"><div class="wrap">
-  <span><b>24/7</b> Oncology Emergency · +91 00000 00000</span>
-  <span class="hide-sm">International Patients · Second Opinions · Clinical Trials</span>
+<div class="util"><div class="wrap">
+  <span>Oncology emergency 24/7: <a href="#appointment">+91 00000 00000</a></span>
+  <span class="r"><a href="#appointment">Second Opinion</a><a href="#faq">International Patients</a><a href="#research">Clinical Trials</a></span>
 </div></div>
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Sunnah Hospital home">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0b5c61"/><circle cx="20" cy="20" r="13" fill="none" stroke="#1fb5ad" stroke-width="2"/><circle cx="20" cy="20" r="6.5" fill="#1fb5ad"/></svg>
-      <span><b>SUNNAH HOSPITAL</b><small>Cancer Research Center</small></span>
-    </a>
-    <nav class="links" aria-label="Main"><a href="#care">Cancer Care</a><a href="#departments">Departments</a><a href="#doctors">Doctors</a><a href="#research">Research</a><a href="#infra">Infrastructure</a><a href="#faq">Patients</a></nav>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp</a>
-      <a class="btn btn-primary" href="#appointment">Book Appointment</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="logo" href="#top"><img src="assets/logo-header.png" alt="Sunnah Hospital – Cancer Research Center" width="174" height="60"></a>
+    <nav class="menu" aria-label="Main"><a href="#care">Cancer Care</a><a href="#types">Cancer Types</a><a href="#doctors">Find a Doctor</a><a href="#research">Research</a><a href="#infra">Our Hospital</a></nav>
+    <div class="nav-r">
+      <a class="btn btn-navy" href="#appointment">Request Appointment</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
   <div class="drawer" id="drawer" hidden><div class="wrap">
-    <a href="#care">Cancer Care</a><a href="#departments">Departments</a><a href="#doctors">Find a Doctor</a><a href="#research">Research</a><a href="#infra">Infrastructure</a><a href="#faq">Patient Guide</a><a href="#appointment">Contact</a>
+    <a href="#care">Cancer Care</a><a href="#types">Cancer Types</a><a href="#doctors">Find a Doctor</a><a href="#research">Research</a><a href="#infra">Our Hospital</a><a href="#faq">Patient Guide</a>
+    <a class="btn btn-navy" href="#appointment">Request Appointment</a>
   </div></div>
 </header>
 
 <main id="top">
-<!-- HERO -->
-<section class="hero" aria-labelledby="h1">
-  <svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370" fill="none" stroke="#1fb5ad" stroke-opacity=".18"/><circle cx="380" cy="380" r="270" fill="none" stroke="#1fb5ad" stroke-opacity=".24"/><circle cx="380" cy="380" r="170" fill="#1fb5ad" fill-opacity=".07" stroke="#1fb5ad" stroke-opacity=".3"/></svg>
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">Comprehensive Cancer Institute</span>
-      <h1 id="h1" style="margin-top:16px">Where cancer care meets <em>hope</em>, science and humanity.</h1>
-      <p class="lead">Surgical, medical and radiation oncology with an active research program, all in one place. Every patient's case goes to a tumor board, and every patient has a care navigator.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#appointment"><svg><use href="#cal"/></svg>Book an Appointment</a>
-        <a class="btn btn-wa" href="https://wa.me/910000000000?text=Hello%20Sunnah%20Hospital%2C%20I%20would%20like%20to%20consult%20an%20oncologist." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp Care Team</a>
-      </div>
-      <div class="values">
-        <div><b>HOPE</b><span>Plans built for every stage</span></div>
-        <div><b>HEALING</b><span>Evidence-based treatment</span></div>
-        <div><b>HUMANITY</b><span>Dignity at every step</span></div>
-      </div>
+<section class="hero"><div class="wrap hero-grid">
+  <div class="hero-text">
+    <span class="kicker">Surgical &amp; Medical Cancer Center</span>
+    <h1>Expert cancer care, <span>close to home.</span></h1>
+    <p>Our cancer surgeons, oncologists and researchers work as one team to diagnose and treat you, and they stay with you through recovery.</p>
+    <div class="ctas">
+      <a class="btn btn-navy" href="#appointment">Request an Appointment</a>
+      <a class="btn btn-wa" href="https://wa.me/910000000000?text=Hello%20Sunnah%20Hospital%2C%20I%20would%20like%20to%20consult%20a%20cancer%20specialist." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp Us</a>
     </div>
-    <aside class="hero-card" aria-label="Newly diagnosed">
-      <span class="eyebrow">Newly diagnosed?</span>
-      <h4>We can review your case within 48 hours.</h4>
-      <div class="row"><i>1</i><div><b>Share your reports</b><span>Send biopsy, scans and prescriptions on WhatsApp.</span></div></div>
-      <div class="row"><i>2</i><div><b>Tumor board review</b><span>Surgeons, oncologists and radiologists review your case together.</span></div></div>
-      <div class="row"><i>3</i><div><b>Your treatment plan</b><span>A clear plan, cost estimate and named care navigator.</span></div></div>
-      <a class="btn btn-primary" href="#appointment">Request a Second Opinion</a>
-    </aside>
+    <div class="values">HOPE <i>•</i> HEALING <i>•</i> HUMANITY</div>
   </div>
-</section>
+  <div class="hero-media photo">
+    <div class="hero-badge">
+      <span class="kicker">Newly diagnosed?</span>
+      <b>Get a cancer specialist's opinion within 48 hours.</b>
+      <span>Send your reports on WhatsApp. Our tumor board reviews them and calls you back.</span>
+      <a class="link" href="#appointment">Request a second opinion</a>
+    </div>
+    <span class="ph-label"><svg><use href="#cam"/></svg>Hospital photo goes here</span>
+  </div>
+</div></section>
 
-<div class="quick"><div class="wrap">
-  <a href="#doctors"><b>Find a Doctor</b><span>By specialty or cancer type</span></a>
-  <a href="#appointment"><b>Second Opinion</b><span>Expert review of your reports</span></a>
-  <a href="#research"><b>Clinical Trials</b><span>Check your eligibility</span></a>
-  <a href="#faq"><b>International Patients</b><span>Visa, travel &amp; stay support</span></a>
+<div class="actions"><div class="wrap">
+  <a class="act" href="#appointment"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><b>Request Appointment</b><span>Same-day callback</span></a>
+  <a class="act" href="#doctors"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><b>Find a Doctor</b><span>Search by specialty</span></a>
+  <a class="act" href="#types"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><b>Cancer Types A–Z</b><span>Conditions we treat</span></a>
+  <a class="act" href="#faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><b>International Patients</b><span>Travel &amp; stay support</span></a>
 </div></div>
 
-<!-- FINDER -->
-<section id="finder" aria-labelledby="fh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Start here</span><h2 id="fh">Find care for your cancer type</h2><p>Select a cancer type to see how we treat it and which team you will meet.</p></div>
-  <div class="finder">
-    <div class="chips" id="chips" role="group" aria-label="Cancer types"></div>
-    <div class="finder-out" id="fout" aria-live="polite"></div>
+<section><div class="wrap why">
+  <div class="photo"><span class="ph-label"><svg><use href="#cam"/></svg>Doctors with patient</span></div>
+  <div>
+    <div class="sec-head" style="margin-bottom:24px">
+      <span class="kicker">Why Sunnah Hospital</span>
+      <h2>A dedicated cancer center, not just a cancer ward</h2>
+      <p>Everything a cancer patient needs is under one roof, from diagnosis and surgery to chemotherapy, research and follow-up.</p>
+    </div>
+    <div class="points">
+      <div class="point"><i>1</i><b>A tumor board for every patient</b><span>Surgeons, oncologists, radiologists and pathologists agree on your plan together.</span></div>
+      <div class="point"><i>2</i><b>Treatment based on research</b><span>Our research center brings clinical trials and molecular testing to patient care.</span></div>
+      <div class="point"><i>3</i><b>A care navigator for every family</b><span>One person coordinates your tests, appointments, insurance and questions.</span></div>
+    </div>
   </div>
 </div></section>
 
-<!-- PROGRAMS -->
-<section id="care" class="alt" aria-labelledby="ch"><div class="wrap">
-  <div class="head"><span class="eyebrow">Cancer Care</span><h2 id="ch">Three disciplines working on one plan</h2><p>No patient is treated by one specialist alone. Every treatment plan is agreed by a multidisciplinary team.</p></div>
-  <div class="programs">
-    <article class="prog">
-      <figure class="vis" style="margin:0"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#0b5c61"/><circle cx="300" cy="80" r="140" fill="#1fb5ad" opacity=".25"/><circle cx="300" cy="80" r="70" fill="#7fdcd5" opacity=".35"/><rect x="40" y="190" width="320" height="14" rx="7" fill="#eefaf9" opacity=".25"/><rect x="80" y="214" width="240" height="10" rx="5" fill="#eefaf9" opacity=".15"/></svg><figcaption>Onco-surgical theatre</figcaption></figure>
-      <span class="tag">Surgical Oncology</span><h3>Precise surgery that preserves function</h3>
-      <p>Removing the tumor completely while protecting organs, speech, movement and appearance wherever possible.</p>
-      <ul><li>Laparoscopic and minimally invasive surgery</li><li>Breast conservation and oncoplastic surgery</li><li>Head &amp; neck, GI, thoracic and gynae-onco surgery</li><li>Microvascular reconstruction</li></ul>
-      <a class="more" href="#appointment">Consult a cancer surgeon →</a>
-    </article>
-    <article class="prog">
-      <figure class="vis" style="margin:0"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#063a3e"/><g fill="#1fb5ad"><circle cx="90" cy="110" r="34" opacity=".5"/><circle cx="170" cy="170" r="22" opacity=".4"/><circle cx="250" cy="100" r="46" opacity=".3"/><circle cx="320" cy="190" r="28" opacity=".45"/></g><path d="M0 240 Q100 200 200 240 T400 240" stroke="#7fdcd5" stroke-width="2" fill="none" opacity=".5"/></svg><figcaption>Day-care infusion</figcaption></figure>
-      <span class="tag">Medical Oncology</span><h3>Treatment matched to the tumor's biology</h3>
-      <p>Chemotherapy, targeted therapy and immunotherapy chosen using pathology and molecular testing.</p>
-      <ul><li>Chemotherapy in private day-care bays</li><li>Targeted therapy and immunotherapy</li><li>Hemato-oncology and bone marrow care</li><li>Supportive and palliative care</li></ul>
-      <a class="more" href="#appointment">Consult a medical oncologist →</a>
-    </article>
-    <article class="prog">
-      <figure class="vis" style="margin:0"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#0e6f71"/><g stroke="#eefaf9" stroke-opacity=".35" fill="none" stroke-width="2"><path d="M150 20 C230 80 170 140 250 200 S230 280 270 300"/><path d="M190 0 C270 60 210 120 290 180 S270 260 310 300"/></g><g fill="#7fdcd5" opacity=".6"><rect x="175" y="60" width="50" height="4" rx="2"/><rect x="200" y="120" width="54" height="4" rx="2"/><rect x="225" y="180" width="50" height="4" rx="2"/></g></svg><figcaption>Molecular research lab</figcaption></figure>
-      <span class="tag">Cancer Research</span><h3>Research that changes treatment</h3>
-      <p>Clinical trials, genomic profiling and population studies that bring new options to patients sooner.</p>
-      <ul><li>Investigator-led and sponsored clinical trials</li><li>Next-generation sequencing and biomarkers</li><li>Hospital-based cancer registry</li><li>Community screening programs</li></ul>
-      <a class="more" href="#research">Explore research →</a>
-    </article>
+<section id="care" class="soft"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Cancer Care</span><h2>Our specialties</h2><p>Complete cancer treatment, from the first biopsy through survivorship.</p></div>
+  <div class="cards">
+    <a class="card" href="#appointment"><div class="photo"><span class="ph-label"><svg><use href="#cam"/></svg>Operation theatre</span></div><div class="body"><span class="kicker">Surgical Oncology</span><h3>Cancer surgery</h3><p>Precise surgery that removes the tumor and preserves function.</p><ul><li>Laparoscopic &amp; minimally invasive</li><li>Breast, head &amp; neck, GI, gynae</li><li>Reconstructive surgery</li></ul><span class="go">Learn more ›</span></div></a>
+    <a class="card" href="#appointment"><div class="photo"><span class="ph-label"><svg><use href="#cam"/></svg>Chemotherapy day-care</span></div><div class="body"><span class="kicker">Medical Oncology</span><h3>Chemotherapy &amp; immunotherapy</h3><p>Drug treatment matched to your tumor's biology.</p><ul><li>Chemotherapy day-care</li><li>Targeted &amp; immunotherapy</li><li>Hemato-oncology</li></ul><span class="go">Learn more ›</span></div></a>
+    <a class="card" href="#research"><div class="photo"><span class="ph-label"><svg><use href="#cam"/></svg>Research laboratory</span></div><div class="body"><span class="kicker">Cancer Research</span><h3>Research &amp; clinical trials</h3><p>New treatment options that reach our patients sooner.</p><ul><li>Clinical trials</li><li>Genomic profiling</li><li>Cancer registry &amp; screening</li></ul><span class="go">Learn more ›</span></div></a>
   </div>
 </div></section>
 
-<!-- JOURNEY -->
-<section class="dark" aria-labelledby="jh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Your journey</span><h2 id="jh">From first call to follow-up, you are never alone</h2><p>A named care navigator coordinates your appointments, tests, finances and questions.</p></div>
-  <div class="steps">
-    <div class="step"><span class="n">1</span><b>First contact</b><span>Call, WhatsApp or book online. We respond within 24 hours.</span></div>
-    <div class="step"><span class="n">2</span><b>Diagnosis &amp; staging</b><span>Pathology, imaging and PET-CT, usually in 2–3 days.</span></div>
-    <div class="step"><span class="n">3</span><b>Tumor board</b><span>Your specialists agree on a single plan together.</span></div>
-    <div class="step"><span class="n">4</span><b>Treatment</b><span>Surgery, chemotherapy or radiation, with nutrition and counselling.</span></div>
-    <div class="step"><span class="n">5</span><b>Survivorship</b><span>Scheduled follow-up, rehabilitation and support groups.</span></div>
-  </div>
-</div></section>
-
-<!-- STATS -->
-<section aria-label="Key figures" style="padding-block:clamp(48px,7vw,80px)"><div class="wrap">
+<section class="band"><div class="wrap">
   <div class="stats">
-    <div><b>24/7</b><span>Oncology emergency and critical care</span></div>
-    <div><b>15+</b><span>Organ-specific cancer specialties</span></div>
-    <div><b>48 hrs</b><span>Typical time to a second opinion</span></div>
-    <div><b>100%</b><span>Of cases reviewed by a tumor board</span></div>
+    <div><b>24/7</b><span>Oncology emergency care</span></div>
+    <div><b>15+</b><span>Cancer specialties</span></div>
+    <div><b>48 hrs</b><span>To a second opinion</span></div>
+    <div><b>1 team</b><span>Agreeing every treatment plan</span></div>
   </div>
-  <p class="note">Draft figures for layout only. Replace them with verified hospital data before publishing.</p>
+  <p class="note">Draft figures. Replace with verified hospital data.</p>
 </div></section>
 
-<!-- DEPARTMENTS -->
-<section id="departments" class="alt" aria-labelledby="dh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Departments</span><h2 id="dh">Specialist teams for each cancer</h2></div>
-  <div class="depts">
-    <a class="dept" href="#appointment"><b>Breast Oncology</b><span>Screening to reconstruction</span></a>
-    <a class="dept" href="#appointment"><b>Head &amp; Neck</b><span>Oral, throat, thyroid</span></a>
-    <a class="dept" href="#appointment"><b>Gastrointestinal</b><span>Stomach, colon, liver, pancreas</span></a>
-    <a class="dept" href="#appointment"><b>Gynaecologic</b><span>Cervix, ovary, uterus</span></a>
-    <a class="dept" href="#appointment"><b>Thoracic</b><span>Lung and oesophagus</span></a>
-    <a class="dept" href="#appointment"><b>Hemato-Oncology</b><span>Leukaemia, lymphoma, myeloma</span></a>
-    <a class="dept" href="#appointment"><b>Uro-Oncology</b><span>Prostate, kidney, bladder</span></a>
-    <a class="dept" href="#appointment"><b>Pediatric Oncology</b><span>Care for children</span></a>
-    <a class="dept" href="#appointment"><b>Radiation Oncology</b><span>IMRT, IGRT, SBRT</span></a>
-    <a class="dept" href="#appointment"><b>Nuclear Medicine</b><span>PET-CT and theranostics</span></a>
-    <a class="dept" href="#appointment"><b>Onco-Pathology</b><span>Histopathology and molecular</span></a>
-    <a class="dept" href="#appointment"><b>Palliative Care</b><span>Pain and symptom relief</span></a>
+<section id="types"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Departments</span><h2>Cancer types we treat</h2></div>
+  <div class="az">
+    <a href="#appointment">Blood Cancers</a><a href="#appointment">Bone &amp; Soft Tissue</a><a href="#appointment">Brain Tumors</a><a href="#appointment">Breast Cancer</a>
+    <a href="#appointment">Cervical Cancer</a><a href="#appointment">Colorectal Cancer</a><a href="#appointment">Head &amp; Neck Cancer</a><a href="#appointment">Kidney &amp; Bladder</a>
+    <a href="#appointment">Liver &amp; Pancreas</a><a href="#appointment">Lung Cancer</a><a href="#appointment">Lymphoma</a><a href="#appointment">Oral Cancer</a>
+    <a href="#appointment">Ovarian Cancer</a><a href="#appointment">Pediatric Cancers</a><a href="#appointment">Prostate Cancer</a><a href="#appointment">Stomach Cancer</a>
   </div>
 </div></section>
 
-<!-- DOCTORS -->
-<section id="doctors" aria-labelledby="doch"><div class="wrap">
-  <div class="head"><span class="eyebrow">Our Doctors</span><h2 id="doch">Specialists who lead with expertise and empathy</h2><p>Sample profiles for the draft. Real photographs, names and credentials will go here.</p></div>
-  <div class="doc-tools chips" id="docFilter" role="group" aria-label="Filter doctors"></div>
-  <div class="docs" id="docs"></div>
+<section id="doctors" class="soft"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Our Doctors</span><h2>Meet our cancer specialists</h2><p>Sample profiles. Real names, photos and qualifications will be added.</p></div>
+  <div class="docs">
+    <div class="doc"><div class="photo"><svg class="sil" viewBox="0 0 100 100"><use href="#sil"/></svg></div><span class="sp">Surgical Oncology</span><b>Dr. Name Surname</b><span>MS, MCh · Head of Department</span></div>
+    <div class="doc"><div class="photo"><svg class="sil" viewBox="0 0 100 100"><use href="#sil"/></svg></div><span class="sp">Medical Oncology</span><b>Dr. Name Surname</b><span>MD, DM · Senior Consultant</span></div>
+    <div class="doc"><div class="photo"><svg class="sil" viewBox="0 0 100 100"><use href="#sil"/></svg></div><span class="sp">Radiation Oncology</span><b>Dr. Name Surname</b><span>MD · Consultant</span></div>
+    <div class="doc"><div class="photo"><svg class="sil" viewBox="0 0 100 100"><use href="#sil"/></svg></div><span class="sp">Cancer Research</span><b>Dr. Name Surname</b><span>PhD · Research Director</span></div>
+  </div>
+  <p style="margin-top:32px"><a class="btn btn-line" href="#appointment">View all doctors</a></p>
 </div></section>
 
-<!-- INFRA -->
-<section id="infra" class="alt" aria-labelledby="ih"><div class="wrap infra">
-  <figure class="vis" style="margin:0"><svg viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#042a2d"/><stop offset="1" stop-color="#138a8a"/></linearGradient></defs><rect width="480" height="360" fill="url(#g1)"/><g fill="#eefaf9" opacity=".12"><rect x="60" y="120" width="70" height="240"/><rect x="150" y="70" width="110" height="290"/><rect x="280" y="140" width="80" height="220"/><rect x="380" y="100" width="60" height="260"/></g><g fill="#7fdcd5" opacity=".5"><rect x="170" y="100" width="14" height="10"/><rect x="200" y="100" width="14" height="10"/><rect x="230" y="100" width="14" height="10"/><rect x="170" y="130" width="14" height="10"/><rect x="230" y="160" width="14" height="10"/><rect x="200" y="190" width="14" height="10"/></g><circle cx="400" cy="60" r="28" fill="#1fb5ad" opacity=".5"/></svg><figcaption>Hospital campus</figcaption></figure>
+<section id="infra"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Infrastructure</span><h2>Built for modern cancer care</h2></div>
+  <div class="infra">
+    <div class="tile big"><div class="photo"></div><div class="cap"><b>Modular Onco-Surgical Theatres</b><span>Laminar airflow and laparoscopic suites</span></div></div>
+    <div class="tile"><div class="photo"></div><div class="cap"><b>PET-CT &amp; MRI</b><span>Accurate staging</span></div></div>
+    <div class="tile"><div class="photo"></div><div class="cap"><b>Day-Care Chemotherapy</b><span>Private infusion bays</span></div></div>
+    <div class="tile"><div class="photo"></div><div class="cap"><b>Molecular Laboratory</b><span>In-house testing</span></div></div>
+    <div class="tile"><div class="photo"></div><div class="cap"><b>Onco-ICU</b><span>Dedicated critical care</span></div></div>
+    <div class="tile"><div class="photo"></div><div class="cap"><b>Blood Bank</b><span>24/7 availability</span></div></div>
+  </div>
+</div></section>
+
+<section id="research" class="soft"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Cancer Research Center</span><h2>Research and news</h2></div>
+  <div class="news">
+    <article class="feature"><div class="photo"><span class="ph-label"><svg><use href="#cam"/></svg>Research team</span></div><span class="kicker">Clinical Trials</span><h3 style="margin-top:8px">New treatment options through clinical trials</h3><p>Eligible patients can join trials of new therapies under strict ethics oversight, with close monitoring by our research team.</p><p style="margin-top:16px"><a class="link" href="#appointment">Check if you are eligible</a></p></article>
+    <div class="list">
+      <a href="#research"><span class="kicker">Genomics</span><b>Tumor sequencing to guide targeted therapy</b><span>Testing that finds mutations specific drugs can treat.</span></a>
+      <a href="#research"><span class="kicker">Prevention</span><b>Free oral, breast and cervical cancer screening camps</b><span>Finding cancer early, when it is easiest to treat.</span></a>
+      <a href="#research"><span class="kicker">Registry</span><b>Hospital-based cancer registry</b><span>Data that improves care across our region.</span></a>
+      <a href="#research"><span class="kicker">Education</span><b>Training the next generation of oncologists</b><span>Fellowships, workshops and tumor board teaching.</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:860px;margin-inline:auto">
+  <div class="sec-head"><span class="kicker">Patient Guide</span><h2>Frequently asked questions</h2></div>
+  <style>details{border-bottom:1px solid var(--line);padding:18px 0}summary{cursor:pointer;font-weight:500;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:16px}summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--turq-d);font-size:1.4rem;line-height:1}details[open] summary::after{content:"–"}details p{color:var(--muted);margin-top:10px}</style>
+  <details><summary>Do I need a referral to book?</summary><p>No. You can book directly. Bring any reports, scans or biopsy slides you have.</p></details>
+  <details><summary>How do I get a second opinion?</summary><p>Send your reports on WhatsApp or bring them to your appointment. Our tumor board reviews them, and a specialist explains the findings to you.</p></details>
+  <details><summary>Do you accept insurance and government schemes?</summary><p>Yes, we work with major insurers and eligible government schemes. You receive a written cost estimate before treatment starts.</p></details>
+  <details><summary>Do you help international patients?</summary><p>Yes. We help with medical visa letters, airport pickup, nearby accommodation and interpreters.</p></details>
+</div></section>
+
+<section id="appointment" class="soft appt"><div class="wrap">
   <div>
-    <div class="head" style="margin-bottom:12px"><span class="eyebrow">Infrastructure</span><h2 id="ih">Technology for precise treatment, rooms built for recovery</h2></div>
-    <ul class="facil">
-      <li><i>◎</i><b>Linear Accelerator</b><span>IMRT, IGRT and stereotactic radiotherapy</span></li>
-      <li><i>◎</i><b>PET-CT &amp; 3T MRI</b><span>Accurate staging and response assessment</span></li>
-      <li><i>◎</i><b>Modular Onco-Surgical OTs</b><span>Laminar airflow and laparoscopic suites</span></li>
-      <li><i>◎</i><b>Day-Care Chemotherapy</b><span>Private infusion bays with oncology nurses</span></li>
-      <li><i>◎</i><b>Molecular Lab &amp; Blood Bank</b><span>In-house testing with faster reports</span></li>
-      <li><i>◎</i><b>Onco-ICU</b><span>Dedicated critical care for cancer patients</span></li>
-    </ul>
-  </div>
-</div></section>
-
-<!-- RESEARCH -->
-<section id="research" class="dark" aria-labelledby="rh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Cancer Research Center</span><h2 id="rh">Today's research is the next patient's treatment</h2><p>Our scientists and clinicians work side by side, so findings move quickly from the lab to patient care.</p></div>
-  <div class="research">
-    <article class="paper"><span class="k">Clinical trials</span><h4>Access to new therapies</h4><p>Eligible patients can join trials of new drugs and treatment combinations under strict ethics oversight.</p></article>
-    <article class="paper"><span class="k">Genomics</span><h4>Precision oncology</h4><p>Tumor sequencing to find mutations that targeted therapy can treat.</p></article>
-    <article class="paper"><span class="k">Prevention</span><h4>Early detection in the community</h4><p>Screening camps for oral, breast and cervical cancer, where early diagnosis saves the most lives.</p></article>
-  </div>
-  <blockquote class="quote" style="margin-inline:0">“We treat the person before the disease, and we study the disease so the next person fares better.”<cite>Director, Sunnah Cancer Research Center</cite></blockquote>
-</div></section>
-
-<!-- STORIES -->
-<section aria-labelledby="sh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Patient voices</span><h2 id="sh">Stories of hope</h2><p>Example testimonials for the draft. Real stories will be added with patient consent.</p></div>
-  <div class="stories">
-    <figure class="story" style="margin:0"><p>“The care navigator called me before every appointment. I never had to guess what came next.”</p><span>Breast cancer survivor, 2 years</span></figure>
-    <figure class="story" style="margin:0"><p>“They explained my surgery with drawings until my whole family understood it.”</p><span>Head &amp; neck cancer patient</span></figure>
-    <figure class="story" style="margin:0"><p>“The chemotherapy bay felt calm and private. The nurses knew my name.”</p><span>Family member of a lymphoma patient</span></figure>
-  </div>
-</div></section>
-
-<!-- FAQ -->
-<section id="faq" class="alt" aria-labelledby="qh"><div class="wrap">
-  <div class="head"><span class="eyebrow">Patient Guide</span><h2 id="qh">Questions families ask us</h2></div>
-  <div class="faq">
-    <details><summary>Do I need a referral to book an appointment?</summary><p>No. You can book directly. Bring any reports, scans or biopsy slides you already have.</p></details>
-    <details><summary>How do I get a second opinion?</summary><p>Send your reports on WhatsApp or upload them when you book. Our tumor board reviews them and a specialist explains the findings to you.</p></details>
-    <details><summary>Are insurance and government schemes accepted?</summary><p>We work with major insurers and eligible government schemes. Our finance desk gives you a written estimate before treatment starts.</p></details>
-    <details><summary>Do you help international patients?</summary><p>Yes. We help with medical visa letters, airport pickup, accommodation near the hospital and interpreters.</p></details>
-    <details><summary>Can family members stay with the patient?</summary><p>One attendant can stay in the room. We also offer counselling and support sessions for caregivers.</p></details>
-  </div>
-</div></section>
-
-<!-- APPOINTMENT -->
-<section id="appointment" class="appt" aria-labelledby="ah"><div class="wrap">
-  <div>
-    <span class="eyebrow" style="color:var(--turq)">Appointments</span>
-    <h2 id="ah" style="margin-top:12px">Talk to our cancer care team today</h2>
-    <p style="color:var(--on-dark-muted);margin-top:14px;max-width:48ch">Tell us a little about the patient and a care coordinator will call you back, usually the same day. The fastest way to reach us is WhatsApp.</p>
-    <div class="contact-list">
+    <span class="kicker">Appointments</span>
+    <h2 style="margin-top:10px">Request an appointment</h2>
+    <p style="color:var(--muted);margin-top:12px;max-width:46ch">Fill in the form and a care coordinator will call you back, usually the same day. For the fastest reply, message us on WhatsApp.</p>
+    <div class="contact">
       <div><small>Appointments</small><b>+91 00000 00000</b></div>
       <div><small>WhatsApp</small><b>+91 00000 00000</b></div>
       <div><small>Address</small><span>Sunnah Hospital – Cancer Research Center, Address line, City, State</span></div>
     </div>
-    <div class="cta-row" style="margin-top:24px"><a class="btn btn-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Chat on WhatsApp</a></div>
   </div>
   <form id="f" novalidate>
-    <div class="f2">
-      <label for="n">Patient name<input id="n" name="name" required placeholder="Full name" autocomplete="name"></label>
-      <label for="p">Phone / WhatsApp<input id="p" name="phone" type="tel" required placeholder="+91" autocomplete="tel"></label>
+    <div class="two">
+      <label for="n">Patient name<input id="n" required autocomplete="name" placeholder="Full name"></label>
+      <label for="p">Phone / WhatsApp<input id="p" type="tel" required autocomplete="tel" placeholder="+91"></label>
     </div>
-    <div class="f2">
-      <label for="d">Department<select id="d" name="dept"><option>Surgical Oncology</option><option>Medical Oncology</option><option>Radiation Oncology</option><option>Hemato-Oncology</option><option>Second Opinion</option><option>Not sure</option></select></label>
-      <label for="dt">Preferred date<input id="dt" name="date" type="date"></label>
+    <div class="two">
+      <label for="d">Specialty<select id="d"><option>Surgical Oncology</option><option>Medical Oncology</option><option>Radiation Oncology</option><option>Second Opinion</option><option>Not sure</option></select></label>
+      <label for="dt">Preferred date<input id="dt" type="date"></label>
     </div>
-    <label for="m">Diagnosis or concern (optional)<textarea id="m" name="msg" rows="3" placeholder="e.g. Biopsy confirmed breast cancer, need treatment plan"></textarea></label>
-    <div class="form-actions">
-      <button class="btn btn-primary" type="submit"><svg><use href="#cal"/></svg>Request Appointment</button>
+    <label for="m">Diagnosis or concern (optional)<textarea id="m" rows="3" placeholder="e.g. Biopsy report received, need treatment plan"></textarea></label>
+    <div class="factions">
+      <button class="btn btn-navy" type="submit">Submit Request</button>
       <a class="btn btn-wa" id="waSend" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Send on WhatsApp</a>
     </div>
     <p id="msg" hidden></p>
@@ -483,79 +390,27 @@ footer a:hover{color:#fff}
 </main>
 
 <footer><div class="wrap">
-  <div>
-    <a class="brand" href="#top" style="color:#fff"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0b5c61"/><circle cx="20" cy="20" r="13" fill="none" stroke="#1fb5ad" stroke-width="2"/><circle cx="20" cy="20" r="6.5" fill="#1fb5ad"/></svg><span><b>SUNNAH HOSPITAL</b><small>Cancer Research Center</small></span></a>
-    <p style="margin-top:14px;max-width:36ch">Hope • Healing • Humanity. Comprehensive cancer care and research.</p>
-  </div>
-  <div><h5>Cancer Care</h5><ul><li><a href="#care">Surgical Oncology</a></li><li><a href="#care">Medical Oncology</a></li><li><a href="#departments">Radiation Oncology</a></li><li><a href="#departments">All Departments</a></li></ul></div>
-  <div><h5>Patients</h5><ul><li><a href="#appointment">Book Appointment</a></li><li><a href="#appointment">Second Opinion</a></li><li><a href="#faq">International Patients</a></li><li><a href="#faq">Insurance</a></li></ul></div>
-  <div><h5>Institute</h5><ul><li><a href="#research">Research</a></li><li><a href="#research">Clinical Trials</a></li><li><a href="#doctors">Our Doctors</a></li><li><a href="#infra">Infrastructure</a></li></ul></div>
-  <div class="legal"><span>© 2026 Sunnah Hospital – Cancer Research Center</span><span>Privacy · Terms · Patient Rights</span></div>
+  <div><img src="assets/logo-white.png" alt="Sunnah Hospital – Cancer Research Center" width="162" height="56"><p class="fvals">HOPE • HEALING • HUMANITY</p><p style="margin-top:10px">Surgical &amp; Medical Cancer Center</p></div>
+  <div><h5>Cancer Care</h5><ul><li><a href="#care">Surgical Oncology</a></li><li><a href="#care">Medical Oncology</a></li><li><a href="#types">Cancer Types</a></li><li><a href="#research">Clinical Trials</a></li></ul></div>
+  <div><h5>Patients</h5><ul><li><a href="#appointment">Request Appointment</a></li><li><a href="#doctors">Find a Doctor</a></li><li><a href="#faq">Insurance</a></li><li><a href="#faq">International Patients</a></li></ul></div>
+  <div><h5>Contact</h5><ul><li>+91 00000 00000</li><li>Address line, City</li><li><a href="https://wa.me/910000000000" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+  <div class="legal"><span>© 2026 Sunnah Hospital – Cancer Research Center</span><span>Privacy Policy · Terms of Use · Patient Rights</span></div>
 </div></footer>
 
 <nav class="mbar" aria-label="Quick actions">
-  <a class="btn btn-primary" href="#appointment"><svg><use href="#cal"/></svg>Book</a>
+  <a class="btn btn-navy" href="#appointment">Book Appointment</a>
   <a class="btn btn-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>WhatsApp</a>
 </nav>
 <a class="fab" href="https://wa.me/910000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg><use href="#wa"/></svg></a>
 
 <script>
-const WA='910000000000';
-// menu
-const mb=document.getElementById('menuBtn'),dr=document.getElementById('drawer');
-mb.addEventListener('click',()=>{dr.hidden=!dr.hidden;mb.setAttribute('aria-expanded',String(!dr.hidden));});
-dr.addEventListener('click',e=>{if(e.target.tagName==='A'){dr.hidden=true;mb.setAttribute('aria-expanded','false');}});
-
-// finder
-const types={
- 'Breast':{d:'Breast Oncology',t:'Breast cancer',p:'Breast-conserving surgery, oncoplastic reconstruction, chemotherapy, targeted and hormone therapy, and radiation, planned by one breast team.',team:'Breast surgeon · Medical oncologist · Radiation oncologist',tests:'Mammography, ultrasound, core biopsy, receptor and HER2 testing'},
- 'Head & Neck':{d:'Head & Neck',t:'Head & neck cancer',p:'Surgery focused on preserving speech and swallowing, microvascular reconstruction, and chemo-radiation.',team:'Head & neck surgeon · Reconstructive surgeon · Speech therapist',tests:'Endoscopy, biopsy, CT/MRI, PET-CT'},
- 'Lung':{d:'Thoracic',t:'Lung cancer',p:'Minimally invasive lung surgery, targeted therapy and immunotherapy based on molecular markers, and stereotactic radiation.',team:'Thoracic surgeon · Medical oncologist · Pulmonologist',tests:'CT chest, bronchoscopy, EGFR/ALK/PD-L1 testing'},
- 'Blood':{d:'Hemato-Oncology',t:'Leukaemia, lymphoma & myeloma',p:'Chemotherapy, immunotherapy and bone marrow care with dedicated infection-control protocols.',team:'Hemato-oncologist · Transfusion medicine · Infection specialist',tests:'Bone marrow biopsy, flow cytometry, cytogenetics'},
- 'Gastrointestinal':{d:'Gastrointestinal',t:'GI cancers',p:'Laparoscopic surgery for stomach, colon, liver and pancreatic cancers with perioperative chemotherapy.',team:'GI onco-surgeon · Gastroenterologist · Medical oncologist',tests:'Endoscopy, CT, tumor markers, biopsy'},
- 'Gynaecologic':{d:'Gynaecologic',t:'Cervical, ovarian & uterine cancer',p:'Fertility-sparing options where possible, cytoreductive surgery, chemotherapy and brachytherapy.',team:'Gynae-onco surgeon · Medical oncologist · Radiation oncologist',tests:'Pap/HPV test, ultrasound, MRI, CA-125'},
- 'Prostate':{d:'Uro-Oncology',t:'Prostate & urologic cancers',p:'Active surveillance, surgery, precision radiation and hormone therapy, chosen by risk group.',team:'Uro-oncologist · Radiation oncologist · Medical oncologist',tests:'PSA, MRI prostate, biopsy, PSMA PET'},
- 'Children':{d:'Pediatric Oncology',t:'Childhood cancers',p:'Child-friendly care with protocols designed for children, and support for the whole family.',team:'Pediatric oncologist · Child psychologist · Nutritionist',tests:'Blood tests, imaging, biopsy under sedation'}
-};
-const chips=document.getElementById('chips'),fout=document.getElementById('fout');
-function showType(k){
-  const x=types[k];
-  [...chips.children].forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.k===k)));
-  fout.innerHTML=`<div><span class="eyebrow">${x.d}</span><h3 style="margin-top:8px">${x.t}</h3><p>${x.p}</p><div class="cta-row" style="margin-top:18px"><a class="btn btn-primary" href="#appointment" data-dept="${x.d}">Book with this team</a><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hello, I need guidance about '+x.t+'.')}"><svg><use href="#wa"/></svg>Ask on WhatsApp</a></div></div><dl><div><dt>Your team</dt><dd>${x.team}</dd></div><div><dt>Common tests</dt><dd>${x.tests}</dd></div><div><dt>Second opinion</dt><dd>Reports reviewed by our tumor board within about 48 hours</dd></div></dl>`;
-}
-Object.keys(types).forEach((k,i)=>{const b=document.createElement('button');b.className='chip';b.type='button';b.dataset.k=k;b.textContent=k;b.onclick=()=>showType(k);chips.appendChild(b);});
-showType('Breast');
-
-// doctors
-const docs=[
- {r:'Surgical Oncology',n:'Dr. Name Surname',c:'MS, MCh (Surgical Oncology)',s:'Head of Department · Breast & GI'},
- {r:'Surgical Oncology',n:'Dr. Name Surname',c:'MS, DNB, Fellowship (Head & Neck)',s:'Senior Consultant · Head & Neck'},
- {r:'Medical Oncology',n:'Dr. Name Surname',c:'MD, DM (Medical Oncology)',s:'Head of Department · Solid tumors'},
- {r:'Medical Oncology',n:'Dr. Name Surname',c:'MD, DM (Clinical Hematology)',s:'Consultant · Hemato-Oncology'},
- {r:'Radiation Oncology',n:'Dr. Name Surname',c:'MD (Radiation Oncology)',s:'Consultant · SBRT & Brachytherapy'},
- {r:'Research',n:'Dr. Name Surname',c:'PhD (Cancer Biology)',s:'Director · Cancer Research Center'}
-];
-const df=document.getElementById('docFilter'),dg=document.getElementById('docs');
-function drawDocs(f){
-  [...df.children].forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.f===f)));
-  dg.innerHTML=docs.filter(d=>f==='All'||d.r===f).map(d=>`<article class="doc"><div class="ph"><svg viewBox="0 0 24 24"><use href="#person"/></svg></div><div class="t"><span class="role">${d.r}</span><b>${d.n}</b><span>${d.c}</span><span>${d.s}</span><a class="more" href="#appointment" data-dept="${d.r==='Research'?'Second Opinion':d.r}">Book appointment →</a></div></article>`).join('');
-}
-['All','Surgical Oncology','Medical Oncology','Radiation Oncology','Research'].forEach(f=>{const b=document.createElement('button');b.className='chip';b.type='button';b.dataset.f=f;b.textContent=f;b.onclick=()=>drawDocs(f);df.appendChild(b);});
-drawDocs('All');
-
-// prefill department from any "book" link
-const sel=document.getElementById('d');
-document.addEventListener('click',e=>{const a=e.target.closest('[data-dept]');if(!a)return;const v=a.dataset.dept;const o=[...sel.options].find(o=>v.includes(o.text)||o.text.includes(v));sel.value=o?o.text:'Not sure';});
-
-// form + whatsapp message
+const b=document.getElementById('burger'),d=document.getElementById('drawer');
+b.onclick=()=>{d.hidden=!d.hidden;b.setAttribute('aria-expanded',String(!d.hidden));};
+d.addEventListener('click',e=>{if(e.target.closest('a')){d.hidden=true;b.setAttribute('aria-expanded','false');}});
 const f=document.getElementById('f'),msg=document.getElementById('msg'),wa=document.getElementById('waSend');
-function waText(){const v=id=>document.getElementById(id).value.trim();return `Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nPhone: ${v('p')||'-'}\nDepartment: ${v('d')}\nPreferred date: ${v('dt')||'-'}\nDetails: ${v('m')||'-'}`;}
-f.addEventListener('input',()=>{wa.href=`https://wa.me/${WA}?text=${encodeURIComponent(waText())}`;});
-f.addEventListener('submit',e=>{e.preventDefault();
-  const n=document.getElementById('n').value.trim(),p=document.getElementById('p').value.trim();
-  msg.hidden=false;
-  msg.textContent=(!n||!p)?'Please enter the patient name and a phone number so our coordinator can reach you.':`Thank you. In the live site, this request for ${n} will go to our coordinators. For now, use "Send on WhatsApp" to send it directly.`;
-});
+const v=id=>document.getElementById(id).value.trim();
+f.addEventListener('input',()=>{wa.href='https://wa.me/910000000000?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nPhone: ${v('p')||'-'}\nSpecialty: ${v('d')}\nDate: ${v('dt')||'-'}\nDetails: ${v('m')||'-'}`);});
+f.addEventListener('submit',e=>{e.preventDefault();msg.hidden=false;msg.textContent=(!v('n')||!v('p'))?'Please enter the patient name and phone number.':`Thank you, ${v('n')}. On the live site this request goes to our coordinators. For now, tap "Send on WhatsApp".`;});
 </script>
 </body>
 </html>
