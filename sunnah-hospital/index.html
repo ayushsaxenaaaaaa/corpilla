@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sunnah Cancer Research Center</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Sunnah Hospital – Cancer Research Center. Surgical oncology, medical oncology and cancer research. Hope, Healing, Humanity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: editorial cancer-institute page — deep teal bands alternating with white, one bold serif display voice */
+:root{
+  --teal-900:#063a3e; --teal-700:#0b5c61; --turq:#1fb5ad; --turq-soft:#d6f2ef;
+  --bg:#ffffff; --surface:#f3f8f8; --fg:#0e2526; --muted:#4f6b6c; --line:#d7e5e5;
+  --on-dark:#eefaf9; --wa:#1fa855;
+  --display:"Fraunces",Georgia,serif; --body:"Manrope",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#071a1b; --surface:#0c2627; --fg:#e4f2f1; --muted:#9bb9b8; --line:#1d3d3e; --turq-soft:#0f3a3a; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#071a1b; --surface:#0c2627; --fg:#e4f2f1; --muted:#9bb9b8; --line:#1d3d3e; --turq-soft:#0f3a3a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--teal-900)}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--turq)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.95rem;border:0;cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+.btn-primary{background:var(--turq);color:#032b2d}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:var(--on-dark)}
+.btn-wa{background:var(--wa);color:#fff}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--teal-900);color:var(--on-dark)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.mark{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--turq),var(--teal-700));display:grid;place-items:center;font-family:var(--display);font-size:1.2rem;color:#fff}
+.brand b{display:block;font-family:var(--display);font-size:1.05rem;letter-spacing:.04em}
+.brand small{display:block;font-size:.62rem;letter-spacing:.18em;opacity:.75;text-transform:uppercase}
+.links{display:none;gap:22px;font-size:.9rem}
+.links a{text-decoration:none;opacity:.85}
+.nav .btn{padding:9px 16px;font-size:.85rem}
+@media(min-width:900px){.links{display:flex}}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--teal-900) 0%,var(--teal-700) 70%,#0e7d7f 100%);color:var(--on-dark);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(31,181,173,.35);box-shadow:0 0 0 60px rgba(31,181,173,.06),0 0 0 140px rgba(31,181,173,.04)}
+.hero .wrap{padding-block:56px 64px;position:relative;z-index:1;display:grid;gap:28px}
+.hero h1{font-size:clamp(2.2rem,7vw,4.2rem);max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--turq)}
+.hero p.lead{font-size:1.08rem;max-width:52ch;opacity:.9}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.values{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--display);font-size:1.05rem;letter-spacing:.06em}
+.values span:not(:last-child)::after{content:"•";margin-left:18px;color:var(--turq)}
+
+/* quick bar */
+.quick{background:var(--surface);border-bottom:1px solid var(--line)}
+.quick .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);padding-block:0}
+.quick a{background:var(--surface);padding:18px 14px;text-decoration:none;display:flex;flex-direction:column;gap:2px}
+.quick a b{font-size:.95rem}.quick a span{font-size:.8rem;color:var(--muted)}
+@media(min-width:760px){.quick .wrap{grid-template-columns:repeat(4,1fr)}}
+
+section{padding-block:64px}
+.head{display:grid;gap:10px;margin-bottom:32px;max-width:640px}
+.head p{color:var(--muted)}
+
+/* programs */
+.programs{display:grid;gap:18px}
+@media(min-width:760px){.programs{grid-template-columns:repeat(3,1fr)}}
+.prog{border-top:3px solid var(--turq);padding-top:18px;display:grid;gap:10px;align-content:start}
+.prog .img{aspect-ratio:4/3;max-width:100%;border-radius:4px;background-size:cover;position:relative;overflow:hidden}
+.prog .img::after{content:attr(data-label);position:absolute;left:10px;bottom:8px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.8}
+.img1{background:linear-gradient(135deg,#0b5c61,#1fb5ad)}
+.img2{background:linear-gradient(135deg,#063a3e,#2a8f8a)}
+.img3{background:linear-gradient(135deg,#0e7d7f,#063a3e)}
+.prog h3{font-size:1.4rem}
+.prog p{color:var(--muted);font-size:.95rem}
+.prog ul{margin:0;padding-left:18px;font-size:.9rem;color:var(--muted)}
+.more{font-weight:700;color:var(--turq);text-decoration:none;font-size:.9rem}
+
+/* stats band */
+.band{background:var(--teal-900);color:var(--on-dark)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 16px}
+@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stats b{display:block;font-family:var(--display);font-size:2.4rem;color:var(--turq);font-variant-numeric:tabular-nums}
+.stats span{font-size:.88rem;opacity:.85}
+.note{font-size:.72rem;opacity:.55;margin-top:24px}
+
+/* departments */
+.depts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:760px){.depts{grid-template-columns:repeat(4,1fr)}}
+.dept{padding:16px;border:1px solid var(--line);border-radius:6px;font-weight:600;font-size:.92rem;display:flex;justify-content:space-between;gap:8px;text-decoration:none}
+.dept:hover{border-color:var(--turq);background:var(--turq-soft)}
+.dept i{font-style:normal;color:var(--turq)}
+
+/* doctors */
+.alt{background:var(--surface)}
+.docs{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.doc{background:var(--bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.doc .ph{aspect-ratio:1/1;max-width:100%;background:linear-gradient(180deg,var(--turq-soft),var(--line));display:grid;place-items:center;font-family:var(--display);font-size:2.4rem;color:var(--teal-700)}
+.doc div.t{padding:14px 16px;display:grid;gap:2px}
+.doc b{font-size:1rem}.doc span{font-size:.84rem;color:var(--muted)}
+
+/* infra */
+.infra{display:grid;gap:24px}
+@media(min-width:860px){.infra{grid-template-columns:1.1fr 1fr;align-items:center}}
+.infra .big{aspect-ratio:16/11;max-width:100%;border-radius:6px;background:linear-gradient(135deg,#063a3e 0%,#0b5c61 50%,#1fb5ad 100%);position:relative}
+.infra .big::after{content:"Facility photography";position:absolute;left:14px;bottom:12px;color:#fff;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.infra ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.infra li{display:grid;gap:2px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.infra li span{color:var(--muted);font-size:.9rem}
+
+/* research */
+.research{display:grid;gap:24px}
+@media(min-width:860px){.research{grid-template-columns:1fr 1fr}}
+.quote{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.35;border-left:3px solid var(--turq);padding-left:18px}
+
+/* appointment */
+.appt{background:linear-gradient(160deg,var(--teal-700),var(--teal-900));color:var(--on-dark)}
+.appt .wrap{display:grid;gap:28px}
+@media(min-width:860px){.appt .wrap{grid-template-columns:1fr 1fr}}
+form{display:grid;gap:12px;background:rgba(255,255,255,.06);padding:20px;border-radius:8px;border:1px solid rgba(255,255,255,.12)}
+label{font-size:.8rem;font-weight:600;display:grid;gap:5px}
+input,select{font:inherit;padding:12px;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.15);color:var(--on-dark)}
+select option{color:#000}
+#msg{font-size:.88rem;color:var(--turq)}
+.phone{font-family:var(--display);font-size:1.6rem;user-select:all}
+
+footer{background:#041f21;color:#a9c9c7;font-size:.85rem}
+footer .wrap{padding-block:36px;display:grid;gap:18px}
+@media(min-width:760px){footer .wrap{grid-template-columns:2fr 1fr 1fr}}
+footer b{color:#fff}
+
+/* floating WhatsApp */
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.fab svg{width:28px;height:28px;fill:#fff}
+@media(prefers-reduced-motion:no-preference){.btn,.dept{transition:all .2s}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="mark">S</span><span><b>SUNNAH HOSPITAL</b><small>Cancer Research Center</small></span></a>
+    <nav class="links"><a href="#care">Cancer Care</a><a href="#departments">Departments</a><a href="#doctors">Doctors</a><a href="#research">Research</a><a href="#infra">Infrastructure</a></nav>
+    <a class="btn btn-primary" href="#appointment">Book</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <span class="eyebrow">Comprehensive Cancer Institute</span>
+      <h1>Every diagnosis deserves <em>a world-class</em> answer.</h1>
+      <p class="lead">Surgical oncology, medical oncology and translational research under one roof, with a care team that plans your treatment around you.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#appointment">Book an Appointment</a>
+        <a class="btn btn-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+      <div class="values"><span>HOPE</span><span>HEALING</span><span>HUMANITY</span></div>
+    </div>
+  </section>
+
+  <div class="quick"><div class="wrap">
+    <a href="#appointment"><b>Request a Consultation</b><span>Response within 24 hours</span></a>
+    <a href="#doctors"><b>Find a Specialist</b><span>By cancer type</span></a>
+    <a href="#appointment"><b>Second Opinion</b><span>Tumor board review</span></a>
+    <a href="#infra"><b>International Patients</b><span>Travel &amp; stay support</span></a>
+  </div></div>
+
+  <section id="care"><div class="wrap">
+    <div class="head"><span class="eyebrow">Cancer Care</span><h2>Three disciplines. One plan for you.</h2><p>Each case is reviewed by a multidisciplinary tumor board before treatment begins.</p></div>
+    <div class="programs">
+      <article class="prog"><div class="img img1" data-label="Surgical theatre"></div><h3>Surgical Oncology</h3><p>Precise tumor removal with organ- and function-preserving techniques.</p><ul><li>Minimally invasive &amp; laparoscopic surgery</li><li>Head &amp; neck, breast, GI, gynae-onco</li><li>Reconstructive surgery</li></ul><a class="more" href="#appointment">Consult a surgeon →</a></article>
+      <article class="prog"><div class="img img2" data-label="Day-care chemotherapy"></div><h3>Medical Oncology</h3><p>Personalised systemic therapy guided by tumor biology.</p><ul><li>Chemotherapy &amp; day-care infusion</li><li>Targeted therapy &amp; immunotherapy</li><li>Hemato-oncology</li></ul><a class="more" href="#appointment">Consult an oncologist →</a></article>
+      <article class="prog"><div class="img img3" data-label="Research laboratory"></div><h3>Cancer Research</h3><p>Turning laboratory insight into better treatment at the bedside.</p><ul><li>Clinical trials program</li><li>Molecular &amp; genomic profiling</li><li>Regional cancer registry</li></ul><a class="more" href="#research">Explore research →</a></article>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="stats">
+      <div><b>24/7</b><span>Oncology emergency</span></div>
+      <div><b>12+</b><span>Cancer specialties</span></div>
+      <div><b>1</b><span>Tumor board per patient</span></div>
+      <div><b>NABH</b><span>Quality standards</span></div>
+    </div>
+    <p class="note">Placeholder figures for the draft. Replace with verified hospital data.</p>
+  </div></section>
+
+  <section id="departments"><div class="wrap">
+    <div class="head"><span class="eyebrow">Departments</span><h2>Care by cancer type</h2></div>
+    <div class="depts">
+      <a class="dept" href="#appointment">Breast Cancer<i>→</i></a><a class="dept" href="#appointment">Head &amp; Neck<i>→</i></a>
+      <a class="dept" href="#appointment">Gastrointestinal<i>→</i></a><a class="dept" href="#appointment">Gynaecologic<i>→</i></a>
+      <a class="dept" href="#appointment">Lung &amp; Thoracic<i>→</i></a><a class="dept" href="#appointment">Blood Cancers<i>→</i></a>
+      <a class="dept" href="#appointment">Uro-Oncology<i>→</i></a><a class="dept" href="#appointment">Pediatric Oncology<i>→</i></a>
+      <a class="dept" href="#appointment">Radiation Oncology<i>→</i></a><a class="dept" href="#appointment">Nuclear Medicine<i>→</i></a>
+      <a class="dept" href="#appointment">Palliative Care<i>→</i></a><a class="dept" href="#appointment">Onco-Pathology<i>→</i></a>
+    </div>
+  </div></section>
+
+  <section id="doctors" class="alt"><div class="wrap">
+    <div class="head"><span class="eyebrow">Our Doctors</span><h2>Specialists who lead with empathy</h2><p>Sample profiles. Real photographs and credentials go here.</p></div>
+    <div class="docs">
+      <div class="doc"><div class="ph">Dr</div><div class="t"><b>Dr. Name Surname</b><span>Head, Surgical Oncology · MS, MCh</span></div></div>
+      <div class="doc"><div class="ph">Dr</div><div class="t"><b>Dr. Name Surname</b><span>Senior Consultant, Medical Oncology · DM</span></div></div>
+      <div class="doc"><div class="ph">Dr</div><div class="t"><b>Dr. Name Surname</b><span>Radiation Oncology · MD</span></div></div>
+      <div class="doc"><div class="ph">Dr</div><div class="t"><b>Dr. Name Surname</b><span>Director, Cancer Research · PhD</span></div></div>
+    </div>
+  </div></section>
+
+  <section id="infra"><div class="wrap infra">
+    <div class="big"></div>
+    <div>
+      <div class="head" style="margin-bottom:20px"><span class="eyebrow">Infrastructure</span><h2>Built for precision and comfort</h2></div>
+      <ul>
+        <li><b>Modular Operation Theatres</b><span>Laminar airflow, onco-surgical suites</span></li>
+        <li><b>Linear Accelerator &amp; PET-CT</b><span>Image-guided radiotherapy and staging</span></li>
+        <li><b>Day-Care Chemotherapy</b><span>Private infusion bays with nurse navigators</span></li>
+        <li><b>Molecular Lab &amp; Blood Bank</b><span>In-house diagnostics, faster reports</span></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="research" class="alt"><div class="wrap research">
+    <div class="head" style="margin:0"><span class="eyebrow">Cancer Research</span><h2>Research that reaches patients</h2><p>Our research center runs clinical trials, genomic studies and community screening programs so that patients here benefit from what we learn.</p></div>
+    <p class="quote">“We treat the person before the disease, and we study the disease so the next person fares better.”</p>
+  </div></section>
+
+  <section id="appointment" class="appt"><div class="wrap">
+    <div style="display:grid;gap:14px;align-content:start">
+      <span class="eyebrow">Appointments</span>
+      <h2>Talk to our cancer care team</h2>
+      <p style="opacity:.85">Share a few details and a patient coordinator will call you back. For urgent help, message us on WhatsApp.</p>
+      <p class="phone">+91 00000 00000</p>
+      <div class="cta-row"><a class="btn btn-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+    </div>
+    <form id="f">
+      <label for="n">Patient name<input id="n" required placeholder="Full name"></label>
+      <label for="p">Phone<input id="p" type="tel" required placeholder="+91"></label>
+      <label for="d">Department<select id="d"><option>Surgical Oncology</option><option>Medical Oncology</option><option>Radiation Oncology</option><option>Second Opinion</option></select></label>
+      <button class="btn btn-primary" type="submit">Request Appointment</button>
+      <p id="msg" hidden>Draft only: in the live site this sends your request to our coordinators.</p>
+    </form>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b>SUNNAH HOSPITAL – CANCER RESEARCH CENTER</b><p style="margin-top:6px">Hope • Healing • Humanity</p></div>
+  <div><b>Care</b><p>Surgical Oncology<br>Medical Oncology<br>Research</p></div>
+  <div><b>Contact</b><p>Address line, City<br>+91 00000 00000</p></div>
+</div></footer>
+
+<a class="fab" href="https://wa.me/910000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+
+<script>
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('msg').hidden=false;});
+</script>
+</body>
+</html>
