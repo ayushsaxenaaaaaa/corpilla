@@ -75,7 +75,7 @@ page('index.html', 'Sunnah Hospital – Cancer Research Center | Surgical & Medi
           </div>
           <div class="ctrl"><button class="pv" type="button" aria-label="Previous slide"><svg><use href="#i-prev"/></svg></button><span class="num">01 / 03</span><span class="bars"><span></span><span></span><span></span></span><button class="nx" type="button" aria-label="Next slide"><svg><use href="#i-next"/></svg></button></div>
         </div>
-        <aside class="glass float">
+        <aside class="glass">
           <span class="over onDark">Our Promise</span>
           <h3>We don't just treat cancer. We guide you through every step.</h3>
           <ul><li><svg><use href="#i-check"/></svg>Right Treatment</li><li><svg><use href="#i-check"/></svg>Right Guidance</li><li><svg><use href="#i-check"/></svg>Compassionate Care</li></ul>
@@ -94,7 +94,7 @@ page('index.html', 'Sunnah Hospital – Cancer Research Center | Surgical & Medi
   </section>
 
   <section class="sec"><div class="wrap about">
-    <div class="collage rv"><div class="ph a" data-img="team3" data-alt="Doctors discussing a patient's care"></div><div class="ph b" data-img="doc2" data-alt="Doctor at her desk"></div>{BADGE}</div>
+    <div class="collage rv"><div class="ph a" data-img="team3" data-alt="Doctors discussing a patient's care"></div><div class="ph b" data-img="doc2" data-alt="Doctor at her desk"></div></div>
     <div class="stack rv">
       <span class="over">Welcome to Sunnah Hospital</span>
       <h2 class="h-l">Cancer care goes beyond <span class="hl">medical treatment</span></h2>
@@ -133,13 +133,7 @@ page('index.html', 'Sunnah Hospital – Cancer Research Center | Surgical & Medi
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <div class="stats rv">
-      <div><b data-count="2">2</b><span>Core specialities: Surgical &amp; Medical Oncology</span></div>
-      <div><b data-count="5">5</b><span>Areas of patient and family support</span></div>
-      <div><b data-count="20">20<em>+</em></b><span>Types of cancer cared for</span></div>
-      <div><b data-count="6">6</b><span>Days of OPD care every week</span></div>
-    </div>
-    <div class="shead c" style="margin-top:clamp(70px,9vw,120px)"><div class="stack rv" style="justify-items:center"><span class="over">Your First Visit</span><h2 class="h-l">Four steps to <span class="hl">the right care</span></h2><p class="lead">From the first phone call, you will know what happens next.</p></div></div>
+    <div class="shead c"><div class="stack rv" style="justify-items:center"><span class="over">Your First Visit</span><h2 class="h-l">Four steps to <span class="hl">the right care</span></h2><p class="lead">From the first phone call, you will know what happens next.</p></div></div>
     <div class="journey">
       <div class="jstep rv"><span class="jc"><svg><use href="#i-cal"/></svg></span><h3>Book your visit</h3><p>Call, WhatsApp or send an enquiry. Collect your reports, scans and prescriptions.</p></div>
       <div class="jstep rv"><span class="jc"><svg><use href="#i-chat"/></svg></span><h3>Meet the doctor</h3><p>The doctor examines you, reviews your reports and explains the options.</p></div>
@@ -205,7 +199,7 @@ page('about.html', 'About Us – Sunnah Hospital Cancer Research Center',
  'About Sunnah Hospital – Cancer Research Center: our profile, vision, mission and values of Hope, Healing and Humanity.', 'about',
  phero('team1', [('Home','index.html'),('About Us','')], 'About Sunnah Hospital', 'A Surgical &amp; Medical Cancer Center built on three values: Hope, Healing and Humanity.') + f'''
   <section class="sec"><div class="wrap about">
-    <div class="collage rv"><div class="ph a" data-img="building" data-alt="Hospital building"></div><div class="ph b" data-img="team3" data-alt="Doctors discussing care"></div>{BADGE}</div>
+    <div class="collage rv"><div class="ph a" data-img="building" data-alt="Hospital building"></div><div class="ph b" data-img="team3" data-alt="Doctors discussing care"></div></div>
     <div class="stack rv">
       <span class="over">Hospital Profile</span>
       <h2 class="h-l">Dedicated to the care of <span class="hl">people with cancer</span></h2>

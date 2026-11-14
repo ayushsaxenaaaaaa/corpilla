@@ -75,9 +75,7 @@
     <div class="cta"><a class="btn btn-n" href="contact.html">Book Appointment</a><a class="btn btn-w" href="https://wa.me/${SH.WA}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp Us</a></div>
   </div>`;
 
-  const mq = 'HOPE <i></i> <em>HEALING</em> <i></i> HUMANITY <i></i> <em>Right Treatment</em> <i></i> Right Guidance <i></i> <em>Compassionate Care</em> <i></i>';
   const footer = `
-  <div class="marq" aria-hidden="true"><div class="mt"><span>${mq}</span><span>${mq}</span></div></div>
   <section class="prefoot"><div class="wrap"><div class="pf">
     <div><h3>Talk to our cancer care team today.</h3><p>Right Treatment. Right Guidance. Compassionate Care.</p></div>
     <div class="btns"><a class="btn btn-n" href="contact.html">Book Appointment</a><a class="btn btn-w" href="https://wa.me/${SH.WA}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>

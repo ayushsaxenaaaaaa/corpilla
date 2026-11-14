@@ -11,7 +11,7 @@ window.SHD = {
     { id: 'd8', n: 'Name Surname', s: 'Counselling', r: 'Psycho-Oncology Counsellor', q: 'MA (Clinical Psychology)', y: 7, f: 'Counselling for patients and families', img: 'doc6' }
   ],
   card(d) {
-    return `<a class="dcard" href="doctor.html?id=${d.id}"><span class="sp">${d.s}</span><span class="go" aria-hidden="true"></span><div class="ph"><img loading="lazy" src="${SH.U(d.img)}" alt="${d.n}" onerror="this.remove()"></div><div class="dc"><b>${d.n}</b><span>${d.r}</span><span>${d.q}</span></div></a>`;
+    return `<a class="dcard" href="doctor.html?id=${d.id}"><div class="ph"><img loading="lazy" src="${SH.U(d.img)}" alt="${d.n}" onerror="this.remove()"></div><div class="dc"><span class="sp">${d.s}</span><b>${d.n}</b><span>${d.r}</span><span>${d.q}</span></div></a>`;
   },
   render(el, arr) { el.innerHTML = arr.map(this.card).join(''); }
 };
