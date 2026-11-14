@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Appointments & Contact – Sunnah Hospital</title>
-<meta name="description" content="Request an appointment or second opinion at Sunnah Hospital – Cancer Research Center. Insurance, international patients and contact details.">
+<title>Contact & Appointment – Sunnah Hospital</title>
+<meta name="description" content="Contact Sunnah Hospital – Cancer Research Center: appointment enquiry form, phone, WhatsApp, address and map.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -12,79 +12,46 @@
 <body data-page="contact">
 <main>
   <section class="phero">
-    <div class="ph" data-img="photo-1576091160399-112ba8d25d1d" data-w="1800" data-eager="1"></div>
+    <div class="ph" data-img="photo-1551190822-a9333d879b1f" data-w="1800" data-eager="1"></div>
     <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<span>Patients &amp; Visitors</span></nav>
-      <h1>Request an appointment</h1>
-      <p class="lead">Tell us a little about the patient. A care coordinator will call you back, usually the same day.</p>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<span>Contact & Appointment</span></nav>
+      <h1>Contact &amp; Appointment</h1>
+      <p class="lead">Send us an enquiry and our team will call you back. You can also reach us by phone or WhatsApp.</p>
     </div>
   </section>
-
   <section class="sec"><div class="wrap two-col">
     <div>
-      <div class="steps-h" aria-hidden="true"><span class="on" id="st1"></span><span id="st2"></span></div>
+      <div class="stack" style="margin-bottom:26px"><span class="over">Appointment Enquiry</span><h2 class="h-l">Request an appointment</h2></div>
       <form class="form" id="f" novalidate>
-        <fieldset id="a" style="border:0;padding:0;margin:0;display:grid;gap:16px">
-          <legend class="h-m" style="margin-bottom:6px">1. How can we help?</legend>
-          <div class="chips" id="need" style="margin:0"></div>
-          <div class="row"><label for="d">Speciality<select id="d"><option>Not sure</option><option>Surgical Oncology</option><option>Medical Oncology</option><option>Radiation Oncology</option><option>Hemato-Oncology</option><option>Palliative Care</option></select></label><label for="dt">Preferred date<input id="dt" type="date"></label></div>
-          <label for="m">Diagnosis or concern<textarea id="m" rows="4" placeholder="e.g. Biopsy confirmed breast cancer, need a treatment plan"></textarea></label>
-          <div class="acts"><button class="btn btn-n" type="button" id="next">Continue</button></div>
-        </fieldset>
-        <fieldset id="b" hidden style="border:0;padding:0;margin:0;display:grid;gap:16px">
-          <legend class="h-m" style="margin-bottom:6px">2. Patient details</legend>
-          <div class="row"><label for="n">Patient name<input id="n" autocomplete="name"></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91"></label></div>
-          <div class="row"><label for="c">City<input id="c" autocomplete="address-level2"></label><label for="ins">Payment<select id="ins"><option>Self-pay</option><option>Insurance / TPA</option><option>Government scheme</option></select></label></div>
-          <div class="acts"><button class="btn btn-on" type="button" id="back">Back</button><button class="btn btn-p" type="submit">Request Callback</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="#">Send on WhatsApp</a></div>
-        </fieldset>
+        <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" required></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91" required></label></div>
+        <div class="row"><label for="e">Email (optional)<input id="e" type="email" autocomplete="email"></label><label for="d">Preferred department<select id="d"><option>Not sure</option><option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option></select></label></div>
+        <label for="m">Message (optional)<textarea id="m" rows="4" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
+        <div class="acts"><button class="btn btn-n" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/910000000000">Send on WhatsApp</a></div>
         <p class="note" id="msg" hidden></p>
       </form>
     </div>
-    <aside class="aside">
-      <div class="box navy"><h4>Prefer to talk now?</h4><p>Appointments &amp; 24/7 emergency</p><b style="font-size:1.4rem;font-weight:500;user-select:all">+91 00000 00000</b><a class="btn btn-w" href="https://wa.me/910000000000" target="_blank" rel="noopener">WhatsApp Us</a></div>
-      <div class="box"><h4 style="font-size:1rem">Visit us</h4><p style="color:var(--muted);font-size:.92rem">Sunnah Hospital – Cancer Research Center<br>Address line, City, State – PIN</p><ul><li>OPD<span>Mon–Sat, 9:00–17:00</span></li><li>Emergency<span>24/7</span></li></ul></div>
+    <aside class="aside" style="position:static">
+      <div class="cinfo">
+        <div><small>Phone</small><b>+91 00000 00000</b></div>
+        <div><small>WhatsApp</small><b>+91 00000 00000</b></div>
+        <div><small>Email</small><b>info@example.com</b></div>
+        <div><small>Address</small><span>Sunnah Hospital – Cancer Research Center<br>Address line, City, State – PIN</span></div>
+        <div><small>OPD Timings</small><span>Monday to Saturday, 9:00 am – 5:00 pm</span></div>
+      </div>
     </aside>
   </div></section>
-
-  <section class="sec mist" id="second-opinion"><div class="wrap feature">
-    <div class="ph rv" data-img="photo-1551190822-a9333d879b1f"></div>
-    <div class="stack rv">
-      <span class="over">Second Opinion</span>
-      <h2 class="h-l">A tumor board review in 48 hours</h2>
-      <p class="lead">Before you start treatment, make sure the plan is right. Send your reports and our multidisciplinary board will review them. A specialist then calls you to explain the findings.</p>
-      <ul class="checks"><li><span>Biopsy / pathology report</span></li><li><span>CT, MRI or PET-CT reports and images</span></li><li><span>Current treatment plan or prescriptions</span></li></ul>
-      <a class="btn btn-w" style="justify-self:start" href="https://wa.me/910000000000?text=Hello%2C%20I%20would%20like%20a%20second%20opinion." target="_blank" rel="noopener">Send Reports on WhatsApp</a>
-    </div>
-  </div></section>
-
-  <section class="sec"><div class="wrap">
-    <div class="cols3">
-      <div class="tcard" id="insurance"><h4>Insurance &amp; TPA</h4><p>Cashless treatment with major insurers and TPAs. Our finance desk gives you a written estimate before treatment.</p></div>
-      <div class="tcard" id="international"><h4>International Patients</h4><p>Help with medical visa letters, airport pickup, nearby stays and interpreters.</p></div>
-      <div class="tcard"><h4>Visitors</h4><p>One attendant can stay with the patient. Visiting hours are 4–7 pm.</p></div>
-    </div>
-  </div></section>
-
-  <section class="sec mist"><div class="wrap narrow" style="margin-inline:auto">
-    <div class="stack" style="margin-bottom:24px"><span class="over">FAQs</span><h2 class="h-l">Common questions</h2></div>
-    <details class="faq"><summary>Do I need a referral?</summary><p>No. You can book directly. Bring any reports, scans or biopsy slides you have.</p></details>
-    <details class="faq"><summary>What should I bring to my first visit?</summary><p>Photo ID, all medical reports and scans, a list of your current medicines and your insurance card if you have one.</p></details>
-    <details class="faq"><summary>How long is the first consultation?</summary><p>Usually 30 to 45 minutes, so the doctor has time to explain everything and answer your questions.</p></details>
-    <details class="faq"><summary>Can I get a cost estimate in advance?</summary><p>Yes. After your consultation, our finance desk gives you a written estimate for the recommended treatment.</p></details>
+  <section class="sec mist" style="padding-top:clamp(48px,7vw,80px)"><div class="wrap">
+    <div class="stack" style="margin-bottom:26px"><span class="over">Location</span><h2 class="h-l">Find us</h2></div>
+    <div class="map"><div><b>Sunnah Hospital – Cancer Research Center</b><span style="color:var(--muted);font-size:.9rem">Address line, City, State</span><a class="btn btn-n" href="https://www.google.com/maps" target="_blank" rel="noopener">Open in Google Maps</a></div></div>
+    <p class="quiet" style="margin-top:14px">The live Google Map will be embedded here once the address is confirmed.</p>
   </div></section>
 </main>
 <script src="assets/site.js"></script>
 <script>
-const $=i=>document.getElementById(i);let need='New diagnosis';
-['New diagnosis','Second opinion','Ongoing treatment','Screening / check-up'].forEach(t=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=()=>{need=t;[...$('need').children].forEach(x=>x.setAttribute('aria-pressed',String(x===b)));};$('need').appendChild(b);});
-$('need').children[0].click();
-if(location.hash==='#second-opinion')$('need').children[1].click();
-$('next').onclick=()=>{$('a').hidden=true;$('b').hidden=false;$('st2').classList.add('on');upd();$('n').focus();};
-$('back').onclick=()=>{$('b').hidden=true;$('a').hidden=false;$('st2').classList.remove('on');};
-const v=i=>$(i).value.trim();
-function upd(){$('wa').href='https://wa.me/910000000000?text='+encodeURIComponent(`Hello Sunnah Hospital.\nRequest: ${need}\nSpeciality: ${v('d')}\nPreferred date: ${v('dt')||'-'}\nConcern: ${v('m')||'-'}\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nCity: ${v('c')||'-'}\nPayment: ${v('ins')}`);}
-$('f').addEventListener('input',upd);
-$('f').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. In this concept the request isn't sent anywhere; tap "Send on WhatsApp" to send it.`;};
+const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
+function upd(){$('wa').href='https://wa.me/910000000000?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nDepartment: ${v('d')}\nMessage: ${v('m')||'-'}`);}
+$('f').addEventListener('input',upd);upd();
+$('f').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. On the live WordPress site this enquiry will be emailed to the hospital. For now, use "Send on WhatsApp".`;};
 </script>
 </body>
 </html>

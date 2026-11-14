@@ -11,7 +11,7 @@
 </head>
 <body data-page="doctors">
 <main>
-  <div class="mist" style="border-bottom:1px solid var(--line)"><div class="wrap" style="padding-block:18px"><nav class="crumbs" aria-label="Breadcrumb" style="color:var(--muted)"><a href="index.html" style="color:var(--navy)">Home</a>/<a href="doctors.html" style="color:var(--navy)">Find a Doctor</a>/<span id="crumb">Profile</span></nav></div></div>
+  <div class="mist" style="border-bottom:1px solid var(--line)"><div class="wrap" style="padding-block:18px"><nav class="crumbs" aria-label="Breadcrumb" style="color:var(--muted)"><a href="index.html" style="color:var(--navy)">Home</a>/<a href="doctors.html" style="color:var(--navy)">Doctors &amp; Specialists</a>/<span id="crumb">Profile</span></nav></div></div>
   <section class="sec"><div class="wrap profile">
     <div><div class="ph" id="photo"></div>
       <div class="facts" id="facts"></div>
@@ -26,7 +26,7 @@
       </div>
       <div class="panel" id="p1"><div class="prose"><p id="bio"></p><p>Patients describe them as calm, clear and thorough. They explain every option in plain language so families can decide with confidence.</p></div></div>
       <div class="panel" id="p2" hidden><ul class="checks" id="exp"></ul></div>
-      <div class="panel" id="p3" hidden><div class="tl"><div><b id="deg"></b><span>Postgraduate training in oncology</span></div><div><b>Fellowship</b><span>Advanced training at a leading cancer institute</span></div><div><b>Memberships</b><span>Indian Society of Oncology · ESMO · ASCO</span></div></div></div>
+      <div class="panel" id="p3" hidden><div class="tl"><div><b id="deg"></b><span>Postgraduate training in oncology</span></div><div><b>Fellowship</b><span>Advanced training at a leading cancer institute</span></div><div><b>Memberships</b><span>Professional memberships will be listed here</span></div></div></div>
 
       <div id="book" class="box" style="margin-top:48px;padding:clamp(20px,4vw,34px)">
         <div class="steps-h"><span class="on"></span><span class="on" id="s2"></span><span id="s3"></span></div>
@@ -51,7 +51,7 @@ document.title=d.n+' – '+d.s+' | Sunnah Hospital';
 const $=i=>document.getElementById(i);
 $('crumb').textContent=d.n;$('sp').textContent=d.s;$('name').textContent=d.n;$('role').textContent=d.r+' · '+d.q;$('deg').textContent=d.q;
 $('photo').innerHTML=`<img src="${SH.U(d.img)}" alt="${d.n}" onerror="this.remove()">`;
-$('facts').innerHTML=`<div><small>Experience</small><b>${d.y}+ years</b></div><div><small>Focus</small><b>${d.f}</b></div><div><small>Languages</small><b>English, Hindi, Urdu</b></div><div><small>OPD</small><b>Mon – Sat</b></div>`;
+$('facts').innerHTML=`<div><small>Experience</small><b>${d.y}+ years</b></div><div><small>Focus</small><b>${d.f}</b></div><div><small>Languages</small><b>To be confirmed</b></div><div><small>OPD</small><b>Mon – Sat</b></div>`;
 $('bio').textContent=`${d.n} is ${d.r.toLowerCase()} in ${d.s} at Sunnah Hospital – Cancer Research Center, with more than ${d.y} years of experience. Their main focus is ${d.f.toLowerCase()}, and they are part of the hospital's multidisciplinary tumor board.`;
 $('exp').innerHTML=[d.f,'Tumor board treatment planning','Second opinions on complex cases','Evidence-based treatment protocols'].map(x=>`<li><span>${x}</span></li>`).join('');
 document.querySelectorAll('[role=tab]').forEach(t=>t.onclick=()=>{document.querySelectorAll('[role=tab]').forEach(o=>{o.setAttribute('aria-selected',String(o===t));$(o.dataset.p).hidden=o!==t;});});
