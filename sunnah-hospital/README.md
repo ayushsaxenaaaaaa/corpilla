@@ -1,14 +1,26 @@
-# Sunnah Hospital – Cancer Research Center (first draft)
+# Sunnah Hospital – Cancer Research Center (website design)
 
-Single-page homepage draft. No build step, no dependencies.
+Static design for the hospital website: ten pages plus a doctor profile page.
+No build step is needed to view it.
 
-## How to view
-- **Quickest:** open `index.html` in any browser (double-click it).
-- **Local server (recommended):** from this folder run `python3 -m http.server 8000`, then open http://localhost:8000. On your phone (same Wi-Fi), open `http://<your-computer-IP>:8000`.
-- **Online:** enable GitHub Pages (Settings → Pages → deploy from branch), or drag this folder into Netlify Drop.
+## View
+- Open `index.html` in a browser, or run `python3 -m http.server 8000` in this folder.
+- Online: enable GitHub Pages for the branch and open `/sunnah-hospital/`.
 
-## To replace before launch
-- Logo (currently an "S" placeholder) — add a PNG/SVG
-- Photos (teal blocks are placeholders)
-- Phone / WhatsApp number (`910000000000`), doctors, address, statistics
-- Connect the appointment form to email/CRM
+## Structure
+- `*.html` – the pages (Home, About, Surgical Oncology, Medical Oncology, Research,
+  Doctors, Doctor profile, Departments, Infrastructure, Patient Care, Contact)
+- `assets/site.css` – all styles
+- `assets/site.js` – shared header, footer, menu and photo loading
+- `assets/doctors.js` – doctor list (sample data)
+- `assets/img/` – photos
+- `tools/build.py` – regenerates most pages: `python3 tools/build.py .`
+  (`doctors.html` and `doctor.html` are edited by hand)
+
+## Before launch
+- Photos in `assets/img/` are demo images from public templates with unknown
+  licences. Replace them with hospital photos or licensed stock.
+- Doctors, phone/WhatsApp (`910000000000`), email, address and timings are placeholders.
+- Treatment lists, vision and mission are drafts for the hospital to confirm.
+- The enquiry form does not send anywhere yet (WhatsApp links work).
+- The client needs WordPress: this design is to be converted into a custom theme.
