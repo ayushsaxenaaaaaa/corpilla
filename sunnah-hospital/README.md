@@ -10,8 +10,8 @@ No build step is needed to view it.
 ## Structure
 - `*.html` – the pages (Home, About, Surgical Oncology, Medical Oncology, Research,
   Doctors, Doctor profile, Departments, Infrastructure, Patient Care, Contact)
-- `assets/site.css` – all styles
-- `assets/site.js` – shared header, footer, menu and photo loading
+- `assets/sunnah.css` – all styles
+- `assets/app.js` – shared header, footer, menu, slider and photo loading
 - `assets/doctors.js` – doctor list (sample data)
 - `assets/img/` – photos
 - `tools/build.py` – regenerates most pages: `python3 tools/build.py .`

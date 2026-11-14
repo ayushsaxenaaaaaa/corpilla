@@ -6,8 +6,8 @@
 <title>Contact & Appointment – Sunnah Hospital</title>
 <meta name="description" content="Contact Sunnah Hospital – Cancer Research Center: appointment enquiry form, phone, WhatsApp, address and map.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/sunnah.css">
 </head>
 <body data-page="contact">
 <main>
@@ -21,22 +21,22 @@
   </section>
   <section class="sec"><div class="wrap two-col">
     <div>
-      <div class="stack" style="margin-bottom:26px"><span class="over">Appointment Enquiry</span><h2 class="h-l">Request an appointment</h2></div>
+      <div class="fcard"><h3>Request an appointment</h3><p>Share your details and our team will call you back.</p>
       <form class="form" id="f" novalidate>
         <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" required></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91" required></label></div>
         <div class="row"><label for="e">Email (optional)<input id="e" type="email" autocomplete="email"></label><label for="d">Preferred department<select id="d"><option>Not sure</option><option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option></select></label></div>
         <label for="m">Message (optional)<textarea id="m" rows="4" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
-        <div class="acts"><button class="btn btn-n" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/910000000000">Send on WhatsApp</a></div>
+        <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/910000000000">Send on WhatsApp</a></div>
         <p class="note" id="msg" hidden></p>
-      </form>
+      </form></div>
     </div>
     <aside class="aside" style="position:static">
       <div class="cinfo">
-        <div><small>Phone</small><b>+91 00000 00000</b></div>
-        <div><small>WhatsApp</small><b>+91 00000 00000</b></div>
-        <div><small>Email</small><b>info@example.com</b></div>
-        <div><small>Address</small><span>Sunnah Hospital – Cancer Research Center<br>Address line, City, State – PIN</span></div>
-        <div><small>OPD Timings</small><span>Monday to Saturday, 9:00 am – 5:00 pm</span></div>
+        <div><i><svg><use href="#i-ph"/></svg></i><small>Phone</small><b>+91 00000 00000</b></div>
+        <div><i><svg><use href="#i-wa"/></svg></i><small>WhatsApp</small><b>+91 00000 00000</b></div>
+        <div><i><svg><use href="#i-mail"/></svg></i><small>Email</small><b>info@example.com</b></div>
+        <div><i><svg><use href="#i-pin"/></svg></i><small>Address</small><span>Sunnah Hospital – Cancer Research Center, Address line, City, State – PIN</span></div>
+        <div><i><svg><use href="#i-clock"/></svg></i><small>OPD Timings</small><span>Monday to Saturday, 9:00 am – 5:00 pm</span></div>
       </div>
     </aside>
   </div></section>
@@ -46,7 +46,7 @@
     <p class="quiet" style="margin-top:14px">The live Google Map will be embedded here once the address is confirmed.</p>
   </div></section>
 </main>
-<script src="assets/site.js"></script>
+<script src="assets/app.js"></script>
 <script>
 const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
 function upd(){$('wa').href='https://wa.me/910000000000?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nDepartment: ${v('d')}\nMessage: ${v('m')||'-'}`);}

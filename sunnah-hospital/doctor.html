@@ -6,12 +6,12 @@
 <title>Doctor Profile – Sunnah Hospital</title>
 <meta name="description" content="Doctor profile and appointment booking at Sunnah Hospital – Cancer Research Center.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/sunnah.css">
 </head>
 <body data-page="doctors">
 <main>
-  <div class="mist" style="border-bottom:1px solid var(--line)"><div class="wrap" style="padding-block:18px"><nav class="crumbs" aria-label="Breadcrumb" style="color:var(--muted)"><a href="index.html" style="color:var(--navy)">Home</a>/<a href="doctors.html" style="color:var(--navy)">Doctors &amp; Specialists</a>/<span id="crumb">Profile</span></nav></div></div>
+  <div class="crumbbar"><div class="wrap" style="padding-block:16px"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<a href="doctors.html">Doctors &amp; Specialists</a>/<span id="crumb">Profile</span></nav></div></div>
   <section class="sec"><div class="wrap profile">
     <div><div class="ph" id="photo"></div>
       <div class="facts" id="facts"></div>
@@ -28,7 +28,7 @@
       <div class="panel" id="p2" hidden><ul class="checks" id="exp"></ul></div>
       <div class="panel" id="p3" hidden><div class="tl"><div><b id="deg"></b><span>Postgraduate training in oncology</span></div><div><b>Fellowship</b><span>Advanced training at a leading cancer institute</span></div><div><b>Memberships</b><span>Professional memberships will be listed here</span></div></div></div>
 
-      <div id="book" class="box" style="margin-top:48px;padding:clamp(20px,4vw,34px)">
+      <div id="book" class="box" style="margin-top:48px;padding:clamp(20px,4vw,34px);box-shadow:var(--sh-s)">
         <div class="steps-h"><span class="on"></span><span class="on" id="s2"></span><span id="s3"></span></div>
         <h3 class="h-m">Book an appointment</h3>
         <p style="color:var(--muted);font-size:.92rem">Choose a day and time. Our coordinator will call to confirm.</p>
@@ -43,7 +43,7 @@
     </div>
   </div></section>
 </main>
-<script src="assets/site.js"></script>
+<script src="assets/app.js"></script>
 <script src="assets/doctors.js"></script>
 <script>
 const id=new URLSearchParams(location.search).get('id')||'d1',d=SHD.list.find(x=>x.id===id)||SHD.list[0];
