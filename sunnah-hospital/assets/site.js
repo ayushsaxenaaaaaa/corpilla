@@ -1,7 +1,7 @@
 /* Shared header, footer and behaviour for every page */
 (function(){
   document.documentElement.classList.add('js');
-  const U = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`;
+  const U = id => `assets/img/${id}.jpg`;
   window.SH = { U, WA: '910000000000', PHONE: '+91 00000 00000' };
   const page = document.body.dataset.page || '';
   const cur = p => page === p ? ' aria-current="page"' : '';
@@ -17,7 +17,7 @@
     <div class="intro"><h5>Cancer Care</h5><h3 class="h-m">Surgical &amp; Medical Cancer Center</h3><p>Specialised surgery, chemotherapy and supportive care, planned together for each patient.</p><a class="arrow" href="departments.html">All departments</a></div>
     <div><h5>Specialities</h5><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="research.html">Cancer Research</a></li><li><a href="departments.html">Departments</a></li></ul></div>
     <div><h5>Support</h5><ul><li><a href="patient-care.html#guidance">Treatment Guidance</a></li><li><a href="patient-care.html#counselling">Counselling</a></li><li><a href="patient-care.html#nutrition">Oncology Nutrition</a></li><li><a href="patient-care.html#rehab">Recovery &amp; Rehabilitation</a></li></ul></div>
-    <a class="feat" href="patient-care.html"><div class="ph"><img src="${U('photo-1576091160399-112ba8d25d1d')}" alt="" loading="lazy" onerror="this.remove()"></div><span>Beyond cancer treatment: how we support patients and families →</span></a>
+    <a class="feat" href="patient-care.html"><div class="ph"><img src="${U('team3')}" alt="" loading="lazy" onerror="this.remove()"></div><span>Beyond cancer treatment: how we support patients and families →</span></a>
   </div></div>`;
 
   const header = `${icons}

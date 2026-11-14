@@ -360,3 +360,107 @@ footer .base .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap
 .cinfo b{font-size:1.2rem;font-weight:500;color:var(--navy);user-select:all}
 .cinfo span{color:var(--muted)}
 .quiet{color:var(--muted);font-size:.8rem}
+
+/* ================= v3 theme: bold cancer-centre style (MD Anderson direction) ================= */
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.02em}
+.h-xl,.h-l,.h-m{font-weight:700}
+.h-l{font-size:clamp(1.8rem,4vw,2.9rem)}
+.over{letter-spacing:.06em;font-size:.82rem;font-weight:700;text-transform:uppercase;color:var(--turq-d);display:flex;align-items:center;gap:12px}
+.over::before{content:"";width:36px;height:4px;background:var(--turq);flex:none}
+.lead{font-weight:400}
+.btn{border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.84rem;padding:16px 26px}
+.btn-p{background:var(--turq);color:#00202f}
+.arrow{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.84rem;color:var(--turq-d)}
+.arrow::after{height:2px}
+.hdr{border-top:5px solid var(--turq);border-bottom:0;box-shadow:0 2px 12px rgba(0,32,47,.08)}
+.mnav>ul>li>a{font-weight:600;text-transform:uppercase;font-size:.8rem;letter-spacing:.05em}
+.mnav>ul>li>a::after{height:4px}
+.util{background:var(--navy)}
+
+/* hero with overlapping card */
+.hero2{position:relative;background:var(--navy-9)}
+.hero2>.ph{height:clamp(300px,52vw,640px);background-image:none}
+.hero2>.ph img{object-position:center 30%}
+.hero2 .wrap{position:relative}
+.hero2 .card{background:#fff;padding:clamp(24px,4vw,48px);display:grid;gap:18px;border-top:6px solid var(--turq);margin-top:-70px;position:relative;z-index:2;box-shadow:0 24px 60px rgba(0,32,47,.18)}
+@media(min-width:900px){.hero2 .card{position:absolute;left:var(--gut);bottom:56px;width:min(600px,52%);margin:0}}
+.hero2 h1{font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.1}
+.hero2 h1 em{font-style:normal;color:var(--turq-d)}
+.hero2 p{color:var(--muted);font-size:1.02rem}
+.hero2 .motto{color:var(--navy);font-size:.72rem;letter-spacing:.3em;font-weight:600}
+.hero2 .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.tiles{background:var(--navy-9)}
+@media(max-width:899px){.tiles{padding-top:28px;background:#fff}}
+.tiles .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;padding-inline:0;max-width:none}
+@media(min-width:900px){.tiles .wrap{grid-template-columns:repeat(4,1fr)}}
+.tiles a{display:grid;gap:4px;padding:26px clamp(18px,3vw,36px);text-decoration:none;color:#fff;position:relative;transition:filter .2s}
+.tiles a:hover{filter:brightness(1.12)}
+.tiles a:nth-child(1){background:var(--turq-d)}
+.tiles a:nth-child(2){background:var(--navy)}
+.tiles a:nth-child(3){background:var(--navy-2)}
+.tiles a:nth-child(4){background:#0e6f86}
+.tiles b{font-size:1.05rem;font-weight:700;line-height:1.25}
+.tiles span{font-size:.82rem;opacity:.85}
+.tiles a::after{content:"→";position:absolute;right:18px;top:22px;font-size:1.2rem;opacity:.7}
+
+/* inner page hero */
+.phero{border-bottom:6px solid var(--turq)}
+.phero::after{background:linear-gradient(90deg,rgba(0,32,47,.9),rgba(0,32,47,.55) 60%,rgba(0,32,47,.2))}
+.phero h1{font-weight:700}
+
+/* cards */
+.pcard{background:#fff;box-shadow:0 4px 22px rgba(0,32,47,.08);gap:0;transition:box-shadow .25s,transform .25s;border-bottom:4px solid transparent}
+.pcard:hover{box-shadow:0 18px 44px rgba(0,32,47,.16);transform:translateY(-4px);border-bottom-color:var(--turq)}
+.pcard .ph{aspect-ratio:16/10}
+.pcard>*:not(.ph){margin-inline:24px}
+.pcard h3{margin-top:22px;font-size:1.35rem}
+.pcard p{margin-top:8px}
+.pcard .arrow,.pcard .tags{margin-top:16px}
+.pcard>*:last-child{margin-bottom:26px}
+.pcard>.over{margin-top:22px}.pcard>.over+h3{margin-top:8px}
+.mist .pcard{box-shadow:0 4px 22px rgba(0,32,47,.06)}
+.dcard{background:#fff;box-shadow:0 4px 22px rgba(0,32,47,.08);gap:2px;padding-bottom:20px;transition:box-shadow .25s,transform .25s}
+.dcard:hover{box-shadow:0 18px 44px rgba(0,32,47,.16);transform:translateY(-4px)}
+.dcard .ph{aspect-ratio:1/1;margin-bottom:16px}
+.dcard>*:not(.ph){margin-inline:18px}
+.dcard .sp{letter-spacing:.06em}
+
+/* feature blocks with accent block */
+.feature .ph{box-shadow:18px 18px 0 var(--turq)}
+.feature.rev .ph{box-shadow:-18px 18px 0 var(--turq)}
+@media(max-width:959px){.feature .ph,.feature.rev .ph{box-shadow:10px 10px 0 var(--turq);margin-right:10px}}
+.dark .feature .ph{box-shadow:18px 18px 0 var(--turq)}
+
+/* statement */
+.statement .big{font-weight:400;font-size:clamp(1.3rem,2.6vw,1.85rem)}
+.statement .big b{font-weight:700}
+.statement .big span{font-weight:700}
+
+/* pillars as numbered cards */
+.pillars{border:0;display:grid;gap:16px}
+@media(min-width:700px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.pillars{grid-template-columns:repeat(5,1fr)}}
+.pillar{display:grid;grid-template-columns:1fr!important;gap:10px;align-content:start;background:#fff;border:0;border-top:5px solid var(--turq);padding:26px 22px;box-shadow:0 4px 22px rgba(0,32,47,.08)}
+.pillar::before{font-size:2.2rem;font-weight:700;color:var(--turq-d);line-height:1}
+.pillar h3{font-size:1.15rem}
+.pillar p{font-size:.92rem}
+
+/* promise band with photo */
+.promise{position:relative;background:var(--navy) url("img/team1.jpg") center/cover}
+.promise::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,32,47,.95),rgba(0,53,78,.82))}
+.promise .wrap{position:relative}
+.promise .line{font-weight:400}
+.promise .line b{font-weight:700}
+.promise .tri{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.9rem}
+
+.values3{gap:16px;background:none;border:0}
+.values3 div{border-top:5px solid var(--turq);box-shadow:0 4px 22px rgba(0,32,47,.08)}
+.values3 h3{font-weight:700;letter-spacing:.1em;color:var(--turq-d)}
+.tcard{border-top:4px solid var(--turq)}
+.box.navy{border-top:5px solid var(--turq)}
+.lgrid a{font-weight:600}
+.subnav a{font-weight:600;text-transform:uppercase;font-size:.78rem;letter-spacing:.05em}
+.subnav a:hover,.subnav a.on{border-bottom-width:4px}
+.prefoot h3{font-weight:700}
+.gal figcaption{font-weight:700}
+.chips button,.tabs button{font-weight:600}
