@@ -18,9 +18,10 @@ No build step is needed to view it.
   (`doctors.html` and `doctor.html` are edited by hand)
 
 ## Before launch
-- Photos in `assets/img/` are demo images from public templates with unknown
+- `assets/img/sh-*.jpg` and `pmjay.png` come from the hospital presentation. Other photos in `assets/img/` are demo images from public templates with unknown
   licences. Replace them with hospital photos or licensed stock.
-- Doctors, phone/WhatsApp (`910000000000`), email, address and timings are placeholders.
+- Contact details come from the hospital presentation. WhatsApp uses +91 99235 42674 (confirm).
+- Doctors are sample placeholders.
 - Treatment lists, vision and mission are drafts for the hospital to confirm.
 - The enquiry form does not send anywhere yet (WhatsApp links work).
 - The client needs WordPress: this design is to be converted into a custom theme.

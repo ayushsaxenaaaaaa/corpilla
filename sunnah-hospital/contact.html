@@ -12,7 +12,7 @@
 <body data-page="contact">
 <main>
   <section class="phero">
-    <div class="ph" data-img="team2" data-w="1800" data-eager="1"></div>
+    <div class="ph" data-img="sh-building" data-w="1800" data-eager="1"></div>
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a>/<span>Contact & Appointment</span></nav>
       <h1>Contact &amp; Appointment</h1>
@@ -26,30 +26,29 @@
         <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" required></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91" required></label></div>
         <div class="row"><label for="e">Email (optional)<input id="e" type="email" autocomplete="email"></label><label for="d">Preferred department<select id="d"><option>Not sure</option><option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option></select></label></div>
         <label for="m">Message (optional)<textarea id="m" rows="4" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
-        <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/910000000000">Send on WhatsApp</a></div>
+        <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/919923542674">Send on WhatsApp</a></div>
         <p class="note" id="msg" hidden></p>
       </form></div>
     </div>
     <aside class="aside" style="position:static">
       <div class="cinfo">
-        <div><i><svg><use href="#i-ph"/></svg></i><small>Phone</small><b>+91 00000 00000</b></div>
-        <div><i><svg><use href="#i-wa"/></svg></i><small>WhatsApp</small><b>+91 00000 00000</b></div>
-        <div><i><svg><use href="#i-mail"/></svg></i><small>Email</small><b>info@example.com</b></div>
-        <div><i><svg><use href="#i-pin"/></svg></i><small>Address</small><span>Sunnah Hospital – Cancer Research Center, Address line, City, State – PIN</span></div>
-        <div><i><svg><use href="#i-clock"/></svg></i><small>OPD Timings</small><span>Monday to Saturday, 9:00 am – 5:00 pm</span></div>
+        <div><i><svg><use href="#i-ph"/></svg></i><small>Phone</small><b>+91 99235 42674<br>+91 98507 60773</b></div>
+        <div><i><svg><use href="#i-wa"/></svg></i><small>WhatsApp</small><b>+91 99235 42674</b></div>
+        <div><i><svg><use href="#i-mail"/></svg></i><small>Email</small><b>drhakimakola@gmail.com</b></div>
+        <div><i><svg><use href="#i-pin"/></svg></i><small>Address</small><span>Sunnah Hospital – Cancer Research Center, Ganga Nagar, Washim Bypass, Akola, Maharashtra 444002</span></div>
+        <div><i><svg><use href="#i-clock"/></svg></i><small>Emergency</small><span>24x7 Casualty &amp; Emergency Care</span></div>
       </div>
     </aside>
   </div></section>
   <section class="sec mist" style="padding-top:clamp(48px,7vw,80px)"><div class="wrap">
     <div class="stack" style="margin-bottom:26px"><span class="over">Location</span><h2 class="h-l">Find us</h2></div>
-    <div class="map"><div><b>Sunnah Hospital – Cancer Research Center</b><span style="color:var(--muted);font-size:.9rem">Address line, City, State</span><a class="btn btn-n" href="https://www.google.com/maps" target="_blank" rel="noopener">Open in Google Maps</a></div></div>
-    <p class="quiet" style="margin-top:14px">The live Google Map will be embedded here once the address is confirmed.</p>
+    <div class="map" style="background-image:linear-gradient(rgba(0,37,54,.35),rgba(0,37,54,.35)),url('assets/img/sh-building.jpg');background-size:cover;background-position:center"><div><b>Sunnah Hospital – Cancer Research Center</b><span style="color:var(--muted);font-size:.9rem">Ganga Nagar, Washim Bypass, Akola 444002</span><a class="btn btn-n" href="https://www.google.com/maps/search/?api=1&query=Sunnah+Hospital+Ganga+Nagar+Washim+Bypass+Akola" target="_blank" rel="noopener">Get Directions</a></div></div>
   </div></section>
 </main>
 <script src="assets/app.js"></script>
 <script>
 const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
-function upd(){$('wa').href='https://wa.me/910000000000?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nDepartment: ${v('d')}\nMessage: ${v('m')||'-'}`);}
+function upd(){$('wa').href='https://wa.me/919923542674?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nDepartment: ${v('d')}\nMessage: ${v('m')||'-'}`);}
 $('f').addEventListener('input',upd);upd();
 $('f').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. On the live WordPress site this enquiry will be emailed to the hospital. For now, use "Send on WhatsApp".`;};
 </script>

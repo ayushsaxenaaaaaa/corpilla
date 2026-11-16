@@ -2,7 +2,7 @@
 (function(){
   document.documentElement.classList.add('js');
   const U = id => `assets/img/${id}.jpg`;
-  window.SH = { U, WA: '910000000000', PHONE: '+91 00000 00000' };
+  window.SH = { U, WA: '919923542674', PHONE: '+91 99235 42674' };
   const page = document.body.dataset.page || '';
   const cur = p => page === p ? ' aria-current="page"' : '';
   const S = (id, d) => `<symbol id="i-${id}" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</g></symbol>`;
@@ -34,14 +34,14 @@
   const mega = `
   <div class="mega">
     <div class="intro"><h5>Cancer Care</h5><h3 class="h-m">Surgical &amp; Medical Cancer Center</h3><p>Specialised surgery, chemotherapy and supportive care, planned together for each patient.</p><a class="arrow" href="departments.html">All departments</a></div>
-    <div><h5>Specialities</h5><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="research.html">Cancer Research</a></li><li><a href="departments.html#types">Cancer Types</a></li></ul></div>
+    <div><h5>Specialities</h5><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="research.html">Cancer Research</a></li><li><a href="departments.html#diagnostics">Diagnostics</a></li></ul></div>
     <div><h5>Patient Support</h5><ul><li><a href="patient-care.html#guidance">Right Guidance</a></li><li><a href="patient-care.html#counselling">Counselling</a></li><li><a href="patient-care.html#nutrition">Oncology Nutrition</a></li><li><a href="patient-care.html#rehab">Recovery &amp; Rehabilitation</a></li></ul></div>
     <a class="feat" href="patient-care.html"><div class="ph"><img src="${U('team3')}" alt="" loading="lazy" onerror="this.remove()"></div><span>Beyond cancer treatment: how we support patients and families</span></a>
   </div>`;
 
   const header = `${icons}
   <div class="topbar"><div class="wrap">
-    <div class="tb-l"><a href="tel:+910000000000"><svg><use href="#i-ph"/></svg><b>${SH.PHONE}</b></a><span><svg><use href="#i-mail"/></svg>info@example.com</span><span><svg><use href="#i-clock"/></svg>Mon – Sat, 9:00 am – 5:00 pm</span></div>
+    <div class="tb-l"><a href="tel:+919923542674"><svg><use href="#i-ph"/></svg><b>${SH.PHONE}</b></a><span><svg><use href="#i-mail"/></svg>drhakimakola@gmail.com</span><span><svg><use href="#i-pin"/></svg>Washim Bypass, Akola</span><span><svg><use href="#i-clock"/></svg>24x7 Casualty &amp; Emergency</span></div>
     <div class="tb-r">HOPE <i></i> HEALING <i></i> HUMANITY</div>
   </div></div>
   <header class="hdr" id="hdr"><div class="wrap" style="position:relative">
@@ -82,15 +82,15 @@
   </div></div></section>
   <footer>
     <div class="wrap main">
-      <div><img src="assets/logo-white.png" alt="Sunnah Hospital – Cancer Research Center"><p class="fm">HOPE • HEALING • HUMANITY</p><p style="margin-top:16px;max-width:36ch">A Surgical &amp; Medical Cancer Center. We support the patient, strengthen the family and guide them through every step of the journey.</p></div>
-      <div><h5>Cancer Care</h5><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="research.html">Cancer Research</a></li><li><a href="departments.html">Departments</a></li><li><a href="patient-care.html">Patient Care &amp; Support</a></li></ul></div>
+      <div><img src="assets/logo-white.png" alt="Sunnah Hospital – Cancer Research Center"><p class="fm">HOPE • HEALING • HUMANITY</p><p style="margin-top:16px;max-width:36ch">A dedicated unit of Sunnah Hospital, Akola, providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p></div>
+      <div><h5>Cancer Care</h5><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="research.html">Cancer Research</a></li><li><a href="departments.html">Departments</a></li><li><a href="departments.html#diagnostics">Diagnostics</a></li></ul></div>
       <div><h5>Hospital</h5><ul><li><a href="about.html">About Us</a></li><li><a href="doctors.html">Doctors &amp; Specialists</a></li><li><a href="infrastructure.html">Infrastructure</a></li><li><a href="patient-care.html#faqs">FAQs</a></li><li><a href="contact.html">Contact &amp; Appointment</a></li></ul></div>
-      <div class="fc"><h5>Get in Touch</h5><ul><li><svg><use href="#i-ph"/></svg><span>${SH.PHONE}</span></li><li><svg><use href="#i-mail"/></svg><span>info@example.com</span></li><li><svg><use href="#i-pin"/></svg><span>Address line, City, State – PIN</span></li><li><svg><use href="#i-clock"/></svg><span>Mon – Sat, 9:00 am – 5:00 pm</span></li></ul></div>
+      <div class="fc"><h5>Get in Touch</h5><ul><li><svg><use href="#i-ph"/></svg><span>+91 99235 42674<br>+91 98507 60773</span></li><li><svg><use href="#i-mail"/></svg><span>drhakimakola@gmail.com</span></li><li><svg><use href="#i-pin"/></svg><span>Ganga Nagar, Washim Bypass, Akola, Maharashtra 444002</span></li><li><svg><use href="#i-clock"/></svg><span>24x7 Casualty &amp; Emergency</span></li></ul></div>
     </div>
-    <div class="base"><div class="wrap"><span>© 2026 Sunnah Hospital – Cancer Research Center. All rights reserved.</span><span>Privacy Policy · Terms of Use</span></div></div>
+    <div class="base"><div class="wrap"><span>© 2026 Sunnah Hospital – Cancer Research Center, Akola. All rights reserved. · sunnahhospital.com</span><span>Privacy Policy · Terms of Use</span></div></div>
   </footer>
   <nav class="mbar" aria-label="Quick actions">
-    <a class="c" href="tel:+910000000000" aria-label="Call"><svg><use href="#i-ph"/></svg></a>
+    <a class="c" href="tel:+919923542674" aria-label="Call"><svg><use href="#i-ph"/></svg></a>
     <a class="bk" href="contact.html"><svg><use href="#i-cal"/></svg>Book Appointment</a>
     <a class="wa" href="https://wa.me/${SH.WA}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
   </nav>
