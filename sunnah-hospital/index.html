@@ -28,7 +28,10 @@ p{margin:0}
 .arw{display:inline-flex;align-items:center;gap:10px;color:var(--teal);text-decoration:none;font-size:1rem}
 .arw::after{content:"→";font-size:1.15rem}
 .arw:hover{text-decoration:underline}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+.sbox:focus-within{outline:3px solid var(--turq);outline-offset:2px}
+.sbox input:focus{outline:none}
+.kbar input:focus-visible{outline:3px solid var(--turq);outline-offset:1px}
 svg.i{width:1em;height:1em}
 
 /* top black strip */
@@ -257,7 +260,7 @@ footer ul a:hover{color:var(--teal);text-decoration:underline}
 </svg>
 
 <div class="topk"><div class="w">
-  <a class="t1" href="https://wa.me/919923542674"><b>●</b> WhatsApp</a>
+  <a class="t1" href="https://wa.me/919923542674"><svg class="i" style="width:15px;height:15px;color:#25d366"><use href="#i-wa"/></svg>WhatsApp</a>
   <a class="t2" href="contact.html">Request an Appointment</a>
   <a class="t3" href="tel:+919923542674">24x7 Emergency</a>
 </div></div>
@@ -280,15 +283,15 @@ footer ul a:hover{color:var(--teal);text-decoration:underline}
 
 <main>
 <section class="hero">
-  <img src="assets/img/team3.jpg" alt="Doctors at Sunnah Hospital discussing a patient's care" fetchpriority="high">
+  <img src="assets/img/team3.jpg" alt="Doctors at Sunnah Hospital discussing a patient’s care" fetchpriority="high">
   <div class="w"><div class="hq">
-    <h1>“We don't just treat cancer.”</h1>
+    <h1>“We don’t just treat cancer.”</h1>
     <p class="who">Our Promise<span>Sunnah Cancer Research Center</span></p>
     <a href="patient-care.html">How we support the patient and strengthen the family</a>
   </div></div>
 </section>
 
-<div class="bblue"><b>Let's get started.</b> <a href="contact.html">Request an appointment online.</a></div>
+<div class="bblue"><b>Let’s get started.</b> <a href="contact.html">Request an appointment online.</a></div>
 
 <section class="bred"><div class="w">
   <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-drop"/></svg>

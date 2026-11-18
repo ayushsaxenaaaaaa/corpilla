@@ -25,3 +25,11 @@ No build step is needed to view it.
 - Treatment lists, vision and mission are drafts for the hospital to confirm.
 - The enquiry form does not send anywhere yet (WhatsApp links work).
 - The client needs WordPress: this design is to be converted into a custom theme.
+
+## WordPress theme (home page only)
+- `wordpress/sunnah-crc.zip` – upload in WordPress: Appearance → Themes → Add New → Upload Theme.
+- `wordpress/sunnah-crc/` – the same theme unzipped.
+- Rebuild from `index.html` with `python3 tools/make_theme.py . <output-folder>`.
+- Version 1 contains the home page only. Other menu links point to WordPress pages with these
+  addresses, which still need to be created: /about-us/, /cancer-care/, /doctors/, /patient-care/,
+  /infrastructure/, /research/, /contact/, /surgical-oncology/, /medical-oncology/.
