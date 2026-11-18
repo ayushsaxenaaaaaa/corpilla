@@ -6,437 +6,422 @@
 <title>Sunnah Hospital – Cancer Research Center, Akola</title>
 <meta name="description" content="Sunnah Hospital – Cancer Research Center, Akola: comprehensive, compassionate and affordable cancer care for Vidarbha. Surgical & medical oncology, chemotherapy day care, diagnostics, ICU, HDU and PM-JAY cashless treatment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
 <style>
-/* Home page in the Cleveland Clinic layout style: flat, white, Roboto, solid brand-blue buttons,
-   short accent bar under headings, full-width photo hero, services grid with expanders,
-   alternating photo/text rows, grey help band, solid blue footer. Brand: navy #00354e, turquoise #16becf. */
-:root{--blue:#007a8a;--blue-h:#00626f;--navy:#00354e;--turq:#16becf;--text:#363636;--muted:#5f6b70;--line:#e3e8ea;--grey:#f4f5f5;--font:"Roboto",system-ui,-apple-system,"Segoe UI",sans-serif}
+/* Home page in the MD Anderson layout style: serif headlines (Crimson Pro ≈ Minion), condensed caps UI
+   (Barlow Condensed ≈ Univers Cn), solid colour bands and tiles, flat and square.
+   Their red → Sunnah navy, their blue → turquoise, their purple → deep teal. */
+:root{--navy:#00354e;--navy2:#0b4b6b;--turq:#16becf;--teal:#0a7f8c;--deep:#0d5f6b;--ink:#111;--text:#333;--muted:#5f6a6e;--line:#d9dee0;--grey:#f1f2f3;--black:#0e1416;
+  --serif:"Crimson Pro",Georgia,"Times New Roman",serif;--sans:"Barlow",Arial,sans-serif;--cond:"Barlow Condensed","Arial Narrow",Arial,sans-serif}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:#fff;color:var(--text);font:400 16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+body{margin:0;background:#fff;color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
-a{color:var(--blue)}
-h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--serif);font-weight:400;line-height:1.15;text-wrap:balance}
 p{margin:0}
-.w{max-width:1440px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-@media(min-width:1000px){.w{padding-left:max(88px,env(safe-area-inset-left,0px));padding-right:max(88px,env(safe-area-inset-right,0px))}}
-.bar-accent{display:block;width:40px;height:4px;background:var(--turq);margin:14px 0 18px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;padding:11px 24px;border-radius:3px;border:2px solid var(--blue);cursor:pointer;font-family:inherit}
-.btn:hover{background:var(--blue-h);border-color:var(--blue-h)}
-.btn.out{background:#fff;color:var(--blue)}
-.btn.out:hover{background:#eaf6f7}
-.btn svg{width:18px;height:18px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+.w{max-width:1360px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+@media(min-width:1000px){.w{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.cap{font-family:var(--cond);text-transform:uppercase;letter-spacing:.02em;font-weight:600}
+.olbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid currentColor;padding:12px 22px;text-decoration:none;font-size:1rem;font-family:var(--sans)}
+.olbtn:hover{background:rgba(255,255,255,.12)}
+.arw{display:inline-flex;align-items:center;gap:10px;color:var(--teal);text-decoration:none;font-size:1rem}
+.arw::after{content:"→";font-size:1.15rem}
+.arw:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+svg.i{width:1em;height:1em}
 
-/* utility + header */
-.util{background:var(--grey);font-size:.78rem;color:#444}
-.util .w{display:flex;justify-content:space-between;gap:16px;padding-block:7px}
-.util b{font-weight:700}
-.util a{color:#444;text-decoration:none}
-.util nav{display:none;gap:0}
-.util nav a{padding:0 12px;border-left:1px solid #ccc}
-.util nav a:first-child{border-left:0;color:var(--blue)}
-.util nav a.wa{color:#1f8f4c;font-weight:500}
-@media(min-width:900px){.util nav{display:flex}}
-header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:30}
-header .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:96px}
-header .logo img{height:58px;width:auto}
-@media(max-width:600px){header .w{height:76px}header .logo img{height:46px}}
-.mnav{display:none;align-items:center;gap:30px;font-size:.95rem}
-.mnav a{color:var(--blue);text-decoration:none}
-.mnav a:hover{text-decoration:underline}
-.hr{display:flex;align-items:center;gap:20px}
-.hr .btn{padding:14px 26px;font-size:1rem}
-.menu{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);background:#fff;color:var(--blue);cursor:pointer;border-radius:3px}
-.menu svg{width:24px;height:24px}
-@media(min-width:1100px){.mnav{display:flex}.menu{display:none}}
-@media(max-width:600px){.hr .btn{display:none}}
-.drawer{border-top:1px solid var(--line);background:#fff}
-.drawer .w{display:grid;padding-block:6px 18px}
-.drawer a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500;color:var(--blue)}
+/* top black strip */
+.topk{background:#000;color:#fff;font-size:.78rem}
+.topk .w{display:flex;justify-content:flex-end;padding:0}
+.topk a{display:flex;align-items:center;gap:6px;padding:9px 16px;text-decoration:none;font-family:var(--cond);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.topk .t1{color:#fff}
+.topk .t1 b{color:#25d366;font-weight:600}
+.topk .t2{background:var(--turq);color:#00303c}
+.topk .t3{background:var(--deep)}
+@media(max-width:600px){.topk .t1{display:none}.topk a{flex:1;justify-content:center;padding:10px 8px}}
+
+/* header */
+.hdr{background:#fff}
+.hdr .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:96px}
+.hdr .logo img{height:58px;width:auto}
+.util{display:none;align-items:center;gap:0;font-family:var(--cond);font-weight:600;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em}
+.util a{text-decoration:none;color:#222;padding:0 11px;border-left:1px solid #999;line-height:1}
+.util a:first-child{border-left:0}
+.util a:hover{color:var(--teal)}
+.srch{display:flex;align-items:center;gap:8px;border:1px solid #333;padding:7px 12px;margin-left:12px;font-family:var(--sans);text-transform:none;font-weight:400;color:#333;font-size:.9rem}
+.srch svg{width:15px;height:15px}
+.burger{display:grid;place-items:center;width:46px;height:46px;border:1px solid #333;background:#fff;cursor:pointer}
+.burger svg{width:24px;height:24px}
+@media(min-width:1100px){.util{display:flex}.burger{display:none}}
+@media(max-width:600px){.hdr .w{height:78px}.hdr .logo img{height:46px}}
+
+/* coloured menu bar */
+.nbar{background:var(--navy)}
+.nbar ul{list-style:none;margin:0;padding:0;display:none}
+.nbar li{flex:1;border-left:1px solid rgba(255,255,255,.3)}
+.nbar li:first-child{border-left:0}
+.nbar a{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#fff;text-decoration:none;padding:15px 14px;font-family:var(--cond);font-weight:600;font-size:.98rem;text-transform:uppercase;letter-spacing:.02em}
+.nbar a::after{content:"";border:5px solid transparent;border-top-color:#fff;border-bottom:0}
+.nbar a:hover{background:var(--navy2)}
+@media(min-width:1100px){.nbar ul{display:flex}}
+.drawer{background:var(--navy)}
+.drawer a{display:block;color:#fff;text-decoration:none;padding:15px max(20px,env(safe-area-inset-left,0px));border-top:1px solid rgba(255,255,255,.18);font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
 
 /* hero */
-.hero{position:relative;min-height:clamp(440px,64vh,620px);display:flex;align-items:flex-end;background:#444;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62) 100%)}
-.hero .w{position:relative;z-index:1;width:100%;padding-block:0 56px}
-.hero h1{color:#fff;font-size:clamp(2rem,4.2vw,3rem);font-weight:700;max-width:16ch}
-.hero .links{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:22px}
-.hero .links a{color:#fff;font-weight:500;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:2px}
-.hero .links a:hover{border-bottom-width:2px}
-.down{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:34px;z-index:1;width:42px;height:42px;border-radius:50%;background:var(--turq);display:grid;place-items:center;color:#00303f}
-@media(min-width:1000px){.down{right:88px}}
-.down svg{width:20px;height:20px}
+.hero{position:relative;min-height:clamp(340px,40vw,520px);display:flex;align-items:center;overflow:hidden;background:#2a2a2a}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:20% 30%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 25%,rgba(0,0,0,.55) 60%,rgba(0,0,0,.6) 100%)}
+@media(max-width:800px){.hero::after{background:rgba(0,0,0,.55)}}
+.hero .w{position:relative;z-index:1;width:100%;display:flex;justify-content:flex-end;padding-block:48px}
+.hq{max-width:620px;text-align:right;color:#fff}
+.hq h1{font-size:clamp(2.4rem,5vw,4.5rem);color:#fff}
+.hq .who{margin:18px 0 0 auto;font-family:var(--sans);font-weight:600;font-size:.92rem;line-height:1.35;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.8);width:max-content;max-width:100%}
+.hq .who span{display:block;font-weight:400}
+.hq a{display:inline-block;margin-top:14px;font-family:var(--serif);font-size:1.3rem;color:#fff;text-decoration:none}
+.hq a::after{content:"  →"}
+.hq a:hover{text-decoration:underline}
 
-/* featured services */
-.feat{padding-block:clamp(56px,7vw,90px)}
-.eyebrow{font-size:.82rem;font-weight:500;color:#222}
-.sgrid{display:grid;gap:40px 48px;margin-top:40px}
-@media(min-width:700px){.sgrid{grid-template-columns:1fr 1fr}}
-@media(min-width:1050px){.sgrid{grid-template-columns:repeat(3,1fr)}}
-.svc .ic{width:52px;height:52px;color:var(--blue);margin-bottom:16px}
-.svc h3{font-size:clamp(1.5rem,2.2vw,1.95rem);color:var(--blue);font-weight:700}
-.svc p{color:var(--muted);margin-top:8px;font-size:.95rem}
-.svc button{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:none;border:0;padding:0;color:var(--blue);font:500 .92rem var(--font);cursor:pointer}
-.svc button svg{width:14px;height:14px;transition:transform .2s}
-.svc button[aria-expanded="true"] svg{transform:rotate(180deg)}
-.svc ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;gap:8px}
-.svc ul a{text-decoration:none;font-size:.95rem}
-.svc ul a:hover{text-decoration:underline}
-.feat .all{margin-top:48px}
+/* bands */
+.bblue{background:var(--turq);color:#00303c;text-align:center;padding:18px 20px;font-size:1.08rem}
+.bblue b{font-weight:600}
+.bblue a{color:#00303c}
+.bred{background:var(--navy);color:#fff}
+.bred .w{display:grid;gap:22px;align-items:center;padding-block:36px}
+@media(min-width:900px){.bred .w{grid-template-columns:auto 1fr auto;gap:30px}}
+.bred svg{width:46px;height:46px}
+.bred b{display:block;font-size:1.15rem;font-weight:600;margin-bottom:4px}
+.bred p{font-size:1.1rem;color:#dbe9ef;max-width:60ch}
+.bred .olbtn{color:#fff;min-width:250px}
 
-/* alternating photo / text rows */
-.row{display:grid;align-items:center}
-@media(min-width:900px){.row{grid-template-columns:1.15fr 1fr;min-height:520px}.row.rev .pic{order:2}}
-.row .pic{position:relative;min-height:300px;height:100%;background:#dfe5e7;overflow:hidden}
-.row .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.row .txt{padding:clamp(40px,6vw,80px) max(20px,env(safe-area-inset-right,0px)) clamp(40px,6vw,80px) max(20px,env(safe-area-inset-left,0px))}
-@media(min-width:900px){.row .txt{padding-inline:64px 88px}.row.rev .txt{padding-inline:88px 64px}}
-.row h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:700;color:#333;max-width:18ch}
-.row p{color:var(--muted);max-width:44ch;line-height:1.75}
-.row .btn{margin-top:26px}
-.row .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.row .acts .btn{margin-top:0}
+/* search + plan */
+.two{display:grid;gap:0;padding-block:clamp(48px,6vw,72px)}
+@media(min-width:900px){.two{grid-template-columns:1fr 1fr}.two>div:first-child{padding-right:56px;border-right:1px solid var(--line)}.two>div:last-child{padding-left:56px}}
+.sblock{text-align:center;padding-bottom:48px}
+.sblock:last-child{padding-bottom:0}
+.circ{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;color:#fff}
+.circ svg{width:36px;height:36px}
+.c1{background:var(--navy)}.c2{background:var(--turq);color:#00303c}.c3{background:var(--teal)}.c4{background:var(--deep)}
+.sblock h2,.plan h2{font-size:clamp(1.7rem,2.6vw,2.2rem);margin-bottom:22px}
+.sbox{display:flex;align-items:center;gap:10px;background:#d6d8d9;padding:0 16px;text-align:left}
+.sbox svg{width:16px;height:16px;flex:none}
+.sbox input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:.98rem;padding:15px 0;color:#222}
+.sblock .arw{margin-top:12px;display:flex}
+.sres{text-align:left;margin-top:6px;border:1px solid var(--line);border-top:0}
+.sres a{display:block;padding:10px 16px;text-decoration:none;border-top:1px solid var(--line);font-size:.95rem}
+.sres a:hover{background:var(--grey)}
+.plan{text-align:center}
+@media(max-width:899px){.plan{padding-top:44px;margin-top:44px;border-top:1px solid var(--line)}}
+.plan ul{list-style:none;margin:0;padding:0;text-align:left}
+.plan li a{display:grid;grid-template-columns:1fr auto;gap:4px 20px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.plan li b{font-family:var(--cond);font-weight:600;text-transform:uppercase;font-size:.95rem;letter-spacing:.02em}
+.plan li span{grid-column:1;color:var(--muted);font-size:.88rem}
+.plan li i{grid-row:1/3;grid-column:2;width:22px;height:22px;border:1.5px solid var(--teal);border-radius:50%;display:grid;place-items:center;color:var(--teal);font-style:normal;font-size:.75rem}
+.plan li a:hover b{color:var(--teal)}
+.plan .arw{margin-top:22px;display:flex}
 
-/* help band */
-.help{background:var(--grey);padding-block:36px}
-.cards{display:grid;gap:20px}
-@media(min-width:800px){.cards{grid-template-columns:1fr 1fr}}
-.card{background:#fff;padding:28px 30px 34px}
-.card .ic{width:44px;height:44px;color:var(--blue);margin-bottom:12px}
-.card h2{color:var(--blue);font-size:clamp(1.6rem,2.4vw,2rem);font-weight:700;margin-bottom:14px}
-.card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.card a{font-size:.95rem;text-decoration:none;border-bottom:1px solid currentColor}
-.card a:hover{border-bottom-width:2px}
-.pm{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
-.pm img{width:48px;height:48px;border-radius:50%}
-.pm b{color:#333;display:block}
+/* why choose */
+.why{background:var(--grey);padding-block:clamp(40px,5vw,64px)}
+.why .w{display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.why .w{grid-template-columns:1fr 1fr;gap:56px}}
+.dbox{background:#3d3a3a;color:#fff;text-align:center;padding:0 24px 44px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.ribbon{background:var(--turq);color:#00303c;width:118px;padding:20px 0 34px;margin-bottom:28px;clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%)}
+.ribbon b{display:block;font-family:var(--serif);font-size:3.2rem;line-height:1;font-weight:500}
+.ribbon span{font-size:.85rem}
+.dbox h3{font-size:1.9rem}
+.dbox p{color:#d7d7d7;margin-top:6px;font-size:.95rem}
+.why h2{font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:16px}
+.why p.lead{font-family:var(--serif);font-size:1.2rem;line-height:1.55;color:#222}
+.why .lnk{display:inline-block;margin-top:16px;color:var(--teal)}
 
-/* why */
-.why{padding-block:clamp(56px,7vw,90px) 20px}
-.why .big{font-size:clamp(1.3rem,2.4vw,1.85rem);color:#666;max-width:52ch;line-height:1.45;margin-top:10px}
-.why .facts{display:grid;gap:10px 40px;margin-top:30px;padding:0;list-style:none}
-@media(min-width:800px){.why .facts{grid-template-columns:repeat(3,1fr)}}
-.why .facts li{padding:16px 0;border-top:1px solid var(--line)}
-.why .facts b{display:block;color:#333}
-.why .facts span{color:var(--muted);font-size:.93rem}
+/* full-bleed statement */
+.stmt{position:relative;min-height:clamp(320px,34vw,460px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#222}
+.stmt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stmt::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.stmt .in{position:relative;z-index:1;color:#fff;padding:40px 20px;max-width:1100px}
+.stmt h2{font-size:clamp(2rem,4.4vw,3.6rem);color:#fff}
+.stmt hr{width:66px;border:0;border-top:1px solid rgba(255,255,255,.7);margin:26px auto 18px}
+.stmt a{color:#fff;font-family:var(--serif);font-size:1.25rem;text-decoration:none}
+.stmt a:hover{text-decoration:underline}
 
-/* facility strip */
-.fac{padding-block:clamp(40px,6vw,70px) clamp(56px,7vw,90px)}
-.fstrip{display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:30px}
-@media(min-width:1000px){.fstrip{grid-template-columns:repeat(6,1fr)}}
-.fstrip figure{margin:0}
-.fstrip .im{aspect-ratio:1/1;overflow:hidden;background:#dfe5e7}
-.fstrip img{width:100%;height:100%;object-fit:cover}
-.fstrip figcaption{margin-top:8px;font-weight:500;font-size:.92rem;color:#333}
+/* highlights */
+.hl{padding-block:clamp(48px,6vw,72px)}
+.hl h2{text-align:center;font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:36px}
+.cards{display:grid;gap:26px;grid-template-columns:1fr 1fr}
+@media(min-width:1000px){.cards{grid-template-columns:repeat(4,1fr)}}
+.cards a{text-decoration:none}
+.cards .im{aspect-ratio:16/9;overflow:hidden;background:#ddd}
+.cards img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cards a:hover img{transform:scale(1.04)}
+.cards h3{font-size:1.4rem;margin:18px 0 8px;font-weight:500}
+.cards p{font-family:var(--serif);font-size:1.02rem;color:#333;line-height:1.4}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+
+/* coloured tiles */
+.tiles{background:var(--grey);padding-block:clamp(40px,5vw,56px)}
+.tg{display:grid;gap:14px}
+@media(min-width:800px){.tg{grid-template-columns:1fr 1fr}}
+.tile{color:#fff;text-align:center;padding:clamp(34px,4vw,50px) 30px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.tile svg{width:40px;height:40px}
+.tile h3{font-size:clamp(1.6rem,2.4vw,2rem)}
+.tile p{font-family:var(--serif);font-size:1.12rem;max-width:40ch}
+.tile .olbtn{margin-top:14px;font-size:.95rem;padding:10px 20px}
+.t-navy{background:var(--navy)}.t-teal{background:var(--deep)}
+
+/* three circles */
+.three{display:grid;gap:30px;padding-block:clamp(48px,6vw,70px);text-align:center}
+@media(min-width:800px){.three{grid-template-columns:repeat(3,1fr)}}
+.three a{text-decoration:none;display:grid;justify-items:center;gap:14px}
+.three .circ{margin:0;width:68px;height:68px}
+.three h3{font-size:1.75rem}
+.three a:hover h3{text-decoration:underline}
+
+/* dark band */
+.dark{position:relative;overflow:hidden;background:#000 linear-gradient(90deg,#000 0%,#062a37 60%,#0b4558 100%);color:#fff}
+.dark .w{position:relative;z-index:1;padding-block:clamp(48px,6vw,80px)}
+.dark .txt{max-width:560px}
+.dark h2{font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:14px}
+.dark p{font-family:var(--serif);font-size:1.15rem;color:#e3e3e3}
+.dark a{display:inline-block;margin-top:24px;font-weight:600;text-decoration:none;color:#fff}
+.dark a:hover{text-decoration:underline}
+.dark .emb{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:min(520px,48vw);opacity:.9}
+@media(max-width:800px){.dark .emb{opacity:.15;right:-80px}}
+
+/* help tiles */
+.help{background:var(--grey);padding-block:clamp(48px,6vw,72px)}
+.help h2{text-align:center;font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:34px}
+.hg{display:grid;gap:14px}
+@media(min-width:900px){.hg{grid-template-columns:repeat(3,1fr)}}
+.hg .tile{padding:44px 26px}
+.t-black{background:#000}.t-turq{background:var(--turq);color:#00303c}
+.t-turq .olbtn{color:#00303c}
+
+/* black call bar */
+.kbar{background:#000;color:#fff}
+.kbar .w{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding-block:16px}
+.kbar .ic{width:46px;height:46px;border-radius:50%;background:var(--teal);display:grid;place-items:center;flex:none}
+.kbar .ic svg{width:22px;height:22px}
+.kbar .lbl{font-size:.95rem;flex:0 1 220px;line-height:1.3}
+.kbar form{display:flex;flex-wrap:wrap;gap:12px;flex:1}
+.kbar input{flex:1 1 200px;min-width:0;padding:9px 12px;border:0;font:inherit;font-size:.92rem}
+.kbar button{background:var(--turq);color:#00303c;border:0;padding:9px 18px;font:600 .95rem var(--sans);cursor:pointer}
+.kbar .ok{flex-basis:100%;color:#9fe6ee;font-size:.9rem}
 
 /* footer */
-footer{background:var(--navy);color:#fff}
-.ftop{display:grid;gap:40px;padding-block:56px 40px}
-@media(min-width:1000px){.ftop{grid-template-columns:1.3fr 1fr 1fr}}
-.fblock{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.35)}
-.fblock:last-child{border:0;margin:0}
-.fblock h3{font-size:1.3rem;font-weight:500;margin-bottom:6px}
-.fblock p,.fblock a{font-size:.92rem;color:#fff}
-footer h4{margin:0 0 14px;font-size:1.05rem;font-weight:500}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.9rem}
-footer ul a{color:#fff;text-decoration:none}
-footer ul a:hover{text-decoration:underline}
-.fbase{background:#00263a;font-size:.8rem;color:#cfe0e7}
-.fbase .w{padding-block:22px calc(96px + env(safe-area-inset-bottom,0px));display:grid;gap:8px}
-@media(min-width:900px){.fbase .w{padding-bottom:22px}}
-.fbase a{color:#fff}
+footer .fm{display:grid;gap:34px;padding-block:44px}
+@media(min-width:1000px){footer .fm{grid-template-columns:1.1fr 1fr 1fr 1fr 1.3fr}}
+footer img{height:52px;width:auto}
+footer h4{margin:0 0 16px;font-family:var(--cond);font-weight:600;text-transform:uppercase;font-size:.95rem;letter-spacing:.02em}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:.92rem}
+footer ul a{text-decoration:none}
+footer ul a:hover{color:var(--teal);text-decoration:underline}
+.git{display:grid;gap:16px}
+.git a{display:flex;gap:12px;align-items:center;text-decoration:none;font-size:.9rem}
+.git i{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;flex:none}
+.git i svg{width:20px;height:20px}
+.git b{display:block;font-size:1.15rem}
+.legal{background:var(--grey);font-size:.78rem}
+.legal .w{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;padding-block:20px}
+.legal a{text-decoration:none;padding:0 14px;border-left:1px solid #999}
+.legal a:first-child{border-left:0}
+.mission{background:#000;color:#fff}
+.mission .w{display:grid;gap:18px;padding-block:32px calc(100px + env(safe-area-inset-bottom,0px))}
+@media(min-width:900px){.mission .w{grid-template-columns:300px 1fr;align-items:center;padding-bottom:32px}}
+.mission h3{font-size:1.6rem}
+.mission p{font-size:.88rem;line-height:1.5}
+.mission small{display:block;color:#aaa;font-size:.74rem;margin-top:10px}
 
-/* mobile action bar */
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line);background:#fff}
-.mbar a{display:grid;justify-items:center;gap:2px;padding:9px 6px calc(9px + env(safe-area-inset-bottom,0px));text-decoration:none;font-size:.75rem;font-weight:500;color:var(--blue)}
-.mbar a.bk{background:var(--blue);color:#fff}
-.mbar a.wa{color:#1f8f4c}
-.mbar svg{width:22px;height:22px}
+/* mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1fr}
+.mbar a{text-align:center;padding:14px 6px calc(14px + env(safe-area-inset-bottom,0px));text-decoration:none;color:#fff;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.03em;background:#000}
+.mbar a:nth-child(2){background:var(--turq);color:#00303c}
+.mbar a:nth-child(3){background:#1f8f4c}
 @media(min-width:900px){.mbar{display:none}}
-
-/* ---- richer layer ---- */
-.hero{min-height:clamp(500px,74vh,700px)}
-.hero::after{background:linear-gradient(90deg,rgba(0,40,58,.78) 0%,rgba(0,40,58,.35) 50%,rgba(0,0,0,0) 75%),linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,30,44,.6) 100%)}
-.hero .w{padding-bottom:110px}
-.hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);max-width:15ch}
-.hero .sub{color:#e4f1f4;font-size:1.08rem;max-width:44ch;margin-top:14px}
-.down{bottom:96px}
-.qa{position:relative;z-index:2;margin-top:-56px}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;background:#fff;box-shadow:0 10px 30px rgba(0,40,58,.14);border-top:4px solid var(--turq)}
-@media(min-width:1000px){.qgrid{grid-template-columns:repeat(4,1fr)}}
-.qgrid a{display:flex;gap:14px;align-items:center;padding:22px 20px;text-decoration:none;color:var(--muted);font-size:.86rem;line-height:1.35;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-@media(min-width:1000px){.qgrid a{border-bottom:0;padding:26px 26px}.qgrid a:last-child{border-right:0}}
-.qgrid a:hover{background:#f2fafb}
-.qgrid a:hover b{text-decoration:underline}
-.qgrid svg,.qgrid img{width:44px;height:44px;flex:none;color:var(--blue)}
-.qgrid img{border-radius:50%}
-.qgrid b{display:block;color:var(--navy);font-size:1rem;font-weight:700;margin-bottom:2px}
-@media(max-width:600px){.qgrid a{flex-direction:column;align-items:flex-start;padding:18px 16px}}
-.svc{background:#fff;border:1px solid var(--line);border-top:4px solid var(--turq);padding:28px 26px 26px;transition:box-shadow .2s}
-.svc:hover{box-shadow:0 12px 28px rgba(0,40,58,.1)}
-.svc .ic{width:62px;height:62px;padding:12px;background:#e6f7f9;border-radius:50%;color:var(--blue)}
-.sgrid{gap:22px}
-.feat{background:#f6f9f9}
-.band{background:var(--navy);color:#fff}
-.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-@media(min-width:1000px){.bgrid{grid-template-columns:repeat(4,1fr)}}
-.bgrid div{padding:36px 24px 36px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-@media(min-width:1000px){.bgrid div{border-bottom:0;border-left:1px solid rgba(255,255,255,.18);padding:44px 28px}.bgrid div:first-child{border-left:0;padding-left:0}}
-.bgrid b{display:block;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:#fff;line-height:1.1}
-.bgrid b i{font-style:normal;color:var(--turq)}
-.bgrid span{display:block;margin-top:6px;color:#b9d6df;font-size:.92rem}
-.row.tint .txt{background:#eaf6f7}
-@media(min-width:900px){.row.tint{background:#eaf6f7}}
-.row h2{font-size:clamp(1.8rem,3vw,2.6rem)}
-.beyond{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.beyond .bimg{position:absolute;inset:0}
-.beyond .bimg img{width:100%;height:100%;object-fit:cover;opacity:.18}
-.binner{position:relative;padding-block:clamp(64px,8vw,104px)}
-.bhead{max-width:640px}
-.beyond h2{color:#fff;font-size:clamp(1.9rem,3.4vw,2.8rem)}
-.bhead>p:last-child{color:#c6dfe6;margin-top:14px}
-.pgrid{display:grid;gap:14px;margin:40px 0 34px}
-@media(min-width:700px){.pgrid{grid-template-columns:1fr 1fr}}
-@media(min-width:1100px){.pgrid{grid-template-columns:repeat(5,1fr)}}
-.pgrid div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-top:3px solid var(--turq);padding:24px 20px}
-.pgrid svg{width:40px;height:40px;color:var(--turq);margin-bottom:14px}
-.pgrid b{display:block;font-size:1.06rem;margin-bottom:6px}
-.pgrid span{font-size:.88rem;color:#c6dfe6}
-.btn.light{background:var(--turq);border-color:var(--turq);color:#00303f}
-.btn.light:hover{background:#4fd3e0;border-color:#4fd3e0}
-.fhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
-.fhead h2{font-size:clamp(1.7rem,2.8vw,2.3rem);color:#333}
-.fstrip{gap:12px}
-@media(min-width:1000px){.fstrip{grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px}.fstrip figure:first-child{grid-row:span 2}}
-.fstrip figure{position:relative;overflow:hidden;min-height:170px}
-.fstrip .im{position:absolute;inset:0;aspect-ratio:auto}
-.fstrip img{transition:transform .5s}
-.fstrip figure:hover img{transform:scale(1.04)}
-.fstrip figcaption{position:absolute;left:0;bottom:0;margin:0;background:var(--navy);color:#fff;padding:8px 14px;font-size:.88rem}
-@media(min-width:1000px){.fstrip figure:nth-child(n+6){display:none}}
-.cta{background:var(--turq)}
-.cta .w{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding-block:40px}
-.cta h2{color:#00303f;font-size:clamp(1.5rem,2.8vw,2.1rem)}
-.cta p{color:#00475a;margin-top:6px}
-.cacts{display:flex;flex-wrap:wrap;gap:12px}
-.btn.white{background:#fff;border-color:#fff;color:var(--navy)}
-.btn.wa{background:#1f8f4c;border-color:#1f8f4c}
-.why{padding-bottom:clamp(56px,7vw,90px)}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
-  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
-  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
-  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></g></symbol>
+  <symbol id="i-s" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></g></symbol>
+  <symbol id="i-drop" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M14 6h14l8 8v28H14z"/><path d="M28 6v8h8M20 24h10M20 30h10M20 36h6"/></g></symbol>
+  <symbol id="i-cell" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="11"/><circle cx="21" cy="21" r="3"/><circle cx="28" cy="27" r="2"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M11 37l4-4M33 15l4-4"/></g></symbol>
+  <symbol id="i-plan" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="10" y="8" width="26" height="34" rx="2"/><path d="M36 14h4v24h-4M16 18h14M16 25h14M16 32h9"/></g></symbol>
+  <symbol id="i-treat" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8" y="10" width="32" height="22"/><path d="M24 32v8M16 40h16M15 26v-6M21 26v-9M27 26v-4M33 26v-11"/></g></symbol>
+  <symbol id="i-heart" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40S8 30 8 18a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 12-16 22-16 22z"/><path d="M8 24h8l3-5 4 9 3-4h6"/></g></symbol>
+  <symbol id="i-ppl" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="16" r="6"/><circle cx="32" cy="18" r="5"/><path d="M6 38c0-7 5-12 12-12s12 5 12 12M28 38c0-5 2-9 6-10 5 0 8 4 8 10"/></g></symbol>
+  <symbol id="i-leaf" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38c0-16 10-26 28-28 0 18-10 28-26 28"/><path d="M10 38c6-10 12-16 20-20"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M24 42S12 29 12 19a12 12 0 0 1 24 0c0 10-12 23-12 23z"/><circle cx="24" cy="19" r="4.5"/></g></symbol>
+  <symbol id="i-bld" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 42V14l16-8 16 8v28M8 42h32M20 42V32h8v10M24 13v8M20 17h8"/></g></symbol>
+  <symbol id="i-q" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="16"/><path d="M19 19a5 5 0 1 1 6 5c-1 .5-1 1.3-1 2.5M24 32v.5"/></g></symbol>
+  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></symbol>
-  <symbol id="s-surg" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 30 18l6 6-22 22H8z"/><path d="m30 18 6-6a4 4 0 0 1 6 6l-6 6M22 26l6 6"/></g></symbol>
-  <symbol id="s-med" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h8M22 6v6h4V6M16 12h16v6l-3 4v18a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V22l-3-4z"/><path d="M19 28h10M19 34h10"/></g></symbol>
-  <symbol id="s-diag" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><path d="m29 29 12 12M14 20h3l2-4 3 8 2-4h3"/></g></symbol>
-  <symbol id="s-pain" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42S8 32 8 19a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 13-16 23-16 23z"/><path d="M24 22v10M19 27h10"/></g></symbol>
-  <symbol id="s-mind" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c0-7 5-12 11-12s11 5 11 12M28 40c0-5 2-9 6-10 5 0 8 4 8 10"/></g></symbol>
-  <symbol id="s-nutri" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 14c-8-4-16 2-14 12 2 9 8 16 14 13 6 3 12-4 14-13 2-10-6-16-14-12z"/><path d="M24 14c0-4 2-7 6-8"/></g></symbol>
-  <symbol id="s-care" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="30" rx="2"/><path d="M6 18h36M16 6v8M32 6v8M24 24v10M19 29h10"/></g></symbol>
-  <symbol id="s-help" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M19 19a5 5 0 1 1 6 5c-1 .4-1 1.2-1 2.5M24 33v.5"/></g></symbol>
-  <symbol id="q-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.5 3.6-8 8-8s8 3.5 8 8M9 17h6M12 14v6"/></g></symbol>
-  <symbol id="q-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></g></symbol>
-  <symbol id="q-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></g></symbol>
-  <symbol id="p-1" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="m31 17-4 10-10 4 4-10z"/></g></symbol>
-  <symbol id="p-4" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 24h9l4-10 8 20 4-10h13"/></g></symbol>
-  <symbol id="p-5" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="8"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M11 37l3.5-3.5M33.5 14.5 37 11"/></g></symbol>
 </svg>
 
-<div class="util"><div class="w">
-  <span><b>Location:</b> Ganga Nagar, Washim Bypass, Akola</span>
-  <nav aria-label="Utility"><a href="tel:+919923542674">+91 99235 42674</a><a href="contact.html">Contact Us</a><a href="patient-care.html#faqs">FAQs</a><a href="about.html">About Us</a><a class="wa" href="https://wa.me/919923542674">WhatsApp</a></nav>
+<div class="topk"><div class="w">
+  <a class="t1" href="https://wa.me/919923542674"><b>●</b> WhatsApp</a>
+  <a class="t2" href="contact.html">Request an Appointment</a>
+  <a class="t3" href="tel:+919923542674">24x7 Emergency</a>
 </div></div>
 
-<header><div class="w">
+<header class="hdr"><div class="w">
   <a class="logo" href="index.html"><img src="assets/logo-header.png" alt="Sunnah Hospital – Cancer Research Center" width="171" height="58"></a>
-  <nav class="mnav" aria-label="Main"><a href="doctors.html">Find a Doctor</a><a href="contact.html">Location &amp; Directions</a><a href="departments.html">Cancer Care</a><a href="infrastructure.html">Facilities</a><a href="patient-care.html">Patients &amp; Families</a></nav>
-  <div class="hr">
-    <a class="btn" href="contact.html">Appointments</a>
-    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
-</div>
-<div class="drawer" id="drawer" hidden><div class="w">
-  <a href="doctors.html">Find a Doctor</a><a href="contact.html">Location &amp; Directions</a><a href="departments.html">Cancer Care</a><a href="infrastructure.html">Facilities</a><a href="patient-care.html">Patients &amp; Families</a><a href="about.html">About Us</a><a href="research.html">Cancer Research</a><a href="contact.html">Appointments</a>
-</div></div>
-</header>
+  <nav class="util" aria-label="Utility"><a href="doctors.html">Our Doctors</a><a href="contact.html">Location</a><a href="infrastructure.html">Facilities</a><a href="contact.html">Contact Us</a><a href="patient-care.html#faqs">FAQs</a><a class="srch" href="departments.html#types"><svg><use href="#i-s"/></svg>Search</a></nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+</div></header>
+<nav class="nbar" aria-label="Main"><div class="w" style="padding:0"><ul>
+  <li><a href="about.html">About Us</a></li>
+  <li><a href="departments.html">Cancer Care</a></li>
+  <li><a href="doctors.html">Doctors</a></li>
+  <li><a href="patient-care.html">Patients &amp; Family</a></li>
+  <li><a href="infrastructure.html">Facilities</a></li>
+  <li><a href="research.html">Research</a></li>
+</ul></div>
+<div class="drawer" id="drawer" hidden><a href="about.html">About Us</a><a href="departments.html">Cancer Care</a><a href="doctors.html">Doctors</a><a href="patient-care.html">Patients &amp; Family</a><a href="infrastructure.html">Facilities</a><a href="research.html">Research</a><a href="contact.html">Contact Us</a></div>
+</nav>
 
 <main>
 <section class="hero">
-  <img src="assets/img/hero-surgery.jpg" alt="Cancer surgeons in the operating theatre" fetchpriority="high">
-  <div class="w">
-    <h1>Cancer care for Vidarbha, with hope at every step.</h1>
-    <p class="sub">Surgical and medical oncology, diagnostics and patient support under one roof in Akola.</p>
-    <div class="links"><a href="doctors.html">Our Doctors</a><a href="contact.html">Location &amp; Directions</a><a href="contact.html">Appointments</a></div>
-  </div>
-  <a class="down" href="#services" aria-label="Scroll to services"><svg><use href="#i-down"/></svg></a>
+  <img src="assets/img/team3.jpg" alt="Doctors at Sunnah Hospital discussing a patient's care" fetchpriority="high">
+  <div class="w"><div class="hq">
+    <h1>“We don't just treat cancer.”</h1>
+    <p class="who">Our Promise<span>Sunnah Cancer Research Center</span></p>
+    <a href="patient-care.html">How we support the patient and strengthen the family</a>
+  </div></div>
 </section>
 
-<div class="qa"><div class="w"><div class="qgrid">
-  <a href="doctors.html"><svg><use href="#q-doc"/></svg><span><b>Find a Doctor</b>Meet our specialists</span></a>
-  <a href="contact.html"><svg><use href="#q-cal"/></svg><span><b>Book an Appointment</b>Call or request online</span></a>
-  <a href="https://wa.me/919923542674"><svg><use href="#q-file"/></svg><span><b>Send Your Reports</b>Get guidance on WhatsApp</span></a>
-  <a href="patient-care.html#faqs"><img src="assets/img/pmjay.png" alt=""><span><b>PM-JAY Cashless</b>Ayushman Bharat</span></a>
-</div></div></div>
+<div class="bblue"><b>Let's get started.</b> <a href="contact.html">Request an appointment online.</a></div>
 
-<section class="feat" id="services"><div class="w">
-  <p class="eyebrow">Featured Services</p>
-  <span class="bar-accent"></span>
-  <div class="sgrid">
-    <div class="svc"><svg class="ic"><use href="#s-surg"/></svg><h3>Surgical Oncology</h3><p>Precise, safe cancer surgery</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="surgical-oncology.html">Head &amp; Neck Cancer Surgery</a></li><li><a href="surgical-oncology.html">Breast Cancer Surgery</a></li><li><a href="surgical-oncology.html">Gastrointestinal Cancer Surgery</a></li><li><a href="surgical-oncology.html">Gynecological Cancer Surgery</a></li></ul></div>
-    <div class="svc"><svg class="ic"><use href="#s-med"/></svg><h3>Medical Oncology</h3><p>Chemotherapy and targeted therapies</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="medical-oncology.html">Chemotherapy (Day Care &amp; IPD)</a></li><li><a href="medical-oncology.html">Targeted Therapy</a></li><li><a href="medical-oncology.html">Immunotherapy</a></li><li><a href="medical-oncology.html">Supportive &amp; Palliative Care</a></li></ul></div>
-    <div class="svc"><svg class="ic"><use href="#s-diag"/></svg><h3>Diagnostics</h3><p>Accurate, reliable detection</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="departments.html#diagnostics">Digital X-Ray</a></li><li><a href="departments.html#diagnostics">Sonography</a></li><li><a href="departments.html#diagnostics">Pathology</a></li><li><a href="departments.html#diagnostics">Other Diagnostic Facilities</a></li></ul></div>
-    <div class="svc"><svg class="ic"><use href="#s-pain"/></svg><h3>Pain &amp; Palliative Care</h3><p>Relief and comfort for a better quality of life</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#pain">Pain Management</a></li><li><a href="medical-oncology.html">Supportive Care</a></li><li><a href="patient-care.html">Diagnosis to Recovery Support</a></li></ul></div>
-    <div class="svc"><svg class="ic"><use href="#s-mind"/></svg><h3>Psychological Support</h3><p>Counselling for patients and families</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#counselling">Patient Counselling</a></li><li><a href="patient-care.html#counselling">Family Support</a></li><li><a href="patient-care.html#guidance">Treatment Guidance</a></li></ul></div>
-    <div class="svc"><svg class="ic"><use href="#s-nutri"/></svg><h3>Nutrition &amp; Recovery</h3><p>Diet, rehabilitation and wellness</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#nutrition">Oncology Dietitian</a></li><li><a href="patient-care.html#rehab">Recovery &amp; Rehabilitation</a></li><li><a href="patient-care.html#wellness">Lifestyle &amp; Wellness</a></li></ul></div>
-  </div>
-  <a class="btn all" href="departments.html">Explore all services</a>
+<section class="bred"><div class="w">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-drop"/></svg>
+  <div><b>Newly diagnosed? Send us your reports.</b><p>Share your biopsy, scans and prescriptions on WhatsApp. Our team will guide you to the right treatment and help you avoid unnecessary tests and expenses.</p></div>
+  <a class="olbtn" href="https://wa.me/919923542674">Send reports on WhatsApp</a>
 </div></section>
 
-<section class="band"><div class="w">
-  <div class="bgrid">
-    <div><b>24x7</b><span>Casualty &amp; emergency care</span></div>
-    <div><b>ICU <i>+</i> HDU</b><span>Critical care after surgery</span></div>
-    <div><b>Day Care</b><span>Chemotherapy without an overnight stay</span></div>
-    <div><b>PM-JAY</b><span>Cashless treatment for eligible patients</span></div>
+<div class="w two">
+  <div>
+    <div class="sblock">
+      <span class="circ c1"><svg><use href="#i-cell"/></svg></span>
+      <h2>Search Cancer Types</h2>
+      <label class="sbox" for="q"><svg><use href="#i-s"/></svg><input id="q" type="search" placeholder="Search by type of cancer" autocomplete="off"></label>
+      <div class="sres" id="sres" hidden></div>
+      <a class="arw" href="departments.html#types">Browse cancer types</a>
+    </div>
+    <div class="sblock">
+      <span class="circ c2"><svg><use href="#i-treat"/></svg></span>
+      <h2>Our Treatments</h2>
+      <label class="sbox" for="q2"><svg><use href="#i-s"/></svg><input id="q2" type="search" placeholder="Surgery, chemotherapy, diagnostics…" autocomplete="off"></label>
+      <div class="sres" id="sres2" hidden></div>
+      <a class="arw" href="departments.html">Browse treatments</a>
+    </div>
   </div>
-</div></section>
-
-<section class="row tint">
-  <div class="pic"><img src="assets/img/sh-daycare.jpg" alt="Chemotherapy day care" loading="lazy"></div>
-  <div class="txt">
-    <h2>Chemotherapy Without an Overnight Stay</h2>
-    <span class="bar-accent"></span>
-    <p>Most chemotherapy is given in our day care unit, so you can go home the same day. When a longer stay is needed, it is given as in-patient (IPD) treatment.</p>
-    <a class="btn" href="medical-oncology.html">About chemotherapy</a>
+  <div class="plan">
+    <span class="circ c3"><svg><use href="#i-plan"/></svg></span>
+    <h2>Plan Your Care</h2>
+    <ul>
+      <li><a href="patient-care.html"><b>Prepare for your first visit</b><span>Bring your reports, scans and prescriptions, and a family member if possible.</span><i>›</i></a></li>
+      <li><a href="patient-care.html#faqs"><b>Check PM-JAY coverage</b><span>Cashless treatment is available for eligible patients under Ayushman Bharat.</span><i>›</i></a></li>
+      <li><a href="contact.html"><b>Plan your travel to Akola</b><span>Ganga Nagar, Washim Bypass, Akola 444002. Get directions and contact details.</span><i>›</i></a></li>
+      <li><a href="medical-oncology.html"><b>Chemotherapy day care</b><span>Treatment without an overnight stay, or as in-patient care when needed.</span><i>›</i></a></li>
+    </ul>
+    <a class="arw" href="patient-care.html">View planning resources</a>
   </div>
-</section>
-
-<section class="row rev">
-  <div class="pic"><img src="assets/img/consult.jpg" alt="Doctor speaking with a patient" loading="lazy"></div>
-  <div class="txt">
-    <h2>Just Diagnosed? We'll Guide You.</h2>
-    <span class="bar-accent"></span>
-    <p>Bring your reports and our team will explain the diagnosis, the options and the costs, and help you avoid unnecessary investigations and expenses.</p>
-    <div class="acts"><a class="btn" href="contact.html">Book a consultation</a><a class="btn out" href="https://wa.me/919923542674">Send reports on WhatsApp</a></div>
-  </div>
-</section>
-
-<section class="help"><div class="w cards">
-  <div class="card">
-    <svg class="ic"><use href="#s-care"/></svg>
-    <h2>Get Care</h2>
-    <ul><li><a href="tel:+919923542674">+91 99235 42674</a></li><li><a href="tel:+919850660773">+91 98507 60773</a></li><li><a href="contact.html">Schedule an appointment</a></li><li><a href="https://wa.me/919923542674">Message us on WhatsApp</a></li></ul>
-  </div>
-  <div class="card">
-    <svg class="ic"><use href="#s-help"/></svg>
-    <h2>Need Help?</h2>
-    <ul><li><a href="contact.html">24x7 Casualty &amp; Emergency</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sunnah+Hospital+Ganga+Nagar+Washim+Bypass+Akola">Get directions</a></li><li><a href="mailto:drhakimakola@gmail.com">drhakimakola@gmail.com</a></li><li><a href="patient-care.html#faqs">Frequently asked questions</a></li></ul>
-    <div class="pm"><img src="assets/img/pmjay.png" alt="Ayushman Bharat PM-JAY"><span><b>PM-JAY cashless treatment</b>Available for eligible patients under Ayushman Bharat.</span></div>
-  </div>
-</div></section>
+</div>
 
 <section class="why"><div class="w">
-  <p class="eyebrow">Why choose Sunnah Hospital?</p>
-  <p class="big">Every patient deserves not just treatment, but emotional strength, dignity and support. That is how we care for the people of Vidarbha.</p>
-  <span class="bar-accent"></span>
-  <ul class="facts">
-    <li><b>Experienced oncology team</b><span>Qualified specialists with years of expertise in cancer care.</span></li>
-    <li><b>Affordable treatment options</b><span>Quality cancer care that is accessible for all.</span></li>
-    <li><b>Modern infrastructure</b><span>Modular OT, ICU, HDU and 24x7 casualty.</span></li>
-  </ul>
-</div></section>
-
-<section class="beyond">
-  <div class="bimg"><img src="assets/img/team3.jpg" alt="Doctors discussing a patient's care" loading="lazy"></div>
-  <div class="w binner">
-    <div class="bhead">
-      <p class="eyebrow" style="color:#9fe6ee">Our Unique Approach</p>
-      <span class="bar-accent"></span>
-      <h2>We don't just treat cancer. We care about you and your family.</h2>
-      <p>A cancer diagnosis can bring fear, confusion and emotional stress. Along with surgical and medical oncology, we support patients in five ways.</p>
-    </div>
-    <div class="pgrid">
-      <div><svg><use href="#p-1"/></svg><b>Right Guidance</b><span>Informed decisions, without unnecessary investigations or expenses.</span></div>
-      <div><svg><use href="#s-mind"/></svg><b>Psychological Support</b><span>Professional counselling for patients and families.</span></div>
-      <div><svg><use href="#s-nutri"/></svg><b>Specialized Nutrition</b><span>A dedicated oncology dietitian during and after treatment.</span></div>
-      <div><svg><use href="#p-4"/></svg><b>Recovery &amp; Rehabilitation</b><span>Post-treatment recovery guidance and supportive care.</span></div>
-      <div><svg><use href="#p-5"/></svg><b>Lifestyle &amp; Wellness</b><span>Long-term nutrition, lifestyle guidance and family education.</span></div>
-    </div>
-    <a class="btn light" href="patient-care.html">Patient care &amp; support</a>
+  <div class="dbox">
+    <div class="ribbon"><b>24x7</b><span>Casualty</span></div>
+    <h3>Emergency care, day and night</h3>
+    <p>With ICU, HDU and a 24x7 pharmacy</p>
   </div>
-</section>
-
-<section class="row rev tint">
-  <div class="pic"><img src="assets/img/sh-ot.jpg" alt="Modular operation theatre at Sunnah Hospital" loading="lazy"></div>
-  <div class="txt">
-    <h2>Better Facilities. Better Care.</h2>
-    <span class="bar-accent"></span>
-    <p>A modular operation theatre, minor OT, ICU and HDU, 24x7 casualty and pharmacy, and dedicated male and female wards.</p>
-    <a class="btn" href="infrastructure.html">See our facilities</a>
-  </div>
-</section>
-
-<section class="row">
-  <div class="pic"><img src="assets/img/sh-building.jpg" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
-  <div class="txt">
-    <h2>A Dedicated Cancer Center in Akola</h2>
-    <span class="bar-accent"></span>
-    <p>Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to comprehensive, compassionate and affordable cancer care. Our approach combines advanced medical science, skilled oncology specialists and deep human compassion.</p>
-    <div class="acts"><a class="btn" href="about.html">About us</a><a class="btn out" href="research.html">Cancer research</a></div>
-  </div>
-</section>
-
-<section class="fac"><div class="w">
-  <div class="fhead"><div><p class="eyebrow">Inside Sunnah Hospital</p>
-  <span class="bar-accent"></span><h2>Real facilities, ready when you need them.</h2></div><a class="btn out" href="infrastructure.html">View all facilities</a></div>
-  <div class="fstrip">
-    <figure><div class="im"><img src="assets/img/sh-ot.jpg" alt="" loading="lazy"></div><figcaption>Modular OT</figcaption></figure>
-    <figure><div class="im"><img src="assets/img/sh-minor-ot.jpg" alt="" loading="lazy"></div><figcaption>Minor OT</figcaption></figure>
-    <figure><div class="im"><img src="assets/img/sh-icu.jpg" alt="" loading="lazy"></div><figcaption>ICU</figcaption></figure>
-    <figure><div class="im"><img src="assets/img/sh-hdu.jpg" alt="" loading="lazy"></div><figcaption>HDU</figcaption></figure>
-    <figure><div class="im"><img src="assets/img/sh-casualty.jpg" alt="" loading="lazy"></div><figcaption>Casualty 24x7</figcaption></figure>
-    <figure><div class="im"><img src="assets/img/sh-pharmacy.jpg" alt="" loading="lazy"></div><figcaption>Pharmacy 24x7</figcaption></figure>
+  <div>
+    <h2>Why Choose Sunnah Hospital</h2>
+    <p class="lead">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to comprehensive, compassionate and affordable cancer care for the people of Vidarbha. Our approach combines advanced medical science, skilled oncology specialists and deep human compassion, because every patient deserves not just treatment, but emotional strength, dignity and support.</p>
+    <a class="lnk" href="about.html">Learn more about Sunnah Hospital</a>
   </div>
 </div></section>
-<section class="cta"><div class="w">
-  <div><h2>Talk to our cancer care team today.</h2><p>Right Treatment. Right Guidance. Compassionate Care.</p></div>
-  <div class="cacts"><a class="btn white" href="tel:+919923542674"><svg><use href="#i-ph"/></svg>+91 99235 42674</a><a class="btn wa" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>
+
+<section class="stmt">
+  <img src="assets/img/sh-ot.jpg" alt="" loading="lazy">
+  <div class="in">
+    <h2>Precision Surgery. Compassionate Care. Better Outcomes.</h2>
+    <hr>
+    <a href="surgical-oncology.html">Explore surgical oncology →</a>
+  </div>
+</section>
+
+<section class="w hl">
+  <h2>Sunnah Hospital Highlights</h2>
+  <div class="cards">
+    <a href="surgical-oncology.html"><div class="im"><img src="assets/img/sh-ot-suite.jpg" alt="" loading="lazy"></div><h3>Surgical Oncology</h3><p>Head &amp; neck, breast, gastrointestinal and gynecological cancer surgery</p></a>
+    <a href="medical-oncology.html"><div class="im"><img src="assets/img/sh-daycare.jpg" alt="" loading="lazy"></div><h3>Medical Oncology</h3><p>Chemotherapy in day care and IPD, targeted therapy and immunotherapy</p></a>
+    <a href="departments.html#diagnostics"><div class="im"><img src="assets/img/sh-diagnostic.jpg" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Digital X-Ray, sonography and pathology for accurate detection</p></a>
+    <a href="infrastructure.html"><div class="im"><img src="assets/img/sh-icu.jpg" alt="" loading="lazy"></div><h3>ICU &amp; HDU</h3><p>Advanced critical care and a high dependency unit after surgery</p></a>
+  </div>
+</section>
+
+<section class="tiles"><div class="w tg">
+  <div class="tile t-navy"><svg><use href="#i-ppl"/></svg><h3>Psychological Support</h3><p>Professional counselling and emotional support for patients and their families.</p><a class="olbtn" href="patient-care.html#counselling">Talk to a counsellor</a></div>
+  <div class="tile t-teal"><svg><use href="#i-leaf"/></svg><h3>Specialized Nutrition</h3><p>A dedicated oncology dietitian during chemotherapy, after surgery and through recovery.</p><a class="olbtn" href="patient-care.html#nutrition">Meet our dietitian</a></div>
+</div></section>
+
+<div class="w three">
+  <a href="contact.html"><span class="circ c1"><svg><use href="#i-pin"/></svg></span><h3>Find Our Location</h3></a>
+  <a href="infrastructure.html"><span class="circ c2"><svg><use href="#i-bld"/></svg></span><h3>See Our Facilities</h3></a>
+  <a href="https://wa.me/919923542674"><span class="circ c3"><svg><use href="#i-q"/></svg></span><h3>Ask a Question</h3></a>
+</div>
+
+<section class="dark">
+  <img class="emb" src="assets/emblem-white.png" alt="" aria-hidden="true">
+  <div class="w"><div class="txt">
+    <h2>Together for a cancer-free tomorrow</h2>
+    <p>Advanced research, compassionate care every step, and better outcomes. Our Cancer Research Center works to improve how cancer is understood, detected and treated in Vidarbha.</p>
+    <a href="research.html">Discover our research →</a>
+  </div></div>
+</section>
+
+<section class="help"><div class="w">
+  <h2>Hope. Healing. Humanity.</h2>
+  <div class="hg">
+    <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p><a class="olbtn" href="contact.html">Book an appointment</a></div>
+    <div class="tile t-black"><h3>Healing</h3><p>Providing the best possible treatment.</p><a class="olbtn" href="departments.html">Our treatments</a></div>
+    <div class="tile t-turq"><h3>Humanity</h3><p>Standing with patients beyond medicine.</p><a class="olbtn" href="patient-care.html">Patient support</a></div>
+  </div>
+</div></section>
+
+<section class="kbar"><div class="w">
+  <span class="ic"><svg><use href="#i-ph"/></svg></span>
+  <span class="lbl">Request a call back from our care team</span>
+  <form id="cb" novalidate><input id="cn" placeholder="Patient name *" aria-label="Patient name"><input id="cp" type="tel" placeholder="Mobile number *" aria-label="Mobile number"><button type="submit">Get started</button><p class="ok" id="cok" hidden></p></form>
 </div></section>
 </main>
 
 <footer>
-  <div class="w ftop">
-    <div>
-      <div class="fblock"><h3>Find a Doctor</h3><p>Meet our surgical and medical oncology specialists.</p></div>
-      <div class="fblock"><h3>Location</h3><p>Ganga Nagar, Washim Bypass, Akola, Maharashtra 444002</p></div>
-      <div class="fblock"><h3>Appointments</h3><p>Call <a href="tel:+919923542674">+91 99235 42674</a> or <a href="tel:+919850660773">+91 98507 60773</a></p></div>
-    </div>
-    <div><h4>Cancer Care</h4><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="departments.html#diagnostics">Diagnostics</a></li><li><a href="patient-care.html">Patient Care &amp; Support</a></li><li><a href="research.html">Cancer Research</a></li></ul></div>
-    <div><h4>About Sunnah Hospital</h4><ul><li><a href="about.html">About Us</a></li><li><a href="doctors.html">Doctors &amp; Specialists</a></li><li><a href="infrastructure.html">Hospital Infrastructure</a></li><li><a href="contact.html">Contact &amp; Appointment</a></li><li><a href="patient-care.html#faqs">FAQs</a></li></ul></div>
+  <div class="w fm">
+    <div><img src="assets/logo-header.png" alt="Sunnah Hospital – Cancer Research Center"></div>
+    <div><h4>Explore</h4><ul><li><a href="departments.html">Cancer Care</a></li><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="departments.html#diagnostics">Diagnostics</a></li><li><a href="research.html">Research</a></li></ul></div>
+    <div><h4>About</h4><ul><li><a href="about.html">About Sunnah Hospital</a></li><li><a href="doctors.html">Our Doctors</a></li><li><a href="infrastructure.html">Facilities</a></li><li><a href="patient-care.html">Patients &amp; Family</a></li></ul></div>
+    <div><h4>Finding Your Way</h4><ul><li><a href="contact.html">Location</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sunnah+Hospital+Ganga+Nagar+Washim+Bypass+Akola">Directions</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="patient-care.html#faqs">FAQs</a></li></ul></div>
+    <div><h4>Get in Touch</h4><div class="git">
+      <a href="tel:+919923542674"><i><svg><use href="#i-ph"/></svg></i><span>Call<b>+91 99235 42674</b></span></a>
+      <a href="https://wa.me/919923542674"><i><svg><use href="#i-wa"/></svg></i><span>WhatsApp us</span></a>
+    </div></div>
   </div>
-  <div class="fbase"><div class="w">
-    <span>Call: <a href="tel:+919923542674">+91 99235 42674</a> | Ganga Nagar, Washim Bypass, Akola 444002 | drhakimakola@gmail.com</span>
-    <span>© 2026 Sunnah Hospital – Cancer Research Center. All Rights Reserved. · Hope • Healing • Humanity</span>
+  <div class="legal"><div class="w"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="contact.html">drhakimakola@gmail.com</a><a href="contact.html">Ganga Nagar, Washim Bypass, Akola 444002</a></div></div>
+  <div class="mission"><div class="w">
+    <h3>Hope • Healing • Humanity</h3>
+    <div><p>Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p><small>© 2026 Sunnah Hospital – Cancer Research Center, Akola. All rights reserved.</small></div>
   </div></div>
 </footer>
 
-<nav class="mbar" aria-label="Quick actions">
-  <a href="tel:+919923542674"><svg><use href="#i-ph"/></svg>Call</a>
-  <a class="bk" href="contact.html"><svg><use href="#i-cal"/></svg>Appointments</a>
-  <a class="wa" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a>
-</nav>
+<nav class="mbar" aria-label="Quick actions"><a href="tel:+919923542674">Call</a><a href="contact.html">Appointment</a><a href="https://wa.me/919923542674">WhatsApp</a></nav>
 
 <script>
-document.querySelectorAll('.svc button').forEach(b=>b.addEventListener('click',()=>{const l=b.nextElementSibling,o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));l.hidden=o;b.firstChild.nodeValue=o?'Show services ':'Hide services ';}));
-const m=document.getElementById('menu'),d=document.getElementById('drawer');
-m.addEventListener('click',()=>{d.hidden=!d.hidden;m.setAttribute('aria-expanded',String(!d.hidden));});
+const b=document.getElementById('burger'),d=document.getElementById('drawer');
+b.onclick=()=>{d.hidden=!d.hidden;b.setAttribute('aria-expanded',String(!d.hidden));};
+const types=[['Breast Cancer','surgical-oncology.html'],['Oral (Mouth) Cancer','surgical-oncology.html'],['Throat Cancer','surgical-oncology.html'],['Thyroid Cancer','surgical-oncology.html'],['Stomach Cancer','surgical-oncology.html'],['Colon & Rectal Cancer','surgical-oncology.html'],['Liver Cancer','departments.html#types'],['Pancreatic Cancer','departments.html#types'],['Gallbladder Cancer','departments.html#types'],['Cervical Cancer','surgical-oncology.html'],['Ovarian Cancer','surgical-oncology.html'],['Uterine Cancer','surgical-oncology.html'],['Lung Cancer','medical-oncology.html'],['Lymphoma','medical-oncology.html'],['Leukaemia','medical-oncology.html'],['Prostate Cancer','departments.html#types']];
+const treats=[['Head & Neck Cancer Surgery','surgical-oncology.html'],['Breast Cancer Surgery','surgical-oncology.html'],['Gastrointestinal Cancer Surgery','surgical-oncology.html'],['Gynecological Cancer Surgery','surgical-oncology.html'],['Chemotherapy (Day Care & IPD)','medical-oncology.html'],['Targeted Therapy','medical-oncology.html'],['Immunotherapy','medical-oncology.html'],['Supportive & Palliative Care','medical-oncology.html'],['Digital X-Ray','departments.html#diagnostics'],['Sonography','departments.html#diagnostics'],['Pathology','departments.html#diagnostics'],['Pain Management','patient-care.html#pain'],['Counselling','patient-care.html#counselling'],['Nutrition','patient-care.html#nutrition']];
+function hook(inp,box,list){const i=document.getElementById(inp),r=document.getElementById(box);i.addEventListener('input',()=>{const t=i.value.trim().toLowerCase();if(!t){r.hidden=true;return;}const m=list.filter(x=>x[0].toLowerCase().includes(t)).slice(0,6);r.innerHTML=m.length?m.map(x=>`<a href="${x[1]}">${x[0].replace('&','&amp;')}</a>`).join(''):'<a href="contact.html">No match. Ask our care team →</a>';r.hidden=false;});}
+hook('q','sres',types);hook('q2','sres2',treats);
+document.getElementById('cb').onsubmit=e=>{e.preventDefault();const n=document.getElementById('cn').value.trim(),p=document.getElementById('cp').value.trim(),o=document.getElementById('cok');o.hidden=false;o.textContent=(!n||!p)?'Please enter the patient name and mobile number.':`Thank you, ${n}. On the live site our team will call ${p}.`;};
 </script>
 </body>
 </html>
