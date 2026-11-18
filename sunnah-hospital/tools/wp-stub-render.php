@@ -1,0 +1,39 @@
+<?php
+// Minimal WordPress stand-in for rendering theme templates. Usage: php stub2.php <template> <slug> <withdocs 0|1> [query]
+error_reporting(E_ALL); ini_set('display_errors','stderr');
+[$_, $TPL, $SLUG, $WITHDOCS] = $argv; $QS = $argv[4] ?? '';
+parse_str($QS, $_GET);
+define('ABSPATH', __DIR__.'/'); define('MINUTE_IN_SECONDS',60); define('THEME', getenv('THEME'));
+$GLOBALS['A']=[]; function add_action($h,$f,$p=10,$n=1){ $GLOBALS['A'][$h][$p][]=$f; } function add_filter($h,$f,$p=10,$n=1){}
+function do_action($h,...$x){ if(empty($GLOBALS['A'][$h])) return; ksort($GLOBALS['A'][$h]); foreach($GLOBALS['A'][$h] as $fs) foreach($fs as $f) if(is_string($f)||is_callable($f)) $f(...$x); }
+function remove_action(){} function add_theme_support(){} function add_image_size(){} function register_post_type(){} function __($s){return $s;} function esc_html__($s){return htmlspecialchars($s);} function esc_attr__($s){return htmlspecialchars($s);} function esc_html_e($s){echo htmlspecialchars($s);}
+$GLOBALS['st']=[];$GLOBALS['sc']=[];$GLOBALS['inl']='';
+function wp_enqueue_style($h,$u){ $GLOBALS['st'][]=$u; } function wp_enqueue_script($h,$u){ $GLOBALS['sc'][]=$u; } function wp_add_inline_script($h,$c){ $GLOBALS['inl'].=$c; }
+function get_theme_file_uri($p){ return $p; } function home_url($p='/'){ return '/site'.$p; } function admin_url($p=''){ return '/site/wp-admin/'.$p; }
+function esc_url($u){ return htmlspecialchars($u,ENT_QUOTES); } function esc_attr($s){ return htmlspecialchars((string)$s,ENT_QUOTES); } function esc_html($s){ return htmlspecialchars((string)$s,ENT_QUOTES); } function esc_url_raw($u){return $u;}
+function wp_json_encode($a){ return json_encode($a, JSON_UNESCAPED_SLASHES); } function trailingslashit($s){ return rtrim($s,'/').'/'; } function wp_parse_args($a,$d){ return array_merge($d,(array)$a); }
+function get_theme_mod($k,$d=''){ return $d; } function get_option($k){ return 'admin@example.com'; }
+function language_attributes(){ echo 'lang="en-US"'; } function bloginfo($k){ echo 'UTF-8'; } function body_class(){ echo 'class="page"'; } function wp_body_open(){}
+function wp_head(){ echo '<title>Sunnah</title>'; do_action('wp_head'); foreach($GLOBALS['st'] as $s) echo '<link rel="stylesheet" href="'.$s.'">'."\n"; }
+function wp_footer(){ echo '<script>'.$GLOBALS['inl'].'</script>'; foreach($GLOBALS['sc'] as $s) echo '<script src="'.$s.'"></script>'."\n"; }
+function get_header(){ include THEME.'/header.php'; } function get_footer(){ include THEME.'/footer.php'; }
+function get_template_part($slug,$name=null,$args=[]){ include THEME.'/'.$slug.'.php'; }
+function is_front_page(){ return $GLOBALS['SLUG']==='home'; } function is_page($s=''){ return $s==='' ? true : in_array($GLOBALS['SLUG'], (array)$s, true); }
+function is_singular($t=''){ return $GLOBALS['TPL']==='single-doctor.php' ? ($t===''||$t==='doctor') : ($t==='' && $GLOBALS['TPL']!=='index.php'); }
+function is_search(){return false;} function is_home(){return false;} function get_the_archive_title(){return 'Archive';} function wp_strip_all_tags($s){return strip_tags($s);}
+function has_post_thumbnail($p=null){ return false; } function get_the_post_thumbnail_url(){ return ''; } function get_the_post_thumbnail(){ return ''; } function the_post_thumbnail(){}
+function get_queried_object_id(){ return 1; } function get_post_field($f,$id){ return $GLOBALS['SLUG']; }
+function wp_nonce_field($a,$n){ echo '<input type="hidden" name="'.$n.'" value="x">'; } function selected($a,$b,$e=true){ $r=$a===$b?' selected':''; if($e) echo $r; return $r; }
+function sanitize_key($s){ return strtolower(preg_replace('/[^a-z0-9_\-]/i','',$s)); } function wp_unslash($s){return $s;} function sanitize_title($s){ return trim(preg_replace('/[^a-z0-9]+/','-',strtolower($s)),'-'); } function sanitize_text_field($s){return trim($s);}
+class P { public $ID; public $post_title; function __construct($i,$t){$this->ID=$i;$this->post_title=$t;} }
+$GLOBALS['DOCS'] = $WITHDOCS ? [ new P(1,'Dr. Name Surname'), new P(2,'Dr. Name Surname'), new P(3,'Dr. Name Surname'), new P(4,'Name Surname') ] : [];
+$GLOBALS['META']=[1=>['speciality'=>'Surgical Oncology','role'=>'Head of Department','qualification'=>'MS, MCh','experience'=>'15','languages'=>'English, Hindi, Marathi','opd'=>'Mon–Sat, 10 am – 2 pm'],2=>['speciality'=>'Medical Oncology','role'=>'Consultant','qualification'=>'MD, DM'],3=>['speciality'=>'Surgical Oncology','role'=>'Consultant','qualification'=>'MS, DNB'],4=>['speciality'=>'Oncology Nutrition','role'=>'Oncology Dietitian','qualification'=>'MSc']];
+function get_posts($a){ $d=$GLOBALS['DOCS']; if(!empty($a['meta_query'])){ $v=$a['meta_query'][0]['value']; $d=array_values(array_filter($d,fn($p)=>$GLOBALS['META'][$p->ID]['speciality']===$v)); } return $d; }
+function get_post_meta($id,$k,$s){ $k=str_replace('_sunnah_','',$k); return $GLOBALS['META'][$id][$k] ?? ''; }
+function get_permalink($p){ return '/site/doctor/'.$p->ID.'/'; }
+$GLOBALS['looped']=false; function have_posts(){ return !$GLOBALS['looped']; } function the_post(){ $GLOBALS['looped']=true; }
+function get_the_ID(){ return 1; } function get_the_title(){ return $GLOBALS['TPL']==='single-doctor.php' ? 'Dr. Name Surname' : 'Privacy Policy'; } function the_title(){ echo get_the_title(); }
+function the_content(){ echo '<p>Profile text written by the hospital goes here.</p>'; } function the_excerpt(){} function post_class(){} function the_permalink(){} function the_posts_pagination(){}
+function wp_get_theme(){ return new class{ function get($k){return '2';} }; }
+include THEME.'/functions.php'; do_action('after_setup_theme'); do_action('wp_enqueue_scripts');
+include THEME.'/'.$TPL;

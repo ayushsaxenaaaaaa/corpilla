@@ -2,8 +2,8 @@
 Theme Name: Sunnah Cancer Research Center
 Theme URI: https://sunnahhospital.com
 Author: Sunnah Hospital
-Description: Custom theme for Sunnah Hospital – Cancer Research Center, Akola. Version 1 contains the home page design only.
-Version: 1.0.0
+Description: Custom theme for Sunnah Hospital – Cancer Research Center, Akola. Includes the home page, About Us, Cancer Care, Surgical Oncology, Medical Oncology, Doctors, Patient Care, Infrastructure, Research and Contact pages, a Doctors section in the admin, contact details in the Customizer and an appointment enquiry form. See HANDOVER.md.
+Version: 2.0.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -12,4 +12,4 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sunnah-crc
 */
 
-/* Home page styles are in assets/css/home.css. */
+/* Styles are in assets/css/home.css and assets/css/pages.css. */
