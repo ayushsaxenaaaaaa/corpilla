@@ -58,154 +58,158 @@ BADGE = '''<div class="badge"><svg viewBox="0 0 120 120" aria-hidden="true"><def
 DEPT_OPTS = '<option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option><option>Not sure</option>'
 
 # ---------------- HOME ----------------
-page('index.html', 'Sunnah Hospital – Cancer Research Center | Surgical & Medical Cancer Center',
- 'Sunnah Hospital – Cancer Research Center, Akola: comprehensive, compassionate and affordable cancer care for Vidarbha. Surgical & medical oncology, chemotherapy day care, diagnostics, ICU, HDU and PM-JAY cashless treatment.', 'home', f'''
-  <section class="hero3">
-    <div class="frame">
-      <div class="slide on"><div class="ph" data-img="hero-surgery" data-eager="1" data-alt="Cancer surgeons operating at Sunnah Hospital"></div></div>
-      <div class="slide"><div class="ph" data-img="sh-daycare" data-eager="1" data-alt="Chemotherapy day care"></div></div>
-      <div class="slide"><div class="ph" data-img="sh-building" data-eager="1" data-alt="Sunnah Hospital building, Akola"></div></div>
-      <div class="shade"></div><span class="ring"></span>
-      <div class="wrap inner">
-        <div>
-          <div class="copies">
-            <div class="on"><span class="over onDark">Surgical &amp; Medical Cancer Center</span><h1>Cancer care that goes <span class="hl">beyond</span> treatment.</h1><p>We treat the disease, and we guide and support patients and their families through every step of the journey.</p><div class="ctas"><a class="btn btn-p" href="contact.html">Book an Appointment</a><a class="btn btn-o" href="https://wa.me/919923542674" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp Us</a></div></div>
-            <div><span class="over onDark">Medical Oncology</span><h1>Chemotherapy in <span class="hl">day care</span> and IPD.</h1><p>Safe and effective chemotherapy, targeted therapy and immunotherapy, with supportive and palliative care.</p><div class="ctas"><a class="btn btn-p" href="medical-oncology.html">Medical Oncology</a><a class="btn btn-o" href="contact.html">Book an Appointment</a></div></div>
-            <div><span class="over onDark">Akola • Vidarbha</span><h1>Affordable cancer care for <span class="hl">Vidarbha.</span></h1><p>Comprehensive, compassionate cancer treatment close to home, with cashless care under Ayushman Bharat (PM-JAY).</p><div class="ctas"><a class="btn btn-p" href="about.html">About the Hospital</a><a class="btn btn-o" href="contact.html">Contact Us</a></div></div>
+# index.html is now hand-written (Cleveland Clinic style); not generated here.
+SKIP_HOME = True
+if False:
+  page('index.html', 'Sunnah Hospital – Cancer Research Center | Surgical & Medical Cancer Center',
+   'Sunnah Hospital – Cancer Research Center, Akola: comprehensive, compassionate and affordable cancer care for Vidarbha. Surgical & medical oncology, chemotherapy day care, diagnostics, ICU, HDU and PM-JAY cashless treatment.', 'home', f'''
+    <section class="hero3">
+      <div class="frame">
+        <div class="slide on"><div class="ph" data-img="hero-surgery" data-eager="1" data-alt="Cancer surgeons operating at Sunnah Hospital"></div></div>
+        <div class="slide"><div class="ph" data-img="sh-daycare" data-eager="1" data-alt="Chemotherapy day care"></div></div>
+        <div class="slide"><div class="ph" data-img="sh-building" data-eager="1" data-alt="Sunnah Hospital building, Akola"></div></div>
+        <div class="shade"></div><span class="ring"></span>
+        <div class="wrap inner">
+          <div>
+            <div class="copies">
+              <div class="on"><span class="over onDark">Surgical &amp; Medical Cancer Center</span><h1>Cancer care that goes <span class="hl">beyond</span> treatment.</h1><p>We treat the disease, and we guide and support patients and their families through every step of the journey.</p><div class="ctas"><a class="btn btn-p" href="contact.html">Book an Appointment</a><a class="btn btn-o" href="https://wa.me/919923542674" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp Us</a></div></div>
+              <div><span class="over onDark">Medical Oncology</span><h1>Chemotherapy in <span class="hl">day care</span> and IPD.</h1><p>Safe and effective chemotherapy, targeted therapy and immunotherapy, with supportive and palliative care.</p><div class="ctas"><a class="btn btn-p" href="medical-oncology.html">Medical Oncology</a><a class="btn btn-o" href="contact.html">Book an Appointment</a></div></div>
+              <div><span class="over onDark">Akola • Vidarbha</span><h1>Affordable cancer care for <span class="hl">Vidarbha.</span></h1><p>Comprehensive, compassionate cancer treatment close to home, with cashless care under Ayushman Bharat (PM-JAY).</p><div class="ctas"><a class="btn btn-p" href="about.html">About the Hospital</a><a class="btn btn-o" href="contact.html">Contact Us</a></div></div>
+            </div>
+            <div class="ctrl"><button class="pv" type="button" aria-label="Previous slide"><svg><use href="#i-prev"/></svg></button><span class="num">01 / 03</span><span class="bars"><span></span><span></span><span></span></span><button class="nx" type="button" aria-label="Next slide"><svg><use href="#i-next"/></svg></button></div>
           </div>
-          <div class="ctrl"><button class="pv" type="button" aria-label="Previous slide"><svg><use href="#i-prev"/></svg></button><span class="num">01 / 03</span><span class="bars"><span></span><span></span><span></span></span><button class="nx" type="button" aria-label="Next slide"><svg><use href="#i-next"/></svg></button></div>
+          <aside class="glass">
+            <span class="over onDark">Our Promise</span>
+            <h3>We don't just treat cancer. We guide you through every step.</h3>
+            <ul><li><svg><use href="#i-check"/></svg>Right Treatment</li><li><svg><use href="#i-check"/></svg>Right Guidance</li><li><svg><use href="#i-check"/></svg>Compassionate Care</li></ul>
+            <a class="meet" href="doctors.html"><span class="avs"><span><img src="assets/img/doc1.jpg" alt=""></span><span><img src="assets/img/doc2.jpg" alt=""></span><span><img src="assets/img/doc3.jpg" alt=""></span></span><span>Meet our doctors<br>and specialists →</span></a>
+          </aside>
         </div>
-        <aside class="glass">
-          <span class="over onDark">Our Promise</span>
-          <h3>We don't just treat cancer. We guide you through every step.</h3>
-          <ul><li><svg><use href="#i-check"/></svg>Right Treatment</li><li><svg><use href="#i-check"/></svg>Right Guidance</li><li><svg><use href="#i-check"/></svg>Compassionate Care</li></ul>
-          <a class="meet" href="doctors.html"><span class="avs"><span><img src="assets/img/doc1.jpg" alt=""></span><span><img src="assets/img/doc2.jpg" alt=""></span><span><img src="assets/img/doc3.jpg" alt=""></span></span><span>Meet our doctors<br>and specialists →</span></a>
-        </aside>
       </div>
-    </div>
-    <div class="wrap"><form class="qbar" id="qbar" novalidate>
-      <div class="t"><b>Request a callback</b><span>Our team will call you back</span></div>
-      <input id="qn" placeholder="Patient name" aria-label="Patient name" autocomplete="name">
-      <input id="qp" type="tel" placeholder="Mobile number" aria-label="Mobile number" autocomplete="tel">
-      <select id="qd" aria-label="Department">{DEPT_OPTS}</select>
-      <button class="btn btn-n" type="submit">Request Callback</button>
-      <p class="ok" id="qok" hidden></p>
-    </form></div>
-  </section>
+      <div class="wrap"><form class="qbar" id="qbar" novalidate>
+        <div class="t"><b>Request a callback</b><span>Our team will call you back</span></div>
+        <input id="qn" placeholder="Patient name" aria-label="Patient name" autocomplete="name">
+        <input id="qp" type="tel" placeholder="Mobile number" aria-label="Mobile number" autocomplete="tel">
+        <select id="qd" aria-label="Department">{DEPT_OPTS}</select>
+        <button class="btn btn-n" type="submit">Request Callback</button>
+        <p class="ok" id="qok" hidden></p>
+      </form></div>
+    </section>
 
-  <section class="sec"><div class="wrap about">
-    <div class="collage rv"><div class="ph a" data-img="sh-building" data-alt="Sunnah Hospital, Akola"></div><div class="ph b" data-img="team3" data-alt="Doctors discussing a patient's care"></div></div>
-    <div class="stack rv">
-      <span class="over">Welcome to Sunnah Hospital</span>
-      <h2 class="h-l">Comprehensive, compassionate and <span class="hl">affordable cancer care</span></h2>
-      <p class="lead">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha. We believe every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey.</p>
-      <div class="mini">
-        <div><span class="chip"><svg><use href="#i-shield"/></svg></span><span><b>Surgical Oncology</b><span>Cancer surgery planned around the whole patient</span></span></div>
-        <div><span class="chip"><svg><use href="#i-drop"/></svg></span><span><b>Medical Oncology</b><span>Chemotherapy with close monitoring and support</span></span></div>
+    <section class="sec"><div class="wrap about">
+      <div class="collage rv"><div class="ph a" data-img="sh-building" data-alt="Sunnah Hospital, Akola"></div><div class="ph b" data-img="team3" data-alt="Doctors discussing a patient's care"></div></div>
+      <div class="stack rv">
+        <span class="over">Welcome to Sunnah Hospital</span>
+        <h2 class="h-l">Comprehensive, compassionate and <span class="hl">affordable cancer care</span></h2>
+        <p class="lead">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha. We believe every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey.</p>
+        <div class="mini">
+          <div><span class="chip"><svg><use href="#i-shield"/></svg></span><span><b>Surgical Oncology</b><span>Cancer surgery planned around the whole patient</span></span></div>
+          <div><span class="chip"><svg><use href="#i-drop"/></svg></span><span><b>Medical Oncology</b><span>Chemotherapy with close monitoring and support</span></span></div>
+        </div>
+        <ul class="checks">
+          <li><span><b>Advanced medical science</b></span></li>
+          <li><span><b>Skilled oncology specialists</b></span></li>
+          <li><span><b>Deep human compassion</b></span></li>
+        </ul>
+        <div class="callrow"><a class="btn btn-n" href="about.html">About the Hospital</a><a class="callchip" href="tel:+919923542674"><i><svg><use href="#i-ph"/></svg></i><span><small>Call for appointments</small><b>+91 99235 42674</b></span></a></div>
       </div>
-      <ul class="checks">
-        <li><span><b>Advanced medical science</b></span></li>
-        <li><span><b>Skilled oncology specialists</b></span></li>
-        <li><span><b>Deep human compassion</b></span></li>
-      </ul>
-      <div class="callrow"><a class="btn btn-n" href="about.html">About the Hospital</a><a class="callchip" href="tel:+919923542674"><i><svg><use href="#i-ph"/></svg></i><span><small>Call for appointments</small><b>+91 99235 42674</b></span></a></div>
-    </div>
-  </div></section>
+    </div></section>
 
-  <section class="sec mist decor"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Cancer Care</span><h2 class="h-l">Specialised care <span class="hl">under one roof</span></h2></div><p class="lead rv">Surgery, medical treatment and diagnostics work side by side, so every patient receives one clear plan.</p></div>
-    <div class="prog">
-      <a class="pcard rv" href="surgical-oncology.html"><div class="ph" data-img="sh-ot-suite" data-alt="Operation theatre"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-shield"/></svg></span></div><h3>Surgical Oncology</h3><p>Advanced and safe surgical solutions for a wide range of cancers.</p><div class="tags"><span>Breast</span><span>Head &amp; Neck</span><span>Gastrointestinal</span><span>Gynaecological</span></div><span class="arrow">Explore Surgical Oncology</span></a>
-      <a class="pcard rv" href="medical-oncology.html"><div class="ph" data-img="sh-daycare" data-alt="Chemotherapy day care"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-drop"/></svg></span></div><h3>Medical Oncology</h3><p>Safe and effective chemotherapy and targeted therapies for comprehensive cancer care.</p><div class="tags"><span>Chemotherapy</span><span>Targeted Therapy</span><span>Immunotherapy</span><span>Palliative Care</span></div><span class="arrow">Explore Medical Oncology</span></a>
-      <a class="pcard rv" href="departments.html#diagnostics"><div class="ph" data-img="sh-diagnostic" data-alt="Diagnostic imaging room"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-flask"/></svg></span></div><h3>Diagnostics</h3><p>Accurate and reliable detection with in-house diagnostic facilities.</p><div class="tags"><span>Digital X-Ray</span><span>Sonography</span><span>Pathology</span></div><span class="arrow">Explore Diagnostics</span></a>
-    </div>
-  </div></section>
+    <section class="sec mist decor"><div class="wrap">
+      <div class="shead"><div class="stack rv"><span class="over">Cancer Care</span><h2 class="h-l">Specialised care <span class="hl">under one roof</span></h2></div><p class="lead rv">Surgery, medical treatment and diagnostics work side by side, so every patient receives one clear plan.</p></div>
+      <div class="prog">
+        <a class="pcard rv" href="surgical-oncology.html"><div class="ph" data-img="sh-ot-suite" data-alt="Operation theatre"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-shield"/></svg></span></div><h3>Surgical Oncology</h3><p>Advanced and safe surgical solutions for a wide range of cancers.</p><div class="tags"><span>Breast</span><span>Head &amp; Neck</span><span>Gastrointestinal</span><span>Gynaecological</span></div><span class="arrow">Explore Surgical Oncology</span></a>
+        <a class="pcard rv" href="medical-oncology.html"><div class="ph" data-img="sh-daycare" data-alt="Chemotherapy day care"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-drop"/></svg></span></div><h3>Medical Oncology</h3><p>Safe and effective chemotherapy and targeted therapies for comprehensive cancer care.</p><div class="tags"><span>Chemotherapy</span><span>Targeted Therapy</span><span>Immunotherapy</span><span>Palliative Care</span></div><span class="arrow">Explore Medical Oncology</span></a>
+        <a class="pcard rv" href="departments.html#diagnostics"><div class="ph" data-img="sh-diagnostic" data-alt="Diagnostic imaging room"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-flask"/></svg></span></div><h3>Diagnostics</h3><p>Accurate and reliable detection with in-house diagnostic facilities.</p><div class="tags"><span>Digital X-Ray</span><span>Sonography</span><span>Pathology</span></div><span class="arrow">Explore Diagnostics</span></a>
+      </div>
+    </div></section>
 
-  <section class="sec inset beyond" style="margin-top:12px"><div class="wrap grid">
-    <div class="side rv">
-      <span class="over onDark">Our Unique Approach</span>
-      <h2 class="h-l">Beyond cancer <span class="hl">treatment</span></h2>
-      <p>At Sunnah Hospital, we believe cancer care goes beyond medical treatment. Along with specialised Surgical &amp; Medical Oncology, our integrated patient-support approach focuses on five areas.</p>
-      <a class="btn btn-p" href="patient-care.html">Patient Care &amp; Support</a>
-      <div class="ph" data-img="care-hands" data-alt="Hands holding a heart"></div>
-    </div>
-    <div>{PILLARS}</div>
-  </div></section>
+    <section class="sec inset beyond" style="margin-top:12px"><div class="wrap grid">
+      <div class="side rv">
+        <span class="over onDark">Our Unique Approach</span>
+        <h2 class="h-l">Beyond cancer <span class="hl">treatment</span></h2>
+        <p>At Sunnah Hospital, we believe cancer care goes beyond medical treatment. Along with specialised Surgical &amp; Medical Oncology, our integrated patient-support approach focuses on five areas.</p>
+        <a class="btn btn-p" href="patient-care.html">Patient Care &amp; Support</a>
+        <div class="ph" data-img="care-hands" data-alt="Hands holding a heart"></div>
+      </div>
+      <div>{PILLARS}</div>
+    </div></section>
 
-  <section class="sec"><div class="wrap">
-    <div class="shead c"><div class="stack rv" style="justify-items:center"><span class="over">Your First Visit</span><h2 class="h-l">Four steps to <span class="hl">the right care</span></h2><p class="lead">From the first phone call, you will know what happens next.</p></div></div>
-    <div class="journey">
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-cal"/></svg></span><h3>Book your visit</h3><p>Call, WhatsApp or send an enquiry. Collect your reports, scans and prescriptions.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-chat"/></svg></span><h3>Meet the doctor</h3><p>The doctor examines you, reviews your reports and explains the options.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-file"/></svg></span><h3>Get your plan</h3><p>A clear treatment plan and cost estimate. Only the tests you need are advised.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-heart"/></svg></span><h3>Support begins</h3><p>You meet our counsellor and dietitian, and you know whom to call.</p></div>
-    </div>
-  </div></section>
+    <section class="sec"><div class="wrap">
+      <div class="shead c"><div class="stack rv" style="justify-items:center"><span class="over">Your First Visit</span><h2 class="h-l">Four steps to <span class="hl">the right care</span></h2><p class="lead">From the first phone call, you will know what happens next.</p></div></div>
+      <div class="journey">
+        <div class="jstep rv"><span class="jc"><svg><use href="#i-cal"/></svg></span><h3>Book your visit</h3><p>Call, WhatsApp or send an enquiry. Collect your reports, scans and prescriptions.</p></div>
+        <div class="jstep rv"><span class="jc"><svg><use href="#i-chat"/></svg></span><h3>Meet the doctor</h3><p>The doctor examines you, reviews your reports and explains the options.</p></div>
+        <div class="jstep rv"><span class="jc"><svg><use href="#i-file"/></svg></span><h3>Get your plan</h3><p>A clear treatment plan and cost estimate. Only the tests you need are advised.</p></div>
+        <div class="jstep rv"><span class="jc"><svg><use href="#i-heart"/></svg></span><h3>Support begins</h3><p>You meet our counsellor and dietitian, and you know whom to call.</p></div>
+      </div>
+    </div></section>
 
-  <section class="sec"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Why Choose Us</span><h2 class="h-l">Committed to excellence, compassion and <span class="hl">comprehensive cancer care</span></h2></div>
-      <div class="pmj rv"><img src="assets/img/pmjay.png" alt="Ayushman Bharat PM-JAY" width="72" height="72"><span><b>PM-JAY empanelled</b>Cashless treatment under Ayushman Bharat</span></div></div>
-    <div class="why">
-      <div class="rv"><span class="chip"><svg><use href="#i-user"/></svg></span><h3>Experienced Oncology Team</h3><p>Highly qualified specialists with years of expertise in cancer care.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-shield"/></svg></span><h3>Affordable Treatment Options</h3><p>Quality cancer care that is accessible and affordable for all.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-file"/></svg></span><h3>PM-JAY Support</h3><p>Cashless treatment facility under the Ayushman Bharat (PM-JAY) scheme.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-heart"/></svg></span><h3>Patient-Centered Care</h3><p>Personalised treatment and compassionate care at every step.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-chat"/></svg></span><h3>Emotional &amp; Family Support</h3><p>Counselling and support for patients and their families.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-pulse"/></svg></span><h3>Modern Infrastructure</h3><p>Modular OT, ICU, HDU and 24x7 casualty for safer treatment.</p></div>
-    </div>
-  </div></section>
+    <section class="sec"><div class="wrap">
+      <div class="shead"><div class="stack rv"><span class="over">Why Choose Us</span><h2 class="h-l">Committed to excellence, compassion and <span class="hl">comprehensive cancer care</span></h2></div>
+        <div class="pmj rv"><img src="assets/img/pmjay.png" alt="Ayushman Bharat PM-JAY" width="72" height="72"><span><b>PM-JAY empanelled</b>Cashless treatment under Ayushman Bharat</span></div></div>
+      <div class="why">
+        <div class="rv"><span class="chip"><svg><use href="#i-user"/></svg></span><h3>Experienced Oncology Team</h3><p>Highly qualified specialists with years of expertise in cancer care.</p></div>
+        <div class="rv"><span class="chip"><svg><use href="#i-shield"/></svg></span><h3>Affordable Treatment Options</h3><p>Quality cancer care that is accessible and affordable for all.</p></div>
+        <div class="rv"><span class="chip"><svg><use href="#i-file"/></svg></span><h3>PM-JAY Support</h3><p>Cashless treatment facility under the Ayushman Bharat (PM-JAY) scheme.</p></div>
+        <div class="rv"><span class="chip"><svg><use href="#i-heart"/></svg></span><h3>Patient-Centered Care</h3><p>Personalised treatment and compassionate care at every step.</p></div>
+        <div class="rv"><span class="chip"><svg><use href="#i-chat"/></svg></span><h3>Emotional &amp; Family Support</h3><p>Counselling and support for patients and their families.</p></div>
+        <div class="rv"><span class="chip"><svg><use href="#i-pulse"/></svg></span><h3>Modern Infrastructure</h3><p>Modular OT, ICU, HDU and 24x7 casualty for safer treatment.</p></div>
+      </div>
+    </div></section>
 
-  <section class="sec mist decor"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Doctors &amp; Specialists</span><h2 class="h-l">The team that will <span class="hl">care for you</span></h2></div>
-      <div class="navbtns rv"><button type="button" data-track="docTrack" data-dir="prev" aria-label="Previous doctors"><svg><use href="#i-prev"/></svg></button><button type="button" data-track="docTrack" data-dir="next" aria-label="Next doctors"><svg><use href="#i-next"/></svg></button></div></div>
-    <div class="track" id="docTrack"></div>
-    <div style="text-align:center;margin-top:8px"><a class="btn btn-n" href="doctors.html">View All Doctors</a></div>
-  </div></section>
+    <section class="sec mist decor"><div class="wrap">
+      <div class="shead"><div class="stack rv"><span class="over">Doctors &amp; Specialists</span><h2 class="h-l">The team that will <span class="hl">care for you</span></h2></div>
+        <div class="navbtns rv"><button type="button" data-track="docTrack" data-dir="prev" aria-label="Previous doctors"><svg><use href="#i-prev"/></svg></button><button type="button" data-track="docTrack" data-dir="next" aria-label="Next doctors"><svg><use href="#i-next"/></svg></button></div></div>
+      <div class="track" id="docTrack"></div>
+      <div style="text-align:center;margin-top:8px"><a class="btn btn-n" href="doctors.html">View All Doctors</a></div>
+    </div></section>
 
-{PROMISE}
+  {PROMISE}
 
-  <section class="sec"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Hospital Infrastructure</span><h2 class="h-l">Better facilities. <span class="hl">Better care.</span></h2></div><div class="rv"><a class="btn btn-n" href="infrastructure.html">See All Facilities</a></div></div>
-    <div class="gal rv">
-      <figure class="w2 h2"><div class="ph" data-img="sh-ot" data-alt="Modular operation theatre at Sunnah Hospital"></div><figcaption>Modular Operation Theatre<small>For cancer surgery</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-icu" data-alt="ICU at Sunnah Hospital"></div><figcaption>Advanced ICU Support<small>Round-the-clock monitoring</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-hdu" data-alt="High dependency unit"></div><figcaption>High Dependency Unit<small>HDU care after surgery</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-casualty" data-alt="Casualty"></div><figcaption>24x7 Casualty<small>Emergency care</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-pharmacy" data-alt="Hospital pharmacy"></div><figcaption>Pharmacy 24x7<small>Medicines on site</small></figcaption></figure>
-    </div>
-  </div></section>
+    <section class="sec"><div class="wrap">
+      <div class="shead"><div class="stack rv"><span class="over">Hospital Infrastructure</span><h2 class="h-l">Better facilities. <span class="hl">Better care.</span></h2></div><div class="rv"><a class="btn btn-n" href="infrastructure.html">See All Facilities</a></div></div>
+      <div class="gal rv">
+        <figure class="w2 h2"><div class="ph" data-img="sh-ot" data-alt="Modular operation theatre at Sunnah Hospital"></div><figcaption>Modular Operation Theatre<small>For cancer surgery</small></figcaption></figure>
+        <figure><div class="ph" data-img="sh-icu" data-alt="ICU at Sunnah Hospital"></div><figcaption>Advanced ICU Support<small>Round-the-clock monitoring</small></figcaption></figure>
+        <figure><div class="ph" data-img="sh-hdu" data-alt="High dependency unit"></div><figcaption>High Dependency Unit<small>HDU care after surgery</small></figcaption></figure>
+        <figure><div class="ph" data-img="sh-casualty" data-alt="Casualty"></div><figcaption>24x7 Casualty<small>Emergency care</small></figcaption></figure>
+        <figure><div class="ph" data-img="sh-pharmacy" data-alt="Hospital pharmacy"></div><figcaption>Pharmacy 24x7<small>Medicines on site</small></figcaption></figure>
+      </div>
+    </div></section>
 
-  <section class="sec mist"><div class="wrap faqform">
-    <div>
-      <div class="stack rv" style="margin-bottom:30px"><span class="over">FAQs</span><h2 class="h-l">Questions patients <span class="hl">ask us</span></h2></div>
-      <details class="faq" open><summary>Do I need a referral to see a doctor?</summary><p>No. You can book an appointment directly.</p></details>
-      <details class="faq"><summary>What should I bring to my first appointment?</summary><p>All medical reports, scans and biopsy slides if available, a list of current medicines, and a family member if possible.</p></details>
-      <details class="faq"><summary>Can I get a second opinion?</summary><p>Yes. Bring or send your reports and our specialists will review them and explain their advice.</p></details>
-      <details class="faq"><summary>Is treatment available under Ayushman Bharat (PM-JAY)?</summary><p>Yes. Cashless treatment is available for eligible patients under the Ayushman Bharat (PM-JAY) scheme. Bring your card and our team will guide you.</p></details>
-      <details class="faq"><summary>Is chemotherapy given in day care?</summary><p>Yes. Chemotherapy is given in day care, and as in-patient (IPD) treatment when needed.</p></details>
-      <a class="arrow" href="patient-care.html#faqs" style="margin-top:14px">More questions</a>
-    </div>
-    <div class="fcard rv">
-      <h3>Request an appointment</h3>
-      <p>Share your details and our team will call you back.</p>
-      <form class="form" id="hf" novalidate>
-        <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" placeholder="Full name"></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91"></label></div>
-        <label for="d">Preferred department<select id="d">{DEPT_OPTS}</select></label>
-        <label for="m">Message (optional)<textarea id="m" rows="3" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
-        <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>
-        <p class="note" id="msg" hidden></p>
-      </form>
-    </div>
-  </div></section>''',
- '''<script src="assets/doctors.js"></script>
-<script>
-SHD.render(document.getElementById('docTrack'), SHD.list);
-const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
-$('qbar').onsubmit=e=>{e.preventDefault();const o=$('qok');o.hidden=false;o.textContent=(!v('qn')||!v('qp'))?'Please enter the patient name and mobile number.':`Thank you, ${v('qn')}. On the live site this request goes to the hospital team, who will call ${v('qp')}.`;};
-function upd(){$('wa').href='https://wa.me/919923542674?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\\nPatient: ${v('n')||'-'}\\nMobile: ${v('p')||'-'}\\nDepartment: ${v('d')}\\nMessage: ${v('m')||'-'}`);}
-$('hf').addEventListener('input',upd);upd();
-$('hf').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. On the live site this enquiry will be emailed to the hospital. For now, use WhatsApp.`;};
-</script>''')
+    <section class="sec mist"><div class="wrap faqform">
+      <div>
+        <div class="stack rv" style="margin-bottom:30px"><span class="over">FAQs</span><h2 class="h-l">Questions patients <span class="hl">ask us</span></h2></div>
+        <details class="faq" open><summary>Do I need a referral to see a doctor?</summary><p>No. You can book an appointment directly.</p></details>
+        <details class="faq"><summary>What should I bring to my first appointment?</summary><p>All medical reports, scans and biopsy slides if available, a list of current medicines, and a family member if possible.</p></details>
+        <details class="faq"><summary>Can I get a second opinion?</summary><p>Yes. Bring or send your reports and our specialists will review them and explain their advice.</p></details>
+        <details class="faq"><summary>Is treatment available under Ayushman Bharat (PM-JAY)?</summary><p>Yes. Cashless treatment is available for eligible patients under the Ayushman Bharat (PM-JAY) scheme. Bring your card and our team will guide you.</p></details>
+        <details class="faq"><summary>Is chemotherapy given in day care?</summary><p>Yes. Chemotherapy is given in day care, and as in-patient (IPD) treatment when needed.</p></details>
+        <a class="arrow" href="patient-care.html#faqs" style="margin-top:14px">More questions</a>
+      </div>
+      <div class="fcard rv">
+        <h3>Request an appointment</h3>
+        <p>Share your details and our team will call you back.</p>
+        <form class="form" id="hf" novalidate>
+          <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" placeholder="Full name"></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91"></label></div>
+          <label for="d">Preferred department<select id="d">{DEPT_OPTS}</select></label>
+          <label for="m">Message (optional)<textarea id="m" rows="3" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
+          <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>
+          <p class="note" id="msg" hidden></p>
+        </form>
+      </div>
+    </div></section>''',
+   '''<script src="assets/doctors.js"></script>
+  <script>
+  SHD.render(document.getElementById('docTrack'), SHD.list);
+  const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
+  $('qbar').onsubmit=e=>{e.preventDefault();const o=$('qok');o.hidden=false;o.textContent=(!v('qn')||!v('qp'))?'Please enter the patient name and mobile number.':`Thank you, ${v('qn')}. On the live site this request goes to the hospital team, who will call ${v('qp')}.`;};
+  function upd(){$('wa').href='https://wa.me/919923542674?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\\nPatient: ${v('n')||'-'}\\nMobile: ${v('p')||'-'}\\nDepartment: ${v('d')}\\nMessage: ${v('m')||'-'}`);}
+  $('hf').addEventListener('input',upd);upd();
+  $('hf').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. On the live site this enquiry will be emailed to the hospital. For now, use WhatsApp.`;};
+  </script>''')
+
 
 # ---------------- ABOUT ----------------
 page('about.html', 'About Us – Sunnah Hospital Cancer Research Center',

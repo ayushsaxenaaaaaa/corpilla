@@ -3,173 +3,334 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sunnah Hospital – Cancer Research Center | Surgical & Medical Cancer Center</title>
+<title>Sunnah Hospital – Cancer Research Center, Akola</title>
 <meta name="description" content="Sunnah Hospital – Cancer Research Center, Akola: comprehensive, compassionate and affordable cancer care for Vidarbha. Surgical & medical oncology, chemotherapy day care, diagnostics, ICU, HDU and PM-JAY cashless treatment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/sunnah.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<style>
+/* Home page in the Cleveland Clinic layout style: flat, white, Roboto, solid brand-blue buttons,
+   short accent bar under headings, full-width photo hero, services grid with expanders,
+   alternating photo/text rows, grey help band, solid blue footer. Brand: navy #00354e, turquoise #16becf. */
+:root{--blue:#007a8a;--blue-h:#00626f;--navy:#00354e;--turq:#16becf;--text:#363636;--muted:#5f6b70;--line:#e3e8ea;--grey:#f4f5f5;--font:"Roboto",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:#fff;color:var(--text);font:400 16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--blue)}
+h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
+p{margin:0}
+.w{max-width:1440px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+@media(min-width:1000px){.w{padding-left:max(88px,env(safe-area-inset-left,0px));padding-right:max(88px,env(safe-area-inset-right,0px))}}
+.bar-accent{display:block;width:40px;height:4px;background:var(--turq);margin:14px 0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;padding:11px 24px;border-radius:3px;border:2px solid var(--blue);cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--blue-h);border-color:var(--blue-h)}
+.btn.out{background:#fff;color:var(--blue)}
+.btn.out:hover{background:#eaf6f7}
+.btn svg{width:18px;height:18px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+
+/* utility + header */
+.util{background:var(--grey);font-size:.78rem;color:#444}
+.util .w{display:flex;justify-content:space-between;gap:16px;padding-block:7px}
+.util b{font-weight:700}
+.util a{color:#444;text-decoration:none}
+.util nav{display:none;gap:0}
+.util nav a{padding:0 12px;border-left:1px solid #ccc}
+.util nav a:first-child{border-left:0;color:var(--blue)}
+.util nav a.wa{color:#1f8f4c;font-weight:500}
+@media(min-width:900px){.util nav{display:flex}}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:30}
+header .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:96px}
+header .logo img{height:58px;width:auto}
+@media(max-width:600px){header .w{height:76px}header .logo img{height:46px}}
+.mnav{display:none;align-items:center;gap:30px;font-size:.95rem}
+.mnav a{color:var(--blue);text-decoration:none}
+.mnav a:hover{text-decoration:underline}
+.hr{display:flex;align-items:center;gap:20px}
+.hr .btn{padding:14px 26px;font-size:1rem}
+.menu{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);background:#fff;color:var(--blue);cursor:pointer;border-radius:3px}
+.menu svg{width:24px;height:24px}
+@media(min-width:1100px){.mnav{display:flex}.menu{display:none}}
+@media(max-width:600px){.hr .btn{display:none}}
+.drawer{border-top:1px solid var(--line);background:#fff}
+.drawer .w{display:grid;padding-block:6px 18px}
+.drawer a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500;color:var(--blue)}
+
+/* hero */
+.hero{position:relative;min-height:clamp(440px,64vh,620px);display:flex;align-items:flex-end;background:#444;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62) 100%)}
+.hero .w{position:relative;z-index:1;width:100%;padding-block:0 56px}
+.hero h1{color:#fff;font-size:clamp(2rem,4.2vw,3rem);font-weight:700;max-width:16ch}
+.hero .links{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:22px}
+.hero .links a{color:#fff;font-weight:500;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:2px}
+.hero .links a:hover{border-bottom-width:2px}
+.down{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:34px;z-index:1;width:42px;height:42px;border-radius:50%;background:var(--turq);display:grid;place-items:center;color:#00303f}
+@media(min-width:1000px){.down{right:88px}}
+.down svg{width:20px;height:20px}
+
+/* featured services */
+.feat{padding-block:clamp(56px,7vw,90px)}
+.eyebrow{font-size:.82rem;font-weight:500;color:#222}
+.sgrid{display:grid;gap:40px 48px;margin-top:40px}
+@media(min-width:700px){.sgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1050px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+.svc .ic{width:52px;height:52px;color:var(--blue);margin-bottom:16px}
+.svc h3{font-size:clamp(1.5rem,2.2vw,1.95rem);color:var(--blue);font-weight:700}
+.svc p{color:var(--muted);margin-top:8px;font-size:.95rem}
+.svc button{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:none;border:0;padding:0;color:var(--blue);font:500 .92rem var(--font);cursor:pointer}
+.svc button svg{width:14px;height:14px;transition:transform .2s}
+.svc button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.svc ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;gap:8px}
+.svc ul a{text-decoration:none;font-size:.95rem}
+.svc ul a:hover{text-decoration:underline}
+.feat .all{margin-top:48px}
+
+/* alternating photo / text rows */
+.row{display:grid;align-items:center}
+@media(min-width:900px){.row{grid-template-columns:1.15fr 1fr;min-height:520px}.row.rev .pic{order:2}}
+.row .pic{position:relative;min-height:300px;height:100%;background:#dfe5e7;overflow:hidden}
+.row .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.row .txt{padding:clamp(40px,6vw,80px) max(20px,env(safe-area-inset-right,0px)) clamp(40px,6vw,80px) max(20px,env(safe-area-inset-left,0px))}
+@media(min-width:900px){.row .txt{padding-inline:64px 88px}.row.rev .txt{padding-inline:88px 64px}}
+.row h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:700;color:#333;max-width:18ch}
+.row p{color:var(--muted);max-width:44ch;line-height:1.75}
+.row .btn{margin-top:26px}
+.row .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.row .acts .btn{margin-top:0}
+
+/* help band */
+.help{background:var(--grey);padding-block:36px}
+.cards{display:grid;gap:20px}
+@media(min-width:800px){.cards{grid-template-columns:1fr 1fr}}
+.card{background:#fff;padding:28px 30px 34px}
+.card .ic{width:44px;height:44px;color:var(--blue);margin-bottom:12px}
+.card h2{color:var(--blue);font-size:clamp(1.6rem,2.4vw,2rem);font-weight:700;margin-bottom:14px}
+.card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.card a{font-size:.95rem;text-decoration:none;border-bottom:1px solid currentColor}
+.card a:hover{border-bottom-width:2px}
+.pm{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
+.pm img{width:48px;height:48px;border-radius:50%}
+.pm b{color:#333;display:block}
+
+/* why */
+.why{padding-block:clamp(56px,7vw,90px) 20px}
+.why .big{font-size:clamp(1.3rem,2.4vw,1.85rem);color:#666;max-width:52ch;line-height:1.45;margin-top:10px}
+.why .facts{display:grid;gap:10px 40px;margin-top:30px;padding:0;list-style:none}
+@media(min-width:800px){.why .facts{grid-template-columns:repeat(3,1fr)}}
+.why .facts li{padding:16px 0;border-top:1px solid var(--line)}
+.why .facts b{display:block;color:#333}
+.why .facts span{color:var(--muted);font-size:.93rem}
+
+/* facility strip */
+.fac{padding-block:clamp(40px,6vw,70px) clamp(56px,7vw,90px)}
+.fstrip{display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:30px}
+@media(min-width:1000px){.fstrip{grid-template-columns:repeat(6,1fr)}}
+.fstrip figure{margin:0}
+.fstrip .im{aspect-ratio:1/1;overflow:hidden;background:#dfe5e7}
+.fstrip img{width:100%;height:100%;object-fit:cover}
+.fstrip figcaption{margin-top:8px;font-weight:500;font-size:.92rem;color:#333}
+
+/* footer */
+footer{background:var(--navy);color:#fff}
+.ftop{display:grid;gap:40px;padding-block:56px 40px}
+@media(min-width:1000px){.ftop{grid-template-columns:1.3fr 1fr 1fr}}
+.fblock{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.35)}
+.fblock:last-child{border:0;margin:0}
+.fblock h3{font-size:1.3rem;font-weight:500;margin-bottom:6px}
+.fblock p,.fblock a{font-size:.92rem;color:#fff}
+footer h4{margin:0 0 14px;font-size:1.05rem;font-weight:500}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.9rem}
+footer ul a{color:#fff;text-decoration:none}
+footer ul a:hover{text-decoration:underline}
+.fbase{background:#00263a;font-size:.8rem;color:#cfe0e7}
+.fbase .w{padding-block:22px calc(96px + env(safe-area-inset-bottom,0px));display:grid;gap:8px}
+@media(min-width:900px){.fbase .w{padding-bottom:22px}}
+.fbase a{color:#fff}
+
+/* mobile action bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line);background:#fff}
+.mbar a{display:grid;justify-items:center;gap:2px;padding:9px 6px calc(9px + env(safe-area-inset-bottom,0px));text-decoration:none;font-size:.75rem;font-weight:500;color:var(--blue)}
+.mbar a.bk{background:var(--blue);color:#fff}
+.mbar a.wa{color:#1f8f4c}
+.mbar svg{width:22px;height:22px}
+@media(min-width:900px){.mbar{display:none}}
+</style>
 </head>
-<body data-page="home">
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></g></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></symbol>
+  <symbol id="s-surg" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 30 18l6 6-22 22H8z"/><path d="m30 18 6-6a4 4 0 0 1 6 6l-6 6M22 26l6 6"/></g></symbol>
+  <symbol id="s-med" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h8M22 6v6h4V6M16 12h16v6l-3 4v18a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V22l-3-4z"/><path d="M19 28h10M19 34h10"/></g></symbol>
+  <symbol id="s-diag" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="12"/><path d="m29 29 12 12M14 20h3l2-4 3 8 2-4h3"/></g></symbol>
+  <symbol id="s-pain" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42S8 32 8 19a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 13-16 23-16 23z"/><path d="M24 22v10M19 27h10"/></g></symbol>
+  <symbol id="s-mind" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="16" r="6"/><circle cx="33" cy="18" r="5"/><path d="M6 40c0-7 5-12 11-12s11 5 11 12M28 40c0-5 2-9 6-10 5 0 8 4 8 10"/></g></symbol>
+  <symbol id="s-nutri" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 14c-8-4-16 2-14 12 2 9 8 16 14 13 6 3 12-4 14-13 2-10-6-16-14-12z"/><path d="M24 14c0-4 2-7 6-8"/></g></symbol>
+  <symbol id="s-care" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="30" rx="2"/><path d="M6 18h36M16 6v8M32 6v8M24 24v10M19 29h10"/></g></symbol>
+  <symbol id="s-help" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M19 19a5 5 0 1 1 6 5c-1 .4-1 1.2-1 2.5M24 33v.5"/></g></symbol>
+</svg>
+
+<div class="util"><div class="w">
+  <span><b>Location:</b> Ganga Nagar, Washim Bypass, Akola</span>
+  <nav aria-label="Utility"><a href="tel:+919923542674">+91 99235 42674</a><a href="contact.html">Contact Us</a><a href="patient-care.html#faqs">FAQs</a><a href="about.html">About Us</a><a class="wa" href="https://wa.me/919923542674">WhatsApp</a></nav>
+</div></div>
+
+<header><div class="w">
+  <a class="logo" href="index.html"><img src="assets/logo-header.png" alt="Sunnah Hospital – Cancer Research Center" width="171" height="58"></a>
+  <nav class="mnav" aria-label="Main"><a href="doctors.html">Find a Doctor</a><a href="contact.html">Location &amp; Directions</a><a href="departments.html">Cancer Care</a><a href="infrastructure.html">Facilities</a><a href="patient-care.html">Patients &amp; Families</a></nav>
+  <div class="hr">
+    <a class="btn" href="contact.html">Appointments</a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="w">
+  <a href="doctors.html">Find a Doctor</a><a href="contact.html">Location &amp; Directions</a><a href="departments.html">Cancer Care</a><a href="infrastructure.html">Facilities</a><a href="patient-care.html">Patients &amp; Families</a><a href="about.html">About Us</a><a href="research.html">Cancer Research</a><a href="contact.html">Appointments</a>
+</div></div>
+</header>
+
 <main>
+<section class="hero">
+  <img src="assets/img/hero-surgery.jpg" alt="Cancer surgeons in the operating theatre" fetchpriority="high">
+  <div class="w">
+    <h1>Cancer care for Vidarbha, with hope at every step.</h1>
+    <div class="links"><a href="doctors.html">Our Doctors</a><a href="contact.html">Location &amp; Directions</a><a href="contact.html">Appointments</a></div>
+  </div>
+  <a class="down" href="#services" aria-label="Scroll to services"><svg><use href="#i-down"/></svg></a>
+</section>
 
-  <section class="hero3">
-    <div class="frame">
-      <div class="slide on"><div class="ph" data-img="hero-surgery" data-eager="1" data-alt="Cancer surgeons operating at Sunnah Hospital"></div></div>
-      <div class="slide"><div class="ph" data-img="sh-daycare" data-eager="1" data-alt="Chemotherapy day care"></div></div>
-      <div class="slide"><div class="ph" data-img="sh-building" data-eager="1" data-alt="Sunnah Hospital building, Akola"></div></div>
-      <div class="shade"></div><span class="ring"></span>
-      <div class="wrap inner">
-        <div>
-          <div class="copies">
-            <div class="on"><span class="over onDark">Surgical &amp; Medical Cancer Center</span><h1>Cancer care that goes <span class="hl">beyond</span> treatment.</h1><p>We treat the disease, and we guide and support patients and their families through every step of the journey.</p><div class="ctas"><a class="btn btn-p" href="contact.html">Book an Appointment</a><a class="btn btn-o" href="https://wa.me/919923542674" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp Us</a></div></div>
-            <div><span class="over onDark">Medical Oncology</span><h1>Chemotherapy in <span class="hl">day care</span> and IPD.</h1><p>Safe and effective chemotherapy, targeted therapy and immunotherapy, with supportive and palliative care.</p><div class="ctas"><a class="btn btn-p" href="medical-oncology.html">Medical Oncology</a><a class="btn btn-o" href="contact.html">Book an Appointment</a></div></div>
-            <div><span class="over onDark">Akola • Vidarbha</span><h1>Affordable cancer care for <span class="hl">Vidarbha.</span></h1><p>Comprehensive, compassionate cancer treatment close to home, with cashless care under Ayushman Bharat (PM-JAY).</p><div class="ctas"><a class="btn btn-p" href="about.html">About the Hospital</a><a class="btn btn-o" href="contact.html">Contact Us</a></div></div>
-          </div>
-          <div class="ctrl"><button class="pv" type="button" aria-label="Previous slide"><svg><use href="#i-prev"/></svg></button><span class="num">01 / 03</span><span class="bars"><span></span><span></span><span></span></span><button class="nx" type="button" aria-label="Next slide"><svg><use href="#i-next"/></svg></button></div>
-        </div>
-        <aside class="glass">
-          <span class="over onDark">Our Promise</span>
-          <h3>We don't just treat cancer. We guide you through every step.</h3>
-          <ul><li><svg><use href="#i-check"/></svg>Right Treatment</li><li><svg><use href="#i-check"/></svg>Right Guidance</li><li><svg><use href="#i-check"/></svg>Compassionate Care</li></ul>
-          <a class="meet" href="doctors.html"><span class="avs"><span><img src="assets/img/doc1.jpg" alt=""></span><span><img src="assets/img/doc2.jpg" alt=""></span><span><img src="assets/img/doc3.jpg" alt=""></span></span><span>Meet our doctors<br>and specialists →</span></a>
-        </aside>
-      </div>
-    </div>
-    <div class="wrap"><form class="qbar" id="qbar" novalidate>
-      <div class="t"><b>Request a callback</b><span>Our team will call you back</span></div>
-      <input id="qn" placeholder="Patient name" aria-label="Patient name" autocomplete="name">
-      <input id="qp" type="tel" placeholder="Mobile number" aria-label="Mobile number" autocomplete="tel">
-      <select id="qd" aria-label="Department"><option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option><option>Not sure</option></select>
-      <button class="btn btn-n" type="submit">Request Callback</button>
-      <p class="ok" id="qok" hidden></p>
-    </form></div>
-  </section>
+<section class="feat" id="services"><div class="w">
+  <p class="eyebrow">Featured Services</p>
+  <span class="bar-accent"></span>
+  <div class="sgrid">
+    <div class="svc"><svg class="ic"><use href="#s-surg"/></svg><h3>Surgical Oncology</h3><p>Precise, safe cancer surgery</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="surgical-oncology.html">Head &amp; Neck Cancer Surgery</a></li><li><a href="surgical-oncology.html">Breast Cancer Surgery</a></li><li><a href="surgical-oncology.html">Gastrointestinal Cancer Surgery</a></li><li><a href="surgical-oncology.html">Gynecological Cancer Surgery</a></li></ul></div>
+    <div class="svc"><svg class="ic"><use href="#s-med"/></svg><h3>Medical Oncology</h3><p>Chemotherapy and targeted therapies</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="medical-oncology.html">Chemotherapy (Day Care &amp; IPD)</a></li><li><a href="medical-oncology.html">Targeted Therapy</a></li><li><a href="medical-oncology.html">Immunotherapy</a></li><li><a href="medical-oncology.html">Supportive &amp; Palliative Care</a></li></ul></div>
+    <div class="svc"><svg class="ic"><use href="#s-diag"/></svg><h3>Diagnostics</h3><p>Accurate, reliable detection</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="departments.html#diagnostics">Digital X-Ray</a></li><li><a href="departments.html#diagnostics">Sonography</a></li><li><a href="departments.html#diagnostics">Pathology</a></li><li><a href="departments.html#diagnostics">Other Diagnostic Facilities</a></li></ul></div>
+    <div class="svc"><svg class="ic"><use href="#s-pain"/></svg><h3>Pain &amp; Palliative Care</h3><p>Relief and comfort for a better quality of life</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#pain">Pain Management</a></li><li><a href="medical-oncology.html">Supportive Care</a></li><li><a href="patient-care.html">Diagnosis to Recovery Support</a></li></ul></div>
+    <div class="svc"><svg class="ic"><use href="#s-mind"/></svg><h3>Psychological Support</h3><p>Counselling for patients and families</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#counselling">Patient Counselling</a></li><li><a href="patient-care.html#counselling">Family Support</a></li><li><a href="patient-care.html#guidance">Treatment Guidance</a></li></ul></div>
+    <div class="svc"><svg class="ic"><use href="#s-nutri"/></svg><h3>Nutrition &amp; Recovery</h3><p>Diet, rehabilitation and wellness</p><button type="button" aria-expanded="false">Show services <svg><use href="#i-chev"/></svg></button><ul hidden><li><a href="patient-care.html#nutrition">Oncology Dietitian</a></li><li><a href="patient-care.html#rehab">Recovery &amp; Rehabilitation</a></li><li><a href="patient-care.html#wellness">Lifestyle &amp; Wellness</a></li></ul></div>
+  </div>
+  <a class="btn all" href="departments.html">Explore all services</a>
+</div></section>
 
-  <section class="sec"><div class="wrap about">
-    <div class="collage rv"><div class="ph a" data-img="sh-building" data-alt="Sunnah Hospital, Akola"></div><div class="ph b" data-img="team3" data-alt="Doctors discussing a patient's care"></div></div>
-    <div class="stack rv">
-      <span class="over">Welcome to Sunnah Hospital</span>
-      <h2 class="h-l">Comprehensive, compassionate and <span class="hl">affordable cancer care</span></h2>
-      <p class="lead">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha. We believe every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey.</p>
-      <div class="mini">
-        <div><span class="chip"><svg><use href="#i-shield"/></svg></span><span><b>Surgical Oncology</b><span>Cancer surgery planned around the whole patient</span></span></div>
-        <div><span class="chip"><svg><use href="#i-drop"/></svg></span><span><b>Medical Oncology</b><span>Chemotherapy with close monitoring and support</span></span></div>
-      </div>
-      <ul class="checks">
-        <li><span><b>Advanced medical science</b></span></li>
-        <li><span><b>Skilled oncology specialists</b></span></li>
-        <li><span><b>Deep human compassion</b></span></li>
-      </ul>
-      <div class="callrow"><a class="btn btn-n" href="about.html">About the Hospital</a><a class="callchip" href="tel:+919923542674"><i><svg><use href="#i-ph"/></svg></i><span><small>Call for appointments</small><b>+91 99235 42674</b></span></a></div>
-    </div>
-  </div></section>
+<section class="row">
+  <div class="pic"><img src="assets/img/sh-daycare.jpg" alt="Chemotherapy day care" loading="lazy"></div>
+  <div class="txt">
+    <h2>Chemotherapy Without an Overnight Stay</h2>
+    <span class="bar-accent"></span>
+    <p>Most chemotherapy is given in our day care unit, so you can go home the same day. When a longer stay is needed, it is given as in-patient (IPD) treatment.</p>
+    <a class="btn" href="medical-oncology.html">About chemotherapy</a>
+  </div>
+</section>
 
-  <section class="sec mist decor"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Cancer Care</span><h2 class="h-l">Specialised care <span class="hl">under one roof</span></h2></div><p class="lead rv">Surgery, medical treatment and diagnostics work side by side, so every patient receives one clear plan.</p></div>
-    <div class="prog">
-      <a class="pcard rv" href="surgical-oncology.html"><div class="ph" data-img="sh-ot-suite" data-alt="Operation theatre"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-shield"/></svg></span></div><h3>Surgical Oncology</h3><p>Advanced and safe surgical solutions for a wide range of cancers.</p><div class="tags"><span>Breast</span><span>Head &amp; Neck</span><span>Gastrointestinal</span><span>Gynaecological</span></div><span class="arrow">Explore Surgical Oncology</span></a>
-      <a class="pcard rv" href="medical-oncology.html"><div class="ph" data-img="sh-daycare" data-alt="Chemotherapy day care"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-drop"/></svg></span></div><h3>Medical Oncology</h3><p>Safe and effective chemotherapy and targeted therapies for comprehensive cancer care.</p><div class="tags"><span>Chemotherapy</span><span>Targeted Therapy</span><span>Immunotherapy</span><span>Palliative Care</span></div><span class="arrow">Explore Medical Oncology</span></a>
-      <a class="pcard rv" href="departments.html#diagnostics"><div class="ph" data-img="sh-diagnostic" data-alt="Diagnostic imaging room"></div><div class="chipwrap"><span class="chip"><svg><use href="#i-flask"/></svg></span></div><h3>Diagnostics</h3><p>Accurate and reliable detection with in-house diagnostic facilities.</p><div class="tags"><span>Digital X-Ray</span><span>Sonography</span><span>Pathology</span></div><span class="arrow">Explore Diagnostics</span></a>
-    </div>
-  </div></section>
+<section class="row rev">
+  <div class="pic"><img src="assets/img/consult.jpg" alt="Doctor speaking with a patient" loading="lazy"></div>
+  <div class="txt">
+    <h2>Just Diagnosed? We'll Guide You.</h2>
+    <span class="bar-accent"></span>
+    <p>Bring your reports and our team will explain the diagnosis, the options and the costs, and help you avoid unnecessary investigations and expenses.</p>
+    <div class="acts"><a class="btn" href="contact.html">Book a consultation</a><a class="btn out" href="https://wa.me/919923542674">Send reports on WhatsApp</a></div>
+  </div>
+</section>
 
-  <section class="sec inset beyond" style="margin-top:12px"><div class="wrap grid">
-    <div class="side rv">
-      <span class="over onDark">Our Unique Approach</span>
-      <h2 class="h-l">Beyond cancer <span class="hl">treatment</span></h2>
-      <p>At Sunnah Hospital, we believe cancer care goes beyond medical treatment. Along with specialised Surgical &amp; Medical Oncology, our integrated patient-support approach focuses on five areas.</p>
-      <a class="btn btn-p" href="patient-care.html">Patient Care &amp; Support</a>
-      <div class="ph" data-img="care-hands" data-alt="Hands holding a heart"></div>
-    </div>
-    <div><div class="pillars">
-      <div class="pillar rv" id="guidance"><span class="pi"><svg><use href="#i-compass"/></svg></span><div><h3>Right Guidance</h3><p>Treatment navigation and help with informed decisions, including guidance to avoid unnecessary investigations and expenses.</p></div></div>
-      <div class="pillar rv" id="counselling"><span class="pi"><svg><use href="#i-heart"/></svg></span><div><h3>Psychological Support</h3><p>Professional counselling and emotional support for patients and their families.</p></div></div>
-      <div class="pillar rv" id="nutrition"><span class="pi"><svg><use href="#i-leaf"/></svg></span><div><h3>Specialized Nutrition</h3><p>A dedicated oncology dietitian for personalised nutrition during chemotherapy, after surgery and throughout recovery.</p></div></div>
-      <div class="pillar rv" id="rehab"><span class="pi"><svg><use href="#i-pulse"/></svg></span><div><h3>Recovery &amp; Rehabilitation</h3><p>Post-treatment recovery guidance and supportive care.</p></div></div>
-      <div class="pillar rv" id="wellness"><span class="pi"><svg><use href="#i-sun"/></svg></span><div><h3>Lifestyle &amp; Wellness</h3><p>Long-term nutrition, lifestyle guidance and family education.</p></div></div>
-    </div></div>
-  </div></section>
+<section class="help"><div class="w cards">
+  <div class="card">
+    <svg class="ic"><use href="#s-care"/></svg>
+    <h2>Get Care</h2>
+    <ul><li><a href="tel:+919923542674">+91 99235 42674</a></li><li><a href="tel:+919850660773">+91 98507 60773</a></li><li><a href="contact.html">Schedule an appointment</a></li><li><a href="https://wa.me/919923542674">Message us on WhatsApp</a></li></ul>
+  </div>
+  <div class="card">
+    <svg class="ic"><use href="#s-help"/></svg>
+    <h2>Need Help?</h2>
+    <ul><li><a href="contact.html">24x7 Casualty &amp; Emergency</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sunnah+Hospital+Ganga+Nagar+Washim+Bypass+Akola">Get directions</a></li><li><a href="mailto:drhakimakola@gmail.com">drhakimakola@gmail.com</a></li><li><a href="patient-care.html#faqs">Frequently asked questions</a></li></ul>
+    <div class="pm"><img src="assets/img/pmjay.png" alt="Ayushman Bharat PM-JAY"><span><b>PM-JAY cashless treatment</b>Available for eligible patients under Ayushman Bharat.</span></div>
+  </div>
+</div></section>
 
-  <section class="sec"><div class="wrap">
-    <div class="shead c"><div class="stack rv" style="justify-items:center"><span class="over">Your First Visit</span><h2 class="h-l">Four steps to <span class="hl">the right care</span></h2><p class="lead">From the first phone call, you will know what happens next.</p></div></div>
-    <div class="journey">
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-cal"/></svg></span><h3>Book your visit</h3><p>Call, WhatsApp or send an enquiry. Collect your reports, scans and prescriptions.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-chat"/></svg></span><h3>Meet the doctor</h3><p>The doctor examines you, reviews your reports and explains the options.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-file"/></svg></span><h3>Get your plan</h3><p>A clear treatment plan and cost estimate. Only the tests you need are advised.</p></div>
-      <div class="jstep rv"><span class="jc"><svg><use href="#i-heart"/></svg></span><h3>Support begins</h3><p>You meet our counsellor and dietitian, and you know whom to call.</p></div>
-    </div>
-  </div></section>
+<section class="why"><div class="w">
+  <p class="eyebrow">Why choose Sunnah Hospital?</p>
+  <p class="big">Every patient deserves not just treatment, but emotional strength, dignity and support. That is how we care for the people of Vidarbha.</p>
+  <span class="bar-accent"></span>
+  <ul class="facts">
+    <li><b>Experienced oncology team</b><span>Qualified specialists with years of expertise in cancer care.</span></li>
+    <li><b>Affordable treatment options</b><span>Quality cancer care that is accessible for all.</span></li>
+    <li><b>Modern infrastructure</b><span>Modular OT, ICU, HDU and 24x7 casualty.</span></li>
+  </ul>
+</div></section>
 
-  <section class="sec"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Why Choose Us</span><h2 class="h-l">Committed to excellence, compassion and <span class="hl">comprehensive cancer care</span></h2></div>
-      <div class="pmj rv"><img src="assets/img/pmjay.png" alt="Ayushman Bharat PM-JAY" width="72" height="72"><span><b>PM-JAY empanelled</b>Cashless treatment under Ayushman Bharat</span></div></div>
-    <div class="why">
-      <div class="rv"><span class="chip"><svg><use href="#i-user"/></svg></span><h3>Experienced Oncology Team</h3><p>Highly qualified specialists with years of expertise in cancer care.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-shield"/></svg></span><h3>Affordable Treatment Options</h3><p>Quality cancer care that is accessible and affordable for all.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-file"/></svg></span><h3>PM-JAY Support</h3><p>Cashless treatment facility under the Ayushman Bharat (PM-JAY) scheme.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-heart"/></svg></span><h3>Patient-Centered Care</h3><p>Personalised treatment and compassionate care at every step.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-chat"/></svg></span><h3>Emotional &amp; Family Support</h3><p>Counselling and support for patients and their families.</p></div>
-      <div class="rv"><span class="chip"><svg><use href="#i-pulse"/></svg></span><h3>Modern Infrastructure</h3><p>Modular OT, ICU, HDU and 24x7 casualty for safer treatment.</p></div>
-    </div>
-  </div></section>
+<section class="row">
+  <div class="pic"><img src="assets/img/team3.jpg" alt="Doctors discussing a patient's care" loading="lazy"></div>
+  <div class="txt">
+    <h2>We Don't Just Treat Cancer. We Care About You.</h2>
+    <span class="bar-accent"></span>
+    <p>Professional counselling, a dedicated oncology dietitian and recovery guidance support you and your family through every step of the journey.</p>
+    <a class="btn" href="patient-care.html">Patient support</a>
+  </div>
+</section>
 
-  <section class="sec mist decor"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Doctors &amp; Specialists</span><h2 class="h-l">The team that will <span class="hl">care for you</span></h2></div>
-      <div class="navbtns rv"><button type="button" data-track="docTrack" data-dir="prev" aria-label="Previous doctors"><svg><use href="#i-prev"/></svg></button><button type="button" data-track="docTrack" data-dir="next" aria-label="Next doctors"><svg><use href="#i-next"/></svg></button></div></div>
-    <div class="track" id="docTrack"></div>
-    <div style="text-align:center;margin-top:8px"><a class="btn btn-n" href="doctors.html">View All Doctors</a></div>
-  </div></section>
+<section class="row rev">
+  <div class="pic"><img src="assets/img/sh-ot.jpg" alt="Modular operation theatre at Sunnah Hospital" loading="lazy"></div>
+  <div class="txt">
+    <h2>Better Facilities. Better Care.</h2>
+    <span class="bar-accent"></span>
+    <p>A modular operation theatre, minor OT, ICU and HDU, 24x7 casualty and pharmacy, and dedicated male and female wards.</p>
+    <a class="btn" href="infrastructure.html">See our facilities</a>
+  </div>
+</section>
 
-  <section class="inset promise" style="margin-block:12px"><div class="bgp"></div><div class="wrap">
-    <svg class="qm"><use href="#i-quote"/></svg>
-    <span class="over onDark">Our Promise</span>
-    <p class="line">We don't just treat cancer. We <b>support the patient</b>, <b>strengthen the family</b> and guide them through every step of the journey.</p>
-    <div class="tri"><span>Right Treatment</span><span>Right Guidance</span><span>Compassionate Care</span></div>
-  </div></section>
+<section class="row">
+  <div class="pic"><img src="assets/img/sh-building.jpg" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
+  <div class="txt">
+    <h2>A Dedicated Cancer Center in Akola</h2>
+    <span class="bar-accent"></span>
+    <p>Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to comprehensive, compassionate and affordable cancer care. Our approach combines advanced medical science, skilled oncology specialists and deep human compassion.</p>
+    <div class="acts"><a class="btn" href="about.html">About us</a><a class="btn out" href="research.html">Cancer research</a></div>
+  </div>
+</section>
 
-  <section class="sec"><div class="wrap">
-    <div class="shead"><div class="stack rv"><span class="over">Hospital Infrastructure</span><h2 class="h-l">Better facilities. <span class="hl">Better care.</span></h2></div><div class="rv"><a class="btn btn-n" href="infrastructure.html">See All Facilities</a></div></div>
-    <div class="gal rv">
-      <figure class="w2 h2"><div class="ph" data-img="sh-ot" data-alt="Modular operation theatre at Sunnah Hospital"></div><figcaption>Modular Operation Theatre<small>For cancer surgery</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-icu" data-alt="ICU at Sunnah Hospital"></div><figcaption>Advanced ICU Support<small>Round-the-clock monitoring</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-hdu" data-alt="High dependency unit"></div><figcaption>High Dependency Unit<small>HDU care after surgery</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-casualty" data-alt="Casualty"></div><figcaption>24x7 Casualty<small>Emergency care</small></figcaption></figure>
-      <figure><div class="ph" data-img="sh-pharmacy" data-alt="Hospital pharmacy"></div><figcaption>Pharmacy 24x7<small>Medicines on site</small></figcaption></figure>
-    </div>
-  </div></section>
-
-  <section class="sec mist"><div class="wrap faqform">
-    <div>
-      <div class="stack rv" style="margin-bottom:30px"><span class="over">FAQs</span><h2 class="h-l">Questions patients <span class="hl">ask us</span></h2></div>
-      <details class="faq" open><summary>Do I need a referral to see a doctor?</summary><p>No. You can book an appointment directly.</p></details>
-      <details class="faq"><summary>What should I bring to my first appointment?</summary><p>All medical reports, scans and biopsy slides if available, a list of current medicines, and a family member if possible.</p></details>
-      <details class="faq"><summary>Can I get a second opinion?</summary><p>Yes. Bring or send your reports and our specialists will review them and explain their advice.</p></details>
-      <details class="faq"><summary>Is treatment available under Ayushman Bharat (PM-JAY)?</summary><p>Yes. Cashless treatment is available for eligible patients under the Ayushman Bharat (PM-JAY) scheme. Bring your card and our team will guide you.</p></details>
-      <details class="faq"><summary>Is chemotherapy given in day care?</summary><p>Yes. Chemotherapy is given in day care, and as in-patient (IPD) treatment when needed.</p></details>
-      <a class="arrow" href="patient-care.html#faqs" style="margin-top:14px">More questions</a>
-    </div>
-    <div class="fcard rv">
-      <h3>Request an appointment</h3>
-      <p>Share your details and our team will call you back.</p>
-      <form class="form" id="hf" novalidate>
-        <div class="row"><label for="n">Patient name<input id="n" autocomplete="name" placeholder="Full name"></label><label for="p">Mobile number<input id="p" type="tel" autocomplete="tel" placeholder="+91"></label></div>
-        <label for="d">Preferred department<select id="d"><option>Surgical Oncology</option><option>Medical Oncology</option><option>Counselling</option><option>Oncology Nutrition</option><option>Not sure</option></select></label>
-        <label for="m">Message (optional)<textarea id="m" rows="3" placeholder="Tell us briefly about the diagnosis or your question"></textarea></label>
-        <div class="acts"><button class="btn btn-p" type="submit">Send Enquiry</button><a class="btn btn-w" id="wa" target="_blank" rel="noopener" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>
-        <p class="note" id="msg" hidden></p>
-      </form>
-    </div>
-  </div></section>
+<section class="fac"><div class="w">
+  <p class="eyebrow">Inside Sunnah Hospital</p>
+  <span class="bar-accent"></span>
+  <div class="fstrip">
+    <figure><div class="im"><img src="assets/img/sh-ot.jpg" alt="" loading="lazy"></div><figcaption>Modular OT</figcaption></figure>
+    <figure><div class="im"><img src="assets/img/sh-minor-ot.jpg" alt="" loading="lazy"></div><figcaption>Minor OT</figcaption></figure>
+    <figure><div class="im"><img src="assets/img/sh-icu.jpg" alt="" loading="lazy"></div><figcaption>ICU</figcaption></figure>
+    <figure><div class="im"><img src="assets/img/sh-hdu.jpg" alt="" loading="lazy"></div><figcaption>HDU</figcaption></figure>
+    <figure><div class="im"><img src="assets/img/sh-casualty.jpg" alt="" loading="lazy"></div><figcaption>Casualty 24x7</figcaption></figure>
+    <figure><div class="im"><img src="assets/img/sh-pharmacy.jpg" alt="" loading="lazy"></div><figcaption>Pharmacy 24x7</figcaption></figure>
+  </div>
+</div></section>
 </main>
-<script src="assets/app.js"></script>
-<script src="assets/doctors.js"></script>
+
+<footer>
+  <div class="w ftop">
+    <div>
+      <div class="fblock"><h3>Find a Doctor</h3><p>Meet our surgical and medical oncology specialists.</p></div>
+      <div class="fblock"><h3>Location</h3><p>Ganga Nagar, Washim Bypass, Akola, Maharashtra 444002</p></div>
+      <div class="fblock"><h3>Appointments</h3><p>Call <a href="tel:+919923542674">+91 99235 42674</a> or <a href="tel:+919850660773">+91 98507 60773</a></p></div>
+    </div>
+    <div><h4>Cancer Care</h4><ul><li><a href="surgical-oncology.html">Surgical Oncology</a></li><li><a href="medical-oncology.html">Medical Oncology</a></li><li><a href="departments.html#diagnostics">Diagnostics</a></li><li><a href="patient-care.html">Patient Care &amp; Support</a></li><li><a href="research.html">Cancer Research</a></li></ul></div>
+    <div><h4>About Sunnah Hospital</h4><ul><li><a href="about.html">About Us</a></li><li><a href="doctors.html">Doctors &amp; Specialists</a></li><li><a href="infrastructure.html">Hospital Infrastructure</a></li><li><a href="contact.html">Contact &amp; Appointment</a></li><li><a href="patient-care.html#faqs">FAQs</a></li></ul></div>
+  </div>
+  <div class="fbase"><div class="w">
+    <span>Call: <a href="tel:+919923542674">+91 99235 42674</a> | Ganga Nagar, Washim Bypass, Akola 444002 | drhakimakola@gmail.com</span>
+    <span>© 2026 Sunnah Hospital – Cancer Research Center. All Rights Reserved. · Hope • Healing • Humanity</span>
+  </div></div>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+919923542674"><svg><use href="#i-ph"/></svg>Call</a>
+  <a class="bk" href="contact.html"><svg><use href="#i-cal"/></svg>Appointments</a>
+  <a class="wa" href="https://wa.me/919923542674"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+
 <script>
-SHD.render(document.getElementById('docTrack'), SHD.list);
-const $=i=>document.getElementById(i),v=i=>$(i).value.trim();
-$('qbar').onsubmit=e=>{e.preventDefault();const o=$('qok');o.hidden=false;o.textContent=(!v('qn')||!v('qp'))?'Please enter the patient name and mobile number.':`Thank you, ${v('qn')}. On the live site this request goes to the hospital team, who will call ${v('qp')}.`;};
-function upd(){$('wa').href='https://wa.me/919923542674?text='+encodeURIComponent(`Hello Sunnah Hospital, I would like an appointment.\nPatient: ${v('n')||'-'}\nMobile: ${v('p')||'-'}\nDepartment: ${v('d')}\nMessage: ${v('m')||'-'}`);}
-$('hf').addEventListener('input',upd);upd();
-$('hf').onsubmit=e=>{e.preventDefault();const m=$('msg');m.hidden=false;m.textContent=(!v('n')||!v('p'))?'Please enter the patient name and mobile number.':`Thank you, ${v('n')}. On the live site this enquiry will be emailed to the hospital. For now, use WhatsApp.`;};
+document.querySelectorAll('.svc button').forEach(b=>b.addEventListener('click',()=>{const l=b.nextElementSibling,o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));l.hidden=o;b.firstChild.nodeValue=o?'Show services ':'Hide services ';}));
+const m=document.getElementById('menu'),d=document.getElementById('drawer');
+m.addEventListener('click',()=>{d.hidden=!d.hidden;m.setAttribute('aria-expanded',String(!d.hidden));});
 </script>
 </body>
 </html>
