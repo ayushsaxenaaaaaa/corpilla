@@ -111,10 +111,10 @@ get_header();
 </section>
 
 <section class="help"><div class="w">
-  <h2>Hope. Healing. Humanity.</h2>
+  <h2>Hope. Health. Humanity.</h2>
   <div class="hg">
     <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p><a class="olbtn" href="<?php echo sunnah_url( 'contact' ); ?>">Book an appointment</a></div>
-    <div class="tile t-black"><h3>Healing</h3><p>Providing the best possible treatment.</p><a class="olbtn" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Our treatments</a></div>
+    <div class="tile t-black"><h3>Health</h3><p>Providing the best possible treatment.</p><a class="olbtn" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Our treatments</a></div>
     <div class="tile t-turq"><h3>Humanity</h3><p>Standing with patients beyond medicine.</p><a class="olbtn" href="<?php echo sunnah_url( 'patient-care' ); ?>">Patient support</a></div>
   </div>
 </div></section>

@@ -18,7 +18,7 @@ return array(
 			array( 'About Sunnah Hospital', 'about-us', '', 'Who we are and how we care' ),
 			array( 'Our Approach', 'about-us', 'approach', 'Science, specialists and compassion' ),
 			array( 'Why Choose Us', 'about-us', 'why', 'Experienced team, affordable care, PM-JAY' ),
-			array( 'Our Philosophy', 'about-us', 'philosophy', 'Hope. Healing. Humanity.' ),
+			array( 'Our Philosophy', 'about-us', 'philosophy', 'Hope. Health. Humanity.' ),
 			array( 'Our Promise', 'about-us', 'promise', 'Right Treatment. Right Guidance. Compassionate Care.' ),
 		),
 		'feature' => array( 'sh-building.jpg', 'Sunnah Hospital, Akola', 'Ganga Nagar, Washim Bypass', 'contact', 'location' ),

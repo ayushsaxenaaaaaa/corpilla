@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   </div>
   <div class="legal"><div class="w"><a href="<?php echo sunnah_url( 'privacy-policy' ); ?>">Privacy Policy</a><a href="mailto:<?php echo esc_attr( sunnah_opt( 'email' ) ); ?>"><?php echo esc_html( sunnah_opt( 'email' ) ); ?></a><a href="<?php echo esc_url( sunnah_opt( 'maps_url' ) ); ?>" rel="noopener" target="_blank"><?php echo esc_html( sunnah_opt( 'address' ) ); ?></a></div></div>
   <div class="mission"><div class="w">
-    <h3>Hope • Healing • Humanity</h3>
+    <h3>Hope • Health • Humanity</h3>
     <div><p>Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p><small>© <?php echo esc_html( gmdate( 'Y' ) ); ?> Sunnah Hospital – Cancer Research Center, Akola. All rights reserved.</small></div>
   </div></div>
 </footer>

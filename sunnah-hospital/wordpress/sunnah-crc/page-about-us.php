@@ -38,10 +38,10 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
 </div>
 
 <section class="help" id="philosophy"><div class="w">
-  <h2>Our Philosophy: Hope. Healing. Humanity.</h2>
+  <h2>Our Philosophy: Hope. Health. Humanity.</h2>
   <div class="hg">
     <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p></div>
-    <div class="tile t-black"><h3>Healing</h3><p>Providing the best possible treatment.</p></div>
+    <div class="tile t-black"><h3>Health</h3><p>Providing the best possible treatment.</p></div>
     <div class="tile t-turq"><h3>Humanity</h3><p>Standing with patients beyond medicine.</p></div>
   </div>
 </div></section>
