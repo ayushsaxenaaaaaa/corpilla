@@ -28,16 +28,22 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg',
   <p class="c">Photographs from our hospital in Akola.</p>
   <div class="gal">
     <figure class="w2 h2"><img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="Modular operation theatre" loading="lazy"><figcaption>Modular OT</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-minor-ot.jpg' ); ?>" alt="Minor operation theatre" loading="lazy"><figcaption>Minor OT</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Reception and waiting area" loading="lazy"><figcaption>Reception</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="Digital X-Ray room" loading="lazy"><figcaption>Digital X-Ray</figcaption></figure>
     <figure><img src="<?php echo sunnah_img( 'sh-icu.jpg' ); ?>" alt="Intensive care unit" loading="lazy"><figcaption>ICU</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-minor-ot.jpg' ); ?>" alt="Minor operation theatre" loading="lazy"><figcaption>Minor OT</figcaption></figure>
+    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward.jpg' ); ?>" alt="Patient ward" loading="lazy"><figcaption>Wards</figcaption></figure>
     <figure><img src="<?php echo sunnah_img( 'sh-hdu.jpg' ); ?>" alt="High dependency unit" loading="lazy"><figcaption>HDU</figcaption></figure>
     <figure><img src="<?php echo sunnah_img( 'sh-casualty.jpg' ); ?>" alt="Casualty" loading="lazy"><figcaption>Casualty 24x7</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"><figcaption>Pharmacy 24x7</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Hospital building" loading="lazy"><figcaption>Sunnah Hospital</figcaption></figure>
+    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="Ward beds with oxygen and monitoring points" loading="lazy"><figcaption>Wards</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"><figcaption>Pharmacy 24x7</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-entrance.jpg' ); ?>" alt="Hospital entrance" loading="lazy"><figcaption>Entrance</figcaption></figure>
+    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"><figcaption>Sunnah Hospital</figcaption></figure>
+    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward with window" loading="lazy"><figcaption>Wards</figcaption></figure>
   </div>
 </div></section>
 <section class="sec" id="comfort"><div class="w split rev">
-  <div class="ph"><img src="<?php echo sunnah_img( 'sh-daycare.jpg' ); ?>" alt="Chemotherapy day care" loading="lazy"></div>
+  <div class="ph"><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward at Sunnah Hospital" loading="lazy"></div>
   <div>
     <p class="kick">Patient Comfort</p>
     <h2>A calm place to heal</h2>

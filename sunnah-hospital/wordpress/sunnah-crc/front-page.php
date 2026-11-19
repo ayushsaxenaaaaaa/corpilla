@@ -12,7 +12,7 @@ get_header();
 ?>
 <main>
 <section class="hero">
-  <img src="<?php echo sunnah_img( 'team3.jpg' ); ?>" alt="Doctors at Sunnah Hospital discussing a patient’s care" fetchpriority="high">
+  <img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Doctors at Sunnah Hospital discussing a patient’s care" fetchpriority="high">
   <div class="w"><div class="hq">
     <h1>“We don’t just treat cancer.”</h1>
     <p class="who">Our Promise<span>Sunnah Cancer Research Center</span></p>
@@ -86,7 +86,7 @@ get_header();
     <a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ot-suite.jpg' ); ?>" alt="" loading="lazy"></div><h3>Surgical Oncology</h3><p>Head &amp; neck, breast, gastrointestinal and gynecological cancer surgery</p></a>
     <a href="<?php echo sunnah_url( 'medical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-daycare.jpg' ); ?>" alt="" loading="lazy"></div><h3>Medical Oncology</h3><p>Chemotherapy in day care and IPD, targeted therapy and immunotherapy</p></a>
     <a href="<?php echo sunnah_url( 'diagnostics' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Digital X-Ray, sonography and pathology for accurate detection</p></a>
-    <a href="<?php echo sunnah_url( 'infrastructure' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-icu.jpg' ); ?>" alt="" loading="lazy"></div><h3>ICU &amp; HDU</h3><p>Advanced critical care and a high dependency unit after surgery</p></a>
+    <a href="<?php echo sunnah_url( 'infrastructure' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="" loading="lazy"></div><h3>ICU &amp; HDU</h3><p>Advanced critical care and a high dependency unit after surgery</p></a>
   </div>
 </section>
 

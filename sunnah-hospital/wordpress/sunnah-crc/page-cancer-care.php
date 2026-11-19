@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-corridor.jpg', 'title' => 'Cancer Care', 'lead' => 'From accurate diagnosis to treatment and recovery, we stand with you.' ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-reception.jpg', 'title' => 'Cancer Care', 'lead' => 'From accurate diagnosis to treatment and recovery, we stand with you.' ) );
 $types = array(
 	array( 'Breast Cancer', 'Surgery and medical treatment', 'surgical-oncology' ),
 	array( 'Oral (Mouth) Cancer', 'Head & neck', 'surgical-oncology' ),

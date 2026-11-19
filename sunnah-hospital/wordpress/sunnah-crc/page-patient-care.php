@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'consult.jpg', 'title' => 'Patient Care & Support', 'lead' => 'We support the patient, strengthen the family and guide them through every step of the journey.' ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ward.jpg', 'title' => 'Patient Care & Support', 'lead' => 'We support the patient, strengthen the family and guide them through every step of the journey.' ) );
 ?>
 <main id="content">
 <div class="w lay">

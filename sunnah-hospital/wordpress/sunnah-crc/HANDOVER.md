@@ -22,11 +22,12 @@
 
 Until doctors are added, the Doctors page shows a "Doctor profiles are being added" message with the phone and WhatsApp buttons, and department pages simply hide the team section.
 
-### Stock images to replace (in `assets/img/`)
-- `team3.jpg` – home page top photo and Doctors page banner (two doctors). Best replaced with a real photo of Sunnah doctors.
-- `consult.jpg` – Patient Care page banner.
-- `sh-ot-suite.jpg`, `sh-daycare.jpg`, `sh-diagnostic.jpg`, `sh-lab.jpg`, `sh-corridor.jpg` – illustration images from the hospital's presentation (Surgical Oncology, Medical Oncology, Diagnostics, Research and other banners); replace with real photos when available.
-Real hospital photos already used: `sh-building.jpg`, `sh-ot.jpg`, `sh-minor-ot.jpg`, `sh-icu.jpg`, `sh-hdu.jpg`, `sh-casualty.jpg`, `sh-pharmacy.jpg`.
+### Photos
+Real hospital photos are now used throughout: building, entrance, reception, operation theatres, X-ray room, ICU, HDU, wards, casualty and pharmacy.
+Still illustrations from the presentation (replace when real photos are available):
+- `sh-daycare.jpg` – chemotherapy day care (Medical Oncology banner and cards).
+- `sh-lab.jpg` – pathology / research lab (Research banner, Cancer Care card).
+There are no stock photos of people in the theme. Doctor photos are added per doctor in Doctors → Add New.
 Keep the same file name and a similar shape (landscape) when replacing.
 
 ## 3. Contact details

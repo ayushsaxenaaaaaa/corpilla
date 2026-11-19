@@ -44,7 +44,7 @@ return array(
 			array( 'Medical Oncology Team', 'medical-oncology', '', 'Our medical oncologists' ),
 			array( 'Book with a Doctor', 'contact', 'enquiry', 'Request an appointment' ),
 		),
-		'feature' => array( 'team3.jpg', 'Request an appointment', 'Call, WhatsApp or send a request online.', 'contact', 'enquiry' ),
+		'feature' => array( 'sh-reception.jpg', 'Request an appointment', 'Call, WhatsApp or send a request online.', 'contact', 'enquiry' ),
 	),
 	'patient-care'   => array(
 		'label' => 'Patients & Family',
@@ -57,7 +57,7 @@ return array(
 			array( 'Specialized Nutrition', 'patient-care', 'nutrition', 'A dedicated oncology dietitian' ),
 			array( 'FAQs & PM-JAY', 'patient-care', 'faqs', 'Common questions and cashless treatment' ),
 		),
-		'feature' => array( 'consult.jpg', 'For families & caregivers', 'How to help at home and when to call us.', 'patient-care', 'families' ),
+		'feature' => array( 'sh-ward.jpg', 'For families & caregivers', 'How to help at home and when to call us.', 'patient-care', 'families' ),
 	),
 	'infrastructure' => array(
 		'label' => 'Facilities',

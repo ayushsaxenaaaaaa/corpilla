@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'team3.jpg', 'title' => 'Doctors & Specialists', 'lead' => 'The oncologists and specialists who will care for you.' ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot-suite.jpg', 'title' => 'Doctors & Specialists', 'lead' => 'The oncologists and specialists who will care for you.' ) );
 $docs  = sunnah_crc_get_doctors();
 $specs = array();
 foreach ( $docs as $d ) {
