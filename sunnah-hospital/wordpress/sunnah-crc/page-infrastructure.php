@@ -39,7 +39,8 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg',
     <figure><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"><figcaption>Pharmacy 24x7</figcaption></figure>
     <figure><img src="<?php echo sunnah_img( 'sh-entrance.jpg' ); ?>" alt="Hospital entrance" loading="lazy"><figcaption>Entrance</figcaption></figure>
     <figure class="w2"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"><figcaption>Sunnah Hospital</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward with window" loading="lazy"><figcaption>Wards</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-building-side.jpg' ); ?>" alt="Sunnah Hospital building, side view" loading="lazy"><figcaption>Hospital Building</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward with window" loading="lazy"><figcaption>Wards</figcaption></figure>
   </div>
 </div></section>
 <section class="sec" id="comfort"><div class="w split rev">

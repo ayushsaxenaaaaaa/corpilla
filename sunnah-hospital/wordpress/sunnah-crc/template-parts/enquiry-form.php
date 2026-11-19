@@ -22,7 +22,7 @@ $dept = isset( $args['department'] ) ? $args['department'] : '';
   <div class="frow">
     <label for="ef-email"><span class="lt">Email (optional)</span><input id="ef-email" name="email" type="email" maxlength="120" autocomplete="email"></label>
     <label for="ef-dept"><span class="lt">Department</span><select id="ef-dept" name="department">
-      <?php foreach ( array( 'Not sure', 'Surgical Oncology', 'Medical Oncology', 'Diagnostics', 'Pain & Palliative Care', 'Psychological Support', 'Oncology Nutrition', 'Second Opinion' ) as $o ) : ?>
+      <?php foreach ( array( 'Not sure', 'Surgical Oncology', 'Medical Oncology', 'Diagnostics', 'Pain & Palliative Care', 'Psychological Support', 'Oncology Nutrition', 'Dental Care', 'Second Opinion' ) as $o ) : ?>
         <option<?php selected( $dept, $o ); ?>><?php echo esc_html( $o ); ?></option>
       <?php endforeach; ?>
     </select></label>

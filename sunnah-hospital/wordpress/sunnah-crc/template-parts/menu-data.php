@@ -69,6 +69,17 @@ return array(
 		),
 		'feature' => array( 'sh-ot.jpg', 'Modular Operation Theatre', 'See our facilities', 'infrastructure', 'gallery' ),
 	),
+	'dental-care'    => array(
+		'label' => 'Dental Care',
+		'intro' => 'Sunnah Dental Care: complete dental treatment for the whole family, within Sunnah Hospital.',
+		'links' => array(
+			array( 'Sunnah Dental Care', 'dental-care', '', 'About our dental clinic' ),
+			array( 'Dental Treatments', 'dental-care', 'treatments', 'Check-ups, fillings, root canal and more' ),
+			array( 'Oral Cancer Screening', 'dental-care', 'oral-screening', 'Early checks for mouth cancer' ),
+			array( 'Book a Dental Appointment', 'contact', 'enquiry', 'Call, WhatsApp or request online' ),
+		),
+		'feature' => array( 'dental-logo.jpg', 'Sunnah Dental Care', 'Healthy smiles for the whole family.', 'dental-care', '' ),
+	),
 	'research'       => array(
 		'label' => 'Research',
 		'intro' => 'Our Cancer Research Center works to improve how cancer is understood, detected and treated in Vidarbha.',

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '2.2.0' );
+define( 'SUNNAH_CRC_VERSION', '2.3.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -148,6 +148,7 @@ function sunnah_crc_specialities() {
 		'Pain & Palliative Care',
 		'Psychological Support',
 		'Oncology Nutrition',
+		'Dental Care',
 	);
 }
 
@@ -271,6 +272,7 @@ function sunnah_crc_pages() {
 		'doctors'           => __( 'Doctors & Specialists', 'sunnah-crc' ),
 		'patient-care'      => __( 'Patient Care & Support', 'sunnah-crc' ),
 		'infrastructure'    => __( 'Hospital Infrastructure', 'sunnah-crc' ),
+		'dental-care'       => __( 'Sunnah Dental Care', 'sunnah-crc' ),
 		'research'          => __( 'Cancer Research', 'sunnah-crc' ),
 		'contact'           => __( 'Contact & Appointment', 'sunnah-crc' ),
 		'privacy-policy'    => __( 'Privacy Policy', 'sunnah-crc' ),
@@ -416,6 +418,7 @@ function sunnah_crc_meta_description() {
 			'surgical-oncology' => 'Surgical oncology at Sunnah Hospital, Akola: head & neck, breast, gastrointestinal and gynecological cancer surgery.',
 			'medical-oncology'  => 'Medical oncology at Sunnah Hospital, Akola: chemotherapy in day care and IPD, targeted therapy, immunotherapy, supportive and palliative care.',
 			'diagnostics'       => 'Diagnostics at Sunnah Hospital, Akola: digital X-Ray, sonography and pathology for accurate, reliable detection.',
+			'dental-care'       => 'Sunnah Dental Care at Sunnah Hospital, Akola: dental check-ups, fillings, root canal treatment, extractions, cleaning and oral cancer screening.',
 			'doctors'           => 'Meet the oncologists and specialists at Sunnah Hospital – Cancer Research Center, Akola.',
 			'patient-care'      => 'Patient care and support at Sunnah Hospital, Akola: treatment guidance, counselling, oncology nutrition, rehabilitation and FAQs.',
 			'infrastructure'    => 'Facilities at Sunnah Hospital, Akola: modular OT, minor OT, ICU, HDU, 24x7 casualty, 24x7 pharmacy and dedicated wards.',

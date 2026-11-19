@@ -3,7 +3,7 @@
 ## 1. Install
 1. WordPress admin → **Appearance → Themes → Add New → Upload Theme** → choose `sunnah-crc.zip` → **Install Now** → **Activate**.
 2. On activation the theme creates these pages automatically (if they don't already exist):
-   About Us, Cancer Care, Surgical Oncology, Medical Oncology, Diagnostics, Doctors & Specialists,
+   About Us, Cancer Care, Surgical Oncology, Medical Oncology, Diagnostics, Sunnah Dental Care, Doctors & Specialists,
    Patient Care & Support, Hospital Infrastructure, Cancer Research, Contact & Appointment, Privacy Policy.
    If the theme is uploaded over an older version that was already active, choose "Replace active with uploaded";
    any missing pages are then created on the first visit to the site.
@@ -27,6 +27,7 @@ Real hospital photos are now used throughout: building, entrance, reception, ope
 Still illustrations from the presentation (replace when real photos are available):
 - `sh-daycare.jpg` – chemotherapy day care (Medical Oncology banner and cards).
 - `sh-lab.jpg` – pathology / research lab (Research banner, Cancer Care card).
+- Sunnah Dental Care has no clinic photo yet; its banner uses the hospital building (`sh-building-side.jpg`).
 There are no stock photos of people in the theme. Doctor photos are added per doctor in Doctors → Add New.
 Keep the same file name and a similar shape (landscape) when replacing.
 

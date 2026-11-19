@@ -101,6 +101,12 @@ get_header();
   <a href="<?php echo esc_url( sunnah_wa() ); ?>"><span class="circ c3"><svg><use href="#i-q"/></svg></span><h3>Ask a Question</h3></a>
 </div>
 
+<section class="dentb"><div class="w">
+  <img src="<?php echo sunnah_img( 'dental-logo.jpg' ); ?>" alt="Sunnah Dental Care" width="380" height="70" loading="lazy">
+  <p>Complete dental care for the whole family, including oral cancer screening, within Sunnah Hospital.</p>
+  <a class="olbtn" href="<?php echo sunnah_url( 'dental-care' ); ?>">Visit Sunnah Dental Care</a>
+</div></section>
+
 <section class="dark">
   <img class="emb" src="<?php echo sunnah_img( 'emblem-white.png' ); ?>" alt="" aria-hidden="true">
   <div class="w"><div class="txt">
