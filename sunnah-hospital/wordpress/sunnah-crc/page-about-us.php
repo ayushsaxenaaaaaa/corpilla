@@ -17,14 +17,14 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
     <p class="kick">Sunnah Cancer Research Center</p>
     <p class="lede">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p>
     <p>We believe that every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey. A cancer diagnosis affects the whole family, so our care includes honest guidance, counselling, nutrition and help with recovery, alongside surgical and medical oncology.</p>
-    <h2>Our approach combines</h2>
+    <h2 id="approach">Our approach combines</h2>
     <div class="svcg">
       <div class="svcc"><svg><use href="#i-flask"/></svg><h3>Advanced medical science</h3><p>Evidence-based surgery, chemotherapy and targeted treatment, supported by in-house diagnostics.</p></div>
       <div class="svcc"><svg><use href="#i-ppl"/></svg><h3>Skilled oncology specialists</h3><p>Surgical and medical oncologists who plan each patient's treatment together.</p></div>
       <div class="svcc"><svg><use href="#i-heart"/></svg><h3>Deep human compassion</h3><p>Care that treats every patient and family with respect and dignity.</p></div>
       <div class="svcc"><svg><use href="#i-shield"/></svg><h3>Affordable treatment</h3><p>Quality care that is accessible, with cashless treatment under Ayushman Bharat (PM-JAY) for eligible patients.</p></div>
     </div>
-    <h2>Why choose us</h2>
+    <h2 id="why">Why choose us</h2>
     <ul class="ticks two">
       <li><b>Experienced oncology team.</b> Highly qualified specialists with years of expertise in cancer care.</li>
       <li><b>Affordable treatment options.</b> Quality cancer care that is accessible and affordable for all.</li>
@@ -37,7 +37,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ), array( 'Our Doctors', sunnah_url( 'doctors' ) ), array( 'Hospital Facilities', sunnah_url( 'infrastructure' ) ) ) ) ); ?>
 </div>
 
-<section class="help"><div class="w">
+<section class="help" id="philosophy"><div class="w">
   <h2>Our Philosophy: Hope. Healing. Humanity.</h2>
   <div class="hg">
     <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p></div>
@@ -46,7 +46,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
   </div>
 </div></section>
 
-<section class="sec"><div class="w split">
+<section class="sec" id="promise"><div class="w split">
   <div class="ph"><img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="Modular operation theatre at Sunnah Hospital" loading="lazy"></div>
   <div>
     <p class="kick">Our Promise</p>

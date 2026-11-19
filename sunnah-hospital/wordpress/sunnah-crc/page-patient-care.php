@@ -26,7 +26,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'consult.jpg
       <div class="svcc" id="pain"><svg><use href="#i-shield"/></svg><h3>Pain Management</h3><p>Advanced pain relief and palliative care for a better quality of life.</p></div>
     </div>
 
-    <h2>Your first visit</h2>
+    <h2 id="first-visit">Your first visit</h2>
     <ol class="steps">
       <li><b>Before you come</b><span>Collect all reports, scans, biopsy slides and prescriptions. Book by phone, WhatsApp or the enquiry form.</span></li>
       <li><b>At the consultation</b><span>The doctor examines you, reviews your reports and explains the diagnosis and options.</span></li>
@@ -34,7 +34,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'consult.jpg
       <li><b>Support begins</b><span>You meet our counsellor and dietitian, and you know whom to call with questions.</span></li>
     </ol>
 
-    <h2>What to bring</h2>
+    <h2 id="bring">What to bring</h2>
     <ul class="ticks two">
       <li>Photo ID and Ayushman Bharat (PM-JAY) card, if you have one</li>
       <li>All previous reports, scans and biopsy slides</li>
@@ -56,7 +56,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'consult.jpg
   </div>
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ), array( 'Our Doctors', sunnah_url( 'doctors' ) ), array( 'Contact & Location', sunnah_url( 'contact' ) ) ) ) ); ?>
 </div>
-<section class="tiles"><div class="w tg">
+<section class="tiles" id="families"><div class="w tg">
   <div class="tile t-navy"><svg><use href="#i-ppl"/></svg><h3>For Families &amp; Caregivers</h3><p>We teach caregivers how to help with food, medicines and daily care at home, and when to contact the hospital.</p></div>
   <div class="tile t-teal"><svg><use href="#i-heart"/></svg><h3>After Treatment</h3><p>Recovery guidance, regular check-ups and long-term lifestyle advice help you return to normal life.</p></div>
 </div></section>

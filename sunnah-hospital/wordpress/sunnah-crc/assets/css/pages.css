@@ -187,3 +187,61 @@
 .entry a{color:var(--teal)}
 .entry img{height:auto}
 .entry ul,.entry ol{padding-left:22px}
+
+/* ---------- main menu dropdowns ---------- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nbar .w{position:relative}
+.nbar .dd{position:static;display:flex;align-items:stretch}
+.nbar .dd-top{flex:1;padding-right:6px}
+.nbar .dd-top::after{content:none}
+.dd-btn{flex:none;width:34px;background:transparent;border:0;cursor:pointer;color:#fff;display:grid;place-items:center;padding:0}
+.dd-btn::before{content:"";border:5px solid transparent;border-top-color:#fff;border-bottom:0;transition:transform .2s}
+.dd-btn:hover,.dd:hover .dd-btn{background:var(--navy2)}
+.dd-btn[aria-expanded="true"]::before{transform:rotate(180deg)}
+.dd-btn:focus-visible{outline:3px solid var(--turq);outline-offset:-3px}
+.dd-panel{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;color:var(--ink);border-top:4px solid var(--turq);box-shadow:0 16px 36px rgba(0,30,44,.18);display:none}
+@media(min-width:1100px){
+  .dd:hover>.dd-panel,.dd.open>.dd-panel{display:block}
+  .dd:hover>.dd-top,.dd.open>.dd-top,.dd.open>.dd-btn{background:var(--navy2)}
+}
+.dd-in{display:grid;grid-template-columns:1fr 1.5fr 300px;gap:36px;padding:30px 40px 34px}
+.dd-intro .dd-h{font-family:var(--serif);font-size:1.8rem;color:var(--navy);margin-bottom:8px}
+.dd-intro p{font-size:.95rem;color:var(--muted);line-height:1.5}
+.dd-intro .arw{margin-top:14px;display:inline-flex}
+.dd-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;align-content:start}
+.dd-links a{display:block;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:400}
+.dd-links a:hover{background:none}
+.dd-links b{display:block;font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--navy)}
+.dd-links span{display:block;font-size:.84rem;color:var(--muted);line-height:1.35;margin-top:2px}
+.dd-links a:hover b{color:var(--teal);text-decoration:underline}
+.dd-feat{display:grid;gap:4px;text-decoration:none;color:var(--ink);padding:0!important;text-transform:none;font-family:var(--sans);letter-spacing:0;font-weight:400}
+.dd-feat:hover{background:none!important}
+.dd-feat img{width:100%;aspect-ratio:16/10;object-fit:cover;margin-bottom:8px;height:auto}
+.dd-feat b{font-family:var(--serif);font-weight:500;font-size:1.2rem;color:var(--navy)}
+.dd-feat span{font-size:.88rem;color:var(--muted)}
+.dd-feat:hover b{text-decoration:underline}
+.nbar .dd-panel a::after{content:none}
+
+/* mobile menu sections */
+.drawer .dr-home{display:block}
+.dr-sec{border-top:1px solid rgba(255,255,255,.18)}
+.dr-sec summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#fff;padding:15px max(20px,env(safe-area-inset-left,0px));font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.dr-sec summary::-webkit-details-marker{display:none}
+.dr-sec summary::after{content:"+";font-family:var(--sans);font-size:1.3rem;font-weight:400}
+.dr-sec[open] summary::after{content:"−"}
+.dr-sec summary:focus-visible{outline:3px solid var(--turq);outline-offset:-3px}
+.dr-links{background:var(--navy2);padding:4px 0}
+.drawer .dr-links a{border-top:0;padding:11px max(20px,env(safe-area-inset-left,0px)) 11px 36px;font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:400;font-size:.98rem;color:#e3eff3}
+.dr-acts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.18)}
+.drawer .dr-acts a{border:0;text-align:center;background:var(--turq);color:#00303c;padding:15px 10px}
+.drawer .dr-acts a.wa{background:#1f8f4c;color:#fff}
+/* reset the menu-bar link styles inside the dropdown panels */
+.nbar .dd-panel li{flex:none;border:0}
+.nbar .dd-panel a{display:block;padding:0;background:none;color:var(--ink);font-family:var(--sans);font-size:1rem;font-weight:400;text-transform:none;letter-spacing:0}
+.nbar .dd-panel a:hover{background:none}
+.nbar .dd-panel .dd-links a{padding:10px 0;border-bottom:1px solid var(--line)}
+.nbar .dd-panel .dd-intro .arw{display:inline-flex;color:var(--teal);margin-top:14px}
+.nbar .dd-panel .dd-feat{display:grid}
+.nbar .dd-panel ul.dd-links{display:grid}
+.nbar .drawer a::after{content:none}
+@media(min-width:1100px) and (max-width:1300px){.dd-in{grid-template-columns:1fr 1.4fr 240px;gap:28px;padding:26px 28px 30px}}

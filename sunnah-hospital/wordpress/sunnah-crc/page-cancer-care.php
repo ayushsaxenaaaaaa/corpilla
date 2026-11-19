@@ -32,7 +32,7 @@ $types = array(
 );
 ?>
 <main id="content">
-<section class="w hl" style="padding-bottom:20px">
+<section class="w hl" id="departments" style="padding-bottom:20px">
   <h2>Our Departments</h2>
   <div class="cards">
     <a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ot-suite.jpg' ); ?>" alt="" loading="lazy"></div><h3>Surgical Oncology</h3><p>Head &amp; neck, breast, gastrointestinal and gynecological cancer surgery.</p></a>
@@ -53,7 +53,7 @@ $types = array(
   </div>
 </div></section>
 
-<section class="sec"><div class="w">
+<section class="sec" id="comprehensive"><div class="w">
   <h2 class="c">Comprehensive Cancer Care</h2>
   <p class="c">Compassionate care. Stronger together. Better every day.</p>
   <div class="svcg" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">

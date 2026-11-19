@@ -52,14 +52,41 @@
   <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact', 'location' ); ?>">Location</a><a href="<?php echo sunnah_url( 'infrastructure' ); ?>">Facilities</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'patient-care', 'faqs' ); ?>">FAQs</a><a class="srch" href="<?php echo sunnah_url( 'cancer-care', 'types' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
 </div></header>
-<nav class="nbar" aria-label="Main"><div class="w" style="padding:0"><ul>
-  <li><a href="<?php echo sunnah_url( 'about-us' ); ?>"<?php echo sunnah_nav_current( 'about-us' ); ?>>About Us</a></li>
-  <li><a href="<?php echo sunnah_url( 'cancer-care' ); ?>"<?php echo sunnah_nav_current( array( 'cancer-care', 'surgical-oncology', 'medical-oncology' ) ); ?>>Cancer Care</a></li>
-  <li><a href="<?php echo sunnah_url( 'doctors' ); ?>"<?php echo sunnah_nav_current( 'doctors' ); ?>>Doctors</a></li>
-  <li><a href="<?php echo sunnah_url( 'patient-care' ); ?>"<?php echo sunnah_nav_current( 'patient-care' ); ?>>Patients &amp; Family</a></li>
-  <li><a href="<?php echo sunnah_url( 'infrastructure' ); ?>"<?php echo sunnah_nav_current( 'infrastructure' ); ?>>Facilities</a></li>
-  <li><a href="<?php echo sunnah_url( 'research' ); ?>"<?php echo sunnah_nav_current( 'research' ); ?>>Research</a></li>
-  <li><a href="<?php echo sunnah_url( 'contact' ); ?>"<?php echo sunnah_nav_current( 'contact' ); ?>>Contact</a></li>
+<?php
+$sunnah_menu = include get_theme_file_path( 'template-parts/menu-data.php' );
+$sunnah_cur  = array(
+	'cancer-care' => array( 'cancer-care', 'surgical-oncology', 'medical-oncology' ),
+);
+?>
+<nav class="nbar" aria-label="Main"><div class="w" style="padding:0"><ul class="dd-list">
+<?php foreach ( $sunnah_menu as $slug => $m ) : $pid = 'dd-' . $slug; ?>
+  <li class="dd">
+    <a class="dd-top" href="<?php echo sunnah_url( $slug ); ?>"<?php echo sunnah_nav_current( isset( $sunnah_cur[ $slug ] ) ? $sunnah_cur[ $slug ] : $slug ); ?>><?php echo esc_html( $m['label'] ); ?></a>
+    <button class="dd-btn" type="button" aria-expanded="false" aria-controls="<?php echo esc_attr( $pid ); ?>"><span class="sr"><?php echo esc_html( 'Show ' . $m['label'] . ' menu' ); ?></span></button>
+    <div class="dd-panel" id="<?php echo esc_attr( $pid ); ?>"><div class="dd-in">
+      <div class="dd-intro"><p class="dd-h"><?php echo esc_html( $m['label'] ); ?></p><p><?php echo esc_html( $m['intro'] ); ?></p><a class="arw" href="<?php echo sunnah_url( $slug ); ?>"><?php echo esc_html( 'Go to ' . $m['label'] ); ?></a></div>
+      <ul class="dd-links">
+        <?php foreach ( $m['links'] as $l ) : ?>
+          <li><a href="<?php echo sunnah_url( $l[1], $l[2] ); ?>"><b><?php echo esc_html( $l[0] ); ?></b><span><?php echo esc_html( $l[3] ); ?></span></a></li>
+        <?php endforeach; ?>
+      </ul>
+      <?php $f = $m['feature']; ?>
+      <a class="dd-feat" href="<?php echo sunnah_url( $f[3], $f[4] ); ?>"><img src="<?php echo sunnah_img( $f[0] ); ?>" alt="" loading="lazy" width="320" height="200"><b><?php echo esc_html( $f[1] ); ?></b><span><?php echo esc_html( $f[2] ); ?></span></a>
+    </div></div>
+  </li>
+<?php endforeach; ?>
 </ul></div>
-<div class="drawer" id="drawer" hidden><a href="<?php echo sunnah_url(); ?>">Home</a><a href="<?php echo sunnah_url( 'about-us' ); ?>">About Us</a><a href="<?php echo sunnah_url( 'cancer-care' ); ?>">Cancer Care</a><a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>">Surgical Oncology</a><a href="<?php echo sunnah_url( 'medical-oncology' ); ?>">Medical Oncology</a><a href="<?php echo sunnah_url( 'doctors' ); ?>">Doctors</a><a href="<?php echo sunnah_url( 'patient-care' ); ?>">Patients &amp; Family</a><a href="<?php echo sunnah_url( 'infrastructure' ); ?>">Facilities</a><a href="<?php echo sunnah_url( 'research' ); ?>">Research</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a></div>
+<div class="drawer" id="drawer" hidden>
+  <a class="dr-home" href="<?php echo sunnah_url(); ?>">Home</a>
+  <?php foreach ( $sunnah_menu as $slug => $m ) : ?>
+  <details class="dr-sec">
+    <summary><?php echo esc_html( $m['label'] ); ?></summary>
+    <div class="dr-links">
+      <a href="<?php echo sunnah_url( $slug ); ?>"><?php echo esc_html( 'All of ' . $m['label'] ); ?></a>
+      <?php foreach ( $m['links'] as $l ) : ?><a href="<?php echo sunnah_url( $l[1], $l[2] ); ?>"><?php echo esc_html( $l[0] ); ?></a><?php endforeach; ?>
+    </div>
+  </details>
+  <?php endforeach; ?>
+  <div class="dr-acts"><a href="<?php echo esc_attr( sunnah_tel() ); ?>"><?php echo esc_html( 'Call ' . sunnah_opt( 'phone_1' ) ); ?></a><a class="wa" href="<?php echo esc_url( sunnah_wa() ); ?>">WhatsApp</a></div>
+</div>
 </nav>

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '2.0.0' );
+define( 'SUNNAH_CRC_VERSION', '2.0.1' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -33,7 +33,11 @@ function sunnah_crc_assets() {
 	wp_enqueue_style( 'sunnah-crc-home', get_theme_file_uri( 'assets/css/home.css' ), array( 'sunnah-crc-fonts' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
-	wp_add_inline_script( 'sunnah-crc-site', 'window.SUNNAH_CRC = ' . wp_json_encode( array( 'home' => trailingslashit( home_url( '/' ) ) ) ) . ';', 'before' );
+	$pages = array();
+	foreach ( array( 'surgical-oncology', 'medical-oncology', 'cancer-care', 'patient-care', 'contact' ) as $slug ) {
+		$pages[ $slug ] = html_entity_decode( sunnah_url( $slug ) );
+	}
+	wp_add_inline_script( 'sunnah-crc-site', 'window.SUNNAH_CRC = ' . wp_json_encode( array( 'home' => trailingslashit( home_url( '/' ) ), 'pages' => $pages ) ) . ';', 'before' );
 }
 add_action( 'wp_enqueue_scripts', 'sunnah_crc_assets' );
 
@@ -291,9 +295,35 @@ function sunnah_crc_activate() {
 }
 add_action( 'after_switch_theme', 'sunnah_crc_activate' );
 
-/** Link to one of the theme's pages. */
+/**
+ * Also create any missing pages after the theme is updated or re-uploaded while already active
+ * (WordPress does not run "after_switch_theme" in that case).
+ */
+function sunnah_crc_maybe_setup() {
+	if ( get_option( 'sunnah_crc_setup_version' ) === SUNNAH_CRC_VERSION ) {
+		return;
+	}
+	sunnah_crc_activate();
+	update_option( 'sunnah_crc_setup_version', SUNNAH_CRC_VERSION );
+}
+add_action( 'init', 'sunnah_crc_maybe_setup', 20 );
+
+/**
+ * Link to one of the theme's pages. Uses the real page address, so links work with any
+ * permalink setting (including "Plain").
+ */
 function sunnah_url( $slug = '', $anchor = '' ) {
-	return esc_url( home_url( $slug ? '/' . $slug . '/' : '/' ) ) . ( $anchor ? '#' . $anchor : '' );
+	static $cache = array();
+	if ( '' === $slug ) {
+		$url = home_url( '/' );
+	} elseif ( isset( $cache[ $slug ] ) ) {
+		$url = $cache[ $slug ];
+	} else {
+		$page = get_page_by_path( $slug );
+		$url  = ( $page && 'publish' === $page->post_status ) ? get_permalink( $page ) : home_url( '/' . $slug . '/' );
+		$cache[ $slug ] = $url;
+	}
+	return esc_url( $url ) . ( $anchor ? '#' . $anchor : '' );
 }
 
 /** Theme image URL. */

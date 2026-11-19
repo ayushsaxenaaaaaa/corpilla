@@ -12,7 +12,7 @@ get_header();
 get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg', 'title' => 'Hospital Infrastructure', 'lead' => 'Better Facilities. Better Care. Better Outcomes.' ) );
 ?>
 <main id="content">
-<section class="sec"><div class="w split">
+<section class="sec" id="available"><div class="w split">
   <div>
     <p class="kick">Facilities Available</p>
     <h2>Advanced infrastructure and compassionate care</h2>
@@ -23,7 +23,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg',
   </div>
   <div class="ph"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
 </div></section>
-<section class="sec grey"><div class="w">
+<section class="sec grey" id="gallery"><div class="w">
   <h2 class="c">Inside Sunnah Hospital</h2>
   <p class="c">Photographs from our hospital in Akola.</p>
   <div class="gal">
@@ -36,7 +36,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg',
     <figure class="w2"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Hospital building" loading="lazy"><figcaption>Sunnah Hospital</figcaption></figure>
   </div>
 </div></section>
-<section class="sec"><div class="w split rev">
+<section class="sec" id="comfort"><div class="w split rev">
   <div class="ph"><img src="<?php echo sunnah_img( 'sh-daycare.jpg' ); ?>" alt="Chemotherapy day care" loading="lazy"></div>
   <div>
     <p class="kick">Patient Comfort</p>
