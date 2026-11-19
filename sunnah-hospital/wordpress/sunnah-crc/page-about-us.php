@@ -17,6 +17,11 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
     <p class="kick">Sunnah Cancer Research Center</p>
     <p class="lede">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p>
     <p>We believe that every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey. A cancer diagnosis affects the whole family, so our care includes honest guidance, counselling, nutrition and help with recovery, alongside surgical and medical oncology.</p>
+    <div class="pill3">
+      <div><b>Advanced Research</b><span>Better outcomes</span></div>
+      <div><b>Compassionate Care</b><span>Every step</span></div>
+      <div><b>Together</b><span>For a cancer-free tomorrow</span></div>
+    </div>
     <h2 id="approach">Our approach combines</h2>
     <div class="svcg">
       <div class="svcc"><svg><use href="#i-flask"/></svg><h3>Advanced medical science</h3><p>Evidence-based surgery, chemotherapy and targeted treatment, supported by in-house diagnostics.</p></div>
@@ -33,6 +38,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
       <li><b>Emotional and family support.</b> Counselling and support for patients and their families.</li>
       <li><b>Modern infrastructure.</b> Modular OT, ICU, HDU and 24x7 casualty for better outcomes.</li>
     </ul>
+    <p class="note">We are committed to excellence, compassion and comprehensive cancer care. <b>Your health. Our priority.</b></p>
   </div>
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ), array( 'Our Doctors', sunnah_url( 'doctors' ) ), array( 'Hospital Facilities', sunnah_url( 'infrastructure' ) ) ) ) ); ?>
 </div>

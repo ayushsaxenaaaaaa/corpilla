@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-daycare.jpg', 'title' => 'Medical Oncology', 'lead' => 'Compassionate Care. Advanced Treatment. Better Outcomes.', 'crumbs' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ) ) ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-daycare.jpg', 'title' => 'Medical Oncology', 'lead' => 'Compassionate Care. Advanced Treatment. Better Outcomes.' ) );
 ?>
 <main id="content">
 <div class="w lay">

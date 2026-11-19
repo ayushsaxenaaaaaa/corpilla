@@ -26,9 +26,7 @@ while ( have_posts() ) :
 	);
 	?>
 <main id="content">
-<div class="pban" style="min-height:0;background:var(--navy)"><div class="w" style="padding-block:28px 22px">
-  <nav class="crumb" aria-label="Breadcrumb" style="margin:0"><a href="<?php echo sunnah_url(); ?>">Home</a><span aria-hidden="true">/</span><a href="<?php echo sunnah_url( 'doctors' ); ?>">Doctors</a><span aria-hidden="true">/</span><span aria-current="page"><?php echo esc_html( get_the_title() ); ?></span></nav>
-</div></div>
+<div class="dtop"><div class="w"><a class="arw back" href="<?php echo sunnah_url( 'doctors' ); ?>">All doctors</a></div></div>
 <div class="w dprof">
   <div>
     <div class="im"><?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'sunnah-portrait', array( 'alt' => get_the_title() ) ); } else { echo '<span class="ini" style="font-family:var(--serif);font-size:4rem;color:#9fb3ba" aria-hidden="true">Dr</span>'; } ?></div>

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot-suite.jpg', 'title' => 'Surgical Oncology', 'lead' => 'Precision Surgery. Compassionate Care. Better Outcomes.', 'crumbs' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ) ) ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot-suite.jpg', 'title' => 'Surgical Oncology', 'lead' => 'Precision Surgery. Compassionate Care. Better Outcomes.' ) );
 ?>
 <main id="content">
 <div class="w lay">
@@ -51,7 +51,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot-suite
       <details><summary>Is surgery covered under PM-JAY?</summary><p>Many cancer surgeries are covered for eligible patients under Ayushman Bharat (PM-JAY). Bring your card and our team will guide you.</p></details>
     </div>
   </div>
-  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Medical Oncology', sunnah_url( 'medical-oncology' ) ), array( 'Diagnostics', sunnah_url( 'cancer-care', 'diagnostics' ) ), array( 'Patient Support', sunnah_url( 'patient-care' ) ) ) ) ); ?>
+  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Medical Oncology', sunnah_url( 'medical-oncology' ) ), array( 'Diagnostics', sunnah_url( 'diagnostics' ) ), array( 'Patient Support', sunnah_url( 'patient-care' ) ) ) ) ); ?>
 </div>
 <?php get_template_part( 'template-parts/team', null, array( 'speciality' => 'Surgical Oncology', 'heading' => 'Our Surgical Oncologists' ) ); ?>
 <?php get_template_part( 'template-parts/cta' ); ?>

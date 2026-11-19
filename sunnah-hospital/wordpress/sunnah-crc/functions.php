@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '2.0.2' );
+define( 'SUNNAH_CRC_VERSION', '2.1.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -34,7 +34,7 @@ function sunnah_crc_assets() {
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
 	$pages = array();
-	foreach ( array( 'surgical-oncology', 'medical-oncology', 'cancer-care', 'patient-care', 'contact' ) as $slug ) {
+	foreach ( array( 'surgical-oncology', 'medical-oncology', 'diagnostics', 'cancer-care', 'patient-care', 'contact' ) as $slug ) {
 		$pages[ $slug ] = html_entity_decode( sunnah_url( $slug ) );
 	}
 	wp_add_inline_script( 'sunnah-crc-site', 'window.SUNNAH_CRC = ' . wp_json_encode( array( 'home' => trailingslashit( home_url( '/' ) ), 'pages' => $pages ) ) . ';', 'before' );
@@ -267,6 +267,7 @@ function sunnah_crc_pages() {
 		'cancer-care'       => __( 'Cancer Care', 'sunnah-crc' ),
 		'surgical-oncology' => __( 'Surgical Oncology', 'sunnah-crc' ),
 		'medical-oncology'  => __( 'Medical Oncology', 'sunnah-crc' ),
+		'diagnostics'       => __( 'Diagnostics', 'sunnah-crc' ),
 		'doctors'           => __( 'Doctors & Specialists', 'sunnah-crc' ),
 		'patient-care'      => __( 'Patient Care & Support', 'sunnah-crc' ),
 		'infrastructure'    => __( 'Hospital Infrastructure', 'sunnah-crc' ),
@@ -285,7 +286,7 @@ function sunnah_crc_activate() {
 					'post_status'  => 'publish',
 					'post_title'   => $title,
 					'post_name'    => $slug,
-					'post_content' => 'privacy-policy' === $slug ? '<p>' . esc_html__( 'Add the hospital\'s privacy policy here.', 'sunnah-crc' ) . '</p>' : '',
+					'post_content' => '',
 				)
 			);
 		}
@@ -414,6 +415,7 @@ function sunnah_crc_meta_description() {
 			'cancer-care'       => 'Cancer care at Sunnah Hospital, Akola: surgical oncology, medical oncology, diagnostics, pain management, nutrition and psychological support.',
 			'surgical-oncology' => 'Surgical oncology at Sunnah Hospital, Akola: head & neck, breast, gastrointestinal and gynecological cancer surgery.',
 			'medical-oncology'  => 'Medical oncology at Sunnah Hospital, Akola: chemotherapy in day care and IPD, targeted therapy, immunotherapy, supportive and palliative care.',
+			'diagnostics'       => 'Diagnostics at Sunnah Hospital, Akola: digital X-Ray, sonography and pathology for accurate, reliable detection.',
 			'doctors'           => 'Meet the oncologists and specialists at Sunnah Hospital – Cancer Research Center, Akola.',
 			'patient-care'      => 'Patient care and support at Sunnah Hospital, Akola: treatment guidance, counselling, oncology nutrition, rehabilitation and FAQs.',
 			'infrastructure'    => 'Facilities at Sunnah Hospital, Akola: modular OT, minor OT, ICU, HDU, 24x7 casualty, 24x7 pharmacy and dedicated wards.',
@@ -564,3 +566,27 @@ function sunnah_crc_robots( $output, $public ) {
 	return implode( "\n", $lines ) . "\n";
 }
 add_filter( 'robots_txt', 'sunnah_crc_robots', 10, 2 );
+
+/* -------------------------------------------------------------------------
+ * Browser-tab icon and link previews (WhatsApp, Facebook)
+ * ---------------------------------------------------------------------- */
+function sunnah_crc_icon_and_og() {
+	if ( ! has_site_icon() ) {
+		echo '<link rel="icon" type="image/png" href="' . sunnah_img( 'favicon.png' ) . '">' . "\n";
+		echo '<link rel="apple-touch-icon" href="' . sunnah_img( 'favicon.png' ) . '">' . "\n";
+	}
+	if ( is_admin() ) {
+		return;
+	}
+	$title = wp_get_document_title();
+	$url   = is_singular() ? get_permalink() : home_url( '/' );
+	$img   = ( is_singular() && has_post_thumbnail() ) ? get_the_post_thumbnail_url( null, 'large' ) : get_theme_file_uri( 'assets/img/og-image.jpg' );
+	echo '<meta property="og:type" content="website">' . "\n";
+	echo '<meta property="og:site_name" content="Sunnah Hospital – Cancer Research Center">' . "\n";
+	echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+	echo '<meta property="og:image" content="' . esc_url( $img ) . '">' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+	echo '<meta name="theme-color" content="#00354e">' . "\n";
+}
+add_action( 'wp_head', 'sunnah_crc_icon_and_og', 2 );

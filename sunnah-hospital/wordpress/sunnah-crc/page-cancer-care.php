@@ -37,7 +37,7 @@ $types = array(
   <div class="cards">
     <a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ot-suite.jpg' ); ?>" alt="" loading="lazy"></div><h3>Surgical Oncology</h3><p>Head &amp; neck, breast, gastrointestinal and gynecological cancer surgery.</p></a>
     <a href="<?php echo sunnah_url( 'medical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-daycare.jpg' ); ?>" alt="" loading="lazy"></div><h3>Medical Oncology</h3><p>Chemotherapy in day care and IPD, targeted therapy, immunotherapy and palliative care.</p></a>
-    <a href="#diagnostics"><div class="im"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Digital X-Ray, sonography and pathology for accurate, reliable detection.</p></a>
+    <a href="<?php echo sunnah_url( 'diagnostics' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Digital X-Ray, sonography and pathology for accurate, reliable detection.</p></a>
     <a href="<?php echo sunnah_url( 'research' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-lab.jpg' ); ?>" alt="" loading="lazy"></div><h3>Cancer Research</h3><p>Clinical research, cancer data and community awareness.</p></a>
   </div>
 </section>
@@ -46,10 +46,10 @@ $types = array(
   <div class="ph"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="Diagnostic imaging room" loading="lazy"></div>
   <div>
     <p class="kick">Diagnostics</p>
-    <h2>Advanced Diagnostics. Trusted Results.</h2>
+    <h2>Advanced Diagnostics. Trusted Results. Complete Care.</h2>
     <p>Our diagnostic facilities provide accurate and reliable detection for a wide range of medical conditions, so treatment can be planned without delay.</p>
     <ul class="ticks two"><li>Digital X-Ray</li><li>Sonography</li><li>Pathology</li><li>Other diagnostic facilities</li></ul>
-    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book a test</a></div>
+    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'diagnostics' ); ?>">About our diagnostics</a><a class="sbtn out" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book a test</a></div>
   </div>
 </div></section>
 

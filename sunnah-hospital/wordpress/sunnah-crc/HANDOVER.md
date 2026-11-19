@@ -3,8 +3,10 @@
 ## 1. Install
 1. WordPress admin → **Appearance → Themes → Add New → Upload Theme** → choose `sunnah-crc.zip` → **Install Now** → **Activate**.
 2. On activation the theme creates these pages automatically (if they don't already exist):
-   About Us, Cancer Care, Surgical Oncology, Medical Oncology, Doctors & Specialists,
+   About Us, Cancer Care, Surgical Oncology, Medical Oncology, Diagnostics, Doctors & Specialists,
    Patient Care & Support, Hospital Infrastructure, Cancer Research, Contact & Appointment, Privacy Policy.
+   If the theme is uploaded over an older version that was already active, choose "Replace active with uploaded";
+   any missing pages are then created on the first visit to the site.
 3. **Settings → Permalinks** → choose **Post name** → **Save**. (Required so page addresses like `/about-us/` work.)
 4. **Settings → Reading** → "Your homepage displays": either option works; the theme always shows the designed home page.
 
@@ -15,14 +17,15 @@
 | Hospital photos to replace stock images | Each inner page: edit the page → **Featured Image** replaces that page's banner. Photos inside page sections: replace the file with the same name in `assets/img/` (see list below). |
 | OPD timings | Appearance → **Customize → Hospital Contact Details**. |
 | Email address that receives enquiries | Same Customizer section ("Send enquiry form emails to"). |
-| Privacy policy text | Pages → Privacy Policy → edit. |
+| Privacy policy | A standard policy is built in. To use the hospital's own text instead, write it in Pages → Privacy Policy. |
+| Browser-tab icon | Built in (Sunnah symbol). To change it: Appearance → Customize → Site Identity → Site Icon. |
 
 Until doctors are added, the Doctors page shows a "Doctor profiles are being added" message with the phone and WhatsApp buttons, and department pages simply hide the team section.
 
 ### Stock images to replace (in `assets/img/`)
 - `team3.jpg` – home page top photo and Doctors page banner (two doctors). Best replaced with a real photo of Sunnah doctors.
 - `consult.jpg` – Patient Care page banner.
-- `sh-ot-suite.jpg`, `sh-daycare.jpg`, `sh-diagnostic.jpg`, `sh-lab.jpg`, `sh-corridor.jpg` – illustration images from the hospital's presentation; replace with real photos when available.
+- `sh-ot-suite.jpg`, `sh-daycare.jpg`, `sh-diagnostic.jpg`, `sh-lab.jpg`, `sh-corridor.jpg` – illustration images from the hospital's presentation (Surgical Oncology, Medical Oncology, Diagnostics, Research and other banners); replace with real photos when available.
 Real hospital photos already used: `sh-building.jpg`, `sh-ot.jpg`, `sh-minor-ot.jpg`, `sh-icu.jpg`, `sh-hdu.jpg`, `sh-casualty.jpg`, `sh-pharmacy.jpg`.
 Keep the same file name and a similar shape (landscape) when replacing.
 

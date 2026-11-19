@@ -29,7 +29,7 @@ return array(
 		'links' => array(
 			array( 'Surgical Oncology', 'surgical-oncology', '', 'Head & neck, breast, GI and gynecological surgery' ),
 			array( 'Medical Oncology', 'medical-oncology', '', 'Chemotherapy, targeted therapy, immunotherapy' ),
-			array( 'Diagnostics', 'cancer-care', 'diagnostics', 'Digital X-Ray, sonography, pathology' ),
+			array( 'Diagnostics', 'diagnostics', '', 'Digital X-Ray, sonography, pathology' ),
 			array( 'Comprehensive Cancer Care', 'cancer-care', 'comprehensive', 'Pain management, nutrition, counselling' ),
 			array( 'Cancer Types We Treat', 'cancer-care', 'types', 'Search by type of cancer' ),
 		),

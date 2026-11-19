@@ -26,10 +26,8 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
       <li><i><svg><use href="#i-clock"/></svg></i><small>Emergency</small><b>24x7 Casualty &amp; Emergency Care</b></li>
       <li><i><svg><use href="#i-cal"/></svg></i><small>OPD</small><b><?php echo esc_html( sunnah_opt( 'opd_hours' ) ); ?></b></li>
     </ul>
-    <div class="mapbox" id="location" style="margin-top:24px">
-      <img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building" loading="lazy">
-      <div><b>Sunnah Hospital – Cancer Research Center</b><span><?php echo esc_html( sunnah_opt( 'address' ) ); ?></span><a class="sbtn turq" href="<?php echo esc_url( sunnah_opt( 'maps_url' ) ); ?>" target="_blank" rel="noopener">Get directions</a></div>
-    </div>
+    <div class="gmap" id="location"><iframe title="Map showing Sunnah Hospital, Akola" src="<?php echo esc_url( 'https://www.google.com/maps?q=' . rawurlencode( 'Sunnah Hospital, ' . sunnah_opt( 'address' ) ) . '&output=embed' ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="facts2" style="margin-top:14px"><a class="sbtn navy" href="<?php echo esc_url( sunnah_opt( 'maps_url' ) ); ?>" target="_blank" rel="noopener">Get directions</a><a class="sbtn out" href="<?php echo esc_attr( sunnah_tel() ); ?>">Call <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a></div>
   </div>
 </div>
 </main>
