@@ -200,7 +200,7 @@
 .dd-btn[aria-expanded="true"]::before{transform:rotate(180deg)}
 .dd-btn:focus-visible{outline:3px solid var(--turq);outline-offset:-3px}
 .dd-panel{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;color:var(--ink);border-top:4px solid var(--turq);box-shadow:0 16px 36px rgba(0,30,44,.18);display:none}
-@media(min-width:1240px){
+@media(min-width:1100px){
   .dd:hover>.dd-panel,.dd.open>.dd-panel{display:block}
   .dd:hover>.dd-top,.dd.open>.dd-top,.dd.open>.dd-btn{background:var(--navy2)}
 }
@@ -244,7 +244,7 @@
 .nbar .dd-panel .dd-feat{display:grid}
 .nbar .dd-panel ul.dd-links{display:grid}
 .nbar .drawer a::after{content:none}
-@media(min-width:1240px) and (max-width:1300px){.dd-in{grid-template-columns:1fr 1.4fr 240px;gap:28px;padding:26px 28px 30px}}
+@media(min-width:1100px) and (max-width:1300px){.dd-in{grid-template-columns:1fr 1.4fr 240px;gap:28px;padding:26px 28px 30px}}
 .dtop{background:var(--grey);border-bottom:1px solid var(--line)}
 .dtop .w{padding-block:14px}
 .arw.back::after{content:none}
@@ -269,7 +269,7 @@
 .dlogo{border:1px solid var(--line);padding:22px 26px;background:#fff;max-width:520px}
 .dlogo img{width:100%;height:auto}
 .dd-feat img[src*="dental-logo"]{object-fit:contain;background:#fff;border:1px solid var(--line);padding:18px}
-@media(min-width:1240px) and (max-width:1380px){.nbar .dd-top{font-size:.9rem;padding-left:10px;white-space:nowrap}}
+@media(min-width:1100px) and (max-width:1380px){.nbar .dd-top{font-size:.86rem;padding-left:10px;padding-right:4px}.dd-btn{width:26px}}
 .dentb{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
 .dentb .w{display:grid;gap:18px;align-items:center;padding-block:30px;justify-items:start}
 @media(min-width:900px){.dentb .w{grid-template-columns:360px 1fr auto;gap:36px}}
@@ -277,3 +277,5 @@
 .dentb p{font-family:var(--serif);font-size:1.2rem;color:#1d2b30}
 .dentb .olbtn{color:var(--navy)}
 .dentb .olbtn:hover{background:var(--grey)}
+
+.nbar .dd-top{white-space:nowrap}

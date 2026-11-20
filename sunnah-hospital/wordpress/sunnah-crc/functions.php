@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '2.3.0' );
+define( 'SUNNAH_CRC_VERSION', '2.4.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets

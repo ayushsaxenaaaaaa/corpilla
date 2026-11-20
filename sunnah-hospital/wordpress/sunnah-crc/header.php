@@ -50,7 +50,7 @@
 
 <header class="hdr"><div class="w">
   <a class="logo" href="<?php echo sunnah_url(); ?>"><img src="<?php echo sunnah_img( 'logo-header.png' ); ?>" alt="Sunnah Hospital – Cancer Research Center" width="171" height="58"></a>
-  <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact', 'location' ); ?>">Location</a><a href="<?php echo sunnah_url( 'infrastructure' ); ?>">Facilities</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'patient-care', 'faqs' ); ?>">FAQs</a><a class="srch" href="<?php echo sunnah_url( 'cancer-care', 'types' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
+  <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'patient-care', 'faqs' ); ?>">FAQs</a><a class="srch" href="<?php echo sunnah_url( 'cancer-care', 'types' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
 </div></header>
 <?php
