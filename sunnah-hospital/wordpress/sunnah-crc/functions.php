@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.4.0' );
+define( 'SUNNAH_CRC_VERSION', '3.4.1' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -647,12 +647,12 @@ function sunnah_crc_handle_enquiry() {
 		exit;
 	}
 
-	// Dropdowns: only the values the form offers are accepted.
-	if ( ! in_array( $f['department'], sunnah_crc_enquiry_departments(), true ) ) {
-		$f['department'] = '';
-	}
-	if ( ! in_array( $f['pref_time'], sunnah_crc_enquiry_times(), true ) ) {
-		$f['pref_time'] = '';
+	// Dropdowns: only the values the form offers are accepted; anything else rejects the whole submission.
+	// (Empty is allowed because the short call-back form on the home page has no time field.)
+	if ( ( '' !== $f['department'] && ! in_array( $f['department'], sunnah_crc_enquiry_departments(), true ) )
+		|| ( '' !== $f['pref_time'] && ! in_array( $f['pref_time'], sunnah_crc_enquiry_times(), true ) ) ) {
+		wp_safe_redirect( add_query_arg( 'enquiry', 'error', $back ) . '#enquiry' );
+		exit;
 	}
 	// Preferred date: empty, or a real date from today up to one year ahead.
 	if ( '' !== $f['pref_date'] ) {
@@ -963,12 +963,88 @@ add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) { return '
 // Same message for wrong username and wrong password, so attackers cannot tell which was right.
 add_filter( 'login_errors', function () { return __( 'The login details are incorrect.', 'sunnah-crc' ); } );
 
+/**
+ * Cloudflare's published proxy address ranges (https://www.cloudflare.com/ips/).
+ * Check this list against that page once a year; it can be replaced with the 'sunnah_crc_cloudflare_ranges' filter.
+ */
+function sunnah_crc_cloudflare_ranges() {
+	return apply_filters(
+		'sunnah_crc_cloudflare_ranges',
+		array(
+			'173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18', '108.162.192.0/18',
+			'190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
+			'104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
+			'2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32', '2a06:98c0::/29', '2c0f:f248::/32',
+		)
+	);
+}
+
+/** True if the IP address is inside the CIDR range (IPv4 or IPv6). */
+function sunnah_crc_ip_in_range( $ip, $cidr ) {
+	list( $net, $bits ) = array_pad( explode( '/', $cidr, 2 ), 2, null );
+	$ip_bin  = @inet_pton( $ip );  // phpcs:ignore WordPress.PHP.NoSilencedErrors
+	$net_bin = @inet_pton( $net ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+	if ( false === $ip_bin || false === $net_bin || strlen( $ip_bin ) !== strlen( $net_bin ) ) {
+		return false;
+	}
+	$bits = null === $bits ? strlen( $ip_bin ) * 8 : (int) $bits;
+	$full = intdiv( $bits, 8 );
+	if ( substr( $ip_bin, 0, $full ) !== substr( $net_bin, 0, $full ) ) {
+		return false;
+	}
+	$rest = $bits % 8;
+	if ( ! $rest ) {
+		return true;
+	}
+	$mask = chr( ( 0xff << ( 8 - $rest ) ) & 0xff );
+	return ( $ip_bin[ $full ] & $mask ) === ( $net_bin[ $full ] & $mask );
+}
+
+/**
+ * The visitor's real IP address.
+ * The CF-Connecting-IP header is trusted ONLY when the connection really comes from a Cloudflare address, so nobody
+ * can fake it by sending the header directly. If the web server already restores the visitor IP (recommended, see
+ * SECURITY.md), REMOTE_ADDR is the visitor and is used as it is.
+ */
+function sunnah_crc_client_ip() {
+	$remote = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	if ( ! filter_var( $remote, FILTER_VALIDATE_IP ) ) {
+		return 'unknown';
+	}
+	if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+		$cf = sanitize_text_field( wp_unslash( $_SERVER['HTTP_CF_CONNECTING_IP'] ) );
+		if ( filter_var( $cf, FILTER_VALIDATE_IP ) ) {
+			foreach ( sunnah_crc_cloudflare_ranges() as $range ) {
+				if ( sunnah_crc_ip_in_range( $remote, $range ) ) {
+					return $cf;
+				}
+			}
+		}
+	}
+	return $remote;
+}
+
+/**
+ * Key used for per-visitor limits. IPv6 users usually own a whole /64 block, so the limit applies to the /64
+ * (otherwise a bot could simply rotate addresses).
+ */
+function sunnah_crc_client_key() {
+	$ip = sunnah_crc_client_ip();
+	if ( false !== strpos( $ip, ':' ) ) {
+		$bin = @inet_pton( $ip ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+		if ( false !== $bin ) {
+			return bin2hex( substr( $bin, 0, 8 ) ) . '::/64';
+		}
+	}
+	return $ip;
+}
+
 // Flood protection for the enquiry form.
 // Counters are increased with a single atomic database statement, so simultaneous requests cannot slip past the
 // limit (a plain read-then-write counter can be raced). Each counter lives in a fixed time window.
 function sunnah_crc_enquiry_rate_ok() {
 	global $wpdb;
-	$ip    = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+	$ip    = sunnah_crc_client_key();
 	$now   = time();
 	$rules = array(
 		array( 'v', md5( $ip ), 5, 10 * MINUTE_IN_SECONDS ), // 5 per visitor per 10 minutes.

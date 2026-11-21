@@ -10,11 +10,15 @@ standards, and the checklist below covers the rest.
   (forms sent within 3 seconds, older than 2 days or with a forged stamp are refused), a link filter (messages with
   several web links are dropped), rate limits (5 per visitor per 10 minutes, 15 per visitor per day, 60 per hour for
   the whole site), input length limits and safe email headers.
+  Per-visitor limits use the visitor's real IP (also behind Cloudflare, see step 9); IPv6 visitors are grouped by
+  their /64 network so a bot cannot dodge the limit by changing addresses.
   The rate-limit counters are increased with one atomic database statement, so simultaneous requests cannot slip past
   the limit (tested: 40 requests at the same instant from one visitor → exactly 5 accepted; 100 visitors at once →
-  exactly 60). Old counters are removed by a daily WordPress task. For protection against large floods, still use
+  exactly 60). The tests can be re-run from `tools/tests/` in the project repository (not included in the theme zip).
+  Old counters are removed by a daily WordPress task. For protection against large floods, still use
   Cloudflare rate limiting (step 9): it stops traffic before it reaches the server.
-- Server-side validation: department and preferred time must be one of the form's own options; the preferred date
+- Server-side validation: department and preferred time must be one of the form's own options (any other value
+  rejects the whole submission); the preferred date
   must be a real date from today up to one year ahead; the contact number must have 10–13 digits.
 - **Content Security Policy (CSP)** header: browsers only load scripts, styles, fonts and frames from the site itself,
   Google Fonts, Google Maps and YouTube. Plugins needing another source can add it with the `sunnah_crc_csp_sources` filter.
@@ -43,7 +47,7 @@ standards, and the checklist below covers the rest.
 - Security headers: X-Content-Type-Options, X-Frame-Options (stops the site being embedded by others),
   Referrer-Policy, Permissions-Policy.
 - `robots.txt` keeps search engines out of `/wp-admin/` and the login page.
-- Empty `index.php` files stop folder contents being listed.
+- Empty `index.php` files stop folder contents being listed; like every other PHP file, they refuse direct execution.
 
 ## Must be done on the live site (by whoever manages hosting)
 These cannot be done inside a theme. Summary: **two-factor login** (step 3), **Cloudflare / firewall** (step 9) and
@@ -70,6 +74,18 @@ These cannot be done inside a theme. Summary: **two-factor login** (step 3), **C
    - Security → Bots: **Bot Fight Mode** on; Security level "Medium";
    - a free **rate-limiting rule**: more than 10 requests in 10 seconds to `/wp-login.php` or `/wp-admin/admin-post.php` → block for 10 minutes;
    - **Under Attack Mode** can be switched on with one click if the site is ever flooded.
+   - **Real visitor IP behind Cloudflare.** With the proxy on, the server sees Cloudflare's address instead of the
+     patient's. The theme already handles this safely: it uses the `CF-Connecting-IP` header **only** when the
+     connection really comes from one of Cloudflare's official address ranges, so the header cannot be faked
+     (check the list in `sunnah_crc_cloudflare_ranges()` against https://www.cloudflare.com/ips/ once a year).
+     Recommended as well, so server logs and security plugins also see real IPs: restore the IP in the web server.
+     Nginx (`http` block), with one `set_real_ip_from` line per range listed on https://www.cloudflare.com/ips/:
+     ```nginx
+     set_real_ip_from 173.245.48.0/20;   # ...repeat for every Cloudflare IPv4 and IPv6 range
+     real_ip_header CF-Connecting-IP;
+     ```
+     Apache: enable `mod_remoteip` with `RemoteIPHeader CF-Connecting-IP` and `RemoteIPTrustedProxy` for each range.
+     Many hosts (cPanel, Cloudways, Hostinger) do this automatically when Cloudflare is connected from their panel.
    Also turn on Wordfence's **Rate Limiting** and **Brute Force Protection**, and choose a host with server-level
    firewall and DDoS protection. Cloudflare also caches pages, which keeps the site fast under heavy traffic.
 10. **Privacy**: publish the Privacy Policy page. The form asks visitors not to send medical reports;
