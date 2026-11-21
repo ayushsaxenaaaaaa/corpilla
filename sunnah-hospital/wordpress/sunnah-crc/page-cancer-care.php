@@ -128,6 +128,7 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ward.jpg
 <section class="sec" id="schemes"><div class="w narrow">
   <p class="kick">Government Health Schemes</p>
   <h2>AB-PMJAY and MJPJAY</h2>
+  <?php echo sunnah_scheme_logos(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function. ?>
   <p>Patients can enquire about cancer treatment under Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana (AB-PMJAY) and Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJAY). Treatment eligibility and cashless benefits are subject to the applicable scheme rules, approved packages and hospital empanelment. Please speak to our staff before admission.</p>
   <p style="margin-top:12px"><a class="arw" href="<?php echo sunnah_url( 'community', 'schemes' ); ?>">Scheme information and documents</a></p>
 </div></section>

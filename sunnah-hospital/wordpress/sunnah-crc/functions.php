@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.1.0' );
+define( 'SUNNAH_CRC_VERSION', '3.2.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -32,7 +32,7 @@ function sunnah_crc_setup() {
 add_action( 'after_setup_theme', 'sunnah_crc_setup' );
 
 function sunnah_crc_assets() {
-	wp_enqueue_style( 'sunnah-crc-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap', array(), null );
+	wp_enqueue_style( 'sunnah-crc-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap', array(), null );
 	wp_enqueue_style( 'sunnah-crc-home', get_theme_file_uri( 'assets/css/home.css' ), array( 'sunnah-crc-fonts' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
@@ -123,6 +123,15 @@ function sunnah_lines( $key ) {
 		}
 	}
 	return $out;
+}
+
+/** AB-PMJAY and MJPJAY logo badges. */
+function sunnah_scheme_logos( $class = '' ) {
+	$mj  = sunnah_opt( 'mjpjay_logo' );
+	$out = '<div class="slogos ' . esc_attr( $class ) . '">';
+	$out .= '<figure><img src="' . sunnah_img( 'pmjay.png' ) . '" alt="Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana (AB-PMJAY) logo" width="80" height="80" loading="lazy"><figcaption>AB-PMJAY</figcaption></figure>';
+	$out .= '<figure>' . ( $mj ? '<img src="' . esc_url( $mj ) . '" alt="Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJAY) logo" width="80" height="80" loading="lazy">' : '<span class="slt" aria-hidden="true">MJPJAY</span>' ) . '<figcaption>MJPJAY</figcaption></figure>';
+	return $out . '</div>';
 }
 
 /** Phone number as a tel: link value. */
@@ -222,6 +231,8 @@ function sunnah_crc_customize( $wp_customize ) {
 		$wp_customize->add_setting( 'sunnah_svc_' . $key, array( 'default' => '', 'sanitize_callback' => 'sanitize_textarea_field' ) );
 		$wp_customize->add_control( 'sunnah_svc_' . $key, array( 'label' => $label, 'section' => 'sunnah_dept', 'type' => 'textarea' ) );
 	}
+	$wp_customize->add_setting( 'sunnah_mjpjay_logo', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'sunnah_mjpjay_logo', array( 'label' => __( 'MJPJAY scheme logo (official file)', 'sunnah-crc' ), 'section' => 'sunnah_info' ) ) );
 	$wp_customize->add_setting( 'sunnah_founder_photo', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'sunnah_founder_photo', array( 'label' => __( 'Founder photograph', 'sunnah-crc' ), 'section' => 'sunnah_info' ) ) );
 }
@@ -364,13 +375,13 @@ function sunnah_crc_departments() {
 	return array(
 		'general-medicine'  => array( 'General Medicine', 'i-steth', 'Diagnosis and treatment of a wide range of medical conditions in adults.', 'General Medicine' ),
 		'general-surgery'   => array( 'General Surgery', 'i-scalpel', 'Planned and emergency surgical care, with two operation theatres and post-operative support.', 'General Surgery' ),
+		'dental'            => array( 'Dental', 'i-tooth', 'Dental and oral health care at Sunnah Dental Care.', 'Dental' ),
 		'medical-oncology'  => array( 'Medical Oncology', 'i-drop', 'Cancer assessment, chemotherapy, treatment monitoring and follow-up.', 'Medical Oncology' ),
 		'surgical-oncology' => array( 'Surgical Oncology', 'i-cell', 'Surgical evaluation and treatment of cancer by surgical oncologists.', 'Surgical Oncology' ),
 		'orthopaedics'      => array( 'Orthopaedics', 'i-bone', 'Care for bones, joints, fractures and musculoskeletal conditions.', 'Orthopaedics' ),
 		'urology'           => array( 'Urology', 'i-kid', 'Assessment and treatment of kidney, bladder, prostate and urinary tract conditions.', 'Urology' ),
 		'neurology'         => array( 'Neurology', 'i-brain', 'Consultation for conditions of the brain, spine, nerves and muscles.', 'Neurology' ),
 		'ent'               => array( 'ENT', 'i-ear', 'Care for conditions of the ear, nose and throat.', 'ENT' ),
-		'dental'            => array( 'Dental', 'i-tooth', 'Dental and oral health care at Sunnah Dental Care.', 'Dental' ),
 	);
 }
 

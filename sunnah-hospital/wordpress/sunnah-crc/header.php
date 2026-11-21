@@ -53,17 +53,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   <symbol id="i-news" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 10h26v28H12a4 4 0 0 1-4-4z"/><path d="M34 18h6v16a4 4 0 0 1-8 0M14 17h14M14 24h14M14 31h9"/></g></symbol>
 </svg>
 
-<div class="topk"><div class="w">
-  <a class="t1" href="<?php echo esc_url( sunnah_wa() ); ?>"><svg class="i" style="width:15px;height:15px;color:#25d366"><use href="#i-wa"/></svg>WhatsApp</a>
-  <a class="t2" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a>
-  <a class="t3" href="<?php echo esc_attr( sunnah_tel( 'emergency_phone' ) ); ?>">Emergency <?php echo esc_html( sunnah_opt( 'emergency_phone' ) ); ?></a>
-</div></div>
-
-<header class="hdr"><div class="w">
-  <a class="logo" href="<?php echo sunnah_url(); ?>"><img src="<?php echo sunnah_img( 'logo-header.png' ); ?>" alt="Sunnah Hospital – Cancer Research Centre" width="171" height="58"></a>
-  <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'health-awareness' ); ?>">Health Awareness</a><a class="srch" href="<?php echo sunnah_url( 'departments', 'find' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
-  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
-</div></header>
 <?php
 $sunnah_menu = include get_theme_file_path( 'template-parts/menu-data.php' );
 $sunnah_cur  = array(
@@ -71,10 +60,17 @@ $sunnah_cur  = array(
 	'news'        => array( 'news', 'health-awareness', 'community' ),
 );
 ?>
-<nav class="nbar" aria-label="Main"><div class="w" style="padding:0"><ul class="dd-list">
+<div class="topk2"><div class="w">
+  <div class="tl"><span><svg class="i"><use href="#i-loc"/></svg><?php echo esc_html( sunnah_opt( 'address_short' ) ); ?></span><a href="<?php echo esc_attr( sunnah_tel() ); ?>"><svg class="i"><use href="#i-ph"/></svg><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a><a class="tm" href="mailto:<?php echo esc_attr( sunnah_opt( 'email' ) ); ?>"><svg class="i"><use href="#i-mail"/></svg><?php echo esc_html( sunnah_opt( 'email' ) ); ?></a></div>
+  <div class="tr"><a class="twa" href="<?php echo esc_url( sunnah_wa() ); ?>"><svg class="i"><use href="#i-wa"/></svg>WhatsApp</a><a class="tem" href="<?php echo esc_attr( sunnah_tel( 'emergency_phone' ) ); ?>"><svg class="i"><use href="#i-clock"/></svg>Emergency: <?php echo esc_html( sunnah_opt( 'emergency_phone' ) ); ?></a></div>
+</div></div>
+
+<header class="hdr2"><div class="w">
+  <a class="logo" href="<?php echo sunnah_url(); ?>"><img src="<?php echo sunnah_img( 'logo-header.png' ); ?>" alt="Sunnah Hospital – Cancer Research Centre" width="171" height="58"></a>
+<nav class="nbar" aria-label="Main"><ul class="dd-list">
 <?php foreach ( $sunnah_menu as $slug => $m ) : $pid = 'dd-' . $slug; ?>
   <li class="dd">
-    <a class="dd-top" href="<?php echo sunnah_url( $slug ); ?>"<?php echo sunnah_nav_current( isset( $sunnah_cur[ $slug ] ) ? $sunnah_cur[ $slug ] : $slug ); ?>><?php echo esc_html( $m['label'] ); ?></a>
+    <a class="dd-top" href="<?php echo sunnah_url( $slug ); ?>"<?php echo sunnah_nav_current( isset( $sunnah_cur[ $slug ] ) ? $sunnah_cur[ $slug ] : $slug ); ?>><?php echo esc_html( isset( $m['short'] ) ? $m['short'] : $m['label'] ); ?></a>
     <button class="dd-btn" type="button" aria-expanded="false" aria-controls="<?php echo esc_attr( $pid ); ?>"><span class="sr"><?php echo esc_html( 'Show ' . $m['label'] . ' menu' ); ?></span></button>
     <div class="dd-panel" id="<?php echo esc_attr( $pid ); ?>"><div class="dd-in">
       <div class="dd-intro"><p class="dd-h"><?php echo esc_html( $m['label'] ); ?></p><p><?php echo esc_html( $m['intro'] ); ?></p><a class="arw" href="<?php echo sunnah_url( $slug ); ?>"><?php echo esc_html( 'Go to ' . $m['label'] ); ?></a></div>
@@ -88,7 +84,10 @@ $sunnah_cur  = array(
     </div></div>
   </li>
 <?php endforeach; ?>
-</ul></div>
+</ul></nav>
+  <a class="hcta" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>"><svg class="i"><use href="#i-cal"/></svg>Book Appointment</a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+</div></header>
 <div class="drawer" id="drawer" hidden>
   <a class="dr-home" href="<?php echo sunnah_url(); ?>">Home</a>
   <?php foreach ( $sunnah_menu as $slug => $m ) : ?>
@@ -102,4 +101,3 @@ $sunnah_cur  = array(
   <?php endforeach; ?>
   <div class="dr-acts"><a href="<?php echo esc_attr( sunnah_tel() ); ?>"><?php echo esc_html( 'Call ' . sunnah_opt( 'phone_1' ) ); ?></a><a class="wa" href="<?php echo esc_url( sunnah_wa() ); ?>">WhatsApp</a></div>
 </div>
-</nav>

@@ -12,6 +12,7 @@ get_header();
 get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-entrance.jpg', 'title' => 'News & Medical Achievements', 'lead' => 'Verified developments, hospital activities, medical achievements and important announcements.' ) );
 $sunnah_cats  = sunnah_crc_news_categories();
 unset( $sunnah_cats['health-articles'] );
+$sunnah_ha    = get_term_by( 'slug', 'health-articles', 'category' );
 $sunnah_paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
 $sunnah_q     = new WP_Query(
 	array(
@@ -19,7 +20,7 @@ $sunnah_q     = new WP_Query(
 		'posts_per_page'      => 9,
 		'paged'               => $sunnah_paged,
 		'ignore_sticky_posts' => true,
-		'category_name'       => implode( ',', array_keys( $sunnah_cats ) ),
+		'category__not_in'    => $sunnah_ha ? array( (int) $sunnah_ha->term_id ) : array(), // Everything except health articles, including posts left Uncategorized.
 	)
 );
 ?>

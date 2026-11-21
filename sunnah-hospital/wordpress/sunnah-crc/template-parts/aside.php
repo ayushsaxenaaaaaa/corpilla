@@ -30,6 +30,7 @@ $links = isset( $args['links'] ) ? $args['links'] : array();
   </div>
   <div class="sbx">
     <h2 class="small">Government schemes</h2>
+    <?php echo sunnah_scheme_logos( 'small' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function. ?>
     <p>Enquire about AB-PMJAY and MJPJAY before admission. Coverage depends on scheme rules and the treatment.</p>
     <a class="arw" href="<?php echo sunnah_url( 'community', 'schemes' ); ?>">Scheme information</a>
   </div>

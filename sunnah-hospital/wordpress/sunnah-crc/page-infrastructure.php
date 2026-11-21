@@ -21,30 +21,39 @@ $sunnah_fac = array(
 	'diagnostics' => array( 'Diagnostic Facilities', 'Pathology, digital X-ray and sonography', 'The hospital provides diagnostic support through pathology, digital X-ray and sonography services.', 'sh-diagnostic.jpg', 'Digital X-ray room at Sunnah Hospital', array( 'Pathology', 'Digital X-ray', 'Sonography' ) ),
 	'daycare'     => array( 'Day-Care Facilities', 'Planned treatment without an overnight stay', 'Day-care facilities support planned treatments and services that can be provided without an overnight admission, including chemotherapy administration.', '', '', array() ),
 );
-$sunnah_n = 0;
+$sunnah_n    = 0;
+$sunnah_meta = array(
+	'building'    => array( 'i-bld', sunnah_opt( 'stat_floors' ) . ' floors' ),
+	'inpatient'   => array( 'i-bed', sunnah_opt( 'stat_beds' ) . ' beds' ),
+	'icu'         => array( 'i-heart', sunnah_opt( 'stat_icu' ) . ' ICU beds' ),
+	'theatres'    => array( 'i-scalpel', sunnah_opt( 'stat_ot' ) . ' theatres' ),
+	'diagnostics' => array( 'i-scan', 'In-house diagnostics' ),
+	'daycare'     => array( 'i-sun', 'Same-day treatment' ),
+);
 ?>
 <main id="content">
-<section class="sec"><div class="w narrow" style="text-align:center">
-  <p class="lede">Sunnah Hospital provides inpatient, critical-care, surgical and diagnostic facilities to support its multispeciality services and cancer care.</p>
-  <div class="stats lite">
-    <div><b><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?></b><span>Hospital Beds</span></div>
-    <div><b><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?></b><span>ICU Beds</span></div>
-    <div><b><?php echo esc_html( sunnah_opt( 'stat_ot' ) ); ?></b><span>Operation Theatres</span></div>
-    <div><b><?php echo esc_html( sunnah_opt( 'stat_floors' ) ); ?></b><span>Hospital Floors</span></div>
+<section class="fstats"><div class="w">
+  <p class="fsl">Sunnah Hospital provides inpatient, critical-care, surgical and diagnostic facilities to support its multispeciality services and cancer care.</p>
+  <div class="fsg">
+    <a href="#inpatient"><svg><use href="#i-bed"/></svg><b><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?></b><span>Hospital Beds</span></a>
+    <a href="#icu"><svg><use href="#i-heart"/></svg><b><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?></b><span>ICU Beds</span></a>
+    <a href="#theatres"><svg><use href="#i-scalpel"/></svg><b><?php echo esc_html( sunnah_opt( 'stat_ot' ) ); ?></b><span>Operation Theatres</span></a>
+    <a href="#building"><svg><use href="#i-bld"/></svg><b><?php echo esc_html( sunnah_opt( 'stat_floors' ) ); ?></b><span>Hospital Floors</span></a>
   </div>
 </div></section>
 
 <?php foreach ( $sunnah_fac as $id => $f ) : ?>
-<section class="sec fac<?php echo ( $sunnah_n % 2 ) ? ' grey' : ''; ?>" id="<?php echo esc_attr( $id ); ?>"><div class="w split<?php echo ( $sunnah_n % 2 ) ? ' rev' : ''; ?>">
+<section class="sec fac<?php echo ( $sunnah_n % 2 ) ? ' grey' : ''; ?><?php echo 3 === $sunnah_n ? ' navyf' : ''; ?>" id="<?php echo esc_attr( $id ); ?>"><div class="w split<?php echo ( $sunnah_n % 2 ) ? ' rev' : ''; ?>">
   <?php if ( $f[3] ) : ?>
-    <div class="ph big"><img src="<?php echo sunnah_img( $f[3] ); ?>" alt="<?php echo esc_attr( $f[4] ); ?>" loading="lazy"></div>
+    <div class="ph big"><span class="fnum" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $sunnah_n + 1 ) ); ?></span><img src="<?php echo sunnah_img( $f[3] ); ?>" alt="<?php echo esc_attr( $f[4] ); ?>" loading="lazy"></div>
   <?php else : ?>
     <div class="ph big noph"><svg><use href="#i-sun"/></svg><span>Photographs coming soon</span></div>
   <?php endif; ?>
   <div>
-    <p class="kick"><?php echo esc_html( $f[0] ); ?></p>
+    <p class="fhead"><span class="fic"><svg><use href="#<?php echo esc_attr( $sunnah_meta[ $id ][0] ); ?>"/></svg></span><span class="kick"><?php echo esc_html( $f[0] ); ?></span></p>
     <h2><?php echo esc_html( $f[1] ); ?></h2>
     <p><?php echo esc_html( $f[2] ); ?></p>
+    <p class="fchip"><?php echo esc_html( $sunnah_meta[ $id ][1] ); ?></p>
     <?php if ( $f[5] ) : ?><ul class="ticks"><?php foreach ( $f[5] as $li ) : ?><li><?php echo esc_html( $li ); ?></li><?php endforeach; ?></ul><?php endif; ?>
   </div>
 </div></section>

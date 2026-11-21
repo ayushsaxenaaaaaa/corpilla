@@ -1,5 +1,10 @@
 # Pending changes (do together when the client sends their content)
 
+DONE in theme 3.2.0: home page redesign, Director's message and awards, scheme logos (MJPJAY logo upload box),
+Dental moved to 3rd, Facilities redesign, phone/tablet side-panel fix, News shows uncategorized posts,
+staff guide for adding news. Remaining below: client content only.
+
+
 ## Facilities & Infrastructure page redesign (requested by owner)
 - Make the "30+ beds / 9 ICU beds / 2 operation theatres / 3 floors" figures a bold, prominent highlight band
   (larger numbers, coloured background, icons), not the small outlined boxes.

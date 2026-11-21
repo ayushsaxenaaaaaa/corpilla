@@ -66,6 +66,7 @@ $sunnah_support = array(
 			echo sunnah_ask_line( 'For information on the services available in this department,' ); // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		if ( 'general-surgery' === $k ) {
+			echo sunnah_scheme_logos( 'small' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function.
 			echo '<p class="note">Government scheme packages for General Surgery (AB-PMJAY and MJPJAY) are subject to scheme rules, approved packages and hospital empanelment. <a href="' . sunnah_url( 'community', 'schemes' ) . '">Scheme information</a>.</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		get_template_part( 'template-parts/team', null, array( 'speciality' => 'dental' === $k ? array( 'Dental', 'Dental Care' ) : $d[3], 'heading' => 'Consultants', 'compact' => true ) );

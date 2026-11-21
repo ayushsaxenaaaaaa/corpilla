@@ -17,7 +17,8 @@ return array(
 		'links' => array(
 			array( 'About Sunnah Hospital', 'about-us', '', 'Who we are' ),
 			array( 'Our History', 'about-us', 'history', 'From 2008 to today' ),
-			array( 'Founder & Leadership', 'about-us', 'founder', 'Dr. Hakimuddin Shaikh' ),
+			array( 'Director\'s Message', 'about-us', 'founder', 'Dr. Hakimuddin Shaikh' ),
+			array( 'Awards & Recognition', 'about-us', 'awards', 'Honours received by our founder' ),
 			array( 'Guiding Principle', 'about-us', 'principle', 'The value behind our service' ),
 			array( 'Vision, Mission & Values', 'about-us', 'vision', 'What we work towards' ),
 		),
@@ -25,6 +26,7 @@ return array(
 	),
 	'cancer-care'    => array(
 		'label' => 'Cancer Research Centre',
+		'short' => 'Cancer Centre',
 		'intro' => 'Diagnosis, treatment, continuing care and support for cancer patients, close to home.',
 		'links' => array(
 			array( 'Medical Oncology', 'cancer-care', 'medical-oncology', 'Assessment, chemotherapy and follow-up' ),
@@ -42,9 +44,9 @@ return array(
 		'links' => array(
 			array( 'General Medicine', 'departments', 'general-medicine', 'Diagnosis and treatment of medical conditions' ),
 			array( 'General Surgery', 'departments', 'general-surgery', 'Surgical care and treatment' ),
+			array( 'Sunnah Dental Care', 'dental-care', '', 'Dental and oral health' ),
 			array( 'Orthopaedics', 'departments', 'orthopaedics', 'Bones, joints and fractures' ),
 			array( 'Urology, Neurology & ENT', 'departments', 'urology', 'Specialist consultations' ),
-			array( 'Sunnah Dental Care', 'dental-care', '', 'Dental and oral health' ),
 			array( 'ICU, Diagnostics & Emergency', 'departments', 'critical-care', 'Critical care and supporting services' ),
 		),
 		'feature' => array( 'sh-ot-suite.jpg', 'Two operation theatres', 'Surgical care across specialities.', 'infrastructure', 'theatres' ),
@@ -74,6 +76,7 @@ return array(
 	),
 	'news'           => array(
 		'label' => 'News & Resources',
+		'short' => 'News',
 		'intro' => 'Hospital news, community work and health information for patients and families.',
 		'links' => array(
 			array( 'News & Medical Achievements', 'news', '', 'Announcements, events and achievements' ),

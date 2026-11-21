@@ -10,41 +10,67 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 $sunnah_slides = array(
-	array( 'sh-building.jpg', 'Sunnah Hospital – Cancer Research Centre building, Ganga Nagar, Akola', 'Sunnah Hospital', 'A multispeciality hospital committed to providing comprehensive healthcare services to the people of Akola and surrounding regions.' ),
+	array( 'sh-building-side.jpg', 'Sunnah Hospital – Cancer Research Centre building, Ganga Nagar, Akola', 'Sunnah Hospital', 'A multispeciality hospital committed to providing comprehensive healthcare services to the people of Akola and surrounding regions.' ),
 	array( 'sh-ward.jpg', 'Inpatient ward at Sunnah Hospital', 'Cancer Care', 'Medical oncology, surgical oncology, chemotherapy, cancer diagnosis and supportive care services.' ),
 	array( 'sh-ot-suite.jpg', 'Operation theatre at Sunnah Hospital', 'Comprehensive Medical Services', 'Specialities, critical care, surgical services and diagnostic facilities under one institution.' ),
 );
 $sunnah_docs = sunnah_crc_get_doctors();
-$sunnah_news = sunnah_crc_posts( array_diff( array_keys( sunnah_crc_news_categories() ), array( 'health-articles' ) ), 3 );
+$sunnah_ha   = get_term_by( 'slug', 'health-articles', 'category' );
+$sunnah_news = get_posts(
+	array(
+		'post_type'           => 'post',
+		'posts_per_page'      => 3,
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+		'category__not_in'    => $sunnah_ha ? array( (int) $sunnah_ha->term_id ) : array(),
+	)
+);
 ?>
 <main id="content">
-<section class="hslider" id="hslider" aria-roledescription="carousel" aria-label="Sunnah Hospital">
+<section class="hslider hx" id="hslider" aria-roledescription="carousel" aria-label="Sunnah Hospital">
+  <div class="hx-ph">
   <?php foreach ( $sunnah_slides as $i => $sl ) : ?>
-  <div class="hs-slide<?php echo 0 === $i ? ' on' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( ( $i + 1 ) . ' of ' . count( $sunnah_slides ) . ': ' . $sl[2] ); ?>"<?php echo 0 === $i ? '' : ' aria-hidden="true"'; ?>>
-    <img src="<?php echo sunnah_img( $sl[0] ); ?>" alt="<?php echo esc_attr( $sl[1] ); ?>"<?php echo 0 === $i ? ' fetchpriority="high"' : ' loading="lazy"'; ?>>
-    <p class="hs-tag"><span><?php echo esc_html( $sl[2] ); ?></span><?php echo esc_html( $sl[3] ); ?></p>
-  </div>
-  <?php endforeach; ?>
-  <div class="w hs-txt"><div class="hs-box">
-    <p class="hs-kick">Sunnah Hospital · Akola · Since 2008</p>
-    <h1>Comprehensive Healthcare.<br><b>Compassionate Cancer Care.</b></h1>
-    <p>Sunnah Hospital – Cancer Research Centre is a multispeciality healthcare institution in Akola, Maharashtra, providing medical, surgical and specialised cancer care services. Since its establishment in 2008, the hospital has continued to develop its healthcare services with a focus on accessible treatment, clinical care and patient support.</p>
-    <div class="hs-acts"><a class="sbtn turq" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a><a class="sbtn line" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Explore Cancer Care</a></div>
-  </div></div>
-  <div class="hs-ctl w">
-    <button type="button" class="hs-prev" aria-label="Previous slide">‹</button>
-    <div class="hs-dots">
-      <?php foreach ( $sunnah_slides as $i => $sl ) : ?><button type="button" aria-label="<?php echo esc_attr( 'Show slide ' . ( $i + 1 ) . ': ' . $sl[2] ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>></button><?php endforeach; ?>
+    <div class="hs-slide<?php echo 0 === $i ? ' on' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( ( $i + 1 ) . ' of ' . count( $sunnah_slides ) . ': ' . $sl[2] . '. ' . $sl[3] ); ?>"<?php echo 0 === $i ? '' : ' aria-hidden="true"'; ?>>
+      <img src="<?php echo sunnah_img( $sl[0] ); ?>" alt="<?php echo esc_attr( $sl[1] ); ?>"<?php echo 0 === $i ? ' fetchpriority="high"' : ' loading="lazy"'; ?>>
     </div>
-    <button type="button" class="hs-next" aria-label="Next slide">›</button>
-    <button type="button" class="hs-pause" aria-label="Pause slideshow" aria-pressed="false"><span class="sr">Pause</span></button>
+  <?php endforeach; ?>
+    <div class="hs-ctl">
+      <button type="button" class="hs-prev" aria-label="Previous slide">‹</button>
+      <div class="hs-dots"><?php foreach ( $sunnah_slides as $i => $sl ) : ?><button type="button" aria-label="<?php echo esc_attr( 'Show slide ' . ( $i + 1 ) . ': ' . $sl[2] ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>></button><?php endforeach; ?></div>
+      <button type="button" class="hs-next" aria-label="Next slide">›</button>
+      <button type="button" class="hs-pause" aria-label="Pause slideshow" aria-pressed="false"><span class="sr">Pause</span></button>
+    </div>
   </div>
+  <div class="w hx-in">
+    <p class="hx-k">Sunnah Hospital · Since 2008</p>
+    <h1>Comprehensive Healthcare. Compassionate Cancer Care.</h1>
+    <span class="hx-bar" aria-hidden="true"></span>
+    <p class="hx-l">A multispeciality healthcare institution in Akola, Maharashtra, providing medical, surgical and specialised cancer care services.</p>
+    <div class="hx-acts"><a class="hb1" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>"><svg class="i"><use href="#i-cal"/></svg>Book an Appointment</a><a class="hb2" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Explore Cancer Care →</a></div>
+    <ul class="hx-feat">
+      <li><svg><use href="#i-cell"/></svg>Cancer Research<br>Centre</li>
+      <li><svg><use href="#i-ppl"/></svg>Full-time &amp; Visiting<br>Consultants</li>
+      <li><svg><use href="#i-bed"/></svg><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?> Beds &amp;<br><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?>-Bed ICU</li>
+      <li><svg><use href="#i-heart"/></svg>Patient-Centred<br>Care</li>
+    </ul>
+  </div>
+  <div class="w hx-specw"><nav class="hx-spec" aria-label="Specialities">
+    <a href="<?php echo sunnah_url( 'departments', 'general-medicine' ); ?>"><svg><use href="#i-steth"/></svg>General Medicine</a>
+    <a href="<?php echo sunnah_url( 'departments', 'general-surgery' ); ?>"><svg><use href="#i-scalpel"/></svg>General Surgery</a>
+    <a href="<?php echo sunnah_url( 'dental-care' ); ?>"><svg><use href="#i-tooth"/></svg>Dental</a>
+    <a class="hl" href="<?php echo sunnah_url( 'cancer-care' ); ?>"><svg><use href="#i-cell"/></svg>Cancer Care</a>
+    <a href="<?php echo sunnah_url( 'departments', 'orthopaedics' ); ?>"><svg><use href="#i-bone"/></svg>Orthopaedics</a>
+    <a href="<?php echo sunnah_url( 'departments', 'critical-care' ); ?>"><svg><use href="#i-bed"/></svg>ICU &amp; Critical Care</a>
+    <a href="<?php echo sunnah_url( 'infrastructure', 'diagnostics' ); ?>"><svg><use href="#i-vial"/></svg>Diagnostics</a>
+    <a href="<?php echo sunnah_url( 'departments' ); ?>"><svg><use href="#i-ppl"/></svg>Other Specialities</a>
+  </nav></div>
+  <svg class="hx-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C380 10 900 130 1440 40 L1440 120 L0 120Z" fill="#fff"/><path d="M0 70 C380 10 900 130 1440 40" fill="none" stroke="#16becf" stroke-width="4"/></svg>
 </section>
 
-<div class="bblue"><b>Appointments &amp; enquiries:</b> <a href="<?php echo esc_attr( sunnah_tel() ); ?>"><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a> &nbsp;·&nbsp; <a href="<?php echo esc_url( sunnah_wa( 'Hello Sunnah Hospital, I would like to book an appointment.' ) ); ?>">WhatsApp us</a></div>
+
 
 <section class="sec" id="welcome"><div class="w split">
-  <div class="ph"><img src="<?php echo sunnah_img( 'sh-building-side.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
+  <div class="ph"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
   <div>
     <p class="kick">Welcome to Sunnah Hospital</p>
     <h2>Serving Akola since 2008</h2>
@@ -127,6 +153,7 @@ $sunnah_news = sunnah_crc_posts( array_diff( array_keys( sunnah_crc_news_categor
 
 <section class="sec" id="schemes"><div class="w split rev">
   <div class="schm">
+    <?php echo sunnah_scheme_logos( 'big' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function. ?>
     <div><b>AB-PMJAY</b><span>Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana</span></div>
     <div><b>MJPJAY</b><span>Mahatma Jyotirao Phule Jan Arogya Yojana</span></div>
   </div>

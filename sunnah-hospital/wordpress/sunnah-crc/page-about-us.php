@@ -10,7 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building.jpg', 'title' => 'About Us', 'lead' => 'A multispeciality hospital serving Akola since 2008.' ) );
-$sunnah_founder_photo = sunnah_opt( 'founder_photo' );
+$sunnah_founder_photo = sunnah_opt( 'founder_photo' ) ? sunnah_opt( 'founder_photo' ) : get_theme_file_uri( 'assets/img/director.jpg' );
+$sunnah_awards = array(
+	array( 'award-1.jpg', 'International Health & Education Gold Star Award', 'Dubai, UAE' ),
+	array( 'award-4.jpg', 'Rajiv Gandhi Achievers Award for Health Care', 'Presented by Dr. Bhishma Narayan Singh, Former Governor of Tamil Nadu & Ex-Central Minister' ),
+	array( 'award-3.jpg', 'Life Time Education Excellence Award', 'Presented by Ambassador V.B. Soni, Former Ambassador of India to ten countries' ),
+	array( 'award-2.jpg', 'Indian Solidarity Council Award', 'In association with the International Institute of Education & Management and International Business Council, New Delhi' ),
+);
 ?>
 <main id="content">
 <div class="w lay">
@@ -38,25 +44,36 @@ $sunnah_founder_photo = sunnah_opt( 'founder_photo' );
       <li><b>Today</b><span>Present</span><p>Sunnah Hospital continues to strengthen its multispeciality services and cancer care facilities, with the objective of improving access to organised healthcare in the region.</p></li>
     </ol>
 
-    <h2 id="founder">Founder &amp; leadership</h2>
-    <div class="fnd">
-      <div class="im"><?php if ( $sunnah_founder_photo ) : ?><img src="<?php echo esc_url( $sunnah_founder_photo ); ?>" alt="Dr. Hakimuddin Shaikh" loading="lazy"><?php else : ?><span class="ini" aria-hidden="true">HS</span><?php endif; ?></div>
-      <div>
-        <h3>Dr. Hakimuddin Shaikh</h3>
-        <p class="role">Founder · President, Janta Multipurpose Society · Director, Sunnah Hospital</p>
-        <?php
-        $sunnah_fp = sunnah_rich( 'founder_profile' );
-        if ( $sunnah_fp ) {
-			echo $sunnah_fp; // phpcs:ignore WordPress.Security.EscapeOutput -- sanitised with wp_kses_post.
-		} else {
-			echo '<p>Dr. Hakimuddin Shaikh founded Sunnah Hospital with the objective of developing a healthcare institution that serves patients and families in Akola and surrounding areas.</p>';
-		}
-		?>
-      </div>
-    </div>
   </div>
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Research Centre', sunnah_url( 'cancer-care' ) ), array( 'Departments & Specialities', sunnah_url( 'departments' ) ), array( 'Facilities & Infrastructure', sunnah_url( 'infrastructure' ) ) ) ) ); ?>
 </div>
+
+<section class="dirb" id="founder"><div class="w">
+  <div class="dir">
+    <figure class="dph"><img src="<?php echo esc_url( $sunnah_founder_photo ); ?>" alt="Dr. Hakimuddin Shaikh, Founder and Director of Sunnah Hospital" loading="lazy"></figure>
+    <div class="dtx">
+      <p class="kick">Founder &amp; Leadership · Director's Message</p>
+      <blockquote>
+        <p>At Sunnah Hospital, our vision is to make quality healthcare accessible, affordable, and compassionate for everyone. We believe that serving humanity is one of the noblest responsibilities, and we strive to uphold this belief through dedicated medical care, ethical practices, and a patient-first approach.</p>
+        <p>Our commitment is to serve every individual with dignity, honesty, and compassion.</p>
+      </blockquote>
+      <p class="dsig"><b>Dr. Hakimuddin Shaikh</b>Founder &amp; Director, Sunnah Hospital<br>President, Janta Multipurpose Society</p>
+      <?php
+      $sunnah_fp = sunnah_rich( 'founder_profile' );
+      if ( $sunnah_fp ) {
+			echo '<div class="dprofile">' . $sunnah_fp . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- sanitised with wp_kses_post.
+		}
+		?>
+    </div>
+  </div>
+  <h2 class="c awh" id="awards">Awards &amp; Recognition</h2>
+  <p class="c awp">Honours received by Dr. Hakimuddin Shaikh for his work in healthcare, education and social development.</p>
+  <div class="awg">
+    <?php foreach ( $sunnah_awards as $aw ) : ?>
+      <figure><img src="<?php echo sunnah_img( $aw[0] ); ?>" alt="<?php echo esc_attr( $aw[1] . ' presented to Dr. Hakimuddin Shaikh' ); ?>" loading="lazy"><figcaption><b><?php echo esc_html( $aw[1] ); ?></b><?php echo esc_html( $aw[2] ); ?></figcaption></figure>
+    <?php endforeach; ?>
+  </div>
+</div></section>
 
 <section class="prin" id="principle"><div class="w">
   <p class="kick">Our Guiding Principle</p>

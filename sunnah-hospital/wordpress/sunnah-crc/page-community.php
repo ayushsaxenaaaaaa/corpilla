@@ -31,6 +31,7 @@ $sunnah_scheme     = sunnah_rich( 'scheme_info' );
     <?php endif; ?>
 
     <h2 id="schemes">Government healthcare schemes</h2>
+    <?php echo sunnah_scheme_logos(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function. ?>
     <div class="schm inline">
       <div><b>AB-PMJAY</b><span>Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana</span></div>
       <div><b>MJPJAY</b><span>Mahatma Jyotirao Phule Jan Arogya Yojana, Maharashtra</span></div>
@@ -57,6 +58,7 @@ $sunnah_scheme     = sunnah_rich( 'scheme_info' );
   </div>
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'News & Medical Achievements', sunnah_url( 'news' ) ), array( 'Health Awareness & Resources', sunnah_url( 'health-awareness' ) ), array( 'About Us', sunnah_url( 'about-us' ) ) ) ) ); ?>
 </div>
+<?php get_template_part( 'template-parts/cta' ); ?>
 </main>
 <?php
 get_footer();

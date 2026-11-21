@@ -54,6 +54,7 @@ $sunnah_topics   = array(
   </div>
   <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Research Centre', sunnah_url( 'cancer-care' ) ), array( 'Departments', sunnah_url( 'departments' ) ), array( 'News', sunnah_url( 'news' ) ) ) ) ); ?>
 </div>
+<?php get_template_part( 'template-parts/cta' ); ?>
 </main>
 <?php
 get_footer();
