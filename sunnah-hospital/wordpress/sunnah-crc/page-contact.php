@@ -39,6 +39,12 @@ $sunnah_opd_hours = sunnah_opt( 'opd_hours' );
       <li><i><svg><use href="#i-cal"/></svg></i><small>OPD days</small><b><?php echo esc_html( $sunnah_opd_days ? $sunnah_opd_days : 'Please call to confirm' ); ?></b></li>
       <li><i><svg><use href="#i-clock"/></svg></i><small>OPD timings</small><b><?php echo esc_html( $sunnah_opd_hours ? $sunnah_opd_hours : 'Please call to confirm' ); ?></b></li>
     </ul>
+    <?php
+    $sunnah_oi = sunnah_rich( 'opd_info' );
+    if ( $sunnah_oi ) {
+		echo '<div class="entry" style="margin-top:14px">' . $sunnah_oi . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- sanitised with wp_kses_post.
+	}
+	?>
     <p class="fsmall" style="margin-top:10px">Consultation days of visiting consultants are shown on each doctor's profile. Please call before visiting, as timings may change.</p>
   </div>
 </div>

@@ -32,6 +32,9 @@ $sunnah_founder_photo = sunnah_opt( 'founder_photo' );
       <li><b>2008</b><span>Establishment</span><p>Sunnah Hospital was established on 8 March 2008 in Akola, Maharashtra, under Janta Multipurpose Society.</p></li>
       <li><b>Growth</b><span>Multispeciality services</span><p>The hospital expanded beyond its initial general healthcare services to develop additional medical and surgical specialities.</p></li>
       <li><b>Cancer care</b><span>Development of cancer services</span><p>The institution developed specialised cancer services, including medical oncology, surgical oncology, chemotherapy administration, cancer diagnosis and supportive care.</p></li>
+      <?php foreach ( sunnah_lines( 'milestones' ) as $m ) : ?>
+      <li><b><?php echo esc_html( $m[0] ); ?></b><?php if ( ! empty( $m[1] ) ) : ?><span><?php echo esc_html( $m[1] ); ?></span><?php endif; ?><?php if ( ! empty( $m[2] ) ) : ?><p><?php echo esc_html( $m[2] ); ?></p><?php endif; ?></li>
+      <?php endforeach; ?>
       <li><b>Today</b><span>Present</span><p>Sunnah Hospital continues to strengthen its multispeciality services and cancer care facilities, with the objective of improving access to organised healthcare in the region.</p></li>
     </ol>
 

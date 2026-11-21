@@ -62,6 +62,9 @@ endforeach;
     <div><div class="im"><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"></div><h3>Pharmacy</h3><p>Medicines available within the hospital.</p></div>
     <div><div class="im"><img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Reception area" loading="lazy"></div><h3>Reception</h3><p>Help with appointments, admission and enquiries.</p></div>
   </div>
+  <?php $sunnah_extra = sunnah_lines( 'extra_facilities' ); if ( $sunnah_extra ) : ?>
+  <ul class="ticks two" style="margin-top:34px"><?php foreach ( $sunnah_extra as $x ) : ?><li><b><?php echo esc_html( $x[0] ); ?></b><?php echo ! empty( $x[1] ) ? ' – ' . esc_html( $x[1] ) : ''; ?></li><?php endforeach; ?></ul>
+  <?php endif; ?>
 </div></section>
 
 <section class="sec" id="gallery"><div class="w">

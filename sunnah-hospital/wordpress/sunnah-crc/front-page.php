@@ -26,7 +26,8 @@ $sunnah_news = sunnah_crc_posts( array_diff( array_keys( sunnah_crc_news_categor
   </div>
   <?php endforeach; ?>
   <div class="w hs-txt"><div class="hs-box">
-    <h1>Comprehensive Healthcare. Compassionate Cancer Care.</h1>
+    <p class="hs-kick">Sunnah Hospital · Akola · Since 2008</p>
+    <h1>Comprehensive Healthcare.<br><b>Compassionate Cancer Care.</b></h1>
     <p>Sunnah Hospital – Cancer Research Centre is a multispeciality healthcare institution in Akola, Maharashtra, providing medical, surgical and specialised cancer care services. Since its establishment in 2008, the hospital has continued to develop its healthcare services with a focus on accessible treatment, clinical care and patient support.</p>
     <div class="hs-acts"><a class="sbtn turq" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a><a class="sbtn line" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Explore Cancer Care</a></div>
   </div></div>
@@ -149,7 +150,13 @@ $sunnah_news = sunnah_crc_posts( array_diff( array_keys( sunnah_crc_news_categor
 </div></section>
 
 <section class="three-c"><div class="w">
-  <div class="tc-txt"><h2>Contact Sunnah Hospital</h2><p><?php echo esc_html( sunnah_opt( 'address' ) ); ?></p></div>
+  <div class="tc-txt"><h2>Contact Sunnah Hospital</h2><p>Sunnah Hospital – Cancer Research Centre, <?php echo esc_html( sunnah_opt( 'address' ) ); ?></p>
+    <ul class="tcl">
+      <li><small>Phone / WhatsApp</small><a href="<?php echo esc_attr( sunnah_tel() ); ?>"><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a></li>
+      <li><small>Emergency contact</small><a href="<?php echo esc_attr( sunnah_tel( 'emergency_phone' ) ); ?>"><?php echo esc_html( sunnah_opt( 'emergency_phone' ) ); ?></a></li>
+      <li><small>Email</small><a href="mailto:<?php echo esc_attr( sunnah_opt( 'email' ) ); ?>"><?php echo esc_html( sunnah_opt( 'email' ) ); ?></a></li>
+    </ul>
+  </div>
   <div class="three">
     <a href="<?php echo esc_attr( sunnah_tel() ); ?>"><span class="circ c1"><svg><use href="#i-ph"/></svg></span><h3>Call Now</h3><span class="sub"><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></span></a>
     <a href="<?php echo esc_url( sunnah_opt( 'maps_url' ) ); ?>" target="_blank" rel="noopener"><span class="circ c2"><svg><use href="#i-pin"/></svg></span><h3>Get Directions</h3><span class="sub">Ganga Nagar, Akola 444002</span></a>

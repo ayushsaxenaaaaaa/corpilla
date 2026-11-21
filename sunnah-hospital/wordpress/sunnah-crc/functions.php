@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.0.0' );
+define( 'SUNNAH_CRC_VERSION', '3.1.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -32,7 +32,7 @@ function sunnah_crc_setup() {
 add_action( 'after_setup_theme', 'sunnah_crc_setup' );
 
 function sunnah_crc_assets() {
-	wp_enqueue_style( 'sunnah-crc-fonts', 'https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap', array(), null );
+	wp_enqueue_style( 'sunnah-crc-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap', array(), null );
 	wp_enqueue_style( 'sunnah-crc-home', get_theme_file_uri( 'assets/css/home.css' ), array( 'sunnah-crc-fonts' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
@@ -86,6 +86,9 @@ function sunnah_crc_defaults() {
 		'initiatives'       => '',
 		'founder_profile'   => '',
 		'founder_photo'     => '',
+		'opd_info'          => '',
+		'milestones'        => '',
+		'extra_facilities'  => '',
 		'social_facebook'   => '',
 		'social_instagram'  => '',
 		'social_youtube'    => '',
@@ -108,6 +111,18 @@ function sunnah_opt( $key ) {
 function sunnah_rich( $key ) {
 	$v = sunnah_opt( $key );
 	return '' === $v ? '' : wpautop( wp_kses_post( $v ) );
+}
+
+/** Lines of a "a | b | c" setting, split into parts. */
+function sunnah_lines( $key ) {
+	$out = array();
+	foreach ( preg_split( '/\r?\n/', sunnah_opt( $key ) ) as $line ) {
+		$line = trim( wp_strip_all_tags( $line ) );
+		if ( '' !== $line ) {
+			$out[] = array_map( 'trim', explode( '|', $line ) );
+		}
+	}
+	return $out;
 }
 
 /** Phone number as a tel: link value. */
@@ -184,7 +199,10 @@ function sunnah_crc_customize( $wp_customize ) {
 		'packages_info'   => array( __( 'Inpatient cancer-care packages (names, duration, bed category, inclusions, exclusions, pricing)', 'sunnah-crc' ), 'textarea' ),
 		'scheme_info'     => array( __( 'Government schemes: empanelment status, approved packages, eligibility, documents, helpdesk', 'sunnah-crc' ), 'textarea' ),
 		'patient_info'    => array( __( 'Patient & visitor information (admission, documents, visitors, billing, discharge, visiting hours)', 'sunnah-crc' ), 'textarea' ),
+		'opd_info'        => array( __( 'OPD: appointment instructions', 'sunnah-crc' ), 'textarea' ),
 		'founder_profile' => array( __( 'Founder: approved short profile', 'sunnah-crc' ), 'textarea' ),
+		'milestones'      => array( __( 'About Us: extra history milestones, one per line as "Year | Title | Description" (verified only)', 'sunnah-crc' ), 'textarea' ),
+		'extra_facilities'=> array( __( 'Facilities: extra confirmed facilities, one per line as "Name | Description"', 'sunnah-crc' ), 'textarea' ),
 		'initiatives'     => array( __( 'Community: institutional development & healthcare initiatives (verified)', 'sunnah-crc' ), 'textarea' ),
 		'partnerships'    => array( __( 'Community: institutional partnerships (verified; section is hidden while empty)', 'sunnah-crc' ), 'textarea' ),
 	);

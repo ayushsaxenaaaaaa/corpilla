@@ -486,3 +486,51 @@ footer .fquick ul{grid-template-columns:1fr 1fr;column-gap:24px}
 footer .fabout p{font-size:.9rem;color:var(--text);margin-top:14px}
 footer .fabout p b{display:block;color:#111}
 @media(max-width:899px){footer .fm>.fquick{grid-column:span 2}}
+
+/* ===================== v3.1: Outfit typography, centred banners (style F) ===================== */
+:root{--serif:"Outfit",Arial,sans-serif;--sans:"Outfit",Arial,sans-serif;--cond:"Outfit",Arial,sans-serif}
+body{font-weight:400;font-size:17.5px}
+h1,h2,h3{font-weight:500;letter-spacing:-.015em}
+h1{font-weight:400}
+h1 b{font-weight:600}
+.kick,.pkick,.hs-kick,.cap,.nbar a,.util,.topk a,.mbar a,footer h4,.chips button,.catnav a,.jump a,.dfacts small,.clist small,.eform label,.doc .sp,.ncard .sp,.stats span,.journey span,.fnd .role,footer .gov,.dr-sec summary,.drawer a,.tmini h3,.sbx h2.small,.noph span{letter-spacing:.08em;font-weight:500}
+.nbar a{font-size:.88rem}
+.util{font-size:.82rem}
+.lede,.why p.lead,.cards p,.tile p,.dark p,.vm .vtxt,.dd-links b,.dd-feat b,.dd-intro .dd-h{font-weight:400}
+.vm .vtxt{font-weight:300;font-size:clamp(1.3rem,2vw,1.6rem)}
+.stats b,.stats.lite b{font-weight:300}
+.prin blockquote p{font-weight:300}
+.prin blockquote footer{font-style:normal;font-weight:300}
+
+/* hero: centred, larger */
+.hslider{min-height:clamp(600px,52vw,760px);justify-content:center;text-align:center}
+.hslider::after{background:rgba(0,35,52,.64)}
+.hs-txt{padding-top:0;display:flex;justify-content:center;flex:1;align-items:center}
+.hs-box{max-width:1080px;margin:0 auto;padding-top:40px}
+.hs-kick{color:#7fe3ee;font-size:.88rem;text-transform:uppercase;letter-spacing:.24em!important;font-weight:500}
+.hs-box h1{font-size:clamp(2.5rem,5.6vw,5rem);line-height:1.06;letter-spacing:-.025em;margin-top:22px;font-weight:400}
+.hs-box h1 b{font-weight:600}
+.hs-box p:not(.hs-kick){font-family:var(--sans);font-weight:300;font-size:clamp(1.1rem,1.6vw,1.35rem);max-width:62ch;margin:24px auto 0;color:#e3eef2}
+.hs-acts{justify-content:center;margin-top:34px}
+.hs-acts .sbtn{min-width:220px;padding:16px 26px;font-size:1.05rem}
+.hs-ctl{justify-content:center}
+.hs-tag{top:auto;bottom:30px;right:auto;left:max(20px,4vw);max-width:300px;text-align:left;background:rgba(0,30,45,.75);border-left:3px solid var(--turq);font-size:.85rem;font-weight:300}
+.hs-tag span{font-weight:500;letter-spacing:.08em}
+@media(max-width:1100px){.hs-tag{display:none}}
+@media(max-width:700px){.hslider::after{background:rgba(0,35,52,.7)}.hs-box{padding-top:56px}.hs-acts .sbtn{width:100%}}
+
+/* page banners: centred, larger */
+.pban{min-height:clamp(340px,34vw,470px);align-items:center;justify-content:center;text-align:center}
+.pban::after{background:rgba(0,35,52,.64)}
+@media(max-width:800px){.pban::after{background:rgba(0,35,52,.7)}}
+.pban .w{padding-block:64px}
+.pkick{color:#7fe3ee;font-size:.86rem;text-transform:uppercase;letter-spacing:.24em!important}
+.pban h1{font-size:clamp(2.4rem,5vw,4.3rem);max-width:22ch;margin:16px auto 0;line-height:1.08;letter-spacing:-.025em;font-weight:500}
+.pban p:not(.pkick){font-family:var(--sans);font-weight:300;font-size:clamp(1.1rem,1.6vw,1.32rem);max-width:58ch;margin:18px auto 0;color:#e3eef2}
+.tcl{list-style:none;padding:0;margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 40px}
+.tcl li{display:grid;gap:2px}
+.tcl small{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.tcl a{font-size:1.15rem;font-weight:500;color:var(--navy);text-decoration:none}
+.tcl a:hover{color:var(--teal);text-decoration:underline}
+.hs-box .hs-kick,.pban .pkick{color:#7fe3ee;font-family:var(--sans);font-size:.86rem;font-weight:500;text-transform:uppercase;letter-spacing:.24em;margin:0 auto;max-width:none}
+@media(max-width:600px){.hs-box .hs-kick,.pban .pkick{font-size:.74rem;letter-spacing:.14em!important}.topk a{letter-spacing:.03em;font-size:.72rem;white-space:nowrap}}
