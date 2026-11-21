@@ -24,10 +24,10 @@ $is_placeholder = ( '' === $custom || false !== strpos( $custom, 'Add the hospit
   <?php if ( ! $is_placeholder ) : ?>
     <?php the_content(); ?>
   <?php else : ?>
-    <p class="lede">Sunnah Hospital – Cancer Research Center ("we", "us") respects your privacy. This policy explains what information this website collects and how it is used.</p>
+    <p class="lede">Sunnah Hospital – Cancer Research Centre ("we", "us") respects your privacy. This policy explains what information this website collects and how it is used.</p>
     <h2>Information you give us</h2>
-    <p>When you send an appointment request or call-back request through this website, we receive the details you enter: the patient's name, mobile number, and if you choose to give them, your email address, preferred department and message. These details are sent by email to our hospital team so that we can contact you. They are not stored on the website.</p>
-    <p>Please do not send medical reports or other sensitive medical documents through the website form. You can share them with our team on WhatsApp or bring them to your visit.</p>
+    <p>When you send an appointment request or call-back request through this website, we receive the details you enter: the patient's name and contact number, and if you choose to give them, your email address, preferred department, preferred date and time, and reason for the appointment. These details are sent by email to our hospital team so that we can contact you. They are not stored on the website.</p>
+    <p>Please do not send medical reports or other sensitive medical documents through the website form. Bring them to your visit.</p>
     <h2>How we use your information</h2>
     <ul>
       <li>To call or message you about the appointment or question you asked about.</li>
@@ -43,7 +43,7 @@ $is_placeholder = ( '' === $custom || false !== strpos( $custom, 'Add the hospit
     <h2>Your choices</h2>
     <p>You can ask us to update or delete the contact details you sent through this website by calling <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?> or emailing <?php echo esc_html( sunnah_opt( 'email' ) ); ?>.</p>
     <h2>Contact</h2>
-    <p>Sunnah Hospital – Cancer Research Center, <?php echo esc_html( sunnah_opt( 'address' ) ); ?>. Phone: <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?>. Email: <?php echo esc_html( sunnah_opt( 'email' ) ); ?>.</p>
+    <p>Sunnah Hospital – Cancer Research Centre, <?php echo esc_html( sunnah_opt( 'address' ) ); ?>. Phone: <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?>. Email: <?php echo esc_html( sunnah_opt( 'email' ) ); ?>.</p>
     <p class="fsmall">Last updated: <?php echo esc_html( date_i18n( 'F Y', strtotime( '2026-11-01' ) ) ); ?></p>
   <?php endif; ?>
   </div>

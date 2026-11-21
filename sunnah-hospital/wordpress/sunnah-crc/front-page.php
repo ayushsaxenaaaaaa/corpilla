@@ -9,132 +9,164 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
+$sunnah_slides = array(
+	array( 'sh-building.jpg', 'Sunnah Hospital – Cancer Research Centre building, Ganga Nagar, Akola', 'Sunnah Hospital', 'A multispeciality hospital committed to providing comprehensive healthcare services to the people of Akola and surrounding regions.' ),
+	array( 'sh-ward.jpg', 'Inpatient ward at Sunnah Hospital', 'Cancer Care', 'Medical oncology, surgical oncology, chemotherapy, cancer diagnosis and supportive care services.' ),
+	array( 'sh-ot-suite.jpg', 'Operation theatre at Sunnah Hospital', 'Comprehensive Medical Services', 'Specialities, critical care, surgical services and diagnostic facilities under one institution.' ),
+);
+$sunnah_docs = sunnah_crc_get_doctors();
+$sunnah_news = sunnah_crc_posts( array_diff( array_keys( sunnah_crc_news_categories() ), array( 'health-articles' ) ), 3 );
 ?>
-<main>
-<section class="hero">
-  <img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Doctors at Sunnah Hospital discussing a patient’s care" fetchpriority="high">
-  <div class="w"><div class="hq">
-    <h1>“We don’t just treat cancer.”</h1>
-    <p class="who">Our Promise<span>Sunnah Cancer Research Center</span></p>
-    <a href="<?php echo sunnah_url( 'patient-care' ); ?>">How we support the patient and strengthen the family</a>
+<main id="content">
+<section class="hslider" id="hslider" aria-roledescription="carousel" aria-label="Sunnah Hospital">
+  <?php foreach ( $sunnah_slides as $i => $sl ) : ?>
+  <div class="hs-slide<?php echo 0 === $i ? ' on' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( ( $i + 1 ) . ' of ' . count( $sunnah_slides ) . ': ' . $sl[2] ); ?>"<?php echo 0 === $i ? '' : ' aria-hidden="true"'; ?>>
+    <img src="<?php echo sunnah_img( $sl[0] ); ?>" alt="<?php echo esc_attr( $sl[1] ); ?>"<?php echo 0 === $i ? ' fetchpriority="high"' : ' loading="lazy"'; ?>>
+    <p class="hs-tag"><span><?php echo esc_html( $sl[2] ); ?></span><?php echo esc_html( $sl[3] ); ?></p>
+  </div>
+  <?php endforeach; ?>
+  <div class="w hs-txt"><div class="hs-box">
+    <h1>Comprehensive Healthcare. Compassionate Cancer Care.</h1>
+    <p>Sunnah Hospital – Cancer Research Centre is a multispeciality healthcare institution in Akola, Maharashtra, providing medical, surgical and specialised cancer care services. Since its establishment in 2008, the hospital has continued to develop its healthcare services with a focus on accessible treatment, clinical care and patient support.</p>
+    <div class="hs-acts"><a class="sbtn turq" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a><a class="sbtn line" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Explore Cancer Care</a></div>
   </div></div>
-</section>
-
-<div class="bblue"><b>Let’s get started.</b> <a href="<?php echo sunnah_url( 'contact' ); ?>">Request an appointment online.</a></div>
-
-<section class="bred"><div class="w">
-  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-drop"/></svg>
-  <div><b>Newly diagnosed? Send us your reports.</b><p>Share your biopsy, scans and prescriptions on WhatsApp. Our team will guide you to the right treatment and help you avoid unnecessary tests and expenses.</p></div>
-  <a class="olbtn" href="<?php echo esc_url( sunnah_wa() ); ?>">Send reports on WhatsApp</a>
-</div></section>
-
-<div class="w two">
-  <div>
-    <div class="sblock">
-      <span class="circ c1"><svg><use href="#i-cell"/></svg></span>
-      <h2>Search Cancer Types</h2>
-      <label class="sbox" for="q"><svg><use href="#i-s"/></svg><input id="q" type="search" placeholder="Search by type of cancer" autocomplete="off"></label>
-      <div class="sres" id="sres" hidden></div>
-      <a class="arw" href="<?php echo sunnah_url( 'cancer-care', 'types' ); ?>">Browse cancer types</a>
+  <div class="hs-ctl w">
+    <button type="button" class="hs-prev" aria-label="Previous slide">‹</button>
+    <div class="hs-dots">
+      <?php foreach ( $sunnah_slides as $i => $sl ) : ?><button type="button" aria-label="<?php echo esc_attr( 'Show slide ' . ( $i + 1 ) . ': ' . $sl[2] ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>></button><?php endforeach; ?>
     </div>
-    <div class="sblock">
-      <span class="circ c2"><svg><use href="#i-treat"/></svg></span>
-      <h2>Our Treatments</h2>
-      <label class="sbox" for="q2"><svg><use href="#i-s"/></svg><input id="q2" type="search" placeholder="Surgery, chemotherapy, diagnostics…" autocomplete="off"></label>
-      <div class="sres" id="sres2" hidden></div>
-      <a class="arw" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Browse treatments</a>
-    </div>
-  </div>
-  <div class="plan">
-    <span class="circ c3"><svg><use href="#i-plan"/></svg></span>
-    <h2>Plan Your Care</h2>
-    <ul>
-      <li><a href="<?php echo sunnah_url( 'patient-care' ); ?>"><b>Prepare for your first visit</b><span>Bring your reports, scans and prescriptions, and a family member if possible.</span><i>›</i></a></li>
-      <li><a href="<?php echo sunnah_url( 'patient-care', 'faqs' ); ?>"><b>Check PM-JAY coverage</b><span>Cashless treatment is available for eligible patients under Ayushman Bharat.</span><i>›</i></a></li>
-      <li><a href="<?php echo sunnah_url( 'contact' ); ?>"><b>Plan your travel to Akola</b><span><?php echo esc_html( sunnah_opt( 'address' ) ); ?>. Get directions and contact details.</span><i>›</i></a></li>
-      <li><a href="<?php echo sunnah_url( 'medical-oncology' ); ?>"><b>Chemotherapy day care</b><span>Treatment without an overnight stay, or as in-patient care when needed.</span><i>›</i></a></li>
-    </ul>
-    <a class="arw" href="<?php echo sunnah_url( 'patient-care' ); ?>">View planning resources</a>
-  </div>
-</div>
-
-<section class="why"><div class="w">
-  <div class="dbox">
-    <div class="ribbon"><b>24x7</b><span>Casualty</span></div>
-    <h3>Emergency care, day and night</h3>
-    <p>With ICU, HDU and a 24x7 pharmacy</p>
-  </div>
-  <div>
-    <h2>Why Choose Sunnah Hospital</h2>
-    <p class="lead">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, committed to comprehensive, compassionate and affordable cancer care for the people of Vidarbha. Our approach combines advanced medical science, skilled oncology specialists and deep human compassion, because every patient deserves not just treatment, but emotional strength, dignity and support.</p>
-    <a class="lnk" href="<?php echo sunnah_url( 'about-us' ); ?>">Learn more about Sunnah Hospital</a>
-  </div>
-</div></section>
-
-<section class="stmt">
-  <img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="" loading="lazy">
-  <div class="in">
-    <h2>Precision Surgery. Compassionate Care. Better Outcomes.</h2>
-    <hr>
-    <a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>">Explore surgical oncology →</a>
+    <button type="button" class="hs-next" aria-label="Next slide">›</button>
+    <button type="button" class="hs-pause" aria-label="Pause slideshow" aria-pressed="false"><span class="sr">Pause</span></button>
   </div>
 </section>
 
-<section class="w hl">
-  <h2>Sunnah Hospital Highlights</h2>
+<div class="bblue"><b>Appointments &amp; enquiries:</b> <a href="<?php echo esc_attr( sunnah_tel() ); ?>"><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a> &nbsp;·&nbsp; <a href="<?php echo esc_url( sunnah_wa( 'Hello Sunnah Hospital, I would like to book an appointment.' ) ); ?>">WhatsApp us</a></div>
+
+<section class="sec" id="welcome"><div class="w split">
+  <div class="ph"><img src="<?php echo sunnah_img( 'sh-building-side.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
+  <div>
+    <p class="kick">Welcome to Sunnah Hospital</p>
+    <h2>Serving Akola since 2008</h2>
+    <p>Sunnah Hospital – Cancer Research Centre, established on 8 March 2008, is located in Ganga Nagar, Akola. Governed by Janta Multipurpose Society, the hospital began as a general healthcare institution and has developed into a multispeciality hospital with an expanding focus on cancer services.</p>
+    <p style="margin-top:14px">Our objective is to provide patients with access to medical expertise, essential hospital facilities and continued care in a professional and supportive environment.</p>
+    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'about-us' ); ?>">Discover Our Hospital</a></div>
+  </div>
+</div></section>
+
+<section class="sec grey" id="cancer"><div class="w">
+  <p class="kick c">Cancer Research Centre</p>
+  <h2 class="c">Cancer Care at Sunnah Hospital</h2>
+  <p class="c">Cancer diagnosis and treatment require coordinated medical care, careful planning and continued support. The hospital also provides inpatient support for patients who require continued medical supervision and recovery care following cancer treatment or surgery.</p>
+  <div class="ccg">
+    <?php
+    $sunnah_cc = array(
+		array( 'i-drop', 'Medical Oncology', 'medical-oncology' ),
+		array( 'i-cell', 'Surgical Oncology', 'surgical-oncology' ),
+		array( 'i-pill', 'Chemotherapy Administration', 'chemotherapy' ),
+		array( 'i-scan', 'Cancer Screening', 'screening' ),
+		array( 'i-vial', 'Biopsy & Diagnostic Support', 'screening' ),
+		array( 'i-ppl', 'Cancer Counselling', 'counselling' ),
+		array( 'i-heart', 'Palliative & Supportive Care', 'palliative' ),
+		array( 'i-bed', 'Inpatient Cancer Support', 'continuing-care' ),
+	);
+	foreach ( $sunnah_cc as $c ) :
+		?>
+      <a href="<?php echo sunnah_url( 'cancer-care', $c[2] ); ?>"><svg><use href="#<?php echo esc_attr( $c[0] ); ?>"/></svg><b><?php echo esc_html( $c[1] ); ?></b></a>
+    <?php endforeach; ?>
+  </div>
+  <p class="cbtn"><a class="sbtn navy" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Explore Our Cancer Centre</a></p>
+</div></section>
+
+<section class="bred" id="continuing"><div class="w">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-bed"/></svg>
+  <div><b>Treated for cancer in Mumbai, Delhi or another centre?</b><p>Continue your recovery, supportive treatment and inpatient care close to home in Akola. Admission enquiries: <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?>.</p></div>
+  <a class="olbtn" href="<?php echo sunnah_url( 'cancer-care', 'continuing-care' ); ?>">Continuing cancer care</a>
+</div></section>
+
+<section class="sec" id="specialities"><div class="w">
+  <h2 class="c">Our Specialities</h2>
+  <p class="c">Sunnah Hospital provides services across multiple medical and surgical specialities.</p>
+  <div class="spg">
+    <?php foreach ( sunnah_crc_departments() as $anchor => $d ) : ?>
+      <a href="<?php echo 'dental' === $anchor ? sunnah_url( 'dental-care' ) : ( in_array( $anchor, array( 'medical-oncology', 'surgical-oncology' ), true ) ? sunnah_url( 'cancer-care', $anchor ) : sunnah_url( 'departments', $anchor ) ); ?>"><span class="circ c<?php echo esc_attr( (string) ( 1 + ( crc32( $anchor ) % 3 ) ) ); ?>"><svg><use href="#<?php echo esc_attr( $d[1] ); ?>"/></svg></span><b><?php echo esc_html( $d[0] ); ?></b></a>
+    <?php endforeach; ?>
+  </div>
+  <p class="cbtn"><a class="sbtn out" href="<?php echo sunnah_url( 'departments' ); ?>">View All Departments</a></p>
+</div></section>
+
+<section class="stats" aria-label="Hospital at a glance"><div class="w">
+  <div><b><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?></b><span>Hospital Beds</span></div>
+  <div><b><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?></b><span>ICU Beds</span></div>
+  <div><b><?php echo esc_html( sunnah_opt( 'stat_ot' ) ); ?></b><span>Operation Theatres</span></div>
+  <div><b><?php echo esc_html( sunnah_opt( 'stat_floors' ) ); ?></b><span>Hospital Floors</span></div>
+</div></section>
+
+<section class="w hl" id="facilities">
+  <h2>Facilities &amp; Infrastructure</h2>
+  <p class="c hlp">The hospital provides inpatient facilities, intensive care, operation theatres, diagnostic services and day-care treatment facilities.</p>
   <div class="cards">
-    <a href="<?php echo sunnah_url( 'surgical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ot-suite.jpg' ); ?>" alt="" loading="lazy"></div><h3>Surgical Oncology</h3><p>Head &amp; neck, breast, gastrointestinal and gynecological cancer surgery</p></a>
-    <a href="<?php echo sunnah_url( 'medical-oncology' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-daycare.jpg' ); ?>" alt="" loading="lazy"></div><h3>Medical Oncology</h3><p>Chemotherapy in day care and IPD, targeted therapy and immunotherapy</p></a>
-    <a href="<?php echo sunnah_url( 'diagnostics' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Digital X-Ray, sonography and pathology for accurate detection</p></a>
-    <a href="<?php echo sunnah_url( 'infrastructure' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="" loading="lazy"></div><h3>ICU &amp; HDU</h3><p>Advanced critical care and a high dependency unit after surgery</p></a>
+    <a href="<?php echo sunnah_url( 'infrastructure', 'icu' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-icu.jpg' ); ?>" alt="" loading="lazy"></div><h3>Intensive Care Unit</h3><p><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?> ICU beds for patients who need close monitoring.</p></a>
+    <a href="<?php echo sunnah_url( 'infrastructure', 'theatres' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="" loading="lazy"></div><h3>Operation Theatres</h3><p>Two operation theatres for general and cancer surgery.</p></a>
+    <a href="<?php echo sunnah_url( 'infrastructure', 'inpatient' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="" loading="lazy"></div><h3>Inpatient Care</h3><p><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?> beds across three hospital floors.</p></a>
+    <a href="<?php echo sunnah_url( 'infrastructure', 'diagnostics' ); ?>"><div class="im"><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="" loading="lazy"></div><h3>Diagnostics</h3><p>Pathology, digital X-ray and sonography within the hospital.</p></a>
   </div>
+  <p class="cbtn"><a class="sbtn out" href="<?php echo sunnah_url( 'infrastructure' ); ?>">Explore Our Facilities</a></p>
 </section>
 
-<section class="tiles"><div class="w tg">
-  <div class="tile t-navy"><svg><use href="#i-ppl"/></svg><h3>Psychological Support</h3><p>Professional counselling and emotional support for patients and their families.</p><a class="olbtn" href="<?php echo sunnah_url( 'patient-care', 'counselling' ); ?>">Talk to a counsellor</a></div>
-  <div class="tile t-teal"><svg><use href="#i-leaf"/></svg><h3>Specialized Nutrition</h3><p>A dedicated oncology dietitian during chemotherapy, after surgery and through recovery.</p><a class="olbtn" href="<?php echo sunnah_url( 'patient-care', 'nutrition' ); ?>">Meet our dietitian</a></div>
+<section class="sec grey" id="doctors"><div class="w">
+  <h2 class="c">Our Doctors</h2>
+  <p class="c">Our medical team includes full-time and visiting consultants across different specialities. The doctor directory provides information about consultants, their qualifications, specialities and consultation availability.</p>
+  <?php if ( $sunnah_docs ) : ?>
+    <div class="docs"><?php foreach ( array_slice( $sunnah_docs, 0, 4 ) as $d ) { get_template_part( 'template-parts/doctor-card', null, array( 'doc' => $d ) ); } ?></div>
+  <?php else : ?>
+    <div class="empty"><h3>Doctor profiles are being added</h3><p>For consultation days and timings, please call <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?>.</p></div>
+  <?php endif; ?>
+  <p class="cbtn"><a class="sbtn navy" href="<?php echo sunnah_url( 'doctors' ); ?>">Meet Our Doctors</a></p>
 </div></section>
 
-<div class="w three">
-  <a href="<?php echo sunnah_url( 'contact' ); ?>"><span class="circ c1"><svg><use href="#i-pin"/></svg></span><h3>Find Our Location</h3></a>
-  <a href="<?php echo sunnah_url( 'infrastructure' ); ?>"><span class="circ c2"><svg><use href="#i-bld"/></svg></span><h3>See Our Facilities</h3></a>
-  <a href="<?php echo esc_url( sunnah_wa() ); ?>"><span class="circ c3"><svg><use href="#i-q"/></svg></span><h3>Ask a Question</h3></a>
-</div>
-
-<section class="dentb"><div class="w">
-  <img src="<?php echo sunnah_img( 'dental-logo.jpg' ); ?>" alt="Sunnah Dental Care" width="380" height="70" loading="lazy">
-  <p>Complete dental care for the whole family, including oral cancer screening, within Sunnah Hospital.</p>
-  <a class="olbtn" href="<?php echo sunnah_url( 'dental-care' ); ?>">Visit Sunnah Dental Care</a>
+<section class="sec" id="schemes"><div class="w split rev">
+  <div class="schm">
+    <div><b>AB-PMJAY</b><span>Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana</span></div>
+    <div><b>MJPJAY</b><span>Mahatma Jyotirao Phule Jan Arogya Yojana</span></div>
+  </div>
+  <div>
+    <p class="kick">Government Health Schemes</p>
+    <h2>AB-PMJAY and MJPJAY enquiries</h2>
+    <p>Patients can enquire with the hospital about treatment under Ayushman Bharat – Pradhan Mantri Jan Arogya Yojana and Mahatma Jyotirao Phule Jan Arogya Yojana, Maharashtra.</p>
+    <p style="margin-top:14px">Treatment eligibility and benefits are subject to the applicable scheme rules, approved packages and hospital empanelment. Please speak to our staff before admission.</p>
+    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'community', 'schemes' ); ?>">Scheme information</a><a class="sbtn out" href="<?php echo esc_attr( sunnah_tel() ); ?>">Call <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></a></div>
+  </div>
 </div></section>
 
-<section class="dark">
-  <img class="emb" src="<?php echo sunnah_img( 'emblem-white.png' ); ?>" alt="" aria-hidden="true">
-  <div class="w"><div class="txt">
-    <h2>Together for a cancer-free tomorrow</h2>
-    <p>Advanced research, compassionate care every step, and better outcomes. Our Cancer Research Center works to improve how cancer is understood, detected and treated in Vidarbha.</p>
-    <a href="<?php echo sunnah_url( 'research' ); ?>">Discover our research →</a>
-  </div></div>
-</section>
+<section class="sec grey" id="news"><div class="w">
+  <h2 class="c">News &amp; Updates</h2>
+  <?php if ( $sunnah_news ) : ?>
+    <div class="ncards"><?php foreach ( $sunnah_news as $n ) { get_template_part( 'template-parts/news-card', null, array( 'post' => $n ) ); } ?></div>
+  <?php else : ?>
+    <p class="c">Recent hospital announcements, medical activities, health awareness programmes and institutional developments will appear here.</p>
+  <?php endif; ?>
+  <p class="cbtn"><a class="sbtn out" href="<?php echo sunnah_url( 'news' ); ?>">View All Updates</a></p>
+</div></section>
 
-<section class="help"><div class="w">
-  <h2>Hope. Health. Humanity.</h2>
-  <div class="hg">
-    <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p><a class="olbtn" href="<?php echo sunnah_url( 'contact' ); ?>">Book an appointment</a></div>
-    <div class="tile t-black"><h3>Health</h3><p>Providing the best possible treatment.</p><a class="olbtn" href="<?php echo sunnah_url( 'cancer-care' ); ?>">Our treatments</a></div>
-    <div class="tile t-turq"><h3>Humanity</h3><p>Standing with patients beyond medicine.</p><a class="olbtn" href="<?php echo sunnah_url( 'patient-care' ); ?>">Patient support</a></div>
+<section class="three-c"><div class="w">
+  <div class="tc-txt"><h2>Contact Sunnah Hospital</h2><p><?php echo esc_html( sunnah_opt( 'address' ) ); ?></p></div>
+  <div class="three">
+    <a href="<?php echo esc_attr( sunnah_tel() ); ?>"><span class="circ c1"><svg><use href="#i-ph"/></svg></span><h3>Call Now</h3><span class="sub"><?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?></span></a>
+    <a href="<?php echo esc_url( sunnah_opt( 'maps_url' ) ); ?>" target="_blank" rel="noopener"><span class="circ c2"><svg><use href="#i-pin"/></svg></span><h3>Get Directions</h3><span class="sub">Ganga Nagar, Akola 444002</span></a>
+    <a href="<?php echo sunnah_url( 'contact' ); ?>"><span class="circ c3"><svg><use href="#i-q"/></svg></span><h3>Contact Us</h3><span class="sub">Appointments &amp; enquiries</span></a>
   </div>
 </div></section>
 
 <section class="kbar" id="enquiry"><div class="w">
   <span class="ic"><svg><use href="#i-ph"/></svg></span>
-  <span class="lbl">Request a call back from our care team</span>
+  <span class="lbl">Request a call back for an appointment</span>
   <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
     <input type="hidden" name="action" value="sunnah_enquiry"><?php wp_nonce_field( 'sunnah_enquiry', 'sunnah_enquiry_nonce' ); ?>
     <div class="hp" aria-hidden="true"><label for="cb-web">Leave this empty</label><input id="cb-web" type="text" name="website" tabindex="-1" autocomplete="off"></div>
     <input name="patient_name" placeholder="Patient name *" aria-label="Patient name" required maxlength="100" autocomplete="name">
-    <input name="mobile" type="tel" placeholder="Mobile number *" aria-label="Mobile number" required maxlength="20" inputmode="tel" autocomplete="tel">
+    <input name="mobile" type="tel" placeholder="Contact number *" aria-label="Contact number" required maxlength="20" inputmode="tel" autocomplete="tel">
     <input type="hidden" name="department" value="Call back request">
-    <button type="submit">Get started</button>
+    <button type="submit">Request call back</button>
     <?php sunnah_enquiry_notice(); ?>
   </form>
 </div></section>

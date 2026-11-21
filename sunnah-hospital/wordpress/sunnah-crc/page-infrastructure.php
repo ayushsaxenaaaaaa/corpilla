@@ -1,6 +1,7 @@
 <?php
 /**
- * Hospital Infrastructure page (slug: infrastructure).
+ * Facilities & Infrastructure page (slug: infrastructure).
+ * Each facility has its own photograph and description, alternating sides.
  *
  * @package sunnah-crc
  */
@@ -9,52 +10,72 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-ot.jpg', 'title' => 'Hospital Infrastructure', 'lead' => 'Better Facilities. Better Care. Better Outcomes.' ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-corridor.jpg', 'title' => 'Facilities & Infrastructure', 'lead' => 'Inpatient, critical-care, surgical and diagnostic facilities supporting our multispeciality services and cancer care.' ) );
+
+// id => [kicker, heading, text, photo (empty = none yet), alt, extra list].
+$sunnah_fac = array(
+	'building'    => array( 'Hospital Building', 'Three floors in Ganga Nagar, Akola', 'Sunnah Hospital is located in Ganga Nagar, Akola, Maharashtra. The hospital operates across ' . sunnah_opt( 'stat_floors' ) . ' floors and provides facilities supporting its medical, surgical and inpatient services.', 'sh-building.jpg', 'Sunnah Hospital building, Ganga Nagar, Akola', array() ),
+	'inpatient'   => array( 'Inpatient Facilities', sunnah_opt( 'stat_beds' ) . ' hospital beds', 'The hospital has more than 30 beds for patients requiring admission, medical observation, treatment and recovery.', 'sh-ward.jpg', 'Inpatient ward at Sunnah Hospital', array() ),
+	'icu'         => array( 'Intensive Care Unit', sunnah_opt( 'stat_icu' ) . '-bed ICU', 'The hospital has a ' . sunnah_opt( 'stat_icu' ) . '-bed Intensive Care Unit for patients requiring closer monitoring and intensive medical care.', 'sh-icu.jpg', 'Intensive care unit at Sunnah Hospital', array() ),
+	'theatres'    => array( 'Operation Theatres', 'Two operation theatres', 'The hospital has two operation theatres supporting its surgical services, including general surgery and surgical oncology.', 'sh-ot.jpg', 'Operation theatre at Sunnah Hospital', array() ),
+	'diagnostics' => array( 'Diagnostic Facilities', 'Pathology, digital X-ray and sonography', 'The hospital provides diagnostic support through pathology, digital X-ray and sonography services.', 'sh-diagnostic.jpg', 'Digital X-ray room at Sunnah Hospital', array( 'Pathology', 'Digital X-ray', 'Sonography' ) ),
+	'daycare'     => array( 'Day-Care Facilities', 'Planned treatment without an overnight stay', 'Day-care facilities support planned treatments and services that can be provided without an overnight admission, including chemotherapy administration.', '', '', array() ),
+);
+$sunnah_n = 0;
 ?>
 <main id="content">
-<section class="sec" id="available"><div class="w split">
-  <div>
-    <p class="kick">Facilities Available</p>
-    <h2>Advanced infrastructure and compassionate care</h2>
-    <p>Everything needed for safe cancer treatment and comfortable recovery is in one hospital, so patients and families do not have to travel between centres during treatment.</p>
-    <ul class="ticks two" style="margin-top:20px">
-      <li>Advanced ICU Support</li><li>High Dependency Unit (HDU)</li><li>Modular Operation Theatre (OT)</li><li>Minor OT for Procedures</li><li>24x7 Casualty &amp; Emergency Care</li><li>Pharmacy 24x7</li><li>Dedicated Male &amp; Female Wards</li><li>Day Care Chemotherapy</li>
-    </ul>
+<section class="sec"><div class="w narrow" style="text-align:center">
+  <p class="lede">Sunnah Hospital provides inpatient, critical-care, surgical and diagnostic facilities to support its multispeciality services and cancer care.</p>
+  <div class="stats lite">
+    <div><b><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?></b><span>Hospital Beds</span></div>
+    <div><b><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?></b><span>ICU Beds</span></div>
+    <div><b><?php echo esc_html( sunnah_opt( 'stat_ot' ) ); ?></b><span>Operation Theatres</span></div>
+    <div><b><?php echo esc_html( sunnah_opt( 'stat_floors' ) ); ?></b><span>Hospital Floors</span></div>
   </div>
-  <div class="ph"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"></div>
 </div></section>
-<section class="sec grey" id="gallery"><div class="w">
-  <h2 class="c">Inside Sunnah Hospital</h2>
-  <p class="c">Photographs from our hospital in Akola.</p>
-  <div class="gal">
-    <figure class="w2 h2"><img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="Modular operation theatre" loading="lazy"><figcaption>Modular OT</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Reception and waiting area" loading="lazy"><figcaption>Reception</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-diagnostic.jpg' ); ?>" alt="Digital X-Ray room" loading="lazy"><figcaption>Digital X-Ray</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-icu.jpg' ); ?>" alt="Intensive care unit" loading="lazy"><figcaption>ICU</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-minor-ot.jpg' ); ?>" alt="Minor operation theatre" loading="lazy"><figcaption>Minor OT</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward.jpg' ); ?>" alt="Patient ward" loading="lazy"><figcaption>Wards</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-hdu.jpg' ); ?>" alt="High dependency unit" loading="lazy"><figcaption>HDU</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-casualty.jpg' ); ?>" alt="Casualty" loading="lazy"><figcaption>Casualty 24x7</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="Ward beds with oxygen and monitoring points" loading="lazy"><figcaption>Wards</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"><figcaption>Pharmacy 24x7</figcaption></figure>
+
+<?php foreach ( $sunnah_fac as $id => $f ) : ?>
+<section class="sec fac<?php echo ( $sunnah_n % 2 ) ? ' grey' : ''; ?>" id="<?php echo esc_attr( $id ); ?>"><div class="w split<?php echo ( $sunnah_n % 2 ) ? ' rev' : ''; ?>">
+  <?php if ( $f[3] ) : ?>
+    <div class="ph big"><img src="<?php echo sunnah_img( $f[3] ); ?>" alt="<?php echo esc_attr( $f[4] ); ?>" loading="lazy"></div>
+  <?php else : ?>
+    <div class="ph big noph"><svg><use href="#i-sun"/></svg><span>Photographs coming soon</span></div>
+  <?php endif; ?>
+  <div>
+    <p class="kick"><?php echo esc_html( $f[0] ); ?></p>
+    <h2><?php echo esc_html( $f[1] ); ?></h2>
+    <p><?php echo esc_html( $f[2] ); ?></p>
+    <?php if ( $f[5] ) : ?><ul class="ticks"><?php foreach ( $f[5] as $li ) : ?><li><?php echo esc_html( $li ); ?></li><?php endforeach; ?></ul><?php endif; ?>
+  </div>
+</div></section>
+	<?php
+	++$sunnah_n;
+endforeach;
+?>
+
+<section class="sec<?php echo ( $sunnah_n % 2 ) ? ' grey' : ''; ?>" id="additional"><div class="w">
+  <h2 class="c">Additional facilities</h2>
+  <p class="c">Other areas of the hospital that support patients and families.</p>
+  <div class="cards">
+    <div><div class="im"><img src="<?php echo sunnah_img( 'sh-casualty.jpg' ); ?>" alt="Casualty area" loading="lazy"></div><h3>Casualty</h3><p>Initial assessment and care for urgent medical conditions.</p></div>
+    <div><div class="im"><img src="<?php echo sunnah_img( 'sh-minor-ot.jpg' ); ?>" alt="Minor procedure room" loading="lazy"></div><h3>Minor Procedure Room</h3><p>For minor procedures that do not need the main operation theatre.</p></div>
+    <div><div class="im"><img src="<?php echo sunnah_img( 'sh-pharmacy.jpg' ); ?>" alt="Hospital pharmacy" loading="lazy"></div><h3>Pharmacy</h3><p>Medicines available within the hospital.</p></div>
+    <div><div class="im"><img src="<?php echo sunnah_img( 'sh-reception.jpg' ); ?>" alt="Reception area" loading="lazy"></div><h3>Reception</h3><p>Help with appointments, admission and enquiries.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="gallery"><div class="w">
+  <h2 class="c">Photo gallery</h2>
+  <p class="c">Photographs from Sunnah Hospital, Akola.</p>
+  <div class="gal gal-sm">
     <figure><img src="<?php echo sunnah_img( 'sh-entrance.jpg' ); ?>" alt="Hospital entrance" loading="lazy"><figcaption>Entrance</figcaption></figure>
-    <figure class="w2"><img src="<?php echo sunnah_img( 'sh-building.jpg' ); ?>" alt="Sunnah Hospital building, Akola" loading="lazy"><figcaption>Sunnah Hospital</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-building-side.jpg' ); ?>" alt="Sunnah Hospital building, side view" loading="lazy"><figcaption>Hospital Building</figcaption></figure>
-    <figure><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward with window" loading="lazy"><figcaption>Wards</figcaption></figure>
-  </div>
-</div></section>
-<section class="sec" id="comfort"><div class="w split rev">
-  <div class="ph"><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient ward at Sunnah Hospital" loading="lazy"></div>
-  <div>
-    <p class="kick">Patient Comfort</p>
-    <h2>A calm place to heal</h2>
-    <ul class="ticks">
-      <li><b>Dedicated male and female wards.</b> Privacy and comfort during admission.</li>
-      <li><b>Space for family.</b> An attendant can stay with the patient.</li>
-      <li><b>Diet from our dietitian.</b> Personalised nutrition for patients in cancer treatment.</li>
-      <li><b>Pharmacy 24x7.</b> Medicines available within the hospital at any hour.</li>
-    </ul>
-    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'contact', 'location' ); ?>">Plan your visit</a></div>
+    <figure><img src="<?php echo sunnah_img( 'sh-building-side.jpg' ); ?>" alt="Hospital building, side view" loading="lazy"><figcaption>Hospital Building</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-ot-suite.jpg' ); ?>" alt="Operation theatre" loading="lazy"><figcaption>Operation Theatre</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-hdu.jpg' ); ?>" alt="Critical care area" loading="lazy"><figcaption>Critical Care</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-ward-2.jpg' ); ?>" alt="Patient room" loading="lazy"><figcaption>Patient Room</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-ward-3.jpg' ); ?>" alt="Ward" loading="lazy"><figcaption>Ward</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-corridor.jpg' ); ?>" alt="Operation theatre corridor" loading="lazy"><figcaption>OT Corridor</figcaption></figure>
+    <figure><img src="<?php echo sunnah_img( 'sh-icu.jpg' ); ?>" alt="Intensive care unit" loading="lazy"><figcaption>ICU</figcaption></figure>
   </div>
 </div></section>
 <?php get_template_part( 'template-parts/cta' ); ?>

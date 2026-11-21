@@ -11,6 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <section class="bred"><div class="w">
   <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-cal"/></svg>
-  <div><b>Talk to our cancer care team.</b><p>Right Treatment. Right Guidance. Compassionate Care. Call <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?> or send us a message on WhatsApp.</p></div>
-  <a class="olbtn" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Request an appointment</a>
+  <div><b>Book an appointment.</b><p>Call <?php echo esc_html( sunnah_opt( 'phone_1' ) ); ?> or send us a message on WhatsApp. Our staff will confirm the date and time with you.</p></div>
+  <a class="olbtn" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a>
 </div></section>

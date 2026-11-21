@@ -1,4 +1,4 @@
-/* Sunnah Cancer Research Center – site behaviour (menu, search boxes, doctor filter). */
+/* Sunnah Hospital – Cancer Research Centre: site behaviour (menu, home slider, department finder, doctor filter). */
 (function () {
   var B = (window.SUNNAH_CRC && window.SUNNAH_CRC.home) || '/';
   var PAGES = (window.SUNNAH_CRC && window.SUNNAH_CRC.pages) || {};
@@ -51,27 +51,39 @@
     }
   });
 
-  // Search-as-you-type boxes
-  var types = [['Breast Cancer','surgical-oncology/'],['Oral (Mouth) Cancer','surgical-oncology/'],['Throat Cancer','surgical-oncology/'],['Thyroid Cancer','surgical-oncology/'],['Oesophageal (Food Pipe) Cancer','cancer-care/#types'],['Stomach Cancer','surgical-oncology/'],['Colon & Rectal Cancer','surgical-oncology/'],['Liver Cancer','cancer-care/#types'],['Pancreatic Cancer','cancer-care/#types'],['Gallbladder Cancer','cancer-care/#types'],['Cervical Cancer','surgical-oncology/'],['Ovarian Cancer','surgical-oncology/'],['Uterine Cancer','surgical-oncology/'],['Lung Cancer','medical-oncology/'],['Lymphoma','medical-oncology/'],['Leukaemia','medical-oncology/'],['Prostate Cancer','cancer-care/#types'],['Kidney & Bladder Cancer','cancer-care/#types']];
-  var treats = [['Head & Neck Cancer Surgery','surgical-oncology/'],['Breast Cancer Surgery','surgical-oncology/'],['Gastrointestinal Cancer Surgery','surgical-oncology/'],['Gynecological Cancer Surgery','surgical-oncology/'],['Chemotherapy (Day Care & IPD)','medical-oncology/'],['Targeted Therapy','medical-oncology/'],['Immunotherapy','medical-oncology/'],['Supportive & Palliative Care','medical-oncology/'],['Digital X-Ray','diagnostics/'],['Sonography','diagnostics/'],['Pathology','diagnostics/'],['Pain Management','patient-care/#pain'],['Counselling','patient-care/#counselling'],['Nutrition','patient-care/#nutrition']];
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-  function hook(inputId, boxId, list) {
-    var i = document.getElementById(inputId), r = document.getElementById(boxId);
-    if (!i || !r) return;
-    i.addEventListener('input', function () {
-      var t = i.value.trim().toLowerCase();
-      if (!t) { r.hidden = true; return; }
-      var m = list.filter(function (x) { return x[0].toLowerCase().indexOf(t) > -1; }).slice(0, 6);
-      r.innerHTML = m.length
-        ? m.map(function (x) { return '<a href="' + link(x[1]) + '">' + esc(x[0]) + '</a>'; }).join('')
-        : '<a href="' + link('contact/#enquiry') + '">No match. Ask our care team →</a>';
-      r.hidden = false;
-    });
+  // Home page slider: arrows, indicators, pause; changes every 6 seconds
+  var hs = document.getElementById('hslider');
+  if (hs) {
+    var slides = hs.querySelectorAll('.hs-slide'), dots = hs.querySelectorAll('.hs-dots button');
+    var pause = hs.querySelector('.hs-pause'), cur = 0, timer = null;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var paused = reduce;
+    function show(n) {
+      cur = (n + slides.length) % slides.length;
+      Array.prototype.forEach.call(slides, function (s, i) {
+        s.classList.toggle('on', i === cur);
+        if (i === cur) { s.removeAttribute('aria-hidden'); } else { s.setAttribute('aria-hidden', 'true'); }
+        var im = s.querySelector('img'); if (im && i === cur) im.loading = 'eager';
+      });
+      Array.prototype.forEach.call(dots, function (d, i) { if (i === cur) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); } });
+    }
+    function start() { stop(); if (!paused) timer = setInterval(function () { show(cur + 1); }, 6000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function setPaused(p) {
+      paused = p;
+      if (pause) { pause.setAttribute('aria-pressed', String(p)); pause.setAttribute('aria-label', p ? 'Play slideshow' : 'Pause slideshow'); }
+      start();
+    }
+    hs.querySelector('.hs-prev').addEventListener('click', function () { show(cur - 1); start(); });
+    hs.querySelector('.hs-next').addEventListener('click', function () { show(cur + 1); start(); });
+    Array.prototype.forEach.call(dots, function (d, i) { d.addEventListener('click', function () { show(i); start(); }); });
+    if (pause) pause.addEventListener('click', function () { setPaused(!paused); });
+    hs.addEventListener('focusin', stop);
+    hs.addEventListener('focusout', function (e) { if (!hs.contains(e.relatedTarget)) start(); });
+    setPaused(paused);
   }
-  hook('q', 'sres', types);
-  hook('q2', 'sres2', treats);
 
-  // Cancer types list filter (Cancer Care page)
+  // Department finder filter (Departments page)
   var tf = document.getElementById('typefilter'), tl = document.getElementById('typelist'), tn = document.getElementById('typenone');
   if (tf && tl) {
     tf.addEventListener('input', function () {

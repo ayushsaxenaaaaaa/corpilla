@@ -1,10 +1,12 @@
 <?php
 /**
- * Sunnah Cancer Research Center theme functions.
+ * Sunnah Hospital – Cancer Research Centre theme functions.
  *
- * - Contact details are edited in Appearance → Customize → Hospital Contact Details.
+ * - Contact details, OPD timings and hospital information are edited in
+ *   Appearance → Customize → "Hospital Contact Details" and "Hospital Information".
  * - Doctors are added in the WordPress admin under "Doctors".
- * - All site pages are created automatically when the theme is activated.
+ * - News and health articles are normal WordPress Posts (categories are created automatically).
+ * - All site pages are created automatically when the theme is activated or updated.
  * - Each page's banner photo can be changed by setting the page's Featured Image.
  *
  * @package sunnah-crc
@@ -14,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '2.4.0' );
+define( 'SUNNAH_CRC_VERSION', '3.0.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -25,6 +27,7 @@ function sunnah_crc_setup() {
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 	add_image_size( 'sunnah-banner', 1920, 760, true );
 	add_image_size( 'sunnah-portrait', 720, 900, true );
+	add_image_size( 'sunnah-card', 800, 500, true );
 }
 add_action( 'after_setup_theme', 'sunnah_crc_setup' );
 
@@ -34,7 +37,7 @@ function sunnah_crc_assets() {
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
 	$pages = array();
-	foreach ( array( 'surgical-oncology', 'medical-oncology', 'diagnostics', 'cancer-care', 'patient-care', 'contact' ) as $slug ) {
+	foreach ( array( 'cancer-care', 'departments', 'dental-care', 'infrastructure', 'doctors', 'contact', 'health-awareness' ) as $slug ) {
 		$pages[ $slug ] = html_entity_decode( sunnah_url( $slug ) );
 	}
 	wp_add_inline_script( 'sunnah-crc-site', 'window.SUNNAH_CRC = ' . wp_json_encode( array( 'home' => trailingslashit( home_url( '/' ) ), 'pages' => $pages ) ) . ';', 'before' );
@@ -50,24 +53,47 @@ function sunnah_crc_preconnect( $urls, $relation_type ) {
 add_filter( 'wp_resource_hints', 'sunnah_crc_preconnect', 10, 2 );
 
 /* -------------------------------------------------------------------------
- * Contact details (Customizer)
+ * Settings (Customizer)
  * ---------------------------------------------------------------------- */
 function sunnah_crc_defaults() {
 	return array(
-		'phone_1'       => '+91 99235 42674',
-		'phone_2'       => '+91 98507 60773',
-		'whatsapp'      => '919923542674',
-		'email'         => 'drhakimakola@gmail.com',
-		'address'       => 'Ganga Nagar, Washim Bypass, Akola, Maharashtra 444002',
-		'address_short' => 'Ganga Nagar, Washim Bypass, Akola',
-		'maps_url'      => 'https://www.google.com/maps/search/?api=1&query=Sunnah+Hospital+Ganga+Nagar+Washim+Bypass+Akola',
-		'opd_hours'     => 'Please call to confirm OPD timings',
-		'enquiry_email' => '',
+		// Contact.
+		'phone_1'         => '+91 99235 42674',
+		'phone_2'         => '',
+		'whatsapp'        => '919923542674',
+		'emergency_phone' => '+91 99235 42674',
+		'email'           => 'drhakimakola@gmail.com',
+		'address'         => 'Ganga Nagar, Akola 444002, Maharashtra, India',
+		'address_short'   => 'Ganga Nagar, Akola',
+		'maps_url'        => 'https://www.google.com/maps/search/?api=1&query=Sunnah+Hospital+Ganga+Nagar+Akola',
+		'maps_query'      => 'Sunnah Hospital, Ganga Nagar, Akola, Maharashtra',
+		'opd_days'        => '',
+		'opd_hours'       => '',
+		'emergency_hours' => '',
+		'enquiry_email'   => '',
+		// Hospital at a glance.
+		'stat_beds'       => '30+',
+		'stat_icu'        => '9',
+		'stat_ot'         => '2',
+		'stat_floors'     => '3',
+		// Hospital information (paragraphs; empty = a "contact us" line is shown instead).
+		'surgery_list'      => '',
+		'screening_list'    => '',
+		'packages_info'     => '',
+		'scheme_info'       => '',
+		'patient_info'      => '',
+		'partnerships'      => '',
+		'initiatives'       => '',
+		'founder_profile'   => '',
+		'founder_photo'     => '',
+		'social_facebook'   => '',
+		'social_instagram'  => '',
+		'social_youtube'    => '',
 	);
 }
 
 /**
- * Get a contact detail.
+ * Get a setting.
  *
  * @param string $key Setting key.
  * @return string
@@ -75,7 +101,13 @@ function sunnah_crc_defaults() {
 function sunnah_opt( $key ) {
 	$defaults = sunnah_crc_defaults();
 	$value    = get_theme_mod( 'sunnah_' . $key, isset( $defaults[ $key ] ) ? $defaults[ $key ] : '' );
-	return is_string( $value ) ? $value : '';
+	return is_string( $value ) ? trim( $value ) : '';
+}
+
+/** Rich-text setting, safe to print (paragraphs and lists allowed). */
+function sunnah_rich( $key ) {
+	$v = sunnah_opt( $key );
+	return '' === $v ? '' : wpautop( wp_kses_post( $v ) );
 }
 
 /** Phone number as a tel: link value. */
@@ -89,66 +121,113 @@ function sunnah_wa( $text = '' ) {
 	return $text ? $url . '?text=' . rawurlencode( $text ) : $url;
 }
 
+/** "Please call" line used where the hospital has not yet supplied details. */
+function sunnah_ask_line( $what ) {
+	return '<p class="ask">' . esc_html( $what ) . ' Please call or WhatsApp <a href="' . esc_attr( sunnah_tel() ) . '">' . esc_html( sunnah_opt( 'phone_1' ) ) . '</a>.</p>';
+}
+
 function sunnah_crc_customize( $wp_customize ) {
+	$defaults = sunnah_crc_defaults();
+
 	$wp_customize->add_section(
 		'sunnah_contact',
 		array(
 			'title'       => __( 'Hospital Contact Details', 'sunnah-crc' ),
-			'description' => __( 'These details are used in the header, footer, contact page and buttons across the site.', 'sunnah-crc' ),
+			'description' => __( 'Used in the header, footer, contact page and buttons across the site.', 'sunnah-crc' ),
 			'priority'    => 30,
 		)
 	);
-	$fields = array(
-		'phone_1'       => __( 'Phone number 1 (main)', 'sunnah-crc' ),
-		'phone_2'       => __( 'Phone number 2', 'sunnah-crc' ),
-		'whatsapp'      => __( 'WhatsApp number (digits with country code, e.g. 919923542674)', 'sunnah-crc' ),
-		'email'         => __( 'Email shown on the site', 'sunnah-crc' ),
-		'address'       => __( 'Full address', 'sunnah-crc' ),
-		'address_short' => __( 'Short address (top bar)', 'sunnah-crc' ),
-		'maps_url'      => __( 'Google Maps link', 'sunnah-crc' ),
-		'opd_hours'     => __( 'OPD timings', 'sunnah-crc' ),
-		'enquiry_email' => __( 'Send enquiry form emails to (leave empty to use the site admin email)', 'sunnah-crc' ),
+	$contact = array(
+		'phone_1'         => array( __( 'Phone number (main)', 'sunnah-crc' ), 'text' ),
+		'phone_2'         => array( __( 'Second phone number (optional)', 'sunnah-crc' ), 'text' ),
+		'whatsapp'        => array( __( 'WhatsApp number (digits with country code, e.g. 919923542674)', 'sunnah-crc' ), 'text' ),
+		'emergency_phone' => array( __( 'Emergency contact number', 'sunnah-crc' ), 'text' ),
+		'emergency_hours' => array( __( 'Emergency hours (leave empty until confirmed, e.g. "24 hours, 7 days")', 'sunnah-crc' ), 'text' ),
+		'email'           => array( __( 'Email shown on the site', 'sunnah-crc' ), 'email' ),
+		'address'         => array( __( 'Full address', 'sunnah-crc' ), 'text' ),
+		'address_short'   => array( __( 'Short address', 'sunnah-crc' ), 'text' ),
+		'maps_url'        => array( __( 'Google Maps link (Get Directions button)', 'sunnah-crc' ), 'url' ),
+		'maps_query'      => array( __( 'Map search text for the embedded map', 'sunnah-crc' ), 'text' ),
+		'opd_days'        => array( __( 'OPD days (e.g. Monday to Saturday)', 'sunnah-crc' ), 'text' ),
+		'opd_hours'       => array( __( 'OPD timings (e.g. 10:00 am – 2:00 pm, 5:00 – 8:00 pm)', 'sunnah-crc' ), 'text' ),
+		'enquiry_email'   => array( __( 'Send appointment requests to this email (empty = site admin email)', 'sunnah-crc' ), 'email' ),
+		'social_facebook' => array( __( 'Official Facebook page link (optional)', 'sunnah-crc' ), 'url' ),
+		'social_instagram'=> array( __( 'Official Instagram link (optional)', 'sunnah-crc' ), 'url' ),
+		'social_youtube'  => array( __( 'Official YouTube link (optional)', 'sunnah-crc' ), 'url' ),
 	);
-	$defaults = sunnah_crc_defaults();
-	foreach ( $fields as $key => $label ) {
-		$sanitize = 'sanitize_text_field';
-		if ( 'maps_url' === $key ) {
-			$sanitize = 'esc_url_raw';
-		} elseif ( in_array( $key, array( 'email', 'enquiry_email' ), true ) ) {
-			$sanitize = 'sanitize_email';
+	foreach ( $contact as $key => $c ) {
+		$san = 'sanitize_text_field';
+		if ( 'url' === $c[1] ) {
+			$san = 'esc_url_raw';
+		} elseif ( 'email' === $c[1] ) {
+			$san = 'sanitize_email';
 		}
-		$wp_customize->add_setting(
-			'sunnah_' . $key,
-			array(
-				'default'           => $defaults[ $key ],
-				'sanitize_callback' => $sanitize,
-			)
-		);
-		$wp_customize->add_control(
-			'sunnah_' . $key,
-			array(
-				'label'   => $label,
-				'section' => 'sunnah_contact',
-				'type'    => 'text',
-			)
-		);
+		$wp_customize->add_setting( 'sunnah_' . $key, array( 'default' => $defaults[ $key ], 'sanitize_callback' => $san ) );
+		$wp_customize->add_control( 'sunnah_' . $key, array( 'label' => $c[0], 'section' => 'sunnah_contact', 'type' => 'url' === $c[1] ? 'url' : 'text' ) );
 	}
+
+	$wp_customize->add_section(
+		'sunnah_info',
+		array(
+			'title'       => __( 'Hospital Information', 'sunnah-crc' ),
+			'description' => __( 'Confirmed details shown on the website. Leave a box empty until the hospital has confirmed it; the site then shows a "please call us" line instead. Simple formatting (paragraphs, bullet lists using <ul><li>) is allowed.', 'sunnah-crc' ),
+			'priority'    => 31,
+		)
+	);
+	$info = array(
+		'stat_beds'       => array( __( 'Hospital at a glance: beds (e.g. 30+)', 'sunnah-crc' ), 'text' ),
+		'stat_icu'        => array( __( 'Hospital at a glance: ICU beds', 'sunnah-crc' ), 'text' ),
+		'stat_ot'         => array( __( 'Hospital at a glance: operation theatres', 'sunnah-crc' ), 'text' ),
+		'stat_floors'     => array( __( 'Hospital at a glance: floors', 'sunnah-crc' ), 'text' ),
+		'surgery_list'    => array( __( 'Cancer surgeries performed (confirmed list)', 'sunnah-crc' ), 'textarea' ),
+		'screening_list'  => array( __( 'Cancer screening tests and diagnostic procedures available', 'sunnah-crc' ), 'textarea' ),
+		'packages_info'   => array( __( 'Inpatient cancer-care packages (names, duration, bed category, inclusions, exclusions, pricing)', 'sunnah-crc' ), 'textarea' ),
+		'scheme_info'     => array( __( 'Government schemes: empanelment status, approved packages, eligibility, documents, helpdesk', 'sunnah-crc' ), 'textarea' ),
+		'patient_info'    => array( __( 'Patient & visitor information (admission, documents, visitors, billing, discharge, visiting hours)', 'sunnah-crc' ), 'textarea' ),
+		'founder_profile' => array( __( 'Founder: approved short profile', 'sunnah-crc' ), 'textarea' ),
+		'initiatives'     => array( __( 'Community: institutional development & healthcare initiatives (verified)', 'sunnah-crc' ), 'textarea' ),
+		'partnerships'    => array( __( 'Community: institutional partnerships (verified; section is hidden while empty)', 'sunnah-crc' ), 'textarea' ),
+	);
+	foreach ( $info as $key => $c ) {
+		$wp_customize->add_setting( 'sunnah_' . $key, array( 'default' => $defaults[ $key ], 'sanitize_callback' => 'textarea' === $c[1] ? 'wp_kses_post' : 'sanitize_text_field' ) );
+		$wp_customize->add_control( 'sunnah_' . $key, array( 'label' => $c[0], 'section' => 'sunnah_info', 'type' => $c[1] ) );
+	}
+	$wp_customize->add_section(
+		'sunnah_dept',
+		array(
+			'title'       => __( 'Department Services', 'sunnah-crc' ),
+			'description' => __( 'Confirmed services for each department, shown on the Departments page. One service per line. Leave empty until confirmed.', 'sunnah-crc' ),
+			'priority'    => 32,
+		)
+	);
+	foreach ( sunnah_crc_service_keys() as $key => $label ) {
+		$wp_customize->add_setting( 'sunnah_svc_' . $key, array( 'default' => '', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+		$wp_customize->add_control( 'sunnah_svc_' . $key, array( 'label' => $label, 'section' => 'sunnah_dept', 'type' => 'textarea' ) );
+	}
+	$wp_customize->add_setting( 'sunnah_founder_photo', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'sunnah_founder_photo', array( 'label' => __( 'Founder photograph', 'sunnah-crc' ), 'section' => 'sunnah_info' ) ) );
 }
 add_action( 'customize_register', 'sunnah_crc_customize' );
 
 /* -------------------------------------------------------------------------
- * Doctors
+ * Departments and doctors
  * ---------------------------------------------------------------------- */
 function sunnah_crc_specialities() {
 	return array(
-		'Surgical Oncology',
+		'General Medicine',
+		'General Surgery',
 		'Medical Oncology',
-		'Diagnostics',
+		'Surgical Oncology',
+		'Orthopaedics',
+		'Urology',
+		'Neurology',
+		'ENT',
+		'Dental',
 		'Anaesthesia & Critical Care',
-		'Pain & Palliative Care',
-		'Psychological Support',
-		'Oncology Nutrition',
-		'Dental Care',
+		'Pathology',
+		'Radiology & Imaging',
+		'Palliative & Supportive Care',
+		'Cancer Counselling',
 	);
 }
 
@@ -169,7 +248,7 @@ function sunnah_crc_register_doctor() {
 			'menu_position' => 21,
 			'supports'      => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'rewrite'       => array( 'slug' => 'doctor' ),
-			'show_in_rest'  => true,
+			'show_in_rest'  => true, // Needed by the WordPress editor; the REST API is closed to visitors below.
 		)
 	);
 }
@@ -177,12 +256,15 @@ add_action( 'init', 'sunnah_crc_register_doctor' );
 
 function sunnah_crc_doctor_fields() {
 	return array(
-		'speciality'    => __( 'Speciality', 'sunnah-crc' ),
-		'role'          => __( 'Designation (e.g. Head of Department, Consultant)', 'sunnah-crc' ),
-		'qualification' => __( 'Qualifications (e.g. MS, MCh)', 'sunnah-crc' ),
-		'experience'    => __( 'Years of experience (number)', 'sunnah-crc' ),
-		'languages'     => __( 'Languages spoken', 'sunnah-crc' ),
-		'opd'           => __( 'OPD days and time', 'sunnah-crc' ),
+		'speciality'    => __( 'Medical speciality', 'sunnah-crc' ),
+		'type'          => __( 'Full-time or visiting consultant', 'sunnah-crc' ),
+		'role'          => __( 'Designation (e.g. Consultant, Head of Department)', 'sunnah-crc' ),
+		'qualification' => __( 'Qualifications (e.g. MBBS, MS, MCh)', 'sunnah-crc' ),
+		'experience'    => __( 'Years of experience (only if verified)', 'sunnah-crc' ),
+		'interests'     => __( 'Clinical interests', 'sunnah-crc' ),
+		'days'          => __( 'Consultation days', 'sunnah-crc' ),
+		'opd'           => __( 'OPD timings', 'sunnah-crc' ),
+		'languages'     => __( 'Languages spoken (optional)', 'sunnah-crc' ),
 	);
 }
 
@@ -193,14 +275,15 @@ add_action( 'add_meta_boxes', 'sunnah_crc_doctor_metabox' );
 
 function sunnah_crc_doctor_metabox_html( $post ) {
 	wp_nonce_field( 'sunnah_doctor_save', 'sunnah_doctor_nonce' );
-	echo '<p>' . esc_html__( 'Doctor name goes in the title above. The photo is the Featured Image (portrait, ideally 720 × 900 px). The main text box is the doctor\'s profile.', 'sunnah-crc' ) . '</p>';
+	echo '<p>' . esc_html__( 'Doctor name goes in the title above (e.g. Dr. Firstname Surname). The photograph is the Featured Image (portrait, about 720 × 900 px). The main text box is the short professional biography.', 'sunnah-crc' ) . '</p>';
 	echo '<table class="form-table">';
 	foreach ( sunnah_crc_doctor_fields() as $key => $label ) {
 		$value = get_post_meta( $post->ID, '_sunnah_' . $key, true );
 		echo '<tr><th><label for="sunnah_' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label></th><td>';
-		if ( 'speciality' === $key ) {
-			echo '<select id="sunnah_speciality" name="sunnah_speciality">';
-			foreach ( sunnah_crc_specialities() as $s ) {
+		if ( 'speciality' === $key || 'type' === $key ) {
+			$opts = 'speciality' === $key ? sunnah_crc_specialities() : array( 'Full-time Consultant', 'Visiting Consultant' );
+			echo '<select id="sunnah_' . esc_attr( $key ) . '" name="sunnah_' . esc_attr( $key ) . '">';
+			foreach ( $opts as $s ) {
 				echo '<option value="' . esc_attr( $s ) . '"' . selected( $value, $s, false ) . '>' . esc_html( $s ) . '</option>';
 			}
 			echo '</select>';
@@ -231,9 +314,9 @@ function sunnah_crc_doctor_save( $post_id ) {
 add_action( 'save_post_doctor', 'sunnah_crc_doctor_save' );
 
 /**
- * Get doctors, optionally for one speciality.
+ * Get doctors, optionally for one or more specialities.
  *
- * @param string $speciality Speciality name or empty for all.
+ * @param string|array $speciality Speciality name(s) or empty for all.
  * @return WP_Post[]
  */
 function sunnah_crc_get_doctors( $speciality = '' ) {
@@ -246,12 +329,56 @@ function sunnah_crc_get_doctors( $speciality = '' ) {
 	if ( $speciality ) {
 		$args['meta_query'] = array(
 			array(
-				'key'   => '_sunnah_speciality',
-				'value' => $speciality,
+				'key'     => '_sunnah_speciality',
+				'value'   => (array) $speciality,
+				'compare' => 'IN',
 			),
 		);
 	}
 	return get_posts( $args );
+}
+
+/**
+ * Departments shown on the home page and the Departments page.
+ * anchor => [name, icon, short description, doctor speciality].
+ */
+function sunnah_crc_departments() {
+	return array(
+		'general-medicine'  => array( 'General Medicine', 'i-steth', 'Diagnosis and treatment of a wide range of medical conditions in adults.', 'General Medicine' ),
+		'general-surgery'   => array( 'General Surgery', 'i-scalpel', 'Planned and emergency surgical care, with two operation theatres and post-operative support.', 'General Surgery' ),
+		'medical-oncology'  => array( 'Medical Oncology', 'i-drop', 'Cancer assessment, chemotherapy, treatment monitoring and follow-up.', 'Medical Oncology' ),
+		'surgical-oncology' => array( 'Surgical Oncology', 'i-cell', 'Surgical evaluation and treatment of cancer by surgical oncologists.', 'Surgical Oncology' ),
+		'orthopaedics'      => array( 'Orthopaedics', 'i-bone', 'Care for bones, joints, fractures and musculoskeletal conditions.', 'Orthopaedics' ),
+		'urology'           => array( 'Urology', 'i-kid', 'Assessment and treatment of kidney, bladder, prostate and urinary tract conditions.', 'Urology' ),
+		'neurology'         => array( 'Neurology', 'i-brain', 'Consultation for conditions of the brain, spine, nerves and muscles.', 'Neurology' ),
+		'ent'               => array( 'ENT', 'i-ear', 'Care for conditions of the ear, nose and throat.', 'ENT' ),
+		'dental'            => array( 'Dental', 'i-tooth', 'Dental and oral health care at Sunnah Dental Care.', 'Dental' ),
+	);
+}
+
+/** Departments that have a confirmed-services box in the Customizer. */
+function sunnah_crc_service_keys() {
+	$keys = array();
+	foreach ( sunnah_crc_departments() as $k => $d ) {
+		$keys[ $k ] = $d[0];
+	}
+	$keys['icu']       = 'Intensive Care Unit (equipment and capabilities)';
+	$keys['pathology'] = 'Pathology (available tests)';
+	$keys['imaging']   = 'Digital X-ray and sonography';
+	return $keys;
+}
+
+/** Confirmed services list for a department as an HTML list, or ''. */
+function sunnah_services( $key ) {
+	$lines = array_filter( array_map( 'trim', explode( "\n", (string) get_theme_mod( 'sunnah_svc_' . $key, '' ) ) ) );
+	if ( ! $lines ) {
+		return '';
+	}
+	$out = '<ul class="ticks two">';
+	foreach ( $lines as $l ) {
+		$out .= '<li>' . esc_html( ltrim( $l, "-•* \t" ) ) . '</li>';
+	}
+	return $out . '</ul>';
 }
 
 /** Doctor meta helper. */
@@ -260,37 +387,75 @@ function sunnah_doc( $post_id, $key ) {
 }
 
 /* -------------------------------------------------------------------------
- * Pages created on activation
+ * Pages and news categories created on activation / update
  * ---------------------------------------------------------------------- */
 function sunnah_crc_pages() {
 	return array(
-		'about-us'          => __( 'About Us', 'sunnah-crc' ),
-		'cancer-care'       => __( 'Cancer Care', 'sunnah-crc' ),
-		'surgical-oncology' => __( 'Surgical Oncology', 'sunnah-crc' ),
-		'medical-oncology'  => __( 'Medical Oncology', 'sunnah-crc' ),
-		'diagnostics'       => __( 'Diagnostics', 'sunnah-crc' ),
-		'doctors'           => __( 'Doctors & Specialists', 'sunnah-crc' ),
-		'patient-care'      => __( 'Patient Care & Support', 'sunnah-crc' ),
-		'infrastructure'    => __( 'Hospital Infrastructure', 'sunnah-crc' ),
-		'dental-care'       => __( 'Sunnah Dental Care', 'sunnah-crc' ),
-		'research'          => __( 'Cancer Research', 'sunnah-crc' ),
-		'contact'           => __( 'Contact & Appointment', 'sunnah-crc' ),
-		'privacy-policy'    => __( 'Privacy Policy', 'sunnah-crc' ),
+		'about-us'             => __( 'About Us', 'sunnah-crc' ),
+		'cancer-care'          => __( 'Cancer Research Centre', 'sunnah-crc' ),
+		'departments'          => __( 'Departments & Specialities', 'sunnah-crc' ),
+		'dental-care'          => __( 'Sunnah Dental Care', 'sunnah-crc' ),
+		'doctors'              => __( 'Our Doctors', 'sunnah-crc' ),
+		'infrastructure'       => __( 'Facilities & Infrastructure', 'sunnah-crc' ),
+		'contact'              => __( 'Contact & Appointments', 'sunnah-crc' ),
+		'news'                 => __( 'News & Medical Achievements', 'sunnah-crc' ),
+		'community'            => __( 'Community Impact & Partnerships', 'sunnah-crc' ),
+		'health-awareness'     => __( 'Health Awareness & Resources', 'sunnah-crc' ),
+		'privacy-policy'       => __( 'Privacy Policy', 'sunnah-crc' ),
+		'terms-and-conditions' => __( 'Terms & Conditions', 'sunnah-crc' ),
+	);
+}
+
+/** Pages from earlier theme versions, now merged into other pages. */
+function sunnah_crc_retired_pages() {
+	return array(
+		'surgical-oncology' => array( 'cancer-care', 'surgical-oncology' ),
+		'medical-oncology'  => array( 'cancer-care', 'medical-oncology' ),
+		'diagnostics'       => array( 'departments', 'critical-care' ),
+		'patient-care'      => array( 'contact', 'patient-info' ),
+		'research'          => array( 'cancer-care', '' ),
+	);
+}
+
+function sunnah_crc_news_categories() {
+	return array(
+		'hospital-announcements' => 'Hospital Announcements',
+		'medical-achievements'   => 'Medical Achievements',
+		'awareness-activities'   => 'Health Awareness Activities',
+		'events-programmes'      => 'Events & Programmes',
+		'media-coverage'         => 'Media Coverage',
+		'health-articles'        => 'Health Articles',
 	);
 }
 
 function sunnah_crc_activate() {
-	foreach ( sunnah_crc_pages() as $slug => $title ) {
-		if ( ! get_page_by_path( $slug ) ) {
+	$titles = sunnah_crc_pages();
+	foreach ( $titles as $slug => $title ) {
+		$page = get_page_by_path( $slug );
+		if ( ! $page ) {
 			wp_insert_post(
 				array(
-					'post_type'    => 'page',
-					'post_status'  => 'publish',
-					'post_title'   => $title,
-					'post_name'    => $slug,
-					'post_content' => '',
+					'post_type'   => 'page',
+					'post_status' => 'publish',
+					'post_title'  => $title,
+					'post_name'   => $slug,
 				)
 			);
+		} elseif ( in_array( $page->post_title, array( 'Cancer Care', 'Doctors & Specialists', 'Hospital Infrastructure', 'Contact & Appointment' ), true ) ) {
+			// Rename pages created by earlier theme versions.
+			wp_update_post( array( 'ID' => $page->ID, 'post_title' => $title ) );
+		}
+	}
+	// Retire pages from earlier versions (only if they were left empty, i.e. created by the theme).
+	foreach ( array_keys( sunnah_crc_retired_pages() ) as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page && 'publish' === $page->post_status && '' === trim( $page->post_content ) ) {
+			wp_update_post( array( 'ID' => $page->ID, 'post_status' => 'draft' ) );
+		}
+	}
+	foreach ( sunnah_crc_news_categories() as $slug => $name ) {
+		if ( ! term_exists( $slug, 'category' ) ) {
+			wp_insert_term( $name, 'category', array( 'slug' => $slug ) );
 		}
 	}
 	sunnah_crc_register_doctor();
@@ -299,7 +464,7 @@ function sunnah_crc_activate() {
 add_action( 'after_switch_theme', 'sunnah_crc_activate' );
 
 /**
- * Also create any missing pages after the theme is updated or re-uploaded while already active
+ * Also create missing pages after the theme is updated while already active
  * (WordPress does not run "after_switch_theme" in that case).
  */
 function sunnah_crc_maybe_setup() {
@@ -310,6 +475,21 @@ function sunnah_crc_maybe_setup() {
 	update_option( 'sunnah_crc_setup_version', SUNNAH_CRC_VERSION );
 }
 add_action( 'init', 'sunnah_crc_maybe_setup', 20 );
+
+/** Send visitors of retired page addresses to the section that replaced them. */
+function sunnah_crc_redirect_retired() {
+	if ( is_admin() ) {
+		return;
+	}
+	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '', PHP_URL_PATH ), '/' );
+	$slug = basename( $path );
+	$map  = sunnah_crc_retired_pages();
+	if ( isset( $map[ $slug ] ) && ( is_404() || is_page( $slug ) ) ) {
+		wp_safe_redirect( html_entity_decode( sunnah_url( $map[ $slug ][0], $map[ $slug ][1] ) ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'sunnah_crc_redirect_retired', 5 );
 
 /**
  * Link to one of the theme's pages. Uses the real page address, so links work with any
@@ -345,8 +525,22 @@ function sunnah_banner( $default ) {
 	return sunnah_img( $default );
 }
 
+/** Latest posts, optionally from given category slugs. */
+function sunnah_crc_posts( $cats = array(), $n = 3 ) {
+	$args = array(
+		'post_type'           => 'post',
+		'posts_per_page'      => $n,
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+	if ( $cats ) {
+		$args['category_name'] = implode( ',', (array) $cats );
+	}
+	return get_posts( $args );
+}
+
 /* -------------------------------------------------------------------------
- * Enquiry form
+ * Appointment enquiry form
  * ---------------------------------------------------------------------- */
 function sunnah_crc_handle_enquiry() {
 	$back = wp_get_referer() ? wp_get_referer() : home_url( '/' );
@@ -367,20 +561,26 @@ function sunnah_crc_handle_enquiry() {
 		exit;
 	}
 
-	$name    = isset( $_POST['patient_name'] ) ? sanitize_text_field( wp_unslash( $_POST['patient_name'] ) ) : '';
-	$phone   = isset( $_POST['mobile'] ) ? sanitize_text_field( wp_unslash( $_POST['mobile'] ) ) : '';
+	$f = array();
+	foreach ( array( 'patient_name', 'mobile', 'department', 'pref_date', 'pref_time' ) as $k ) {
+		$f[ $k ] = isset( $_POST[ $k ] ) ? wp_html_excerpt( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ), 120 ) : '';
+	}
 	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-	$dept    = isset( $_POST['department'] ) ? sanitize_text_field( wp_unslash( $_POST['department'] ) ) : '';
-	$message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$message = isset( $_POST['message'] ) ? wp_html_excerpt( sanitize_textarea_field( wp_unslash( $_POST['message'] ) ), 2000 ) : '';
 
-	if ( '' === $name || strlen( preg_replace( '/\D/', '', $phone ) ) < 10 ) {
+	if ( '' === $f['patient_name'] || strlen( preg_replace( '/\D/', '', $f['mobile'] ) ) < 10 ) {
 		wp_safe_redirect( add_query_arg( 'enquiry', 'missing', $back ) . '#enquiry' );
 		exit;
 	}
 
 	$to      = sunnah_opt( 'enquiry_email' ) ? sunnah_opt( 'enquiry_email' ) : get_option( 'admin_email' );
-	$subject = sprintf( 'New appointment enquiry: %s', wp_html_excerpt( $name, 60 ) );
-	$body    = "Patient name: {$name}\nMobile: {$phone}\nEmail: " . ( $email ? $email : '-' ) . "\nDepartment: " . ( $dept ? $dept : '-' ) . "\n\nMessage:\n" . ( $message ? $message : '-' ) . "\n\nSent from: {$back}\n";
+	$subject = sprintf( 'Appointment enquiry: %s', wp_html_excerpt( $f['patient_name'], 60 ) );
+	$body    = "Patient name: {$f['patient_name']}\nContact number: {$f['mobile']}\nEmail: " . ( $email ? $email : '-' )
+		. "\nDepartment / speciality: " . ( $f['department'] ? $f['department'] : '-' )
+		. "\nPreferred date: " . ( $f['pref_date'] ? $f['pref_date'] : '-' )
+		. "\nPreferred time: " . ( $f['pref_time'] ? $f['pref_time'] : '-' )
+		. "\n\nReason for appointment:\n" . ( $message ? $message : '-' )
+		. "\n\nPlease call the patient to confirm the appointment.\nSent from: {$back}\n";
 	$headers = ( $email && is_email( $email ) ) ? array( 'Reply-To: ' . $email ) : array();
 	$ok      = wp_mail( $to, $subject, $body, $headers );
 
@@ -394,9 +594,9 @@ add_action( 'admin_post_sunnah_enquiry', 'sunnah_crc_handle_enquiry' );
 function sunnah_enquiry_notice() {
 	$state = isset( $_GET['enquiry'] ) ? sanitize_key( wp_unslash( $_GET['enquiry'] ) ) : '';
 	$msgs  = array(
-		'sent'    => __( 'Thank you. Your request has been received and our team will call you back.', 'sunnah-crc' ),
-		'missing' => __( 'Please enter the patient name and a 10-digit mobile number.', 'sunnah-crc' ),
-		'failed'  => __( 'Sorry, your request could not be sent. Please call or WhatsApp us instead.', 'sunnah-crc' ),
+		'sent'    => __( 'Thank you. Your enquiry has been received. Our staff will call you to confirm the appointment; it is not confirmed until they do.', 'sunnah-crc' ),
+		'missing' => __( 'Please enter the patient name and a 10-digit contact number.', 'sunnah-crc' ),
+		'failed'  => __( 'Sorry, your enquiry could not be sent. Please call or WhatsApp us instead.', 'sunnah-crc' ),
 		'error'   => __( 'Sorry, something went wrong. Please try again, or call or WhatsApp us.', 'sunnah-crc' ),
 	);
 	if ( isset( $msgs[ $state ] ) ) {
@@ -410,25 +610,26 @@ function sunnah_enquiry_notice() {
 function sunnah_crc_meta_description() {
 	$desc = '';
 	if ( is_front_page() ) {
-		$desc = 'Sunnah Hospital – Cancer Research Center, Akola: comprehensive, compassionate and affordable cancer care for Vidarbha. Surgical & medical oncology, chemotherapy day care, diagnostics, ICU, HDU and PM-JAY cashless treatment.';
+		$desc = 'Sunnah Hospital – Cancer Research Centre, Ganga Nagar, Akola: a multispeciality hospital established in 2008, providing medical, surgical and specialised cancer care services.';
 	} elseif ( is_page() ) {
 		$map  = array(
-			'about-us'          => 'About Sunnah Cancer Research Center, a dedicated unit of Sunnah Hospital, Akola, providing comprehensive, compassionate and affordable cancer care to Vidarbha.',
-			'cancer-care'       => 'Cancer care at Sunnah Hospital, Akola: surgical oncology, medical oncology, diagnostics, pain management, nutrition and psychological support.',
-			'surgical-oncology' => 'Surgical oncology at Sunnah Hospital, Akola: head & neck, breast, gastrointestinal and gynecological cancer surgery.',
-			'medical-oncology'  => 'Medical oncology at Sunnah Hospital, Akola: chemotherapy in day care and IPD, targeted therapy, immunotherapy, supportive and palliative care.',
-			'diagnostics'       => 'Diagnostics at Sunnah Hospital, Akola: digital X-Ray, sonography and pathology for accurate, reliable detection.',
-			'dental-care'       => 'Sunnah Dental Care at Sunnah Hospital, Akola: dental check-ups, fillings, root canal treatment, extractions, cleaning and oral cancer screening.',
-			'doctors'           => 'Meet the oncologists and specialists at Sunnah Hospital – Cancer Research Center, Akola.',
-			'patient-care'      => 'Patient care and support at Sunnah Hospital, Akola: treatment guidance, counselling, oncology nutrition, rehabilitation and FAQs.',
-			'infrastructure'    => 'Facilities at Sunnah Hospital, Akola: modular OT, minor OT, ICU, HDU, 24x7 casualty, 24x7 pharmacy and dedicated wards.',
-			'research'          => 'The Cancer Research Center at Sunnah Hospital, Akola: clinical research, cancer data and community awareness.',
-			'contact'           => 'Contact Sunnah Hospital – Cancer Research Center, Ganga Nagar, Washim Bypass, Akola. Call, WhatsApp or request an appointment.',
+			'about-us'             => 'About Sunnah Hospital – Cancer Research Centre, Akola: established 8 March 2008 under Janta Multipurpose Society, founded by Dr. Hakimuddin Shaikh.',
+			'cancer-care'          => 'Cancer care at Sunnah Hospital, Akola: medical oncology, surgical oncology, chemotherapy, screening and biopsy, counselling, continuing inpatient care and palliative care.',
+			'departments'          => 'Departments at Sunnah Hospital, Akola: general medicine, general surgery, oncology, orthopaedics, urology, neurology, ENT, dental, ICU, pathology, digital X-ray and sonography.',
+			'dental-care'          => 'Sunnah Dental Care at Sunnah Hospital, Akola: oral health assessment and dental care.',
+			'doctors'              => 'Doctors at Sunnah Hospital – Cancer Research Centre, Akola: full-time and visiting consultants, qualifications and consultation timings.',
+			'infrastructure'       => 'Facilities at Sunnah Hospital, Akola: 30+ beds, 9-bed ICU, two operation theatres, diagnostics and day-care facilities.',
+			'contact'              => 'Contact Sunnah Hospital – Cancer Research Centre, Ganga Nagar, Akola. Appointments, OPD information, emergency contact and directions.',
+			'news'                 => 'News, announcements and medical achievements from Sunnah Hospital – Cancer Research Centre, Akola.',
+			'community'            => 'Community health initiatives, government health schemes and partnerships of Sunnah Hospital, Akola.',
+			'health-awareness'     => 'Health awareness and patient education from Sunnah Hospital, Akola: cancer awareness, warning signs and patient resources.',
 		);
 		$slug = get_post_field( 'post_name', get_queried_object_id() );
 		$desc = isset( $map[ $slug ] ) ? $map[ $slug ] : '';
 	} elseif ( is_singular( 'doctor' ) ) {
-		$desc = get_the_title() . ' – ' . sunnah_doc( get_the_ID(), 'speciality' ) . ' at Sunnah Hospital – Cancer Research Center, Akola.';
+		$desc = get_the_title() . ' – ' . sunnah_doc( get_the_ID(), 'speciality' ) . ' at Sunnah Hospital – Cancer Research Centre, Akola.';
+	} elseif ( is_singular( 'post' ) ) {
+		$desc = wp_html_excerpt( wp_strip_all_tags( get_the_excerpt() ), 155 );
 	}
 	if ( $desc ) {
 		echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
@@ -441,21 +642,22 @@ function sunnah_crc_schema() {
 		return;
 	}
 	$data = array(
-		'@context'  => 'https://schema.org',
-		'@type'     => 'Hospital',
-		'name'      => 'Sunnah Hospital – Cancer Research Center',
-		'url'       => home_url( '/' ),
-		'telephone' => sunnah_opt( 'phone_1' ),
-		'email'     => sunnah_opt( 'email' ),
-		'address'   => array(
+		'@context'      => 'https://schema.org',
+		'@type'         => 'Hospital',
+		'name'          => 'Sunnah Hospital – Cancer Research Centre',
+		'url'           => home_url( '/' ),
+		'telephone'     => sunnah_opt( 'phone_1' ),
+		'email'         => sunnah_opt( 'email' ),
+		'foundingDate'  => '2008-03-08',
+		'parentOrganization' => array( '@type' => 'Organization', 'name' => 'Janta Multipurpose Society' ),
+		'address'       => array(
 			'@type'           => 'PostalAddress',
-			'streetAddress'   => 'Ganga Nagar, Washim Bypass',
+			'streetAddress'   => 'Ganga Nagar',
 			'addressLocality' => 'Akola',
 			'addressRegion'   => 'Maharashtra',
 			'postalCode'      => '444002',
 			'addressCountry'  => 'IN',
 		),
-		'medicalSpecialty' => array( 'Oncologic', 'Surgical' ),
 	);
 	echo '<script type="application/ld+json">' . wp_json_encode( $data ) . '</script>' . "\n";
 }
@@ -463,12 +665,16 @@ add_action( 'wp_head', 'sunnah_crc_schema' );
 
 /** Mark the current section in the main menu. */
 function sunnah_nav_current( $slugs ) {
-	foreach ( (array) $slugs as $slug ) {
+	$slugs = (array) $slugs;
+	foreach ( $slugs as $slug ) {
 		if ( is_page( $slug ) ) {
 			return ' aria-current="page"';
 		}
 	}
-	if ( in_array( 'doctors', (array) $slugs, true ) && is_singular( 'doctor' ) ) {
+	if ( in_array( 'doctors', $slugs, true ) && is_singular( 'doctor' ) ) {
+		return ' aria-current="page"';
+	}
+	if ( in_array( 'news', $slugs, true ) && ( is_singular( 'post' ) || is_category() ) ) {
 		return ' aria-current="page"';
 	}
 	return '';
@@ -476,17 +682,26 @@ function sunnah_nav_current( $slugs ) {
 
 /* -------------------------------------------------------------------------
  * Security hardening (theme-level)
- * Site-level steps (hosting, wp-config, passwords, backups) are listed in SECURITY.md.
+ * Site-level steps (hosting, wp-config, passwords, backups, firewall) are in SECURITY.md.
  * ---------------------------------------------------------------------- */
+
+// No code editing from the WordPress admin (stops an attacker with a stolen login from editing PHP).
+if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+	define( 'DISALLOW_FILE_EDIT', true );
+}
 
 // Do not advertise the WordPress version.
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
 
-// Remove legacy discovery links that are not needed.
+// Remove discovery links that are not needed.
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'template_redirect', 'rest_output_link_header', 11 );
+remove_action( 'wp_head', 'feed_links_extra', 3 );
 
 // Turn off XML-RPC (a common target for password-guessing attacks). The site does not use it.
 add_filter( 'xmlrpc_enabled', '__return_false' );
@@ -495,6 +710,46 @@ add_filter(
 	function ( $headers ) {
 		unset( $headers['X-Pingback'] );
 		return $headers;
+	}
+);
+
+/*
+ * Close the REST API to visitors who are not logged in.
+ * The public website does not use it (the enquiry form uses a normal form post).
+ * Logged-in staff still need it for the WordPress editor, so it stays available to them.
+ */
+add_filter(
+	'rest_authentication_errors',
+	function ( $result ) {
+		if ( ! empty( $result ) ) {
+			return $result;
+		}
+		if ( ! is_user_logged_in() ) {
+			return new WP_Error( 'rest_not_logged_in', __( 'The API is not available.', 'sunnah-crc' ), array( 'status' => 401 ) );
+		}
+		return $result;
+	}
+);
+// Application passwords allow API logins from outside the site; not needed here.
+add_filter( 'wp_is_application_passwords_available', '__return_false' );
+
+// Comments are not used on a hospital site (they attract spam and links).
+add_filter( 'comments_open', '__return_false', 20 );
+add_filter( 'pings_open', '__return_false', 20 );
+add_filter( 'comments_array', '__return_empty_array', 10 );
+add_action(
+	'init',
+	function () {
+		remove_post_type_support( 'post', 'comments' );
+		remove_post_type_support( 'page', 'comments' );
+		remove_post_type_support( 'post', 'trackbacks' );
+	},
+	100
+);
+add_action(
+	'admin_menu',
+	function () {
+		remove_menu_page( 'edit-comments.php' );
 	}
 );
 
@@ -507,6 +762,9 @@ function sunnah_crc_security_headers() {
 	header( 'X-Frame-Options: SAMEORIGIN' );
 	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
+	if ( is_ssl() ) {
+		header( 'Strict-Transport-Security: max-age=31536000' );
+	}
 }
 add_action( 'send_headers', 'sunnah_crc_security_headers' );
 
@@ -521,23 +779,12 @@ function sunnah_crc_block_author_scan() {
 	}
 }
 add_action( 'template_redirect', 'sunnah_crc_block_author_scan', 1 );
-
-// Hide the user list from the public REST API (still available to logged-in editors).
-add_filter(
-	'rest_endpoints',
-	function ( $endpoints ) {
-		if ( ! is_user_logged_in() ) {
-			unset( $endpoints['/wp/v2/users'], $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
-		}
-		return $endpoints;
-	}
-);
 add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) { return 'users' === $name ? false : $provider; }, 10, 2 );
 
 // Same message for wrong username and wrong password, so attackers cannot tell which was right.
 add_filter( 'login_errors', function () { return __( 'The login details are incorrect.', 'sunnah-crc' ); } );
 
-// Simple flood protection for the enquiry form: max 5 submissions per visitor per 10 minutes.
+// Flood protection for the enquiry form: max 5 submissions per visitor per 10 minutes.
 function sunnah_crc_enquiry_rate_ok() {
 	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
 	$key = 'sunnah_enq_' . md5( $ip );
@@ -556,11 +803,12 @@ function sunnah_crc_robots( $output, $public ) {
 	if ( '0' === (string) $public ) {
 		return $output; // "Discourage search engines" is ticked in Settings → Reading.
 	}
-	$lines   = array(
+	$lines = array(
 		'User-agent: *',
 		'Disallow: /wp-admin/',
 		'Allow: /wp-admin/admin-ajax.php',
 		'Disallow: /wp-login.php',
+		'Disallow: /wp-json/',
 		'Disallow: /?s=',
 		'Disallow: /search/',
 		'',
@@ -578,14 +826,11 @@ function sunnah_crc_icon_and_og() {
 		echo '<link rel="icon" type="image/png" href="' . sunnah_img( 'favicon.png' ) . '">' . "\n";
 		echo '<link rel="apple-touch-icon" href="' . sunnah_img( 'favicon.png' ) . '">' . "\n";
 	}
-	if ( is_admin() ) {
-		return;
-	}
 	$title = wp_get_document_title();
 	$url   = is_singular() ? get_permalink() : home_url( '/' );
 	$img   = ( is_singular() && has_post_thumbnail() ) ? get_the_post_thumbnail_url( null, 'large' ) : get_theme_file_uri( 'assets/img/og-image.jpg' );
 	echo '<meta property="og:type" content="website">' . "\n";
-	echo '<meta property="og:site_name" content="Sunnah Hospital – Cancer Research Center">' . "\n";
+	echo '<meta property="og:site_name" content="Sunnah Hospital – Cancer Research Centre">' . "\n";
 	echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
 	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
 	echo '<meta property="og:image" content="' . esc_url( $img ) . '">' . "\n";

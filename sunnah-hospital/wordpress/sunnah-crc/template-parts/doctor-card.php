@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $d    = $args['doc'];
 $spec = sunnah_doc( $d->ID, 'speciality' );
+$type = sunnah_doc( $d->ID, 'type' );
 $role = trim( sunnah_doc( $d->ID, 'role' ) . ( sunnah_doc( $d->ID, 'qualification' ) ? ' · ' . sunnah_doc( $d->ID, 'qualification' ) : '' ), ' ·' );
 $ini  = '';
 foreach ( preg_split( '/\s+/', preg_replace( '/^Dr\.?\s+/i', '', $d->post_title ) ) as $p ) {
@@ -21,4 +22,5 @@ foreach ( preg_split( '/\s+/', preg_replace( '/^Dr\.?\s+/i', '', $d->post_title 
   <span class="sp"><?php echo esc_html( $spec ); ?></span>
   <h3><?php echo esc_html( $d->post_title ); ?></h3>
   <?php if ( $role ) : ?><p><?php echo esc_html( $role ); ?></p><?php endif; ?>
+  <?php if ( $type ) : ?><p class="dtype"><?php echo esc_html( $type ); ?></p><?php endif; ?>
 </a>

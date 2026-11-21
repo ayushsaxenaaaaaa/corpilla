@@ -9,56 +9,83 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header();
-get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building.jpg', 'title' => 'About Us', 'lead' => 'A dedicated cancer center for the people of Vidarbha.' ) );
+get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building.jpg', 'title' => 'About Us', 'lead' => 'A multispeciality hospital serving Akola since 2008.' ) );
+$sunnah_founder_photo = sunnah_opt( 'founder_photo' );
 ?>
 <main id="content">
 <div class="w lay">
   <div class="main">
-    <p class="kick">Sunnah Cancer Research Center</p>
-    <p class="lede">Sunnah Cancer Research Center is a dedicated unit of Sunnah Hospital, Akola, committed to providing comprehensive, compassionate and affordable cancer care to the people of Vidarbha.</p>
-    <p>We believe that every patient deserves not just treatment, but emotional strength, dignity and support throughout their journey. A cancer diagnosis affects the whole family, so our care includes honest guidance, counselling, nutrition and help with recovery, alongside surgical and medical oncology.</p>
+    <p class="kick">Sunnah Hospital – Cancer Research Centre</p>
+    <p class="lede">Sunnah Hospital – Cancer Research Centre is a multispeciality healthcare institution located in Ganga Nagar, Akola, Maharashtra. Established on 8 March 2008 under the management of Janta Multipurpose Society, the hospital was founded with the objective of serving the healthcare needs of the local community and surrounding regions.</p>
+    <p>The institution was founded by Dr. Hakimuddin Shaikh, who serves as the President of Janta Multipurpose Society and Director of Sunnah Hospital.</p>
     <div class="pill3">
-      <div><b>Advanced Research</b><span>Better outcomes</span></div>
-      <div><b>Compassionate Care</b><span>Every step</span></div>
-      <div><b>Together</b><span>For a cancer-free tomorrow</span></div>
+      <div><b>2008</b><span>Established on 8 March</span></div>
+      <div><b><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?> beds</b><span>Including <?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?> ICU beds</span></div>
+      <div><b><?php echo esc_html( sunnah_opt( 'stat_ot' ) ); ?> theatres</b><span>Across <?php echo esc_html( sunnah_opt( 'stat_floors' ) ); ?> hospital floors</span></div>
     </div>
-    <h2 id="approach">Our approach combines</h2>
-    <div class="svcg">
-      <div class="svcc"><svg><use href="#i-flask"/></svg><h3>Advanced medical science</h3><p>Evidence-based surgery, chemotherapy and targeted treatment, supported by in-house diagnostics.</p></div>
-      <div class="svcc"><svg><use href="#i-ppl"/></svg><h3>Skilled oncology specialists</h3><p>Surgical and medical oncologists who plan each patient's treatment together.</p></div>
-      <div class="svcc"><svg><use href="#i-heart"/></svg><h3>Deep human compassion</h3><p>Care that treats every patient and family with respect and dignity.</p></div>
-      <div class="svcc"><svg><use href="#i-shield"/></svg><h3>Affordable treatment</h3><p>Quality care that is accessible, with cashless treatment under Ayushman Bharat (PM-JAY) for eligible patients.</p></div>
+
+    <h2 id="history">Our history</h2>
+    <p>Beginning as a general hospital, Sunnah Hospital has progressively developed its medical and surgical services. Over the years, the institution has expanded its facilities and specialities, with a growing emphasis on cancer diagnosis, medical oncology, surgical oncology and supportive cancer care.</p>
+    <p>Today, Sunnah Hospital combines multispeciality healthcare services with dedicated cancer treatment and inpatient support facilities.</p>
+    <h3>Our journey</h3>
+    <ol class="journey">
+      <li><b>2008</b><span>Establishment</span><p>Sunnah Hospital was established on 8 March 2008 in Akola, Maharashtra, under Janta Multipurpose Society.</p></li>
+      <li><b>Growth</b><span>Multispeciality services</span><p>The hospital expanded beyond its initial general healthcare services to develop additional medical and surgical specialities.</p></li>
+      <li><b>Cancer care</b><span>Development of cancer services</span><p>The institution developed specialised cancer services, including medical oncology, surgical oncology, chemotherapy administration, cancer diagnosis and supportive care.</p></li>
+      <li><b>Today</b><span>Present</span><p>Sunnah Hospital continues to strengthen its multispeciality services and cancer care facilities, with the objective of improving access to organised healthcare in the region.</p></li>
+    </ol>
+
+    <h2 id="founder">Founder &amp; leadership</h2>
+    <div class="fnd">
+      <div class="im"><?php if ( $sunnah_founder_photo ) : ?><img src="<?php echo esc_url( $sunnah_founder_photo ); ?>" alt="Dr. Hakimuddin Shaikh" loading="lazy"><?php else : ?><span class="ini" aria-hidden="true">HS</span><?php endif; ?></div>
+      <div>
+        <h3>Dr. Hakimuddin Shaikh</h3>
+        <p class="role">Founder · President, Janta Multipurpose Society · Director, Sunnah Hospital</p>
+        <?php
+        $sunnah_fp = sunnah_rich( 'founder_profile' );
+        if ( $sunnah_fp ) {
+			echo $sunnah_fp; // phpcs:ignore WordPress.Security.EscapeOutput -- sanitised with wp_kses_post.
+		} else {
+			echo '<p>Dr. Hakimuddin Shaikh founded Sunnah Hospital with the objective of developing a healthcare institution that serves patients and families in Akola and surrounding areas.</p>';
+		}
+		?>
+      </div>
     </div>
-    <h2 id="why">Why choose us</h2>
-    <ul class="ticks two">
-      <li><b>Experienced oncology team.</b> Highly qualified specialists with years of expertise in cancer care.</li>
-      <li><b>Affordable treatment options.</b> Quality cancer care that is accessible and affordable for all.</li>
-      <li><b>PM-JAY support.</b> Cashless treatment facility under the Ayushman Bharat (PM-JAY) scheme.</li>
-      <li><b>Patient-centred care.</b> Personalised treatment and compassionate care at every step.</li>
-      <li><b>Emotional and family support.</b> Counselling and support for patients and their families.</li>
-      <li><b>Modern infrastructure.</b> Modular OT, ICU, HDU and 24x7 casualty for better outcomes.</li>
-    </ul>
-    <p class="note">We are committed to excellence, compassion and comprehensive cancer care. <b>Your health. Our priority.</b></p>
   </div>
-  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Care', sunnah_url( 'cancer-care' ) ), array( 'Our Doctors', sunnah_url( 'doctors' ) ), array( 'Hospital Facilities', sunnah_url( 'infrastructure' ) ) ) ) ); ?>
+  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer Research Centre', sunnah_url( 'cancer-care' ) ), array( 'Departments & Specialities', sunnah_url( 'departments' ) ), array( 'Facilities & Infrastructure', sunnah_url( 'infrastructure' ) ) ) ) ); ?>
 </div>
 
-<section class="help" id="philosophy"><div class="w">
-  <h2>Our Philosophy: Hope. Health. Humanity.</h2>
+<section class="prin" id="principle"><div class="w">
+  <p class="kick">Our Guiding Principle</p>
+  <blockquote>
+    <p lang="ur-Latn">“Tum Zameen Walo Ki Madad Karo, Aasman Wala Tumhari Madad Karega.”</p>
+    <footer>“Help those on earth, and the One above the heavens will help you.”</footer>
+  </blockquote>
+  <p class="pt">This principle reflects the spirit of service that guides the institution: helping people with sincerity, responsibility and compassion.</p>
+</div></section>
+
+<section class="sec" id="vision"><div class="w">
+  <div class="vm">
+    <div><p class="kick">Our Vision</p><p class="vtxt">To develop Sunnah Hospital into a trusted healthcare institution recognised for comprehensive medical services, specialised cancer care, professional standards and compassionate patient support.</p></div>
+    <div><p class="kick">Our Mission</p><p class="vtxt">To provide accessible and organised healthcare services through qualified medical professionals, appropriate infrastructure, continuous improvement and a patient-centred approach.</p></div>
+  </div>
+  <h2 class="c" style="margin-top:56px">Our Values</h2>
+  <div class="vals">
+    <div><svg><use href="#i-heart"/></svg><b>Compassion and respect for every patient</b></div>
+    <div><svg><use href="#i-shield"/></svg><b>Professional responsibility and ethical medical practice</b></div>
+    <div><svg><use href="#i-plan"/></svg><b>Commitment to quality and continuous improvement</b></div>
+    <div><svg><use href="#i-bed"/></svg><b>Dignity, privacy and confidentiality</b></div>
+    <div><svg><use href="#i-bld"/></svg><b>Service to the community</b></div>
+    <div><svg><use href="#i-ppl"/></svg><b>Teamwork and collaboration across medical specialities</b></div>
+  </div>
+</div></section>
+
+<section class="help"><div class="w">
+  <h2>Hope. Health. Humanity.</h2>
   <div class="hg">
     <div class="tile t-navy"><h3>Hope</h3><p>Giving strength in difficult times.</p></div>
     <div class="tile t-black"><h3>Health</h3><p>Providing the best possible treatment.</p></div>
     <div class="tile t-turq"><h3>Humanity</h3><p>Standing with patients beyond medicine.</p></div>
-  </div>
-</div></section>
-
-<section class="sec" id="promise"><div class="w split">
-  <div class="ph"><img src="<?php echo sunnah_img( 'sh-ot.jpg' ); ?>" alt="Modular operation theatre at Sunnah Hospital" loading="lazy"></div>
-  <div>
-    <p class="kick">Our Promise</p>
-    <h2>We don't just treat cancer.</h2>
-    <p>We support the patient, strengthen the family and guide them through every step of the journey. Right Treatment. Right Guidance. Compassionate Care.</p>
-    <div class="acts"><a class="sbtn navy" href="<?php echo sunnah_url( 'patient-care' ); ?>">How we support patients</a><a class="sbtn out" href="<?php echo sunnah_url( 'contact' ); ?>">Contact us</a></div>
   </div>
 </div></section>
 <?php get_template_part( 'template-parts/cta' ); ?>

@@ -1,49 +1,58 @@
-# Sunnah Cancer Research Center – WordPress theme handover
+# Sunnah Hospital – Cancer Research Centre – WordPress theme handover
 
 ## 1. Install
 1. WordPress admin → **Appearance → Themes → Add New → Upload Theme** → choose `sunnah-crc.zip` → **Install Now** → **Activate**.
-2. On activation the theme creates these pages automatically (if they don't already exist):
-   About Us, Cancer Care, Surgical Oncology, Medical Oncology, Diagnostics, Sunnah Dental Care, Doctors & Specialists,
-   Patient Care & Support, Hospital Infrastructure, Cancer Research, Contact & Appointment, Privacy Policy.
-   If the theme is uploaded over an older version that was already active, choose "Replace active with uploaded";
-   any missing pages are then created on the first visit to the site.
-3. **Settings → Permalinks** → choose **Post name** → **Save**. (Required so page addresses like `/about-us/` work.)
-4. **Settings → Reading** → "Your homepage displays": either option works; the theme always shows the designed home page.
+   If an older version is already active, choose **Replace active with uploaded**.
+2. The theme creates these pages automatically: About Us, Cancer Research Centre, Departments & Specialities,
+   Sunnah Dental Care, Our Doctors, Facilities & Infrastructure, Contact & Appointments, News & Medical Achievements,
+   Community Impact & Partnerships, Health Awareness & Resources, Privacy Policy, Terms & Conditions.
+   It also creates the news categories: Hospital Announcements, Medical Achievements, Health Awareness Activities,
+   Events & Programmes, Media Coverage, and Health Articles.
+3. Pages from version 2 (Surgical Oncology, Medical Oncology, Diagnostics, Patient Care, Research) are merged into the
+   new pages. If they were left empty they are switched to Draft, and their old addresses redirect to the new sections.
+4. **Settings → Permalinks** → choose **Post name** → **Save**.
 
-## 2. What the hospital still needs to provide
-| Item | Where to add it |
+## 2. Where everything is edited
+| What | Where |
 |---|---|
-| Doctors (name, speciality, designation, qualifications, experience, languages, OPD timing, profile text, photo) | Admin → **Doctors → Add New**. Name = title, photo = Featured Image (portrait, about 720 × 900 px). Use "Order" (Page Attributes) to control the order. |
-| Hospital photos to replace stock images | Each inner page: edit the page → **Featured Image** replaces that page's banner. Photos inside page sections: replace the file with the same name in `assets/img/` (see list below). |
-| OPD timings | Appearance → **Customize → Hospital Contact Details**. |
-| Email address that receives enquiries | Same Customizer section ("Send enquiry form emails to"). |
-| Privacy policy | A standard policy is built in. To use the hospital's own text instead, write it in Pages → Privacy Policy. |
-| Browser-tab icon | Built in (Sunnah symbol). To change it: Appearance → Customize → Site Identity → Site Icon. |
+| Phone, WhatsApp, emergency number, emergency hours, email, address, Google Maps link, OPD days and timings, social media links | Appearance → Customize → **Hospital Contact Details** |
+| Figures (30+ beds, 9 ICU, 2 OT, 3 floors), surgeries performed, screening tests, inpatient packages, government scheme details, patient & visitor information, founder profile and photo, community initiatives, partnerships | Appearance → Customize → **Hospital Information** |
+| Services of each department (one per line) | Appearance → Customize → **Department Services** |
+| Doctors | Admin → **Doctors → Add New** (see section 3) |
+| News, achievements, events, media coverage | Admin → **Posts → Add New**, choose a category. Add a custom field `source` for media coverage links. |
+| Health awareness articles | Admin → **Posts → Add New**, category **Health Articles** (after approval by a doctor). |
+| Page banner photo | Edit the page → **Featured Image**. |
+| Privacy Policy / Terms | Standard text is built in. To use the hospital's own text, write it in the page. |
 
-Until doctors are added, the Doctors page shows a "Doctor profiles are being added" message with the phone and WhatsApp buttons, and department pages simply hide the team section.
+Any information box left empty shows a polite "please call 9923542674" line instead, so nothing unconfirmed is published.
+Social media links appear in the footer only when filled in. Emergency hours (e.g. "24 hours") appear only when filled in.
 
-### Photos
-Real hospital photos are now used throughout: building, entrance, reception, operation theatres, X-ray room, ICU, HDU, wards, casualty and pharmacy.
-Still illustrations from the presentation (replace when real photos are available):
-- `sh-daycare.jpg` – chemotherapy day care (Medical Oncology banner and cards).
-- `sh-lab.jpg` – pathology / research lab (Research banner, Cancer Care card).
-- Sunnah Dental Care has no clinic photo yet; its banner uses the hospital building (`sh-building-side.jpg`).
-There are no stock photos of people in the theme. Doctor photos are added per doctor in Doctors → Add New.
-Keep the same file name and a similar shape (landscape) when replacing.
+## 3. Doctors
+Admin → Doctors → Add New:
+- **Title**: full name (e.g. Dr. Firstname Surname). **Featured Image**: real photograph, portrait (about 720 × 900 px).
+- **Main text box**: short professional biography.
+- **Doctor Details** box: speciality, full-time or visiting consultant, designation, qualifications,
+  years of experience (only if verified), clinical interests, consultation days, OPD timings, languages.
+- **Order** (Page Attributes) controls the order on the Doctors page.
+Each doctor gets a profile page with the appointment number. Doctors also appear automatically in their department
+on the Departments and Cancer Research Centre pages. Do not add dummy names or stock photos.
 
-## 3. Contact details
-All phone numbers, WhatsApp number, email, address and the Google Maps link are edited in one place:
-**Appearance → Customize → Hospital Contact Details**. They update the header, footer, buttons and Contact page.
+## 4. Photos
+Real hospital photos are used throughout. Still needed: day-care / chemotherapy area (the Facilities page shows
+"Photographs coming soon" for day-care), pathology lab, sonography room, dental clinic, founder photograph.
+To replace a theme photo, replace the file with the same name in `assets/img/` (landscape).
 
-## 4. Enquiry form
-- The forms on the Contact page and the home page email the request to the address set in the Customizer
-  (or the WordPress admin email if left empty).
-- Install an SMTP plugin (for example **WP Mail SMTP**) and connect it to the hospital's email account,
-  otherwise many hosts silently drop emails sent by WordPress. Send a test enquiry after setup.
-- Built-in protection: security token, hidden spam trap, a limit of 5 requests per visitor per 10 minutes.
+## 5. Enquiry form
+- Fields: patient name, contact number, department, preferred date, preferred time, reason (optional), email (optional).
+- The visitor is told the enquiry was received and that the appointment is confirmed only when staff call back.
+- Emails go to the address in the Customizer (or the WordPress admin email). Install **WP Mail SMTP** and connect the
+  hospital's email account, then send a test enquiry.
 
-## 5. SEO
-- Each page has its own title and description. Google structured data (Hospital) is on the home and Contact pages.
-- `robots.txt` and the sitemap (`/wp-sitemap.xml`) are generated automatically.
-- After launch: add the site to **Google Search Console** and submit `/wp-sitemap.xml`; create or update the
-  **Google Business Profile** with the same address and phone number.
+## 6. Security
+See `SECURITY.md`. The public REST API is closed, XML-RPC and comments are off, and Cloudflare is recommended
+against attacks that try to bring the site down.
+
+## 7. SEO
+- Each page has its own description; Hospital structured data is on the home and Contact pages.
+- After launch: add the site to **Google Search Console**, submit `/wp-sitemap.xml`, and update the
+  **Google Business Profile** with the same name, address and phone number.

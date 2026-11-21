@@ -40,23 +40,31 @@
   <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
   <symbol id="i-loc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-7.6-7-12a7 7 0 0 1 14 0c0 4.4-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></g></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></symbol>
+  <symbol id="i-bone" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M15 9a5 5 0 0 0-5 7 5 5 0 0 0 2 9l13 13a5 5 0 0 0 9 2 5 5 0 0 0 7-5 5 5 0 0 0-2-9L26 13a5 5 0 0 0-4-6 5 5 0 0 0-7 2z" transform="rotate(0)"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10a6 6 0 0 0-11 2 6 6 0 0 0-4 9 6 6 0 0 0 2 10 6 6 0 0 0 7 6 6 6 0 0 0 6 1z"/><path d="M24 10a6 6 0 0 1 11 2 6 6 0 0 1 4 9 6 6 0 0 1-2 10 6 6 0 0 1-7 6 6 6 0 0 1-6 1z"/><path d="M24 10v28M17 18h3M28 18h3M16 27h4M28 27h4"/></g></symbol>
+  <symbol id="i-ear" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20a11 11 0 0 1 22 0c0 6-5 8-6 12s-2 9-8 9a6 6 0 0 1-6-5"/><path d="M20 21a5 5 0 0 1 10 0c0 3-3 4-3 7"/></g></symbol>
+  <symbol id="i-tooth" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M16 8c-6 0-9 5-8 11 1 5 3 7 4 12s1 11 5 11 3-10 7-10 3 10 7 10 4-6 5-11 3-7 4-12c1-6-2-11-8-11-4 0-5 2-8 2s-4-2-8-2z"/></symbol>
+  <symbol id="i-kid" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8c-7 0-11 7-11 16s4 16 11 16c5 0 6-4 4-8-1-3-1-6 0-8 2-4 1-16-4-16z"/><path d="M30 8c7 0 11 7 11 16s-4 16-11 16c-5 0-6-4-4-8 1-3 1-6 0-8-2-4-1-16 4-16z"/></g></symbol>
+  <symbol id="i-steth" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v10a8 8 0 0 0 16 0V6"/><path d="M20 24v6a9 9 0 0 0 18 0v-4"/><circle cx="38" cy="22" r="4"/></g></symbol>
+  <symbol id="i-news" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 10h26v28H12a4 4 0 0 1-4-4z"/><path d="M34 18h6v16a4 4 0 0 1-8 0M14 17h14M14 24h14M14 31h9"/></g></symbol>
 </svg>
 
 <div class="topk"><div class="w">
   <a class="t1" href="<?php echo esc_url( sunnah_wa() ); ?>"><svg class="i" style="width:15px;height:15px;color:#25d366"><use href="#i-wa"/></svg>WhatsApp</a>
-  <a class="t2" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Request an Appointment</a>
-  <a class="t3" href="<?php echo esc_attr( sunnah_tel() ); ?>">24x7 Emergency</a>
+  <a class="t2" href="<?php echo sunnah_url( 'contact', 'enquiry' ); ?>">Book an Appointment</a>
+  <a class="t3" href="<?php echo esc_attr( sunnah_tel( 'emergency_phone' ) ); ?>">Emergency <?php echo esc_html( sunnah_opt( 'emergency_phone' ) ); ?></a>
 </div></div>
 
 <header class="hdr"><div class="w">
-  <a class="logo" href="<?php echo sunnah_url(); ?>"><img src="<?php echo sunnah_img( 'logo-header.png' ); ?>" alt="Sunnah Hospital – Cancer Research Center" width="171" height="58"></a>
-  <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'patient-care', 'faqs' ); ?>">FAQs</a><a class="srch" href="<?php echo sunnah_url( 'cancer-care', 'types' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
+  <a class="logo" href="<?php echo sunnah_url(); ?>"><img src="<?php echo sunnah_img( 'logo-header.png' ); ?>" alt="Sunnah Hospital – Cancer Research Centre" width="171" height="58"></a>
+  <nav class="util" aria-label="Utility"><a href="<?php echo sunnah_url( 'doctors' ); ?>">Our Doctors</a><a href="<?php echo sunnah_url( 'contact' ); ?>">Contact Us</a><a href="<?php echo sunnah_url( 'health-awareness' ); ?>">Health Awareness</a><a class="srch" href="<?php echo sunnah_url( 'departments', 'find' ); ?>"><svg><use href="#i-s"/></svg>Search</a></nav>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
 </div></header>
 <?php
 $sunnah_menu = include get_theme_file_path( 'template-parts/menu-data.php' );
 $sunnah_cur  = array(
-	'cancer-care' => array( 'cancer-care', 'surgical-oncology', 'medical-oncology' ),
+	'departments' => array( 'departments', 'dental-care' ),
+	'news'        => array( 'news', 'health-awareness', 'community' ),
 );
 ?>
 <nav class="nbar" aria-label="Main"><div class="w" style="padding:0"><ul class="dd-list">

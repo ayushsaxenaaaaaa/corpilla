@@ -10,6 +10,14 @@ standards, and the checklist below covers the rest.
   (5 requests per visitor per 10 minutes), input length limits and safe email headers.
 - No file uploads, no database writes from visitors, no third-party scripts except Google Fonts.
 - XML-RPC is turned off (a common target for password-guessing attacks).
+- **REST API closed to the public.** WordPress normally exposes a data interface at `/wp-json/` (the "REST API").
+  The public website does not use it, so the theme refuses every REST request from visitors who are not logged in
+  (they get "401 – not available"). Logged-in staff keep access because the WordPress editor needs it.
+  The REST, shortlink and oEmbed discovery links are removed from every page, application passwords
+  (API logins from outside the site) are switched off, and `robots.txt` disallows `/wp-json/`.
+  The enquiry form does not use the REST API; it is a normal form post with a security token.
+- Comments and pingbacks are switched off everywhere (they attract spam and links).
+- Code editing from the WordPress admin is switched off (`DISALLOW_FILE_EDIT`), so a stolen login cannot edit PHP.
 - The WordPress version number is hidden.
 - Visitors cannot list usernames through `?author=` links, author pages, the REST API or the sitemap.
 - Login errors don't reveal whether the username or the password was wrong.
@@ -33,5 +41,14 @@ standards, and the checklist below covers the rest.
    and use the unique security keys from https://api.wordpress.org/secret-key/1.1/salt/
 7. **File permissions**: folders 755, files 644, `wp-config.php` 600 or 640.
 8. **Email**: use an SMTP plugin with the hospital's email account so enquiries are delivered reliably.
-9. **Privacy**: publish the Privacy Policy page. The form asks visitors not to send medical reports;
+9. **Protection against attacks that try to bring the site down (DDoS / floods)**: this cannot be done by a theme,
+   because the traffic arrives before WordPress runs. Put the site behind **Cloudflare** (the free plan is enough):
+   - point the domain's nameservers to Cloudflare and turn on the orange-cloud proxy for the website records;
+   - SSL/TLS mode **Full (strict)**; "Always Use HTTPS" on;
+   - Security → Bots: **Bot Fight Mode** on; Security level "Medium";
+   - a free **rate-limiting rule**: more than 10 requests in 10 seconds to `/wp-login.php` or `/wp-admin/admin-post.php` → block for 10 minutes;
+   - **Under Attack Mode** can be switched on with one click if the site is ever flooded.
+   Also turn on Wordfence's **Rate Limiting** and **Brute Force Protection**, and choose a host with server-level
+   firewall and DDoS protection. Cloudflare also caches pages, which keeps the site fast under heavy traffic.
+10. **Privacy**: publish the Privacy Policy page. The form asks visitors not to send medical reports;
    enquiries are only emailed, not stored on the website.

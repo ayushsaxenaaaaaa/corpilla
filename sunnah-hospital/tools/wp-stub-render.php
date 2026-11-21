@@ -28,17 +28,25 @@ function sanitize_key($s){ return strtolower(preg_replace('/[^a-z0-9_\-]/i','',$
 class P { public $ID; public $post_title; function __construct($i,$t){$this->ID=$i;$this->post_title=$t;} }
 $GLOBALS['DOCS'] = $WITHDOCS ? [ new P(1,'Dr. Name Surname'), new P(2,'Dr. Name Surname'), new P(3,'Dr. Name Surname'), new P(4,'Name Surname') ] : [];
 $GLOBALS['META']=[1=>['speciality'=>'Surgical Oncology','role'=>'Head of Department','qualification'=>'MS, MCh','experience'=>'15','languages'=>'English, Hindi, Marathi','opd'=>'Mon–Sat, 10 am – 2 pm'],2=>['speciality'=>'Medical Oncology','role'=>'Consultant','qualification'=>'MD, DM'],3=>['speciality'=>'Surgical Oncology','role'=>'Consultant','qualification'=>'MS, DNB'],4=>['speciality'=>'Oncology Nutrition','role'=>'Oncology Dietitian','qualification'=>'MSc']];
-function get_posts($a){ $d=$GLOBALS['DOCS']; if(!empty($a['meta_query'])){ $v=$a['meta_query'][0]['value']; $d=array_values(array_filter($d,fn($p)=>$GLOBALS['META'][$p->ID]['speciality']===$v)); } return $d; }
+function get_posts($a){ if(($a['post_type']??'')==='post') return []; $d=$GLOBALS['DOCS']; if(!empty($a['meta_query'])){ $v=(array)$a['meta_query'][0]['value']; $d=array_values(array_filter($d,fn($p)=>in_array($GLOBALS['META'][$p->ID]['speciality'],$v,true))); } return $d; }
 function get_post_meta($id,$k,$s){ $k=str_replace('_sunnah_','',$k); return $GLOBALS['META'][$id][$k] ?? ''; }
 function get_permalink($p=null){ if(isset($p->post_name)) return $GLOBALS['PERMA']==='plain' ? '/site/?page_id='.$p->ID : '/site/'.$p->post_name.'/'; return '/site/doctor/'.($p->ID??1).'/'; }
+function has_site_icon(){return false;} function wp_get_document_title(){return 'Sunnah Hospital';} function get_the_content(){return '';} function date_i18n($f,$t){return date($f,$t);} function is_admin(){return false;}
 function get_theme_file_path($p){ return THEME.'/'.$p; }
 $GLOBALS['PERMA']=getenv('PLAIN')?'plain':'pretty'; $GLOBALS['OPT']=[]; $GLOBALS['INSERTED']=[];
-function get_page_by_path($s){ static $ids=['about-us'=>11,'cancer-care'=>12,'surgical-oncology'=>13,'medical-oncology'=>14,'doctors'=>15,'patient-care'=>16,'infrastructure'=>17,'research'=>18,'contact'=>19,'privacy-policy'=>20]; if(getenv('NOPAGES')) return null; return isset($ids[$s]) ? (object)['ID'=>$ids[$s],'post_status'=>'publish','post_name'=>$s] : null; }
+function get_page_by_path($s){ static $ids=['about-us'=>11,'cancer-care'=>12,'surgical-oncology'=>13,'medical-oncology'=>14,'doctors'=>15,'patient-care'=>16,'infrastructure'=>17,'research'=>18,'contact'=>19,'privacy-policy'=>20,'diagnostics'=>21,'dental-care'=>22,'departments'=>23,'news'=>24,'community'=>25,'health-awareness'=>26,'terms-and-conditions'=>27]; if(getenv('NOPAGES')) return null; return isset($ids[$s]) ? (object)['ID'=>$ids[$s],'post_status'=>'publish','post_name'=>$s] : null; }
 function get_option_real($k){ return $GLOBALS['OPT'][$k] ?? false; } function update_option($k,$v){ $GLOBALS['OPT'][$k]=$v; }
 function wp_insert_post($a){ $GLOBALS['INSERTED'][]=$a['post_name']; return 1; } function flush_rewrite_rules(){}
 
+function wp_date($f){return date($f);} function wpautop($s){return '<p>'.$s.'</p>';} function wp_kses_post($s){return $s;} function sanitize_textarea_field($s){return $s;}
+function wp_list_pluck($l,$f){ return array_map(fn($x)=>is_array($x)?$x[$f]:$x->$f,$l); } function get_term_by(){return false;} function get_category_link(){return '';}
+class WP_Query{ public $posts=[]; public $max_num_pages=0; function __construct($a){} function have_posts(){return false;} }
+function paginate_links(){return '';} function wp_reset_postdata(){} function get_the_category(){return [];} function has_category(){return false;}
+function get_the_date($f){return date($f);} function get_the_excerpt(){return '';} function has_excerpt(){return false;} function single_term_title(){return '';} function get_the_archive_description(){return '';}
+function is_category(){return false;} function wp_html_excerpt($s,$n,$m=''){return mb_substr($s,0,$n);} function sanitize_email($s){return $s;} function is_user_logged_in(){return false;} function get_post(){return null;}
+function get_query_var($k){return 0;} function is_author(){return false;} function is_404(){return false;}
 $GLOBALS['looped']=false; function have_posts(){ return !$GLOBALS['looped']; } function the_post(){ $GLOBALS['looped']=true; }
-function get_the_ID(){ return 1; } function get_the_title(){ return $GLOBALS['TPL']==='single-doctor.php' ? 'Dr. Name Surname' : 'Privacy Policy'; } function the_title(){ echo get_the_title(); }
+function get_the_ID(){ return 1; } function get_the_title($p=null){ return $GLOBALS['TPL']==='single-doctor.php' ? 'Dr. Name Surname' : 'Privacy Policy'; } function the_title(){ echo get_the_title(); }
 function the_content(){ echo '<p>Profile text written by the hospital goes here.</p>'; } function the_excerpt(){} function post_class(){} function the_permalink(){} function the_posts_pagination(){}
 function wp_get_theme(){ return new class{ function get($k){return '2';} }; }
 include THEME.'/functions.php'; do_action('after_setup_theme'); do_action('wp_enqueue_scripts');

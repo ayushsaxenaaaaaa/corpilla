@@ -29,25 +29,25 @@ get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building
     </div>
 
     <h2 id="oral-screening">Oral cancer screening</h2>
-    <p>Mouth cancer is common in our region, often linked to tobacco and gutkha use, and it is far easier to treat when found early. A dental check-up includes a careful look at the mouth, tongue and gums. If anything needs attention, our dentists can refer you directly to the cancer specialists in the same hospital.</p>
+    <p>Mouth cancer is common in our region, often linked to tobacco and gutkha use, and it is easier to treat when found early. A dental check-up includes a careful look at the mouth, tongue and gums. If anything needs attention, our dentists can refer you to the cancer specialists at the hospital for further evaluation.</p>
     <ul class="ticks two">
       <li>White or red patches in the mouth</li>
       <li>A mouth ulcer that does not heal in 2 weeks</li>
       <li>A lump or thickening in the cheek or neck</li>
       <li>Difficulty opening the mouth or swallowing</li>
     </ul>
-    <p class="note">If you notice any of these signs, book a check-up. Early diagnosis saves lives.</p>
+    <p class="note">If you notice any of these signs, book a check-up without delay. This information is for awareness and does not replace a consultation.</p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <details><summary>How often should I have a dental check-up?</summary><p>Most people should have a check-up every six months, or as advised by your dentist.</p></details>
-      <details><summary>I am having cancer treatment. Should I see a dentist first?</summary><p>Yes. Treating dental problems before chemotherapy, radiation to the head and neck, or surgery can prevent infections and complications. Our dental and cancer teams work together on this.</p></details>
+      <details><summary>I am having cancer treatment. Should I see a dentist first?</summary><p>Yes. Treating dental problems before chemotherapy, or surgery can prevent infections and complications. Our dental and cancer teams work together on this.</p></details>
       <details><summary>Is root canal treatment painful?</summary><p>The procedure is done under local anaesthesia, so most patients feel little discomfort. It usually relieves the pain caused by the infected tooth.</p></details>
     </div>
   </div>
-  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Oral & head and neck cancer', sunnah_url( 'surgical-oncology' ) ), array( 'Diagnostics', sunnah_url( 'diagnostics' ) ), array( 'Contact & location', sunnah_url( 'contact' ) ) ) ) ); ?>
+  <?php get_template_part( 'template-parts/aside', null, array( 'links' => array( array( 'Cancer screening & biopsy', sunnah_url( 'cancer-care', 'screening' ) ), array( 'All departments', sunnah_url( 'departments' ) ), array( 'Contact & location', sunnah_url( 'contact' ) ) ) ) ); ?>
 </div>
-<?php get_template_part( 'template-parts/team', null, array( 'speciality' => 'Dental Care', 'heading' => 'Our Dental Team' ) ); ?>
+<?php get_template_part( 'template-parts/team', null, array( 'speciality' => array( 'Dental', 'Dental Care' ), 'heading' => 'Our Dental Team' ) ); ?>
 <?php get_template_part( 'template-parts/cta' ); ?>
 </main>
 <?php
