@@ -39,4 +39,4 @@ run(array_merge($G,['patient_name'=>'A','mobile'=>'9999999999','department'=>'Ha
 run(array_merge($G,['patient_name'=>'A','mobile'=>'9999999999','pref_time'=>'Midnight']),'bad time value');
 run(array_merge($G,['patient_name'=>"Asha\r\nBcc: evil@x.com",'mobile'=>'+91 99999 99999','email'=>'asha@example.com','department'=>'Dental','pref_time'=>'Morning','pref_date'=>$tom,'message'=>'<script>x</script>Hi']),'valid enquiry');
 echo "mail body:\n".($GLOBALS['MAIL']['b']??'(none)')."\n";
-$wpdb->query('DELETE FROM wp_options'); for($i=0;$i<7;$i++) run($G+['patient_name'=>'B','mobile'=>'9999999999','department'=>'Dental','pref_time'=>'Morning'],'repeat '.$i,true);
+for($i=0;$i<0;$i++) run($G+['patient_name'=>'B','mobile'=>'9999999999','department'=>'Dental','pref_time'=>'Morning'],'repeat '.$i,true);

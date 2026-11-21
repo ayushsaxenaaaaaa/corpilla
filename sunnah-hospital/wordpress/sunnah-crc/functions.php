@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.4.1' );
+define( 'SUNNAH_CRC_VERSION', '3.5.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -512,6 +512,10 @@ function sunnah_crc_activate() {
 			}
 		}
 	}
+	// Clean up the rate-limit counters and daily task used by theme versions 3.3–3.4.1.
+	wp_clear_scheduled_hook( 'sunnah_crc_daily' );
+	global $wpdb;
+	$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s", $wpdb->esc_like( 'sunnah_rl_' ) . '%', $wpdb->esc_like( '_transient_sunnah_enq' ) . '%', $wpdb->esc_like( '_transient_timeout_sunnah_enq' ) . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	sunnah_crc_register_doctor();
 	flush_rewrite_rules();
 }
@@ -603,10 +607,6 @@ function sunnah_crc_handle_enquiry() {
 
 	if ( ! isset( $_POST['sunnah_enquiry_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['sunnah_enquiry_nonce'] ) ), 'sunnah_enquiry' ) ) {
 		wp_safe_redirect( add_query_arg( 'enquiry', 'error', $back ) . '#enquiry' );
-		exit;
-	}
-	if ( ! sunnah_crc_enquiry_rate_ok() ) {
-		wp_safe_redirect( add_query_arg( 'enquiry', 'failed', $back ) . '#enquiry' );
 		exit;
 	}
 	// Spam trap: real visitors never fill this hidden field.
@@ -962,137 +962,6 @@ add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) { return '
 
 // Same message for wrong username and wrong password, so attackers cannot tell which was right.
 add_filter( 'login_errors', function () { return __( 'The login details are incorrect.', 'sunnah-crc' ); } );
-
-/**
- * Cloudflare's published proxy address ranges (https://www.cloudflare.com/ips/).
- * Check this list against that page once a year; it can be replaced with the 'sunnah_crc_cloudflare_ranges' filter.
- */
-function sunnah_crc_cloudflare_ranges() {
-	return apply_filters(
-		'sunnah_crc_cloudflare_ranges',
-		array(
-			'173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18', '108.162.192.0/18',
-			'190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
-			'104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
-			'2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32', '2a06:98c0::/29', '2c0f:f248::/32',
-		)
-	);
-}
-
-/** True if the IP address is inside the CIDR range (IPv4 or IPv6). */
-function sunnah_crc_ip_in_range( $ip, $cidr ) {
-	list( $net, $bits ) = array_pad( explode( '/', $cidr, 2 ), 2, null );
-	$ip_bin  = @inet_pton( $ip );  // phpcs:ignore WordPress.PHP.NoSilencedErrors
-	$net_bin = @inet_pton( $net ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
-	if ( false === $ip_bin || false === $net_bin || strlen( $ip_bin ) !== strlen( $net_bin ) ) {
-		return false;
-	}
-	$bits = null === $bits ? strlen( $ip_bin ) * 8 : (int) $bits;
-	$full = intdiv( $bits, 8 );
-	if ( substr( $ip_bin, 0, $full ) !== substr( $net_bin, 0, $full ) ) {
-		return false;
-	}
-	$rest = $bits % 8;
-	if ( ! $rest ) {
-		return true;
-	}
-	$mask = chr( ( 0xff << ( 8 - $rest ) ) & 0xff );
-	return ( $ip_bin[ $full ] & $mask ) === ( $net_bin[ $full ] & $mask );
-}
-
-/**
- * The visitor's real IP address.
- * The CF-Connecting-IP header is trusted ONLY when the connection really comes from a Cloudflare address, so nobody
- * can fake it by sending the header directly. If the web server already restores the visitor IP (recommended, see
- * SECURITY.md), REMOTE_ADDR is the visitor and is used as it is.
- */
-function sunnah_crc_client_ip() {
-	$remote = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
-	if ( ! filter_var( $remote, FILTER_VALIDATE_IP ) ) {
-		return 'unknown';
-	}
-	if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
-		$cf = sanitize_text_field( wp_unslash( $_SERVER['HTTP_CF_CONNECTING_IP'] ) );
-		if ( filter_var( $cf, FILTER_VALIDATE_IP ) ) {
-			foreach ( sunnah_crc_cloudflare_ranges() as $range ) {
-				if ( sunnah_crc_ip_in_range( $remote, $range ) ) {
-					return $cf;
-				}
-			}
-		}
-	}
-	return $remote;
-}
-
-/**
- * Key used for per-visitor limits. IPv6 users usually own a whole /64 block, so the limit applies to the /64
- * (otherwise a bot could simply rotate addresses).
- */
-function sunnah_crc_client_key() {
-	$ip = sunnah_crc_client_ip();
-	if ( false !== strpos( $ip, ':' ) ) {
-		$bin = @inet_pton( $ip ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
-		if ( false !== $bin ) {
-			return bin2hex( substr( $bin, 0, 8 ) ) . '::/64';
-		}
-	}
-	return $ip;
-}
-
-// Flood protection for the enquiry form.
-// Counters are increased with a single atomic database statement, so simultaneous requests cannot slip past the
-// limit (a plain read-then-write counter can be raced). Each counter lives in a fixed time window.
-function sunnah_crc_enquiry_rate_ok() {
-	global $wpdb;
-	$ip    = sunnah_crc_client_key();
-	$now   = time();
-	$rules = array(
-		array( 'v', md5( $ip ), 5, 10 * MINUTE_IN_SECONDS ), // 5 per visitor per 10 minutes.
-		array( 'd', md5( $ip ), 15, DAY_IN_SECONDS ),        // 15 per visitor per day.
-		array( 's', 'all', 60, HOUR_IN_SECONDS ),            // 60 per hour for the whole site.
-	);
-	$ok = true;
-	foreach ( $rules as $r ) {
-		$name = 'sunnah_rl_' . $r[0] . '_' . substr( $r[1], 0, 16 ) . '_' . (int) floor( $now / $r[3] );
-		// New row (1 affected) = first request in this window. Existing row: LAST_INSERT_ID() returns exactly the value
-		// this request wrote, so concurrent requests each see their own position in the queue.
-		$rows  = $wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, '1', 'no') ON DUPLICATE KEY UPDATE option_value = LAST_INSERT_ID(option_value + 1)", $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		$count = ( 1 === (int) $rows ) ? 1 : (int) $wpdb->get_var( 'SELECT LAST_INSERT_ID()' ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		if ( $count > $r[2] ) {
-			$ok = false;
-		}
-	}
-	return $ok;
-}
-
-// Remove old rate-limit counters once a day.
-function sunnah_crc_rate_cleanup() {
-	global $wpdb;
-	$now   = time();
-	$names = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s LIMIT 5000", $wpdb->esc_like( 'sunnah_rl_' ) . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-	$len   = array( 'v' => 10 * MINUTE_IN_SECONDS, 'd' => DAY_IN_SECONDS, 's' => HOUR_IN_SECONDS );
-	foreach ( $names as $name ) {
-		$p = explode( '_', $name );
-		if ( 5 === count( $p ) && isset( $len[ $p[2] ] ) && ( (int) $p[4] + 2 ) * $len[ $p[2] ] < $now ) {
-			$wpdb->delete( $wpdb->options, array( 'option_name' => $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		}
-	}
-}
-add_action( 'sunnah_crc_daily', 'sunnah_crc_rate_cleanup' );
-add_action(
-	'init',
-	function () {
-		if ( ! wp_next_scheduled( 'sunnah_crc_daily' ) ) {
-			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'sunnah_crc_daily' );
-		}
-	}
-);
-add_action(
-	'switch_theme',
-	function () {
-		wp_clear_scheduled_hook( 'sunnah_crc_daily' );
-	}
-);
 
 /* -------------------------------------------------------------------------
  * robots.txt (WordPress serves this automatically at /robots.txt)
