@@ -8,6 +8,20 @@
   key-fact chips per section, stronger contrast between sections.
 - Keep real photos, alternating layout and individual descriptions (client manuscript requirement).
 
+## Home page redesign (owner approved the mockup)
+- Layout from the owner's reference: top contact strip, white header with inline menu and Book Appointment button,
+  navy-to-photo hero with serif heading, 4 feature icons, floating white specialities card, curved turquoise line.
+- Use the client's full side-view building photo (ask for the original full-size file). Keep 3 slides/arrows/pause.
+
+## Government scheme logos
+- Show the AB-PMJAY and MJPJAY logos wherever the schemes are mentioned (home, Cancer Centre, Community,
+  Departments > General Surgery, side panel). PM-JAY logo is in git history (assets/img/pmjay.png, removed in 3.0.0).
+- MJPJAY logo: ask the client for the official file.
+
+## Department order
+- Move Dental up to 3rd position everywhere (home specialities, Departments page, menu dropdown, form):
+  General Medicine, General Surgery, Dental, Medical Oncology, Surgical Oncology, Orthopaedics, Urology, Neurology, ENT.
+
 ## Small fixes offered
 - News page: also show posts left in "Uncategorized" so nothing is lost.
 - Add a "How to add news" step-by-step guide to HANDOVER.md for hospital staff.
