@@ -50,7 +50,7 @@ $sunnah_news = get_posts(
     <ul class="hx-feat">
       <li><svg><use href="#i-cell"/></svg>Cancer Research<br>Centre</li>
       <li><svg><use href="#i-ppl"/></svg>Full-time &amp; Visiting<br>Consultants</li>
-      <li><svg><use href="#i-bed"/></svg><?php echo esc_html( sunnah_opt( 'stat_beds' ) ); ?> Beds &amp;<br><?php echo esc_html( sunnah_opt( 'stat_icu' ) ); ?>-Bed ICU</li>
+      <li><svg><use href="#i-bed"/></svg>Patient<br>Care</li>
       <li><svg><use href="#i-heart"/></svg>Patient-Centred<br>Care</li>
     </ul>
   </div>
