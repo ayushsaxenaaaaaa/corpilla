@@ -22,6 +22,13 @@
 - Move Dental up to 3rd position everywhere (home specialities, Departments page, menu dropdown, form):
   General Medicine, General Surgery, Dental, Medical Oncology, Surgical Oncology, Orthopaedics, Urology, Neurology, ENT.
 
+## Mobile and tablet review (owner found issues)
+- About Us (and every page with the side panel): on phone/tablet the "Request an Appointment" side panel drops
+  into the middle of the page (after the Founder section, before Guiding Principle). Fix: below 1000px hide the
+  side panel and show one compact appointment band at the end of the page instead (or move it after all content).
+- Do a full pass of every page at phone (390px) and tablet (768px, 1024px) widths and fix spacing, stacking,
+  banner text size and anything that looks out of place.
+
 ## Small fixes offered
 - News page: also show posts left in "Uncategorized" so nothing is lost.
 - Add a "How to add news" step-by-step guide to HANDOVER.md for hospital staff.
