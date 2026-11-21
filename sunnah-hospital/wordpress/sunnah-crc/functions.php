@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.3.0' );
+define( 'SUNNAH_CRC_VERSION', '3.4.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -36,11 +36,6 @@ function sunnah_crc_assets() {
 	wp_enqueue_style( 'sunnah-crc-home', get_theme_file_uri( 'assets/css/home.css' ), array( 'sunnah-crc-fonts' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_style( 'sunnah-crc-pages', get_theme_file_uri( 'assets/css/pages.css' ), array( 'sunnah-crc-home' ), SUNNAH_CRC_VERSION );
 	wp_enqueue_script( 'sunnah-crc-site', get_theme_file_uri( 'assets/js/site.js' ), array(), SUNNAH_CRC_VERSION, true );
-	$pages = array();
-	foreach ( array( 'cancer-care', 'departments', 'dental-care', 'infrastructure', 'doctors', 'contact', 'health-awareness' ) as $slug ) {
-		$pages[ $slug ] = html_entity_decode( sunnah_url( $slug ) );
-	}
-	wp_add_inline_script( 'sunnah-crc-site', 'window.SUNNAH_CRC = ' . wp_json_encode( array( 'home' => trailingslashit( home_url( '/' ) ), 'pages' => $pages ) ) . ';', 'before' );
 }
 add_action( 'wp_enqueue_scripts', 'sunnah_crc_assets' );
 
@@ -278,6 +273,9 @@ function sunnah_crc_register_doctor() {
 			'supports'      => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'rewrite'       => array( 'slug' => 'doctor' ),
 			'show_in_rest'  => true, // Needed by the WordPress editor; the REST API is closed to visitors below.
+			// Own capabilities: only Administrators and Editors can add or change doctors (granted in sunnah_crc_activate()).
+			'capability_type' => array( 'doctor', 'doctors' ),
+			'map_meta_cap'    => true,
 		)
 	);
 }
@@ -495,6 +493,24 @@ function sunnah_crc_activate() {
 	$sample = get_page_by_path( 'sample-page' );
 	if ( $sample && 'Sample Page' === $sample->post_title ) {
 		wp_trash_post( $sample->ID );
+	}
+	// Doctor profiles: Administrators and Editors only (Authors and Contributors cannot add or change doctors).
+	$caps = array( 'edit_doctors', 'edit_others_doctors', 'edit_private_doctors', 'edit_published_doctors', 'publish_doctors', 'read_private_doctors', 'delete_doctors', 'delete_others_doctors', 'delete_private_doctors', 'delete_published_doctors', 'create_doctors' );
+	foreach ( array( 'administrator', 'editor' ) as $role_name ) {
+		$role = get_role( $role_name );
+		if ( $role ) {
+			foreach ( $caps as $cap ) {
+				$role->add_cap( $cap );
+			}
+		}
+	}
+	foreach ( array( 'author', 'contributor', 'subscriber' ) as $role_name ) {
+		$role = get_role( $role_name );
+		if ( $role ) {
+			foreach ( $caps as $cap ) {
+				$role->remove_cap( $cap );
+			}
+		}
 	}
 	sunnah_crc_register_doctor();
 	flush_rewrite_rules();
@@ -807,6 +823,11 @@ if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 	define( 'DISALLOW_FILE_EDIT', true );
 }
 
+// WordPress emoji script (inline JavaScript, not needed: all browsers show emoji natively).
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+add_filter( 'emoji_svg_url', '__return_false' );
+
 // Do not advertise the WordPress version.
 remove_action( 'wp_head', 'wp_generator' );
 add_filter( 'the_generator', '__return_empty_string' );
@@ -880,7 +901,15 @@ function sunnah_crc_security_headers() {
 	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
 	if ( ! is_customize_preview() ) {
-		header( 'Content-Security-Policy: ' . sunnah_crc_csp() );
+		if ( apply_filters( 'sunnah_crc_csp_strict', false ) ) {
+			// After testing: enforce the strict policy (no inline scripts).
+			header( 'Content-Security-Policy: ' . sunnah_crc_csp( true ) );
+		} else {
+			// Enforced: compatible policy. Report-Only: the stricter policy, so its effect can be checked in the
+			// browser console (F12) without breaking anything, before switching it on with the filter above.
+			header( 'Content-Security-Policy: ' . sunnah_crc_csp( false ) );
+			header( 'Content-Security-Policy-Report-Only: ' . sunnah_crc_csp( true ) );
+		}
 	}
 	if ( is_ssl() ) {
 		header( 'Strict-Transport-Security: max-age=31536000' );
@@ -893,10 +922,10 @@ add_action( 'send_headers', 'sunnah_crc_security_headers' );
  * which blocks most injected third-party code. Plugins that need another source can add it with the
  * 'sunnah_crc_csp_sources' filter, e.g. add 'https://www.googletagmanager.com' to 'script-src'.
  */
-function sunnah_crc_csp() {
+function sunnah_crc_csp( $strict = false ) {
 	$src = array(
 		'default-src'     => array( "'self'" ),
-		'script-src'      => array( "'self'", "'unsafe-inline'" ),
+		'script-src'      => $strict ? array( "'self'" ) : array( "'self'", "'unsafe-inline'" ),
 		'style-src'       => array( "'self'", "'unsafe-inline'", 'https://fonts.googleapis.com' ),
 		'font-src'        => array( "'self'", 'data:', 'https://fonts.gstatic.com' ),
 		'img-src'         => array( "'self'", 'data:', 'https:' ),
@@ -907,7 +936,7 @@ function sunnah_crc_csp() {
 		'form-action'     => array( "'self'" ),
 		'frame-ancestors' => array( "'self'" ),
 	);
-	$src   = apply_filters( 'sunnah_crc_csp_sources', $src );
+	$src   = apply_filters( 'sunnah_crc_csp_sources', $src, $strict );
 	$parts = array();
 	foreach ( $src as $k => $v ) {
 		$parts[] = $k . ' ' . implode( ' ', array_unique( (array) $v ) );
@@ -934,24 +963,60 @@ add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) { return '
 // Same message for wrong username and wrong password, so attackers cannot tell which was right.
 add_filter( 'login_errors', function () { return __( 'The login details are incorrect.', 'sunnah-crc' ); } );
 
-// Flood protection for the enquiry form: max 5 submissions per visitor per 10 minutes.
+// Flood protection for the enquiry form.
+// Counters are increased with a single atomic database statement, so simultaneous requests cannot slip past the
+// limit (a plain read-then-write counter can be raced). Each counter lives in a fixed time window.
 function sunnah_crc_enquiry_rate_ok() {
+	global $wpdb;
 	$ip    = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+	$now   = time();
 	$rules = array(
-		'sunnah_enq_' . md5( $ip )     => array( 5, 10 * MINUTE_IN_SECONDS ), // 5 per visitor per 10 minutes.
-		'sunnah_enqd_' . md5( $ip )    => array( 15, DAY_IN_SECONDS ),        // 15 per visitor per day.
-		'sunnah_enq_all'               => array( 60, HOUR_IN_SECONDS ),       // 60 per hour for the whole site.
+		array( 'v', md5( $ip ), 5, 10 * MINUTE_IN_SECONDS ), // 5 per visitor per 10 minutes.
+		array( 'd', md5( $ip ), 15, DAY_IN_SECONDS ),        // 15 per visitor per day.
+		array( 's', 'all', 60, HOUR_IN_SECONDS ),            // 60 per hour for the whole site.
 	);
-	foreach ( $rules as $key => $r ) {
-		if ( (int) get_transient( $key ) >= $r[0] ) {
-			return false;
+	$ok = true;
+	foreach ( $rules as $r ) {
+		$name = 'sunnah_rl_' . $r[0] . '_' . substr( $r[1], 0, 16 ) . '_' . (int) floor( $now / $r[3] );
+		// New row (1 affected) = first request in this window. Existing row: LAST_INSERT_ID() returns exactly the value
+		// this request wrote, so concurrent requests each see their own position in the queue.
+		$rows  = $wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, '1', 'no') ON DUPLICATE KEY UPDATE option_value = LAST_INSERT_ID(option_value + 1)", $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$count = ( 1 === (int) $rows ) ? 1 : (int) $wpdb->get_var( 'SELECT LAST_INSERT_ID()' ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		if ( $count > $r[2] ) {
+			$ok = false;
 		}
 	}
-	foreach ( $rules as $key => $r ) {
-		set_transient( $key, (int) get_transient( $key ) + 1, $r[1] );
-	}
-	return true;
+	return $ok;
 }
+
+// Remove old rate-limit counters once a day.
+function sunnah_crc_rate_cleanup() {
+	global $wpdb;
+	$now   = time();
+	$names = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s LIMIT 5000", $wpdb->esc_like( 'sunnah_rl_' ) . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+	$len   = array( 'v' => 10 * MINUTE_IN_SECONDS, 'd' => DAY_IN_SECONDS, 's' => HOUR_IN_SECONDS );
+	foreach ( $names as $name ) {
+		$p = explode( '_', $name );
+		if ( 5 === count( $p ) && isset( $len[ $p[2] ] ) && ( (int) $p[4] + 2 ) * $len[ $p[2] ] < $now ) {
+			$wpdb->delete( $wpdb->options, array( 'option_name' => $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		}
+	}
+}
+add_action( 'sunnah_crc_daily', 'sunnah_crc_rate_cleanup' );
+add_action(
+	'init',
+	function () {
+		if ( ! wp_next_scheduled( 'sunnah_crc_daily' ) ) {
+			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'sunnah_crc_daily' );
+		}
+	}
+);
+add_action(
+	'switch_theme',
+	function () {
+		wp_clear_scheduled_hook( 'sunnah_crc_daily' );
+	}
+);
 
 /* -------------------------------------------------------------------------
  * robots.txt (WordPress serves this automatically at /robots.txt)

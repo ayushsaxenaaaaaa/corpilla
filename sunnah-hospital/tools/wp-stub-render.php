@@ -15,7 +15,7 @@ function wp_json_encode($a){ return json_encode($a, JSON_UNESCAPED_SLASHES); } f
 function get_theme_mod($k,$d=''){ return $d; } function get_option($k){ return $k==='admin_email' ? 'admin@example.com' : ($GLOBALS['OPT'][$k] ?? false); }
 function language_attributes(){ echo 'lang="en-US"'; } function bloginfo($k){ echo 'UTF-8'; } function body_class(){ echo 'class="page"'; } function wp_body_open(){}
 function wp_head(){ echo '<title>Sunnah</title>'; do_action('wp_head'); foreach($GLOBALS['st'] as $s) echo '<link rel="stylesheet" href="'.$s.'">'."\n"; }
-function wp_footer(){ echo '<script>'.$GLOBALS['inl'].'</script>'; foreach($GLOBALS['sc'] as $s) echo '<script src="'.$s.'"></script>'."\n"; }
+function wp_footer(){ if($GLOBALS['inl']!=='') echo '<script>'.$GLOBALS['inl'].'</script>'; foreach($GLOBALS['sc'] as $s) echo '<script src="'.$s.'"></script>'."\n"; }
 function get_header(){ include THEME.'/header.php'; } function get_footer(){ include THEME.'/footer.php'; }
 function get_template_part($slug,$name=null,$args=[]){ include THEME.'/'.$slug.'.php'; }
 function is_front_page(){ return $GLOBALS['SLUG']==='home'; } function is_page($s=''){ return $s==='' ? true : in_array($GLOBALS['SLUG'], (array)$s, true); }

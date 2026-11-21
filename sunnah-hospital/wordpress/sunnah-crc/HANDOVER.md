@@ -50,6 +50,14 @@ Admin → Doctors → Add New:
 Each doctor gets a profile page with the appointment number. Doctors also appear automatically in their department
 on the Departments and Cancer Research Centre pages. Do not add dummy names or stock photos.
 
+### Check after installing (5 minutes)
+Doctor profiles can only be managed by **Administrators** and **Editors**. To confirm on the live site:
+1. Users → Add New: create a test user with role **Editor**, and another with role **Author**.
+2. Log in as the Editor: "Doctors" appears in the menu; adding, editing and deleting a doctor works.
+3. Log in as the Author: "Doctors" does not appear, and opening `/wp-admin/edit.php?post_type=doctor` shows
+   "Sorry, you are not allowed…".
+4. Delete both test users. Give hospital staff the **Editor** role (never Administrator) for day-to-day updates.
+
 ## 5. Photos
 Real hospital photos are used throughout, including the Director's photograph and four award photographs on the About page (`assets/img/director.jpg`, `award-1.jpg` to `award-4.jpg`). The Director's photo can be replaced in Customize → Hospital Information → Founder photograph.
 Scheme logos: the AB-PMJAY logo is built in; upload the official MJPJAY logo in Customize → Hospital Information → MJPJAY scheme logo (until then a text badge is shown).

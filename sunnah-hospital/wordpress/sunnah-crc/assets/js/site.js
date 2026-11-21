@@ -1,14 +1,5 @@
 /* Sunnah Hospital – Cancer Research Centre: site behaviour (menu, home slider, department finder, doctor filter). */
 (function () {
-  var B = (window.SUNNAH_CRC && window.SUNNAH_CRC.home) || '/';
-  var PAGES = (window.SUNNAH_CRC && window.SUNNAH_CRC.pages) || {};
-  // 'cancer-care/#types' -> real page address + '#types'
-  function link(path) {
-    var parts = path.split('#'), slug = parts[0].replace(/\/$/, '');
-    var base = PAGES[slug] || (B + slug + '/');
-    return base + (parts[1] ? '#' + parts[1] : '');
-  }
-
   // Mobile menu
   var btn = document.getElementById('burger'), drawer = document.getElementById('drawer');
   if (btn && drawer) {

@@ -10,11 +10,23 @@ standards, and the checklist below covers the rest.
   (forms sent within 3 seconds, older than 2 days or with a forged stamp are refused), a link filter (messages with
   several web links are dropped), rate limits (5 per visitor per 10 minutes, 15 per visitor per day, 60 per hour for
   the whole site), input length limits and safe email headers.
+  The rate-limit counters are increased with one atomic database statement, so simultaneous requests cannot slip past
+  the limit (tested: 40 requests at the same instant from one visitor → exactly 5 accepted; 100 visitors at once →
+  exactly 60). Old counters are removed by a daily WordPress task. For protection against large floods, still use
+  Cloudflare rate limiting (step 9): it stops traffic before it reaches the server.
 - Server-side validation: department and preferred time must be one of the form's own options; the preferred date
   must be a real date from today up to one year ahead; the contact number must have 10–13 digits.
 - **Content Security Policy (CSP)** header: browsers only load scripts, styles, fonts and frames from the site itself,
   Google Fonts, Google Maps and YouTube. Plugins needing another source can add it with the `sunnah_crc_csp_sources` filter.
-  (Inline scripts are still allowed because WordPress core and most plugins need them.)
+  - Enforced policy: still allows inline scripts, because some plugins add them.
+  - A **stricter policy (no inline scripts) is sent in Report-Only mode** at the same time: it blocks nothing, but the
+    browser console (F12 → Console) lists anything it would block. The theme itself needs no inline scripts (the
+    WordPress emoji script is switched off for this).
+  - After the final plugins are installed, open the main pages with F12 open. If no "Content-Security-Policy-Report-Only"
+    messages appear, switch the strict policy on by adding this line to a small site plugin or wp-config-loaded mu-plugin:
+    `add_filter( 'sunnah_crc_csp_strict', '__return_true' );`
+- **Doctor profiles have their own permissions**: only Administrators and Editors can add, edit or delete doctors.
+  Authors, Contributors and Subscribers cannot (the same rules apply in the editor and through the REST API).
 - No file uploads, no database writes from visitors, no third-party scripts except Google Fonts.
 - XML-RPC is turned off (a common target for password-guessing attacks).
 - **REST API closed to the public.** WordPress normally exposes a data interface at `/wp-json/` (the "REST API").
