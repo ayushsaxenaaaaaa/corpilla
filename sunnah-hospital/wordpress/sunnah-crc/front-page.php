@@ -171,7 +171,8 @@ $sunnah_news = get_posts(
   <?php if ( $sunnah_news ) : ?>
     <div class="ncards"><?php foreach ( $sunnah_news as $n ) { get_template_part( 'template-parts/news-card', null, array( 'post' => $n ) ); } ?></div>
   <?php else : ?>
-    <p class="c">Recent hospital announcements, medical activities, health awareness programmes and institutional developments will appear here.</p>
+    <p class="c">Awards &amp; recognition received by our Founder &amp; Director, Dr. Hakimuddin Shaikh.</p>
+    <div class="awg awg4"><?php foreach ( array_slice( sunnah_crc_awards(), 0, 4 ) as $aw ) : ?><a href="<?php echo sunnah_url( 'news', 'awards' ); ?>"><figure><img src="<?php echo sunnah_img( $aw[0] ); ?>" alt="<?php echo esc_attr( $aw[1] ); ?>" loading="lazy"><figcaption><b><?php echo esc_html( $aw[1] ); ?></b></figcaption></figure></a><?php endforeach; ?></div>
   <?php endif; ?>
   <p class="cbtn"><a class="sbtn out" href="<?php echo sunnah_url( 'news' ); ?>">View All Updates</a></p>
 </div></section>
@@ -195,7 +196,7 @@ $sunnah_news = get_posts(
   <span class="ic"><svg><use href="#i-ph"/></svg></span>
   <span class="lbl">Request a call back for an appointment</span>
   <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-    <input type="hidden" name="action" value="sunnah_enquiry"><?php wp_nonce_field( 'sunnah_enquiry', 'sunnah_enquiry_nonce' ); ?>
+    <input type="hidden" name="action" value="sunnah_enquiry"><?php wp_nonce_field( 'sunnah_enquiry', 'sunnah_enquiry_nonce' ); ?><?php sunnah_enquiry_stamp(); ?>
     <div class="hp" aria-hidden="true"><label for="cb-web">Leave this empty</label><input id="cb-web" type="text" name="website" tabindex="-1" autocomplete="off"></div>
     <input name="patient_name" placeholder="Patient name *" aria-label="Patient name" required maxlength="100" autocomplete="name">
     <input name="mobile" type="tel" placeholder="Contact number *" aria-label="Contact number" required maxlength="20" inputmode="tel" autocomplete="tel">

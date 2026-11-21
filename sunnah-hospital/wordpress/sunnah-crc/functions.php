@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SUNNAH_CRC_VERSION', '3.2.0' );
+define( 'SUNNAH_CRC_VERSION', '3.3.0' );
 
 /* -------------------------------------------------------------------------
  * Setup and assets
@@ -487,6 +487,15 @@ function sunnah_crc_activate() {
 			wp_insert_term( $name, 'category', array( 'slug' => $slug ) );
 		}
 	}
+	// Remove WordPress's sample "Hello world!" post and "Sample Page" if they were never edited.
+	$hello = get_page_by_path( 'hello-world', OBJECT, 'post' );
+	if ( $hello && 'Hello world!' === $hello->post_title ) {
+		wp_trash_post( $hello->ID );
+	}
+	$sample = get_page_by_path( 'sample-page' );
+	if ( $sample && 'Sample Page' === $sample->post_title ) {
+		wp_trash_post( $sample->ID );
+	}
 	sunnah_crc_register_doctor();
 	flush_rewrite_rules();
 }
@@ -589,17 +598,56 @@ function sunnah_crc_handle_enquiry() {
 		wp_safe_redirect( add_query_arg( 'enquiry', 'sent', $back ) . '#enquiry' );
 		exit;
 	}
+	// Time trap: the form carries a signed time stamp. Bots post instantly; very old pages are refused.
+	$ts  = isset( $_POST['sunnah_ts'] ) ? (int) $_POST['sunnah_ts'] : 0;
+	$sig = isset( $_POST['sunnah_sig'] ) ? sanitize_text_field( wp_unslash( $_POST['sunnah_sig'] ) ) : '';
+	if ( ! $ts || ! hash_equals( wp_hash( 'sunnah_ts|' . $ts ), $sig ) || ( time() - $ts ) > 2 * DAY_IN_SECONDS ) {
+		wp_safe_redirect( add_query_arg( 'enquiry', 'error', $back ) . '#enquiry' );
+		exit;
+	}
+	if ( ( time() - $ts ) < 3 ) {
+		wp_safe_redirect( add_query_arg( 'enquiry', 'sent', $back ) . '#enquiry' );
+		exit;
+	}
 
 	$f = array();
 	foreach ( array( 'patient_name', 'mobile', 'department', 'pref_date', 'pref_time' ) as $k ) {
 		$f[ $k ] = isset( $_POST[ $k ] ) ? wp_html_excerpt( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ), 120 ) : '';
 	}
 	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$email   = is_email( $email ) ? $email : '';
 	$message = isset( $_POST['message'] ) ? wp_html_excerpt( sanitize_textarea_field( wp_unslash( $_POST['message'] ) ), 2000 ) : '';
 
-	if ( '' === $f['patient_name'] || strlen( preg_replace( '/\D/', '', $f['mobile'] ) ) < 10 ) {
+	// Links in the message are a typical sign of spam: accept quietly, send nothing.
+	if ( preg_match_all( '#(https?://|www\.)#i', $message . ' ' . $f['patient_name'] ) > 1 ) {
+		wp_safe_redirect( add_query_arg( 'enquiry', 'sent', $back ) . '#enquiry' );
+		exit;
+	}
+
+	$digits = preg_replace( '/\D/', '', $f['mobile'] );
+	if ( '' === $f['patient_name'] || mb_strlen( $f['patient_name'] ) > 100 || preg_match( '#https?://|www\.#i', $f['patient_name'] )
+		|| strlen( $digits ) < 10 || strlen( $digits ) > 13 || preg_match( '/[^0-9+\-\s()]/', $f['mobile'] ) ) {
 		wp_safe_redirect( add_query_arg( 'enquiry', 'missing', $back ) . '#enquiry' );
 		exit;
+	}
+
+	// Dropdowns: only the values the form offers are accepted.
+	if ( ! in_array( $f['department'], sunnah_crc_enquiry_departments(), true ) ) {
+		$f['department'] = '';
+	}
+	if ( ! in_array( $f['pref_time'], sunnah_crc_enquiry_times(), true ) ) {
+		$f['pref_time'] = '';
+	}
+	// Preferred date: empty, or a real date from today up to one year ahead.
+	if ( '' !== $f['pref_date'] ) {
+		$d     = DateTime::createFromFormat( '!Y-m-d', $f['pref_date'], wp_timezone() );
+		$today = new DateTime( 'today', wp_timezone() );
+		$max   = ( new DateTime( 'today', wp_timezone() ) )->modify( '+1 year' );
+		if ( ! $d || $d->format( 'Y-m-d' ) !== $f['pref_date'] || $d < $today || $d > $max ) {
+			wp_safe_redirect( add_query_arg( 'enquiry', 'baddate', $back ) . '#enquiry' );
+			exit;
+		}
+		$f['pref_date'] = $d->format( 'j F Y' );
 	}
 
 	$to      = sunnah_opt( 'enquiry_email' ) ? sunnah_opt( 'enquiry_email' ) : get_option( 'admin_email' );
@@ -619,12 +667,52 @@ function sunnah_crc_handle_enquiry() {
 add_action( 'admin_post_nopriv_sunnah_enquiry', 'sunnah_crc_handle_enquiry' );
 add_action( 'admin_post_sunnah_enquiry', 'sunnah_crc_handle_enquiry' );
 
+/** Awards received by the founder (photo file, title, detail). Shown on About Us, News and the home page. */
+function sunnah_crc_awards() {
+	return array(
+		array( 'award-1.jpg', 'International Health & Education Gold Star Award', 'Dubai, UAE' ),
+		array( 'award-4.jpg', 'Rajiv Gandhi Achievers Award for Health Care', 'Presented by Dr. Bhishma Narayan Singh, Former Governor of Tamil Nadu & Ex-Central Minister' ),
+		array( 'award-3.jpg', 'Life Time Education Excellence Award', 'Presented by Ambassador V.B. Soni, Former Ambassador of India to ten countries' ),
+		array( 'award-2.jpg', 'Indian Solidarity Council Award', 'In association with the International Institute of Education & Management and International Business Council, New Delhi' ),
+	);
+}
+
+/** Awards gallery markup. */
+function sunnah_crc_awards_gallery() {
+	$out = '<div class="awg">';
+	foreach ( sunnah_crc_awards() as $aw ) {
+		$out .= '<figure><img src="' . sunnah_img( $aw[0] ) . '" alt="' . esc_attr( $aw[1] . ' presented to Dr. Hakimuddin Shaikh' ) . '" loading="lazy"><figcaption><b>' . esc_html( $aw[1] ) . '</b>' . esc_html( $aw[2] ) . '</figcaption></figure>';
+	}
+	return $out . '</div>';
+}
+
+/** Departments accepted by the enquiry form. */
+function sunnah_crc_enquiry_departments() {
+	$list = array( 'Not sure' );
+	foreach ( sunnah_crc_departments() as $d ) {
+		$list[] = $d[0];
+	}
+	return array_merge( $list, array( 'Cancer care enquiry', 'Inpatient / admission enquiry', 'Government scheme enquiry', 'Call back request' ) );
+}
+
+/** Preferred times accepted by the enquiry form. */
+function sunnah_crc_enquiry_times() {
+	return array( 'Any time', 'Morning', 'Afternoon', 'Evening' );
+}
+
+/** Hidden signed time stamp used by the enquiry forms (anti-spam). */
+function sunnah_enquiry_stamp() {
+	$ts = time();
+	echo '<input type="hidden" name="sunnah_ts" value="' . esc_attr( (string) $ts ) . '"><input type="hidden" name="sunnah_sig" value="' . esc_attr( wp_hash( 'sunnah_ts|' . $ts ) ) . '">';
+}
+
 /** Status message after an enquiry was submitted. */
 function sunnah_enquiry_notice() {
 	$state = isset( $_GET['enquiry'] ) ? sanitize_key( wp_unslash( $_GET['enquiry'] ) ) : '';
 	$msgs  = array(
 		'sent'    => __( 'Thank you. Your enquiry has been received. Our staff will call you to confirm the appointment; it is not confirmed until they do.', 'sunnah-crc' ),
-		'missing' => __( 'Please enter the patient name and a 10-digit contact number.', 'sunnah-crc' ),
+		'missing' => __( 'Please enter the patient name and a valid 10-digit contact number.', 'sunnah-crc' ),
+		'baddate' => __( 'Please choose a preferred date from today onwards (within one year).', 'sunnah-crc' ),
 		'failed'  => __( 'Sorry, your enquiry could not be sent. Please call or WhatsApp us instead.', 'sunnah-crc' ),
 		'error'   => __( 'Sorry, something went wrong. Please try again, or call or WhatsApp us.', 'sunnah-crc' ),
 	);
@@ -791,11 +879,44 @@ function sunnah_crc_security_headers() {
 	header( 'X-Frame-Options: SAMEORIGIN' );
 	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
+	if ( ! is_customize_preview() ) {
+		header( 'Content-Security-Policy: ' . sunnah_crc_csp() );
+	}
 	if ( is_ssl() ) {
 		header( 'Strict-Transport-Security: max-age=31536000' );
 	}
 }
 add_action( 'send_headers', 'sunnah_crc_security_headers' );
+
+/**
+ * Content Security Policy: the browser only loads scripts, styles, fonts and frames from the sources listed here,
+ * which blocks most injected third-party code. Plugins that need another source can add it with the
+ * 'sunnah_crc_csp_sources' filter, e.g. add 'https://www.googletagmanager.com' to 'script-src'.
+ */
+function sunnah_crc_csp() {
+	$src = array(
+		'default-src'     => array( "'self'" ),
+		'script-src'      => array( "'self'", "'unsafe-inline'" ),
+		'style-src'       => array( "'self'", "'unsafe-inline'", 'https://fonts.googleapis.com' ),
+		'font-src'        => array( "'self'", 'data:', 'https://fonts.gstatic.com' ),
+		'img-src'         => array( "'self'", 'data:', 'https:' ),
+		'frame-src'       => array( 'https://www.google.com', 'https://maps.google.com', 'https://www.youtube.com', 'https://www.youtube-nocookie.com' ),
+		'connect-src'     => array( "'self'" ),
+		'object-src'      => array( "'none'" ),
+		'base-uri'        => array( "'self'" ),
+		'form-action'     => array( "'self'" ),
+		'frame-ancestors' => array( "'self'" ),
+	);
+	$src   = apply_filters( 'sunnah_crc_csp_sources', $src );
+	$parts = array();
+	foreach ( $src as $k => $v ) {
+		$parts[] = $k . ' ' . implode( ' ', array_unique( (array) $v ) );
+	}
+	if ( is_ssl() ) {
+		$parts[] = 'upgrade-insecure-requests';
+	}
+	return implode( '; ', $parts );
+}
 
 // Stop visitors listing usernames via ?author=1 links and author pages.
 function sunnah_crc_block_author_scan() {
@@ -815,13 +936,20 @@ add_filter( 'login_errors', function () { return __( 'The login details are inco
 
 // Flood protection for the enquiry form: max 5 submissions per visitor per 10 minutes.
 function sunnah_crc_enquiry_rate_ok() {
-	$ip  = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
-	$key = 'sunnah_enq_' . md5( $ip );
-	$n   = (int) get_transient( $key );
-	if ( $n >= 5 ) {
-		return false;
+	$ip    = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+	$rules = array(
+		'sunnah_enq_' . md5( $ip )     => array( 5, 10 * MINUTE_IN_SECONDS ), // 5 per visitor per 10 minutes.
+		'sunnah_enqd_' . md5( $ip )    => array( 15, DAY_IN_SECONDS ),        // 15 per visitor per day.
+		'sunnah_enq_all'               => array( 60, HOUR_IN_SECONDS ),       // 60 per hour for the whole site.
+	);
+	foreach ( $rules as $key => $r ) {
+		if ( (int) get_transient( $key ) >= $r[0] ) {
+			return false;
+		}
 	}
-	set_transient( $key, $n + 1, 10 * MINUTE_IN_SECONDS );
+	foreach ( $rules as $key => $r ) {
+		set_transient( $key, (int) get_transient( $key ) + 1, $r[1] );
+	}
 	return true;
 }
 

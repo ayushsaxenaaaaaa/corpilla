@@ -11,12 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 get_template_part( 'template-parts/banner', null, array( 'image' => 'sh-building.jpg', 'title' => 'About Us', 'lead' => 'A multispeciality hospital serving Akola since 2008.' ) );
 $sunnah_founder_photo = sunnah_opt( 'founder_photo' ) ? sunnah_opt( 'founder_photo' ) : get_theme_file_uri( 'assets/img/director.jpg' );
-$sunnah_awards = array(
-	array( 'award-1.jpg', 'International Health & Education Gold Star Award', 'Dubai, UAE' ),
-	array( 'award-4.jpg', 'Rajiv Gandhi Achievers Award for Health Care', 'Presented by Dr. Bhishma Narayan Singh, Former Governor of Tamil Nadu & Ex-Central Minister' ),
-	array( 'award-3.jpg', 'Life Time Education Excellence Award', 'Presented by Ambassador V.B. Soni, Former Ambassador of India to ten countries' ),
-	array( 'award-2.jpg', 'Indian Solidarity Council Award', 'In association with the International Institute of Education & Management and International Business Council, New Delhi' ),
-);
+$sunnah_awards = sunnah_crc_awards();
 ?>
 <main id="content">
 <div class="w lay">

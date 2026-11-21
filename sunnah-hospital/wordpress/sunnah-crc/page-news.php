@@ -51,7 +51,14 @@ $sunnah_q     = new WP_Query(
   <?php endif; ?>
   <?php wp_reset_postdata(); ?>
 </div></section>
-<section class="sec grey"><div class="w">
+<section class="sec grey" id="awards"><div class="w">
+  <p class="kick c">Medical Achievements</p>
+  <h2 class="c">Awards &amp; Recognition</h2>
+  <p class="c">Honours received by Dr. Hakimuddin Shaikh, Founder &amp; Director of Sunnah Hospital, for his work in healthcare, education and social development.</p>
+  <?php echo sunnah_crc_awards_gallery(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in function. ?>
+</div></section>
+
+<section class="sec"><div class="w">
   <h2 class="c">What we publish</h2>
   <div class="svcg sup">
     <div class="svcc"><svg><use href="#i-news"/></svg><h3>Hospital Announcements</h3><p>Important institutional announcements, new services, changes in consultation schedules and facility updates.</p></div>

@@ -6,8 +6,15 @@ standards, and the checklist below covers the rest.
 
 ## Built into the theme
 - All output is escaped and all input is sanitised; every PHP file refuses direct access.
-- The enquiry form uses a WordPress security token (nonce), a hidden spam trap, rate limiting
-  (5 requests per visitor per 10 minutes), input length limits and safe email headers.
+- The enquiry form uses a WordPress security token (nonce), a hidden spam trap, a signed time stamp
+  (forms sent within 3 seconds, older than 2 days or with a forged stamp are refused), a link filter (messages with
+  several web links are dropped), rate limits (5 per visitor per 10 minutes, 15 per visitor per day, 60 per hour for
+  the whole site), input length limits and safe email headers.
+- Server-side validation: department and preferred time must be one of the form's own options; the preferred date
+  must be a real date from today up to one year ahead; the contact number must have 10–13 digits.
+- **Content Security Policy (CSP)** header: browsers only load scripts, styles, fonts and frames from the site itself,
+  Google Fonts, Google Maps and YouTube. Plugins needing another source can add it with the `sunnah_crc_csp_sources` filter.
+  (Inline scripts are still allowed because WordPress core and most plugins need them.)
 - No file uploads, no database writes from visitors, no third-party scripts except Google Fonts.
 - XML-RPC is turned off (a common target for password-guessing attacks).
 - **REST API closed to the public.** WordPress normally exposes a data interface at `/wp-json/` (the "REST API").
@@ -27,6 +34,9 @@ standards, and the checklist below covers the rest.
 - Empty `index.php` files stop folder contents being listed.
 
 ## Must be done on the live site (by whoever manages hosting)
+These cannot be done inside a theme. Summary: **two-factor login** (step 3), **Cloudflare / firewall** (step 9) and
+**off-server backups** (step 5).
+
 1. **HTTPS**: install an SSL certificate (free with most hosts) and set both WordPress Address and Site Address to `https://`.
 2. **Strong admin accounts**: no username "admin"; long unique passwords; give staff "Editor" role, not "Administrator".
 3. **Two-factor login and login limits**: install one well-known security plugin, e.g. **Wordfence** or **Solid Security**,

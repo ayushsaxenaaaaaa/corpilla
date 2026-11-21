@@ -676,3 +676,8 @@ h1 b{font-weight:600}
 .gal figure{border-radius:10px}
 /* phones and tablets: the side panel would fall in the middle of the page; the appointment band at the end and the bottom bar cover it */
 @media(max-width:999px){.lay>.side{display:none}.lay{padding-bottom:clamp(36px,6vw,56px)}}
+.awg4{grid-template-columns:repeat(2,1fr)!important}
+@media(min-width:1000px){.awg4{grid-template-columns:repeat(4,1fr)!important}}
+.awg4 a{text-decoration:none;color:inherit}
+.awg4 figcaption{font-size:.88rem}
+.awg4 a:hover b{color:var(--teal);text-decoration:underline}

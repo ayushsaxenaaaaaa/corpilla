@@ -38,7 +38,7 @@ function get_page_by_path($s){ static $ids=['about-us'=>11,'cancer-care'=>12,'su
 function get_option_real($k){ return $GLOBALS['OPT'][$k] ?? false; } function update_option($k,$v){ $GLOBALS['OPT'][$k]=$v; }
 function wp_insert_post($a){ $GLOBALS['INSERTED'][]=$a['post_name']; return 1; } function flush_rewrite_rules(){}
 
-function wp_date($f){return date($f);} function wpautop($s){return '<p>'.$s.'</p>';} function wp_kses_post($s){return $s;} function sanitize_textarea_field($s){return $s;}
+function wp_date($f,$t=null){return date($f,$t??time());} function wp_hash($d){return md5($d);} function wpautop($s){return '<p>'.$s.'</p>';} function wp_kses_post($s){return $s;} function sanitize_textarea_field($s){return $s;}
 function wp_list_pluck($l,$f){ return array_map(fn($x)=>is_array($x)?$x[$f]:$x->$f,$l); } function get_term_by(){return false;} function get_category_link(){return '';}
 class WP_Query{ public $posts=[]; public $max_num_pages=0; function __construct($a){} function have_posts(){return false;} }
 function paginate_links(){return '';} function wp_reset_postdata(){} function get_the_category(){return [];} function has_category(){return false;}
